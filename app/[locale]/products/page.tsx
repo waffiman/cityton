@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Section } from "@/components/Section";
+import { Section, Eyebrow } from "@/components/Section";
+import { PageHero } from "@/components/PageHero";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { ProductCatalog } from "@/components/ProductCatalog";
+import { Reveal } from "@/components/motion/Reveal";
+import { DrawIn } from "@/components/motion/DrawIn";
 import { PortfolioRadar } from "@/components/diagrams/PortfolioRadar";
+import { VltScale } from "@/components/diagrams/VltScale";
+import { FilmLayers } from "@/components/diagrams/FilmLayers";
+import { media } from "@/content/media";
+import { FILM_LAYER_KEYS } from "@/content/process";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -13,9 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("title"),
     description: t("intro"),
-    alternates: {
-      languages: { de: "/de/products", en: "/en/products" },
-    },
+    alternates: { languages: { de: "/de/products", en: "/en/products" } },
   };
 }
 
@@ -25,6 +30,8 @@ export default async function ProductsPage({ params }: Props) {
   const t = await getTranslations("products");
   const tc = await getTranslations("common");
   const tp = await getTranslations("products_content");
+  const tv = await getTranslations("vltScale");
+  const tl = await getTranslations("filmLayers");
 
   const radarSeries = [
     {
@@ -46,7 +53,7 @@ export default async function ProductsPage({ params }: Props) {
       tser: 20,
       vlt: 90,
       uv: 99,
-      color: "#dca042",
+      color: "#d4a04a",
     },
     {
       name: tp("uv-protection-clear.shortName"),
@@ -57,14 +64,29 @@ export default async function ProductsPage({ params }: Props) {
     },
   ];
 
+  const layers = FILM_LAYER_KEYS.map((key) => ({
+    name: tl(`layers.${key}.name`),
+    description: tl(`layers.${key}.description`),
+    weight: key === "functional" ? 2 : 1,
+  }));
+
   return (
     <>
-      <Section dark className="!py-16">
-        <p className="text-sm font-semibold tracking-widest text-teal uppercase">
-          {t("subtitle")}
-        </p>
-        <h1 className="mt-2 text-3xl font-bold md:text-4xl">{t("title")}</h1>
-        <p className="mt-4 max-w-2xl text-white/75">{t("intro")}</p>
+      <PageHero
+        eyebrow={t("subtitle")}
+        title={t("title")}
+        lede={t("intro")}
+        imageSrc={media.photos.reflectiveFacade}
+      />
+
+      <Section soft>
+        <Reveal>
+          <VltScale
+            title={tv("title")}
+            caption={tv("caption")}
+            activeLabel={tv("activeLabel")}
+          />
+        </Reveal>
       </Section>
 
       <Section>
@@ -72,20 +94,38 @@ export default async function ProductsPage({ params }: Props) {
       </Section>
 
       <Section soft>
-        <h2 className="mb-8 text-center text-2xl font-bold text-teal-dark">
+        <h2 className="mb-10 text-center text-display-sm text-ink">
           {t("compareTitle")}
         </h2>
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <ComparisonTable />
-          <PortfolioRadar
-            series={radarSeries}
-            labels={{
-              tser: tc("tser"),
-              vlt: tc("vlt"),
-              uv: tc("uvProtection"),
-            }}
-          />
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <Reveal>
+            <ComparisonTable />
+          </Reveal>
+          <Reveal delay={100}>
+            <DrawIn>
+              <PortfolioRadar
+                series={radarSeries}
+                labels={{
+                  tser: tc("tser"),
+                  vlt: tc("vlt"),
+                  uv: tc("uvProtection"),
+                }}
+              />
+            </DrawIn>
+          </Reveal>
         </div>
+      </Section>
+
+      <Section>
+        <Reveal>
+          <Eyebrow>{t("layersTitle")}</Eyebrow>
+          <h2 className="mb-8 text-display-sm text-ink">{t("layersTitle")}</h2>
+          <FilmLayers
+            title={tl("title")}
+            caption={tl("caption")}
+            layers={layers}
+          />
+        </Reveal>
       </Section>
     </>
   );

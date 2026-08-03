@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Section } from "@/components/Section";
+import { PageHero } from "@/components/PageHero";
+import { Reveal } from "@/components/motion/Reveal";
+import { getBlogPosts, type Locale } from "@/lib/content";
+import { media } from "@/content/media";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -19,26 +24,58 @@ export default async function BlogPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("blog");
-  const tc = await getTranslations("common");
+  const posts = await getBlogPosts(locale as Locale);
 
   return (
     <>
-      <Section dark className="!py-16">
-        <p className="text-sm font-semibold tracking-widest text-teal uppercase">
-          {t("subtitle")}
-        </p>
-        <h1 className="mt-2 text-3xl font-bold md:text-4xl">{t("title")}</h1>
-        <p className="mt-4 max-w-2xl text-white/75">{t("intro")}</p>
-      </Section>
+      <PageHero
+        eyebrow={t("subtitle")}
+        title={t("title")}
+        lede={t("intro")}
+        imageSrc={media.photos.interior2}
+      />
+
       <Section>
-        <div className="rounded-2xl bg-bg-soft p-10 text-center ring-1 ring-dashed ring-border">
-          <p className="text-text-muted">{tc("comingSoon")}</p>
-          <Link
-            href="/"
-            className="mt-6 inline-flex rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-white hover:bg-teal-dark"
-          >
-            {tc("backToHome")}
-          </Link>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((p, i) => (
+            <Reveal key={p.slug} delay={i * 60}>
+              <Link
+                href={`/blog/${p.slug}`}
+                className="group flex h-full flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-border transition hover:shadow-lg"
+              >
+                <div className="relative aspect-[16/10]">
+                  <Image
+                    src={p.image}
+                    alt={p.title}
+                    fill
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                    sizes="(max-width:768px) 100vw, 33vw"
+                  />
+                  {p.draft ? (
+                    <span className="absolute top-3 left-3 rounded-full bg-amber px-2.5 py-1 text-[10px] font-bold uppercase text-ink">
+                      Draft
+                    </span>
+                  ) : null}
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex flex-wrap items-center gap-2 text-xs font-semibold tracking-wider text-teal uppercase">
+                    <span>{p.category}</span>
+                    <span className="text-border">·</span>
+                    <time dateTime={p.publishedAt}>{p.publishedAt}</time>
+                  </div>
+                  <h2 className="mt-2 text-lg font-semibold tracking-tight text-ink transition group-hover:text-teal-dark">
+                    {p.title}
+                  </h2>
+                  <p className="mt-2 flex-1 text-sm text-text-muted line-clamp-3">
+                    {p.excerpt}
+                  </p>
+                  <span className="mt-4 text-sm font-semibold text-teal">
+                    {t("readMore")} →
+                  </span>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </Section>
     </>

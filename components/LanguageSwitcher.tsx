@@ -13,7 +13,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "inline-flex items-center rounded-full bg-white/10 p-0.5 text-sm font-semibold",
+        "inline-flex items-center rounded-full bg-white/10 p-0.5 text-xs font-semibold backdrop-blur-sm",
         className,
       )}
       role="group"
@@ -27,7 +27,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           className={cn(
             "rounded-full px-2.5 py-1 uppercase transition",
             locale === l
-              ? "bg-teal text-white shadow-sm"
+              ? "bg-white text-ink shadow-sm"
               : "text-white/70 hover:text-white",
           )}
           aria-pressed={locale === l}

@@ -1,20 +1,63 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Section } from "@/components/Section";
+import { Section, Eyebrow } from "@/components/Section";
+import { PageHero } from "@/components/PageHero";
 import { CertificationBadge } from "@/components/CertificationBadge";
+import { ProductSignature } from "@/components/ProductSignature";
+import { ProductCard } from "@/components/ProductCard";
 import { VideoEmbed } from "@/components/VideoEmbed";
+import { Reveal } from "@/components/motion/Reveal";
+import { VltScale } from "@/components/diagrams/VltScale";
+import { ThicknessScale } from "@/components/diagrams/ThicknessScale";
+import { FilmLayers } from "@/components/diagrams/FilmLayers";
+import { GlassImpactDiagram } from "@/components/diagrams/GlassImpactDiagram";
 import {
   formatMetricPercent,
   formatUv,
   getAllProductSlugs,
   getProduct,
+  products,
   SECURITY_STANDARD,
+  type ProductSlug,
 } from "@/content/products";
+import { media } from "@/content/media";
+import { FILM_LAYER_KEYS } from "@/content/process";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
+};
+
+const USE_CASE_PHOTOS: Record<ProductSlug, string[]> = {
+  "serie-r": [
+    media.photos.reflectiveFacade,
+    media.photos.modernHome,
+    media.photos.facadeWide,
+  ],
+  "arm-platinum-spectrum": [
+    media.photos.installShopfront,
+    media.photos.windowClose,
+    media.photos.interior1,
+  ],
+  "safety-serie": [
+    media.photos.architectureDetail,
+    media.photos.installDetail,
+    media.photos.windowFilm2,
+  ],
+  "uv-protection-clear": [
+    media.photos.detailPortrait,
+    media.photos.interior2,
+    media.photos.glassDetail1,
+  ],
+};
+
+const ACCENT: Record<ProductSlug, "teal" | "amber" | "ink" | "silver"> = {
+  "serie-r": "silver",
+  "arm-platinum-spectrum": "teal",
+  "safety-serie": "amber",
+  "uv-protection-clear": "teal",
 };
 
 export function generateStaticParams() {
@@ -51,117 +94,222 @@ export default async function ProductDetailPage({ params }: Props) {
   const t = await getTranslations("products");
   const tc = await getTranslations("common");
   const tp = await getTranslations("products_content");
+  const tv = await getTranslations("vltScale");
+  const tth = await getTranslations("thicknessScale");
+  const tl = await getTranslations("filmLayers");
+  const th = await getTranslations("howItWorks");
 
   const useCases = tp.raw(`${product.slug}.useCases`) as string[];
+  const related = products.filter((p) => p.slug !== product.slug).slice(0, 3);
+  const photos = USE_CASE_PHOTOS[product.slug];
+
+  const layers = FILM_LAYER_KEYS.map((key) => ({
+    name: tl(`layers.${key}.name`),
+    description: tl(`layers.${key}.description`),
+    weight: key === "functional" ? 2.5 : 1,
+  }));
+
+  const activeVlt =
+    product.metrics.vlt?.value ?? product.metrics.vlt?.max ?? product.vltMax;
 
   return (
     <>
-      <Section dark className="!py-16">
-        <Link
-          href="/products"
-          className="text-sm font-medium text-white/70 transition hover:text-white"
-        >
-          ← {t("backToCatalog")}
-        </Link>
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <h1 className="text-3xl font-bold md:text-4xl">
-            {tp(`${product.slug}.name`)}
-          </h1>
-          {product.certified ? (
+      <PageHero
+        eyebrow={tp(`${product.slug}.tagline`)}
+        title={tp(`${product.slug}.name`)}
+        lede={tp(`${product.slug}.description`)}
+        imageSrc={photos[0]}
+        secondaryCta={{ href: "/products", label: t("backToCatalog") }}
+      >
+        {product.certified ? (
+          <div className="mt-6">
             <CertificationBadge
               label={tc("certified")}
               standard={SECURITY_STANDARD}
             />
-          ) : null}
+          </div>
+        ) : null}
+      </PageHero>
+
+      <Section>
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          <Reveal>
+            <ProductSignature slug={product.slug} />
+          </Reveal>
+          <Reveal delay={100}>
+            <Eyebrow>{t("metricsVisualTitle")}</Eyebrow>
+            <h2 className="text-display-sm text-ink">{tc("keyMetrics")}</h2>
+            <div className="mt-8 space-y-5">
+              {product.metrics.tser ? (
+                <MetricRow
+                  label={tc("tser")}
+                  value={formatMetricPercent(locale, product.metrics.tser)}
+                  pct={product.tserMax}
+                />
+              ) : null}
+              {product.metrics.vlt || product.slug !== "safety-serie" ? (
+                <MetricRow
+                  label={tc("vlt")}
+                  value={
+                    product.metrics.vlt
+                      ? formatMetricPercent(locale, product.metrics.vlt)
+                      : `up to ${product.vltMax}%`
+                  }
+                  pct={product.vltMax}
+                />
+              ) : null}
+              <MetricRow
+                label={tc("uvProtection")}
+                value={formatUv(locale, product.metrics.uv)}
+                pct={Math.min(100, product.uvProtection)}
+              />
+            </div>
+            <p className="mt-6 text-sm leading-relaxed text-text-muted">
+              <span className="font-medium text-teal-dark">{tc("technology")}:</span>{" "}
+              {tp(`${product.slug}.technology`)}
+            </p>
+          </Reveal>
         </div>
-        <p className="mt-2 text-lg text-teal">{tp(`${product.slug}.tagline`)}</p>
-        <p className="mt-4 max-w-2xl text-white/75">
-          {tp(`${product.slug}.description`)}
-        </p>
+      </Section>
+
+      {product.slug === "safety-serie" ? (
+        <Section soft>
+          <Reveal>
+            <ThicknessScale
+              title={tth("title")}
+              caption={tth("caption")}
+              activeLabel={tth("activeLabel")}
+              activeMil={8}
+            />
+          </Reveal>
+          <Reveal delay={100} className="mt-12">
+            <GlassImpactDiagram
+              withoutTitle={th("impactWithoutTitle")}
+              withTitle={th("impactWithTitle")}
+              withoutCaption={th("impactWithoutCaption")}
+              withCaption={th("impactWithCaption")}
+            />
+          </Reveal>
+          <div className="mt-10">
+            <VideoEmbed
+              title={t("videoTitle")}
+              pendingLabel={t("videoPending")}
+            />
+          </div>
+        </Section>
+      ) : (
+        <Section soft>
+          <Reveal>
+            <VltScale
+              title={tv("title")}
+              caption={tv("caption")}
+              active={activeVlt}
+              activeLabel={tv("activeLabel")}
+            />
+          </Reveal>
+        </Section>
+      )}
+
+      <Section>
+        <Reveal>
+          <FilmLayers
+            title={tl("title")}
+            caption={tl("caption")}
+            layers={layers}
+            accent={ACCENT[product.slug]}
+          />
+        </Reveal>
+      </Section>
+
+      <Section soft>
+        <Reveal>
+          <Eyebrow>{t("useCasesPhotosTitle")}</Eyebrow>
+          <h2 className="mb-8 text-display-sm text-ink">
+            {t("useCasesPhotosTitle")}
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {photos.map((src, i) => (
+              <div
+                key={src}
+                className="relative aspect-[4/3] overflow-hidden rounded-2xl"
+              >
+                <Image
+                  src={src}
+                  alt={useCases[i] ?? ""}
+                  fill
+                  className="object-cover"
+                  sizes="33vw"
+                />
+                {useCases[i] ? (
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-4 pb-3 pt-10 text-sm font-medium text-white">
+                    {useCases[i]}
+                  </span>
+                ) : null}
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-text-muted">
+            <span className="font-medium text-teal-dark">{tc("idealFor")}:</span>{" "}
+            {tp(`${product.slug}.idealFor`)}
+          </p>
+        </Reveal>
       </Section>
 
       <Section>
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <h2 className="text-xl font-semibold text-teal-dark">
-              {tc("technology")}
-            </h2>
-            <p className="mt-3 text-text-muted leading-relaxed">
-              {tp(`${product.slug}.technology`)}
-            </p>
-
-            <h2 className="mt-8 text-xl font-semibold text-teal-dark">
-              {tc("keyMetrics")}
-            </h2>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {product.metrics.tser ? (
-                <li className="rounded-full bg-bg-soft px-4 py-2 text-sm font-medium text-teal-dark ring-1 ring-border">
-                  {tc("tser")}{" "}
-                  {formatMetricPercent(locale, product.metrics.tser)}
-                </li>
-              ) : null}
-              {product.metrics.vlt ? (
-                <li className="rounded-full bg-bg-soft px-4 py-2 text-sm font-medium text-teal-dark ring-1 ring-border">
-                  {tc("vlt")}{" "}
-                  {formatMetricPercent(locale, product.metrics.vlt)}
-                </li>
-              ) : null}
-              <li className="rounded-full bg-bg-soft px-4 py-2 text-sm font-medium text-teal-dark ring-1 ring-border">
-                {tc("uvProtection")} {formatUv(locale, product.metrics.uv)}
-              </li>
-              {product.metrics.thickness ? (
-                <li className="rounded-full bg-bg-soft px-4 py-2 text-sm font-medium text-teal-dark ring-1 ring-border">
-                  {t("thickness")}: {product.metrics.thickness}
-                </li>
-              ) : null}
-            </ul>
-
-            <h2 className="mt-8 text-xl font-semibold text-teal-dark">
-              {t("useCasesTitle")}
-            </h2>
-            <ul className="mt-3 space-y-2">
-              {useCases.map((u) => (
-                <li key={u} className="flex gap-2 text-sm text-text-muted">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
-                  {u}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-sm text-text-muted">
-              <span className="font-medium text-teal-dark">{tc("idealFor")}:</span>{" "}
-              {tp(`${product.slug}.idealFor`)}
-            </p>
-          </div>
-
-          {product.certified ? (
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-teal-dark">
-                {t("certification")}
-              </h2>
-              <p className="text-sm text-text-muted">
-                {SECURITY_STANDARD === "TBD"
-                  ? t("certificationPending")
-                  : SECURITY_STANDARD}
-              </p>
-              <VideoEmbed
-                title={t("videoTitle")}
-                pendingLabel={t("videoPending")}
+        <Reveal>
+          <h2 className="mb-8 text-display-sm text-ink">{t("relatedTitle")}</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {related.map((p) => (
+              <ProductCard
+                key={p.slug}
+                product={p}
+                locale={locale}
+                name={tp(`${p.slug}.name`)}
+                tagline={tp(`${p.slug}.tagline`)}
+                technology={tp(`${p.slug}.technology`)}
+                certifiedLabel={tc("certified")}
+                learnMoreLabel={tc("learnMore")}
+                tserLabel={tc("tser")}
+                vltLabel={tc("vlt")}
+                uvLabel={tc("uvProtection")}
               />
-            </div>
-          ) : (
-            <div className="flex items-center justify-center rounded-2xl bg-bg-soft p-10 ring-1 ring-border">
-              <div className="text-center">
-                <p className="text-4xl font-bold text-teal">
-                  {formatUv(locale, product.metrics.uv)}
-                </p>
-                <p className="mt-2 text-sm text-text-muted">
-                  {tc("uvProtection")}
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link
+              href="/products"
+              className="text-sm font-semibold text-teal hover:text-teal-dark"
+            >
+              ← {t("backToCatalog")}
+            </Link>
+          </div>
+        </Reveal>
       </Section>
     </>
+  );
+}
+
+function MetricRow({
+  label,
+  value,
+  pct,
+}: {
+  label: string;
+  value: string;
+  pct: number;
+}) {
+  return (
+    <div>
+      <div className="mb-1.5 flex items-baseline justify-between">
+        <span className="text-sm text-text-muted">{label}</span>
+        <span className="text-lg font-semibold text-teal-dark">{value}</span>
+      </div>
+      <div className="h-2 overflow-hidden rounded-full bg-bg-soft">
+        <div
+          className="h-full rounded-full bg-teal"
+          style={{ width: `${Math.max(4, Math.min(100, pct))}%` }}
+        />
+      </div>
+    </div>
   );
 }

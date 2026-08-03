@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { CertificationBadge } from "./CertificationBadge";
+import { ProductSignature } from "./ProductSignature";
 import { cn } from "@/lib/utils";
 import {
   formatMetricPercent,
@@ -21,12 +22,28 @@ type ProductCardProps = {
   className?: string;
 };
 
-function MetricPill({ label, value }: { label: string; value: string }) {
+function MetricBar({
+  label,
+  value,
+  pct,
+}: {
+  label: string;
+  value: string;
+  pct: number;
+}) {
   return (
-    <span className="inline-flex items-center rounded-full bg-bg-soft px-2.5 py-1 text-xs font-medium text-teal-dark ring-1 ring-border">
-      <span className="mr-1 text-text-muted">{label}</span>
-      {value}
-    </span>
+    <div>
+      <div className="mb-1 flex items-baseline justify-between text-xs">
+        <span className="text-text-muted">{label}</span>
+        <span className="font-semibold text-teal-dark">{value}</span>
+      </div>
+      <div className="h-1.5 overflow-hidden rounded-full bg-bg-soft">
+        <div
+          className="h-full rounded-full bg-teal"
+          style={{ width: `${Math.max(4, Math.min(100, pct))}%` }}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -46,47 +63,58 @@ export function ProductCard({
   return (
     <article
       className={cn(
-        "group flex h-full flex-col rounded-2xl bg-white p-6 shadow-sm ring-1 ring-border transition hover:-translate-y-0.5 hover:shadow-md",
+        "group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-border transition hover:-translate-y-0.5 hover:shadow-md",
         className,
       )}
     >
-      <div className="mb-3 flex flex-wrap items-center gap-2">
-        <h3 className="text-lg font-semibold text-teal-dark">{name}</h3>
-        {product.certified && certifiedLabel ? (
-          <CertificationBadge label={certifiedLabel} />
-        ) : null}
+      <div className="overflow-hidden">
+        <ProductSignature slug={product.slug} compact />
       </div>
-      <p className="text-sm font-medium text-teal">{tagline}</p>
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted">
-        {technology}
-      </p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {product.metrics.tser ? (
-          <MetricPill
-            label={tserLabel}
-            value={formatMetricPercent(locale, product.metrics.tser)}
+      <div className="flex flex-1 flex-col p-6">
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <h3 className="text-lg font-semibold text-ink">{name}</h3>
+          {product.certified && certifiedLabel ? (
+            <CertificationBadge label={certifiedLabel} />
+          ) : null}
+        </div>
+        <p className="text-sm font-medium text-teal">{tagline}</p>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted">
+          {technology}
+        </p>
+        <div className="mt-4 space-y-2">
+          {product.metrics.tser ? (
+            <MetricBar
+              label={tserLabel}
+              value={formatMetricPercent(locale, product.metrics.tser)}
+              pct={product.tserMax}
+            />
+          ) : null}
+          {product.metrics.vlt ? (
+            <MetricBar
+              label={vltLabel}
+              value={formatMetricPercent(locale, product.metrics.vlt)}
+              pct={product.vltMax}
+            />
+          ) : null}
+          <MetricBar
+            label={uvLabel}
+            value={formatUv(locale, product.metrics.uv)}
+            pct={Math.min(100, product.uvProtection)}
           />
-        ) : null}
-        {product.metrics.vlt ? (
-          <MetricPill
-            label={vltLabel}
-            value={formatMetricPercent(locale, product.metrics.vlt)}
-          />
-        ) : null}
-        <MetricPill
-          label={uvLabel}
-          value={formatUv(locale, product.metrics.uv)}
-        />
+        </div>
+        <Link
+          href={`/products/${product.slug}`}
+          className="mt-5 inline-flex items-center text-sm font-semibold text-teal transition group-hover:text-teal-dark"
+        >
+          {learnMoreLabel}
+          <span
+            aria-hidden
+            className="ml-1 transition group-hover:translate-x-0.5"
+          >
+            →
+          </span>
+        </Link>
       </div>
-      <Link
-        href={`/products/${product.slug}`}
-        className="mt-5 inline-flex items-center text-sm font-semibold text-teal transition group-hover:text-teal-dark"
-      >
-        {learnMoreLabel}
-        <span aria-hidden className="ml-1 transition group-hover:translate-x-0.5">
-          →
-        </span>
-      </Link>
     </article>
   );
 }

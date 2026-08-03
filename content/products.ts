@@ -129,9 +129,9 @@ export const SOLAR_WITHOUT_FILM = {
 } as const;
 
 export const SOLAR_WITH_FILM = {
-  transmission: 5,
-  reflection: 70,
-  absorption: 89,
+  transmission: 12,
+  reflection: 49,
+  absorption: 38,
 } as const;
 
 /** Live temperature measurement from brochure page 6 */

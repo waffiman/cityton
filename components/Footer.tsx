@@ -2,7 +2,8 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CONTACT } from "@/content/products";
-import { PartnerLogoBlock } from "./PartnerLogoBlock";
+import { media } from "@/content/media";
+import { PartnerLogo } from "./PartnerLogoBlock";
 
 const SITEMAP = [
   { href: "/", key: "home" as const },
@@ -22,24 +23,24 @@ export async function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark-green text-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
-        <div className="space-y-4">
+    <footer className="bg-ink text-white">
+      <div className="mx-auto grid max-w-[1600px] gap-12 px-5 py-16 sm:px-8 md:grid-cols-2 lg:grid-cols-4 lg:px-10">
+        <div className="space-y-5 lg:col-span-1">
           <Image
-            src="/brand/logo-header.png"
+            src={media.brand.logo}
             alt="City-Ton Austria"
             width={140}
             height={48}
             className="h-10 w-auto brightness-0 invert"
           />
-          <p className="text-sm leading-relaxed text-white/70">{t("tagline")}</p>
+          <p className="text-sm leading-relaxed text-white/60">{t("tagline")}</p>
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold tracking-wide text-white/90 uppercase">
+          <h2 className="text-xs font-semibold tracking-[0.14em] text-white/50 uppercase">
             {t("sitemapTitle")}
           </h2>
-          <ul className="mt-4 space-y-2">
+          <ul className="mt-5 space-y-2.5">
             {SITEMAP.map((item) => (
               <li key={item.href}>
                 <Link
@@ -54,10 +55,10 @@ export async function Footer() {
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold tracking-wide text-white/90 uppercase">
+          <h2 className="text-xs font-semibold tracking-[0.14em] text-white/50 uppercase">
             {t("contactTitle")}
           </h2>
-          <ul className="mt-4 space-y-2 text-sm text-white/70">
+          <ul className="mt-5 space-y-2.5 text-sm text-white/70">
             <li>
               <a
                 href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
@@ -75,23 +76,19 @@ export async function Footer() {
         </div>
 
         <div>
-          <h2 className="text-sm font-semibold tracking-wide text-white/90 uppercase">
+          <h2 className="text-xs font-semibold tracking-[0.14em] text-white/50 uppercase">
             {t("partnersTitle")}
           </h2>
-          <p className="mt-2 text-xs text-white/50">{t("inPartnership")}</p>
-          <div className="mt-4 grid grid-cols-1 gap-3">
-            <div className="rounded-xl bg-white/95 p-3">
-              <PartnerLogoBlock partner="armolan" name="Armolan Europe" compact />
-            </div>
-            <div className="rounded-xl bg-white/95 p-3">
-              <PartnerLogoBlock partner="llumar" name="LLumar" compact />
-            </div>
+          <p className="mt-2 text-xs text-white/40">{t("inPartnership")}</p>
+          <div className="mt-5 grid gap-3">
+            <PartnerLogo partner="armolan" compact />
+            <PartnerLogo partner="llumar" compact />
           </div>
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[1600px] flex-col gap-2 px-5 py-5 text-xs text-white/40 sm:flex-row sm:justify-between sm:px-8 lg:px-10">
           <span>
             © {year} City-Ton Austria. {t("rights")}
           </span>

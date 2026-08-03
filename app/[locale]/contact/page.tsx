@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Section } from "@/components/Section";
+import { Section, Eyebrow } from "@/components/Section";
+import { PageHero } from "@/components/PageHero";
+import { FaqAccordion } from "@/components/FaqAccordion";
+import { Reveal } from "@/components/motion/Reveal";
+import { ContactModeForms } from "@/components/forms/ContactModeForms";
 import { CONTACT } from "@/content/products";
+import { COMPANY } from "@/content/company";
+import { media } from "@/content/media";
+import { getFaqIds } from "@/content/faq";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -19,55 +27,129 @@ export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("contact");
-  const tc = await getTranslations("common");
-  const tf = await getTranslations("footer");
+  const tf = await getTranslations("faq");
+
+  const lat = CONTACT.lat ?? COMPANY.mapLat;
+  const lng = CONTACT.lng ?? COMPANY.mapLng;
+  const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${lng - 0.05}%2C${lat - 0.03}%2C${lng + 0.05}%2C${lat + 0.03}&layer=mapnik&marker=${lat}%2C${lng}`;
+
+  const faqItems = getFaqIds("shared").map((id) => ({
+    id,
+    question: tf(`items.${id}.q`),
+    answer: tf(`items.${id}.a`),
+  }));
 
   return (
     <>
-      <Section dark className="!py-16">
-        <p className="text-sm font-semibold tracking-widest text-teal uppercase">
-          {t("subtitle")}
-        </p>
-        <h1 className="mt-2 text-3xl font-bold md:text-4xl">{t("title")}</h1>
-        <p className="mt-4 max-w-2xl text-white/75">{t("intro")}</p>
-      </Section>
+      <PageHero
+        eyebrow={t("subtitle")}
+        title={t("title")}
+        lede={t("intro")}
+        imageSrc={media.photos.facadeWide}
+      />
+
       <Section>
-        <div className="grid gap-8 lg:grid-cols-2">
-          <div className="space-y-4">
-            <h2 className="text-lg font-semibold text-teal-dark">
-              {tf("contactTitle")}
-            </h2>
-            <ul className="space-y-2 text-sm text-text-muted">
-              <li>
-                <a
-                  href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                  className="font-medium text-teal-dark hover:text-teal"
-                >
-                  {CONTACT.phone}
-                </a>
+        <div className="grid gap-5 sm:grid-cols-3">
+          <Reveal>
+            <a
+              href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
+              className="block rounded-2xl bg-white p-6 ring-1 ring-border transition hover:shadow-md"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+                {t("phoneLabel")}
+              </p>
+              <p className="mt-3 text-lg font-semibold text-ink">
+                {CONTACT.phone}
+              </p>
+            </a>
+          </Reveal>
+          <Reveal delay={60}>
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="block rounded-2xl bg-white p-6 ring-1 ring-border transition hover:shadow-md"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+                {t("emailLabel")}
+              </p>
+              <p className="mt-3 text-lg font-semibold text-ink">
+                {CONTACT.email}
+              </p>
+            </a>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="rounded-2xl bg-white p-6 ring-1 ring-border">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal">
+                {t("addressLabel")}
+              </p>
+              <p className="mt-3 text-lg font-semibold text-ink">
+                {CONTACT.address ?? `${COMPANY.city}, ${COMPANY.country}`}
+              </p>
+              {!CONTACT.address ? (
+                <p className="mt-1 text-xs text-text-muted">
+                  {t("addressPending")}
+                </p>
+              ) : null}
+            </div>
+          </Reveal>
+        </div>
+      </Section>
+
+      <Section soft>
+        <Reveal>
+          <Eyebrow>{t("responseTitle")}</Eyebrow>
+          <h2 className="mb-8 text-display-sm text-ink">{t("responseTitle")}</h2>
+          <ol className="grid gap-4 md:grid-cols-3">
+            {[t("response1"), t("response2"), t("response3")].map((step, i) => (
+              <li
+                key={step}
+                className="rounded-2xl bg-white p-5 ring-1 ring-border"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal text-sm font-semibold text-white">
+                  {i + 1}
+                </span>
+                <p className="mt-4 text-sm font-medium leading-relaxed text-ink">
+                  {step}
+                </p>
               </li>
-              <li>
-                <a
-                  href={`mailto:${CONTACT.email}`}
-                  className="font-medium text-teal-dark hover:text-teal"
-                >
-                  {CONTACT.email}
-                </a>
-              </li>
-              <li className="text-text-muted">{t("addressPending")}</li>
-            </ul>
-            <div className="mt-6 rounded-2xl bg-bg-soft p-6 ring-1 ring-dashed ring-border">
-              <p className="text-sm text-text-muted">{tc("comingSoon")}</p>
-              <p className="mt-1 text-xs text-text-muted">
-                {t("modeB2c")} / {t("modeB2b")}
+            ))}
+          </ol>
+        </Reveal>
+      </Section>
+
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-2">
+          <Reveal>
+            <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-3xl">
+              <Image
+                src={media.photos.installClose2}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="50vw"
+              />
+            </div>
+            <ContactModeForms />
+          </Reveal>
+          <Reveal delay={100}>
+            <div className="overflow-hidden rounded-3xl ring-1 ring-border">
+              <iframe
+                title={t("mapPending")}
+                src={mapSrc}
+                className="aspect-[4/3] w-full border-0 lg:aspect-auto lg:min-h-[520px]"
+                loading="lazy"
+              />
+              <p className="bg-bg-soft px-4 py-2 text-xs text-text-muted">
+                {t("cityMapNote")}
               </p>
             </div>
-          </div>
-          <div className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-bg-soft ring-1 ring-dashed ring-border">
-            <p className="text-sm text-text-muted">{t("mapPending")}</p>
-            {/* TODO: content — embed map once lat/lng provided */}
-          </div>
+          </Reveal>
         </div>
+      </Section>
+
+      <Section soft>
+        <Reveal>
+          <FaqAccordion items={faqItems} title={tf("title")} />
+        </Reveal>
       </Section>
     </>
   );

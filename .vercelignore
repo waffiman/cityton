@@ -1,0 +1,9 @@
+# Keep Vercel uploads lean — only ship the Next.js app + public assets
+CityTonMedia
+tmp-video-frames
+*.pdf
+.cursor
+infographics
+node_modules
+.next
+.git

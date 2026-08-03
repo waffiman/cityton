@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" role="img" aria-label="City-Ton Austria">
+  <!-- Stylized leaf/wing mark approximating brand icon -->
+  <g transform="translate(4, 8)">
+    <path d="M28 4 C48 18 52 42 42 62 C36 50 28 40 18 34 C8 28 4 18 10 8 C16 2 22 2 28 4Z" fill="#52B2BF"/>
+    <path d="M24 14 C38 24 40 42 32 56 C28 48 22 40 14 36 C8 32 6 24 10 18 C14 12 20 12 24 14Z" fill="#4A4E54"/>
+  </g>
+  <text x="68" y="42" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="#52B2BF">City-Ton</text>
+  <text x="148" y="64" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#4A4E54">Austria</text>
+</svg>

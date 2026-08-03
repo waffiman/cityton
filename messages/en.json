@@ -1,0 +1,313 @@
+{
+  "meta": {
+    "siteName": "City-Ton Austria",
+    "tagline": "Window films for solar control, UV protection, energy efficiency and impact security",
+    "defaultDescription": "Professional window film installation in Austria and Ukraine. Consultation, material, installation and support from a single partner — in partnership with Armolan Europe and LLumar."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "howItWorks": "How It Works",
+    "cases": "Case Studies",
+    "blog": "Blog",
+    "clients": "For Clients",
+    "partners": "For Partners",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "language": "Language"
+  },
+  "footer": {
+    "tagline": "We don't sell film rolls — we deliver the finished result: consultation, material, installation and support, all from one hand.",
+    "partnersTitle": "Technology partners",
+    "sitemapTitle": "Sitemap",
+    "contactTitle": "Contact",
+    "phone": "+43 677 61520700",
+    "email": "office@city-ton.com",
+    "rights": "All rights reserved.",
+    "inPartnership": "In partnership with"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "requestConsultation": "Request a consultation",
+    "becomePartner": "Become a partner",
+    "viewProducts": "View products",
+    "viewCases": "View case studies",
+    "comingSoon": "This page is coming soon.",
+    "backToHome": "Back to home",
+    "tser": "TSER",
+    "vlt": "VLT",
+    "uvProtection": "UV protection",
+    "certified": "Certified",
+    "withoutFilm": "Without film",
+    "withFilm": "With film",
+    "idealFor": "Ideal for",
+    "technology": "Technology",
+    "keyMetrics": "Key metrics",
+    "series": "Series",
+    "filterBy": "Filter by",
+    "sortBy": "Sort by",
+    "all": "All",
+    "useCase": "Use case",
+    "compare": "Compare"
+  },
+  "home": {
+    "heroTitle": "Window films for solar control, UV protection, energy efficiency and impact security",
+    "heroSubtitle": "More comfort. Lower energy costs. Reliable protection.",
+    "benefits": {
+      "solar": "Solar control",
+      "uv": "UV protection",
+      "energy": "Energy efficiency",
+      "security": "Impact security"
+    },
+    "measurableTitle": "The difference is measurable",
+    "measurableSubtitle": "Live measurement with a solar-film temperature tester — same sunlight, two results.",
+    "tempWithout": "33.3 °C",
+    "tempWith": "25.7 °C",
+    "tempDelta": "−8.0 °C",
+    "tempWithoutLabel": "Surface temperature — without protective film",
+    "tempWithLabel": "Surface temperature — with protective film",
+    "tempDeltaLabel": "measured temperature difference",
+    "productsTitle": "Our products at a glance",
+    "productsSubtitle": "Four clearly distinct film categories — each with its own technology and use case.",
+    "ctaClientsTitle": "For homes, offices and shops",
+    "ctaClientsText": "Cooler rooms, less glare, more privacy — we advise you personally and install on site.",
+    "ctaPartnersTitle": "For construction firms and trade partners",
+    "ctaPartnersText": "Become our partner: professional installation as a subcontractor or long-term cooperation on your projects."
+  },
+  "about": {
+    "title": "About us",
+    "subtitle": "Who we are",
+    "intro": "City-Ton Austria is a young company specialised in professional window-film installation — from consultation and film selection through to skilled on-site fitting.",
+    "quote": "We don't sell film rolls — we deliver the finished result: consultation, material, installation and support, all from one hand.",
+    "statLabel": "m² of window surface installed",
+    "partnersTitle": "Our partnership",
+    "partnersSubtitle": "Proven, modern film technology combined with local sales and installation expertise.",
+    "advantagesTitle": "Why partner with us?",
+    "advantagesSubtitle": "What our partnership means for your business in practice."
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Our product portfolio",
+    "intro": "Four film series for different requirements — from maximum heat rejection to highest clarity. Depending on series and tint, visible light transmittance (VLT) from 5% to 95% is available.",
+    "compareTitle": "Series comparison",
+    "legend": "VLT = Visible Light Transmittance · TSER = Total Solar Energy Rejected",
+    "thickness": "Thickness",
+    "certification": "Certification",
+    "certificationPending": "Certification standard TBD",
+    "videoTitle": "Certified impact test",
+    "videoPending": "Test video pending — placeholder",
+    "useCasesTitle": "Use cases",
+    "backToCatalog": "Back to catalog",
+    "filterSolar": "Solar control",
+    "filterUv": "UV protection",
+    "filterSecurity": "Security",
+    "filterClarity": "Clarity",
+    "sortTser": "TSER (highest first)",
+    "sortVlt": "VLT (highest first)",
+    "sortName": "Name"
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "How solar-control film works",
+    "intro": "Example values on 3 mm clear glass — exact figures vary by tint and product.",
+    "withoutTitle": "3 mm clear glass without window film",
+    "withTitle": "3 mm clear glass with our film",
+    "exampleProduct": "Example: Armolan R Silver 20 — TSER 78%, UV protection >99%, glare reduction 81%",
+    "seasonalTitle": "Summer and winter",
+    "summerTitle": "Summer",
+    "winterTitle": "Winter",
+    "summerItems": {
+      "reflected": "Reflected heat",
+      "absorption": "Heat absorption",
+      "uv": "99% UV protection",
+      "transmission": "Heat transmission",
+      "glare": "Glare reduction up to 85%"
+    },
+    "winterItems": {
+      "co2": "Improved CO₂ balance",
+      "cold": "Cold reduction",
+      "heatLoss": "Protection against heat loss",
+      "savings": "Energy cost savings",
+      "heating": "Lower heating costs in winter"
+    },
+    "uvTitle": "Protection against fading",
+    "uvStep1": "100% UV radiation hits the window",
+    "uvStep2": "Up to 99.9% is blocked",
+    "uvStep3": "Furniture, floors and merchandise stay protected",
+    "securityTitle": "How our security film protects",
+    "securityIntro": "On impact, the film distributes the force across the entire glass surface. Even if the glass breaks, the film holds the shards together.",
+    "forceTitle": "Force is distributed across the entire window surface",
+    "forceCaption": "The glass stays in the frame even under strong impact — the film makes the window more resistant",
+    "withoutSecurity": "Glass without security film — shards detach and fall out",
+    "withSecurity": "Glass with security film — force is distributed, shards stay together"
+  },
+  "clients": {
+    "title": "For clients",
+    "subtitle": "Solutions for your property",
+    "intro": "Our films reliably protect against the three most common problems of unprotected glass.",
+    "problems": {
+      "heat": "Protection against overheating",
+      "glare": "Protection against glare",
+      "privacy": "Protection against unwanted views"
+    },
+    "propertyTypes": {
+      "homes": "Homes & apartments",
+      "homesDesc": "Cooler rooms, more privacy, no distracting glare",
+      "offices": "Offices & commercial spaces",
+      "officesDesc": "Comfortable working climate without screen glare",
+      "shopfronts": "Shopfronts & display windows",
+      "shopfrontsDesc": "Maximum clarity with ARM Platinum / Spectrum",
+      "security": "Security-sensitive areas",
+      "securityDesc": "Shatter protection with the Safety Serie"
+    },
+    "formTitle": "Request a consultation"
+  },
+  "partners": {
+    "title": "For partners",
+    "subtitle": "How we can work together",
+    "intro": "Matched to your role in the project — custom project-based pricing with transparent terms.",
+    "pricingNote": "Installation is quoted individually based on project scope, film type and installation conditions — no flat rate.",
+    "models": {
+      "construction": "For construction companies",
+      "constructionDesc": "Professional project partner and subcontractor",
+      "glass": "For glass workshops",
+      "glassDesc": "Installation partner for professional window films",
+      "facility": "For facility management",
+      "facilityDesc": "Long-term cooperation partner for ongoing projects",
+      "architects": "For architects & planning offices",
+      "architectsDesc": "Technical advice and professional execution",
+      "property": "For property management",
+      "propertyDesc": "Reliable delivery for residential and commercial properties",
+      "developers": "For real estate developers",
+      "developersDesc": "Energy efficiency and comfort as a sales argument"
+    },
+    "formTitle": "Partner application"
+  },
+  "cases": {
+    "title": "Case studies",
+    "subtitle": "Completed projects",
+    "intro": "A selection of our installation projects — filterable by property type."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights and news",
+    "intro": "Articles on window films, energy efficiency and projects."
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "We look forward to hearing from you",
+    "intro": "Whether a consultation for your property or a partner application — get in touch.",
+    "mapPending": "Map location pending",
+    "addressPending": "Address pending",
+    "modeB2c": "Client inquiry",
+    "modeB2b": "Partner application"
+  },
+  "forms": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "contactPerson": "Contact person",
+    "role": "Role",
+    "propertyType": "Property type",
+    "message": "Message",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "success": "Thank you — we will get back to you shortly.",
+    "error": "Something went wrong. Please try again.",
+    "required": "Required field",
+    "invalidEmail": "Invalid email address",
+    "roles": {
+      "construction": "Construction company",
+      "glass": "Glass workshop",
+      "facility": "Facility management",
+      "architect": "Architect / planning office",
+      "property": "Property management",
+      "developer": "Real estate developer"
+    },
+    "propertyTypes": {
+      "home": "Home / apartment",
+      "office": "Office",
+      "retail": "Shop / shopfront",
+      "security": "Security-sensitive area",
+      "other": "Other"
+    }
+  },
+  "products_content": {
+    "serie-r": {
+      "name": "Serie R",
+      "shortName": "Serie R",
+      "tagline": "Reflective films",
+      "technology": "Metallised reflective layer (aluminium) — acts like a mirror against solar heat",
+      "description": "Metallised coating (aluminium) — effectively reflects solar heat like a mirror. Available in Silver, Grey, Bronze, Blue, Green, Gold and other tints.",
+      "idealFor": "Residential and commercial buildings with strong solar exposure",
+      "useCases": ["Residential buildings", "Commercial buildings", "Offices with strong sun"]
+    },
+    "arm-platinum-spectrum": {
+      "name": "ARM Platinum / Spectrum",
+      "shortName": "ARM Platinum",
+      "tagline": "Nano-ceramic films",
+      "technology": "Nano-ceramic coating — blocks solar energy through fine, densely applied particles rather than reflecting it, resulting in a brighter, more transparent look.",
+      "description": "Dense particle coating — blocks solar energy instead of reflecting it, resulting in particularly bright and transparent glass.",
+      "idealFor": "Shopfronts, car dealerships, retail — where clarity matters",
+      "useCases": ["Shopfronts", "Car dealerships", "Retail", "Displays"]
+    },
+    "safety-serie": {
+      "name": "Safety Serie",
+      "shortName": "Safety Serie",
+      "tagline": "Shatter-protection films",
+      "technology": "Multi-layer transparent security film",
+      "description": "Increased impact resistance — holds glass shards together on breakage and deters intrusion. Available in 4 / 7 / 8 / 12 / 13 mil (100–336 µm).",
+      "idealFor": "Ground-floor and shopfront windows, security-sensitive areas",
+      "useCases": ["Ground-floor windows", "Shopfronts", "Security-sensitive areas"]
+    },
+    "uv-protection-clear": {
+      "name": "UV Protection Clear",
+      "shortName": "UV Clear",
+      "tagline": "UV-protection films",
+      "technology": "High-clarity UV barrier layer",
+      "description": "Up to 99.9% UV protection at maximum clarity — ideal for premium displays.",
+      "idealFor": "Museums, jewellers, premium displays",
+      "useCases": ["Museums", "Jewellers", "Premium displays"]
+    }
+  },
+  "advantages": {
+    "fast": { "title": "Fast service", "text": "Short response times from inquiry to delivery" },
+    "quality": { "title": "Quality execution", "text": "Careful, professional installation on every project" },
+    "pricing": { "title": "Project-based pricing", "text": "Pricing tailored individually to each project" },
+    "flexibility": { "title": "Flexibility", "text": "Adapted to your schedule and requirements" },
+    "contact": { "title": "Personal contact", "text": "One dedicated contact for the entire collaboration" },
+    "reliability": { "title": "Reliable delivery", "text": "Agreed services are fulfilled reliably" }
+  },
+  "partnerCards": {
+    "armolan": {
+      "name": "Armolan Europe",
+      "role": "Film technology",
+      "bullets": [
+        "Modern production to high quality standards",
+        "Broad, continuously evolving film portfolio",
+        "Reliable supply for the trade"
+      ]
+    },
+    "llumar": {
+      "name": "LLumar",
+      "role": "Film technology",
+      "bullets": [
+        "TODO: content — LLumar strengths pending",
+        "TODO: content — LLumar strengths pending",
+        "TODO: content — LLumar strengths pending"
+      ]
+    },
+    "cityTon": {
+      "name": "City-Ton Austria",
+      "role": "Sales & installation",
+      "bullets": [
+        "Professional consultation, sales and installation",
+        "Active in Austria and Ukraine",
+        "Personal support for our trade partners"
+      ]
+    }
+  }
+}

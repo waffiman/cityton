@@ -1,0 +1,16 @@
+.plate {
+  padding: 64px 32px;
+  text-align: center;
+  background: var(--color-neutral-100);
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 3vw, 34px);
+}
+
+.body {
+  margin: 0 auto;
+  max-width: 52ch;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+}

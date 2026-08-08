@@ -1,0 +1,75 @@
+.rail {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  touch-action: none;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.badgeLeft,
+.badgeRight {
+  position: absolute;
+  bottom: 20px;
+  background: rgba(15, 47, 54, 0.86);
+  padding: 10px 14px;
+}
+.badgeLeft {
+  left: 20px;
+}
+.badgeRight {
+  right: 20px;
+  text-align: right;
+}
+.badgeLabelWarm,
+.badgeLabelCool {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+.badgeLabelWarm {
+  color: var(--color-warm);
+}
+.badgeLabelCool {
+  color: var(--color-accent-300);
+}
+.badgeValue {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 28px;
+  color: var(--color-on-dark-strong);
+  line-height: 1.1;
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-on-dark);
+}
+.handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: var(--color-accent);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-md);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

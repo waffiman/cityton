@@ -1,0 +1,135 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(242, 242, 243, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.bar {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 14px var(--page-gutter);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  margin-right: auto;
+  text-decoration: none;
+  color: inherit;
+}
+.wordmark {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.tagline {
+  font-size: 9px;
+  letter-spacing: 0.34em;
+  color: var(--color-accent-700);
+  margin-top: 2px;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.link {
+  text-decoration: none;
+  color: inherit;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+}
+.link:hover {
+  color: var(--color-accent-700);
+}
+.link[aria-current="page"] {
+  color: var(--color-accent-700);
+  border-bottom-color: var(--color-accent);
+}
+
+.locales {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-left: 8px;
+  border-left: 1px solid var(--color-divider);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+.localeActive {
+  color: var(--color-accent-700);
+  font-weight: 700;
+}
+.locale {
+  color: color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+
+.cta {
+  white-space: nowrap;
+  flex: none;
+}
+
+.burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--color-divider);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.drawer {
+  display: none;
+}
+
+.drawerLink {
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.drawerLink[aria-current="page"] {
+  color: var(--color-accent-700);
+}
+
+@media (max-width: 1180px) {
+  .nav,
+  .locales {
+    display: none;
+  }
+  .burger {
+    display: inline-flex;
+  }
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px var(--page-gutter) 20px;
+    border-top: 1px solid var(--color-divider);
+  }
+}
+
+@media (max-width: 560px) {
+  .cta {
+    display: none;
+  }
+}

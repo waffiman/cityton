@@ -1,0 +1,155 @@
+.crumbs {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+  margin-bottom: 32px;
+}
+.crumbs a {
+  text-decoration: none;
+  color: inherit;
+}
+.crumbs a:hover {
+  color: var(--color-accent-700);
+}
+.crumbCurrent {
+  color: var(--color-accent-700);
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.title {
+  font-size: clamp(38px, 4.2vw, 62px);
+  margin: 14px 0 18px;
+  line-height: 1;
+}
+.intro {
+  font-size: 19px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-text) 72%, transparent);
+  max-width: 52ch;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 34px 0 0;
+  background: var(--color-neutral-100);
+}
+.stat {
+  padding: 26px 22px;
+}
+.stat + .stat {
+  border-left: 1px solid var(--color-divider);
+}
+.statLabel {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--color-accent-700);
+}
+.statValue {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(34px, 3.4vw, 52px);
+  line-height: 1;
+  margin: 6px 0 2px;
+}
+.statNote {
+  font-size: 12px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.footnote {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.hero {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.heroImg {
+  object-fit: cover;
+}
+.glyphPlate {
+  padding: 40px;
+  background: var(--color-neutral-100);
+  display: grid;
+  place-items: center;
+}
+.glyphPlate svg {
+  width: 100%;
+  height: auto;
+  font-family: var(--font-body);
+}
+
+.factGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+.factCard {
+  padding: 26px 22px;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.figureGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+.figure {
+  margin: 0;
+}
+.figureMedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.figureImg {
+  object-fit: cover;
+}
+.figure figcaption {
+  padding: 8px 2px;
+}
+
+.pending {
+  padding: 40px 32px;
+  background: var(--color-neutral-100);
+}
+
+@media (max-width: 1000px) {
+  .head,
+  .figureGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .factGrid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+  .stat + .stat {
+    border-left: none;
+    border-top: 1px solid var(--color-divider);
+  }
+}

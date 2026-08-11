@@ -6,7 +6,7 @@ export default function HeroFull() {
   return (
     <section className={styles.hero}>
       <Image
-        src="/media/reflective-facade.jpg"
+        src="/media/dual-reflective-residential.jpg"
         alt="Fassade mit Sonnenschutzfolie von außen"
         fill
         priority

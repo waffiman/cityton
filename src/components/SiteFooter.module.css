@@ -1,6 +1,15 @@
+/* No air above the ramp on the home descent — a margin would flash the page
+   ground and break the journey. Interior pages still want a breath before the
+   footer starts moving. */
+.tailRamp {
+  margin-top: 0;
+}
+:global(body:not(:has(.journey))) .tailRamp {
+  margin-top: 48px;
+}
+
 .footer {
-  margin-top: 96px;
-  background: var(--color-accent-900);
+  background: var(--s6);
   color: var(--color-on-dark-muted);
   padding: 64px var(--page-gutter) 34px;
 }

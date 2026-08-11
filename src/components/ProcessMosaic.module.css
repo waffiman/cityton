@@ -1,0 +1,251 @@
+/* Alternating inset mosaic — identical portraits; content above tinted bands. */
+
+.mosaic {
+  --video-w: clamp(200px, 24vw, 280px);
+  --inset: clamp(28px, 5vw, 72px);
+  list-style: none;
+  margin: 0;
+  padding: 0 0 clamp(28px, 3.5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  /* Tighter desktop rhythm between subsections. */
+  gap: clamp(4px, 0.8vw, 12px);
+  overflow: visible;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(28px, 4vw, 64px);
+  align-items: stretch;
+  min-width: 0;
+  position: relative;
+  overflow: visible;
+  padding-inline: var(--inset);
+}
+
+/* 2nd, 4th, … — tint lives on a pseudo so it cannot cover media/copy. */
+.row:nth-child(even) {
+  padding-block: clamp(16px, 2.5vw, 32px);
+}
+
+.row:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--s2);
+  pointer-events: none;
+}
+
+.media,
+.copy {
+  min-width: 0;
+  position: relative;
+  /* Above every row tint; rows must NOT create their own stacking contexts
+     (no z-index on .step*), or later videos cannot clear earlier backgrounds. */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy {
+  max-width: none;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.copyInner {
+  max-width: 34ch;
+  width: max-content;
+}
+
+/* VIDEO left → TEXT right */
+.row:not(.rowFlip) .media {
+  grid-column: 1;
+}
+
+.row:not(.rowFlip) .copy {
+  grid-column: 2;
+}
+
+/* TEXT left → VIDEO right */
+.rowFlip .media {
+  grid-column: 2;
+  order: 2;
+}
+
+.rowFlip .copy {
+  grid-column: 1;
+  order: 1;
+}
+
+/* Overlap pull only — no row z-index (that trapped media behind neighbor tints). */
+.step1 {
+  margin-block-start: clamp(-100px, -12vw, -52px);
+}
+
+.step2 {
+  margin-block-start: clamp(-110px, -13vw, -56px);
+}
+
+.step3 {
+  margin-block-start: clamp(-100px, -12vw, -52px);
+}
+
+.figure {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  width: var(--video-w);
+  max-width: 100%;
+  flex-shrink: 0;
+  aspect-ratio: 3 / 4;
+  background: var(--color-accent-900);
+  border-radius: 6px;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.title {
+  width: fit-content;
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--color-accent-900);
+}
+
+.body {
+  margin: 12px 0 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-text) 64%, transparent);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .mosaic {
+    --video-w: clamp(170px, 28vw, 230px);
+    --inset: clamp(16px, 3vw, 40px);
+    gap: clamp(4px, 0.8vw, 12px);
+  }
+
+  .row {
+    column-gap: clamp(18px, 3vw, 36px);
+  }
+
+  .row:nth-child(even) {
+    padding-block: clamp(12px, 2vw, 24px);
+  }
+
+  .step1,
+  .step3 {
+    margin-block-start: clamp(-64px, -8vw, -36px);
+  }
+
+  .step2 {
+    margin-block-start: clamp(-72px, -9vw, -40px);
+  }
+
+  .copyInner {
+    max-width: 30ch;
+  }
+}
+
+/* Mobile — keep the stacked rhythm; even-row tint stays behind content. */
+@media (max-width: 700px) {
+  .mosaic {
+    --video-w: min(70%, 260px);
+    --inset: 0;
+    gap: 36px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    row-gap: 14px;
+    column-gap: 0;
+    padding-inline: 0;
+  }
+
+  .row:nth-child(even) {
+    padding-block: 28px;
+    padding-inline: var(--page-gutter, 20px);
+    margin-inline: calc(-1 * var(--page-gutter, 20px));
+  }
+
+  .row:not(.rowFlip) .media,
+  .row:not(.rowFlip) .copy,
+  .rowFlip .media,
+  .rowFlip .copy {
+    grid-column: 1;
+    order: unset;
+    text-align: left;
+  }
+
+  .media {
+    order: 1;
+  }
+
+  .copy {
+    order: 2;
+    align-items: stretch;
+  }
+
+  .copyInner {
+    max-width: none;
+    width: 100%;
+  }
+
+  .step1,
+  .step2,
+  .step3 {
+    margin-block-start: 0;
+  }
+
+  .figure {
+    width: var(--video-w);
+    aspect-ratio: 3 / 4;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .body {
+    font-size: 15px;
+  }
+}

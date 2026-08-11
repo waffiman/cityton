@@ -43,6 +43,14 @@ export const comparisonRows: [without: string, applied: string][] = [
   ["Alltag einsehbar", "Einwegspiegel am Tag"],
 ];
 
+/** Impact / safety-film comparison — mirrored dark-field block. */
+export const protectionRows: [without: string, applied: string][] = [
+  ["Glas zerbricht in scharfe Splitter", "Splitter bleiben an der Folie haften"],
+  ["Splitter können sich beim Aufprall verteilen", "Splitter bleiben zusammen"],
+  ["Aufprall lässt eine offene, fragmentierte Oberfläche zurück", "Folie hilft, gebrochene Glasstücke anzuhalten"],
+  ["Gebrochene Glasstücke fallen frei", "Gebrochene Glasstücke bleiben enthalten"],
+];
+
 export type ProcessStep = {
   title: string;
   body: string;

@@ -26,6 +26,9 @@
   right: 20px;
   text-align: right;
 }
+.badgeLabelOnly {
+  padding-block: 12px;
+}
 .badgeLabelWarm,
 .badgeLabelCool {
   font-size: 9px;

@@ -1,10 +1,13 @@
 /* Home page layout. Colours, type and spacing come from the tokens in globals.css. */
 
-/* ── Partner bar ─────────────────────────────────────────────────────────── */
-.partnerBar {
-  background: #fff;
-  border-bottom: 1px solid var(--color-divider);
+/* A band on the ladder: the ramps either side carry most of the air between two
+   bands, so this only has to hold the content clear of the colour starting to
+   move. Bands sharing a rung sit back to back and read as one field. */
+.band {
+  padding-block: clamp(36px, 3.4vw, 48px);
 }
+
+/* ── Partner bar ─────────────────────────────────────────────────────────── */
 .partnerInner {
   padding-block: 22px;
   display: flex;
@@ -18,6 +21,12 @@
   letter-spacing: 0.18em;
   color: color-mix(in srgb, var(--color-text) 55%, transparent);
   font-family: var(--font-heading);
+}
+.partnerLogoLink {
+  display: inline-flex;
+  line-height: 0;
+  color: inherit;
+  text-decoration: none;
 }
 .logoLlumar {
   height: 30px;
@@ -55,9 +64,10 @@
 
 /* ── Vorher / Nachher ────────────────────────────────────────────────────── */
 .compare {
-  background: var(--color-accent-900);
-  margin-top: var(--section-gap);
-  padding: 80px 0;
+  /* Plates inside the field paint the same rung so the 1px rules read as gaps,
+     not as a mismatched accent-900 inset. */
+  --field: var(--s4);
+  padding-block: clamp(44px, 4.6vw, 72px);
 }
 .compareGrid {
   display: grid;
@@ -79,7 +89,7 @@
   margin-bottom: 26px;
 }
 .compareStat {
-  background: var(--color-accent-900);
+  background: var(--field);
   padding: 18px 20px;
 }
 .compareStatValue {
@@ -104,7 +114,7 @@
 }
 .compareHeadWarm,
 .compareHeadCool {
-  background: var(--color-accent-900);
+  background: var(--field);
   padding: 12px 16px;
   font-family: var(--font-heading);
   font-size: 11px;
@@ -118,7 +128,7 @@
 }
 .compareCellWithout,
 .compareCellWith {
-  background: var(--color-accent-900);
+  background: var(--field);
   padding: 13px 16px;
   font-size: 14px;
 }
@@ -132,45 +142,33 @@
   margin-top: 26px;
 }
 
+/* Mirrored impact comparison: copy left, slider right. */
+.compareGridFlip {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
+}
+
+.compareCtaEnd {
+  display: flex;
+  width: fit-content;
+  margin-inline-start: auto;
+}
+
+.compareProtectRail {
+  /* Landscape door photos — match the unprotected source (~3:2) so both
+     sides of the wipe share a frame without stretching. */
+  width: 100%;
+}
+
 /* ── Ablauf ──────────────────────────────────────────────────────────────── */
+.processBand {
+  overflow: visible;
+}
+
 .processTitle {
   font-size: clamp(30px, 3.2vw, 44px);
   line-height: 1.05;
-  margin: 0 0 36px;
-}
-.processGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 26px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.processFigure {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  margin: 0;
-  background: var(--color-accent-900);
-}
-.processVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-.processCopy {
-  margin-top: 16px;
-}
-.processStepTitle {
-  font-family: var(--font-heading);
-  font-weight: var(--font-heading-weight);
-  font-size: 19px;
-  line-height: 1.2;
-}
-.processStepBody {
-  margin: 6px 0 0;
-  font-size: 13.5px;
-  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+  margin: 0 0 clamp(40px, 5vw, 64px);
+  max-width: 22ch;
 }
 
 /* ── Serien ──────────────────────────────────────────────────────────────── */
@@ -194,11 +192,9 @@
 
 /* ── Beratungstermin ─────────────────────────────────────────────────────── */
 .consult {
-  margin-top: var(--section-gap);
+  --field: var(--s5);
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  background: var(--color-accent-900);
-  color: var(--color-on-dark);
   min-height: 520px;
 }
 .consultCopy {
@@ -244,7 +240,7 @@
   max-width: 440px;
 }
 .consultSpec {
-  background: var(--color-accent-900);
+  background: var(--field);
   padding: 14px 18px;
   display: flex;
   align-items: baseline;
@@ -263,9 +259,70 @@
 }
 .consultActions {
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  max-width: 440px;
+  width: 100%;
+}
+.consultForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+.consultField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.consultFieldLabel {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--color-accent-300);
+}
+.consultInput {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 16px;
+  color: var(--color-on-dark-strong);
+  caret-color: var(--color-accent-300);
+  background: color-mix(in srgb, #fff 6%, transparent);
+  border: 1px solid var(--color-on-dark-rule);
+  border-radius: 0;
+}
+.consultInput::placeholder {
+  color: var(--color-on-dark-faint);
+}
+.consultInput:hover {
+  border-color: color-mix(in srgb, var(--color-on-dark) 35%, transparent);
+}
+.consultInput:focus-visible {
+  border-color: var(--color-accent-300);
+  outline: none;
+}
+.consultInput:disabled {
+  opacity: 0.65;
+}
+.consultFormActions {
+  display: flex;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+}
+.consultFormError {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--color-warm);
+}
+.consultFormOk {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--color-accent-300);
 }
 .consultPhone {
   font-size: 14px;
@@ -279,6 +336,18 @@
   overflow: hidden;
   border-left: 1px solid var(--color-on-dark-rule);
   min-height: 320px;
+}
+/* The ramps outside this field start from flat colour, so the photo — which runs
+   to both of its edges — has to settle onto the field's own rung first. */
+.consultMedia::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  --settle: clamp(56px, 8vw, 104px);
+  background: linear-gradient(to bottom, var(--field), transparent var(--settle)),
+    linear-gradient(to top, var(--field), transparent var(--settle));
 }
 .consultImage {
   object-fit: cover;
@@ -332,6 +401,7 @@
   padding: 24px 22px;
   gap: 12px;
   margin: 0;
+  background: var(--color-neutral-100);
 }
 .quoteBody {
   font-size: 14.5px;
@@ -361,11 +431,11 @@
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .benefitGrid,
-  .processGrid {
+  .benefitGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .compareGrid,
+  .compareGridFlip,
   .reviewsGrid,
   .faqGrid,
   .seriesHead {
@@ -389,8 +459,7 @@
 }
 
 @media (max-width: 640px) {
-  .benefitGrid,
-  .processGrid {
+  .benefitGrid {
     grid-template-columns: 1fr;
   }
   .partnerLabel {

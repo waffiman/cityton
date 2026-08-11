@@ -147,16 +147,16 @@ export default function HomePage() {
             </div>
 
             <BeforeAfter
-              aspectRatio="3 / 2"
+              aspectRatio="4 / 3"
               className={styles.compareProtectRail}
               before={{
-                src: "/media/broken_glass_door.jpg",
+                src: "/media/default-break.png",
                 alt: "Glas zerbricht in scharfe Splitter → Splitter bleiben an der Folie haften",
                 label: "OHNE FOLIE",
                 objectPosition: "center center",
               }}
               after={{
-                src: "/media/broken_armed_glass_door.jpeg",
+                src: "/media/armed-break.png",
                 alt: "Splitter können sich beim Aufprall verteilen → Splitter bleiben zusammen",
                 label: "MIT FOLIE",
                 objectPosition: "center 42%",

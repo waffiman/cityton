@@ -5,6 +5,62 @@
   background: rgba(242, 242, 243, 0.94);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--color-divider);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    backdrop-filter 0.25s ease,
+    color 0.25s ease;
+}
+
+.overHero {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+  color: var(--color-on-dark);
+}
+
+.overHero .tagline {
+  color: var(--color-accent-300);
+}
+
+.overHero .wordmark {
+  color: var(--color-on-dark-strong);
+}
+
+.overHero .link {
+  color: var(--color-on-dark);
+}
+
+.overHero .link:hover,
+.overHero .link[aria-current="page"] {
+  color: var(--color-on-dark-strong);
+  border-bottom-color: var(--color-accent-300);
+}
+
+.overHero .locales {
+  border-left-color: rgba(242, 242, 243, 0.28);
+}
+
+.overHero .localeActive {
+  color: var(--color-on-dark-strong);
+}
+
+.overHero .locale {
+  color: rgba(242, 242, 243, 0.55);
+}
+
+.overHero .burger {
+  border-color: rgba(242, 242, 243, 0.35);
+  color: var(--color-on-dark);
+}
+
+.overHero .drawer {
+  background: rgba(15, 47, 54, 0.96);
+  border-top-color: rgba(242, 242, 243, 0.18);
+}
+
+.overHero .drawerLink {
+  border-bottom-color: rgba(242, 242, 243, 0.14);
 }
 
 .bar {

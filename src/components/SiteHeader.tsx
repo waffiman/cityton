@@ -10,15 +10,33 @@ import styles from "./SiteHeader.module.css";
 export default function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  // Transparent header while the hero zone is still on screen (home only).
+  const [pastHero, setPastHero] = useState(false);
+  const overHero = pathname === "/" && !pastHero;
 
   // Close the mobile drawer on navigation.
   useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    const update = () => {
+      const sentinel = document.getElementById("hero-zone-end");
+      setPastHero(sentinel ? sentinel.getBoundingClientRect().top <= 0 : pathname !== "/");
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [pathname]);
 
   const isCurrent = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header}${overHero ? ` ${styles.overHero}` : ""}`}>
       <div className={styles.bar}>
         <Link href="/" className={styles.brand} aria-label={`${site.name} — Startseite`}>
           <span className={styles.wordmark}>{site.wordmark}</span>

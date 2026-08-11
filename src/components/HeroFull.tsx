@@ -31,6 +31,7 @@ export default function HeroFull() {
           </p>
         </div>
       </div>
+      <div id="hero-zone-end" className={styles.end} aria-hidden="true" />
     </section>
   );
 }

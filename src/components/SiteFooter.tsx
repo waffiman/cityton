@@ -47,8 +47,12 @@ export default function SiteFooter() {
           <div>
             <h6 className={styles.colTitle}>Kontakt</h6>
             <div className={styles.links}>
-              <span className={styles.placeholder}>{site.contact.phone}</span>
-              <span className={styles.placeholder}>{site.contact.email}</span>
+              <a href={`tel:${site.contact.phoneTel}`} className={styles.link}>
+                {site.contact.phone}
+              </a>
+              <a href={`mailto:${site.contact.email}`} className={styles.link}>
+                {site.contact.email}
+              </a>
               <span className={styles.placeholder}>{site.contact.address}</span>
             </div>
           </div>

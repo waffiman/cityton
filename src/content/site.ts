@@ -12,10 +12,10 @@ export const site = {
   description:
     "Sonnenschutz, UV-Schutz, Energieeffizienz und Einbruchschutz für Glasflächen. Beratung, Material, Montage und Betreuung in einem Paket.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.city-ton.at",
-  /** TODO(client): real contact data — placeholders are rendered as-is on purpose. */
   contact: {
-    phone: "[Telefonnummer einfügen]",
-    email: "[E-Mail einfügen]",
+    phone: "+43 677 61520700",
+    phoneTel: "+4367761520700",
+    email: "office@city-ton.com",
     address: "[Adresse einfügen]",
   },
   cta: "Kostenlose Beratung",
@@ -35,8 +35,8 @@ export const nav: NavItem[] = [
   { href: "/produkte", label: "Produkte" },
   { href: "/funktionsprinzip", label: "Funktionsprinzip" },
   { href: "/referenzen", label: "Referenzen" },
-  { href: "/blog", label: "Blog" },
-  { href: "/partner", label: "Für Partner" },
+  // { href: "/blog", label: "Blog" },
+  // { href: "/partner", label: "Für Partner" },
   { href: "/kontakt", label: "Kontakt" },
 ];
 

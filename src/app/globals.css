@@ -325,17 +325,20 @@ a:hover {
 .btn-secondary:active {
   background: color-mix(in srgb, var(--color-text) 14%, transparent);
 }
-/* Outlined button on a dark field */
+/* Solid light button on a dark field */
 .btn-inverse {
-  color: var(--color-on-dark);
-  border-color: rgba(242, 242, 243, 0.4);
+  background: #fff;
+  color: var(--color-accent-900);
+  border-color: #fff;
 }
 .btn-inverse:hover {
-  background: rgba(242, 242, 243, 0.1);
-  color: var(--color-on-dark-strong);
+  background: color-mix(in srgb, #fff 92%, var(--color-accent-900));
+  color: var(--color-accent-900);
+  border-color: color-mix(in srgb, #fff 92%, var(--color-accent-900));
 }
 .btn-inverse:active {
-  background: rgba(242, 242, 243, 0.18);
+  background: color-mix(in srgb, #fff 84%, var(--color-accent-900));
+  border-color: color-mix(in srgb, #fff 84%, var(--color-accent-900));
 }
 
 /* Cards are transparent line drawings — never a filled, rounded surface. */
@@ -468,6 +471,12 @@ textarea.input {
 body:has(.journey) {
   /* Last content band on home is s3 (reviews/FAQ); footer ramp continues to s6. */
   --page-end: var(--s3);
+}
+
+/* Pull the home hero under the sticky header so a transparent bar shows the
+   photo/scrim instead of the light page ground. */
+body:has(.journey) #inhalt {
+  margin-top: calc(-1 * var(--header-height));
 }
 
 .section--0 {

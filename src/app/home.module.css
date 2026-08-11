@@ -328,6 +328,15 @@
   font-size: 14px;
   color: var(--color-on-dark-muted);
 }
+.consultPhoneLink {
+  color: var(--color-on-dark-strong);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(242, 242, 243, 0.35);
+}
+.consultPhoneLink:hover {
+  color: var(--color-on-dark);
+  border-bottom-color: var(--color-accent-300);
+}
 .placeholder {
   color: var(--color-on-dark-faint);
 }

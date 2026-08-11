@@ -2,7 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import Corners from "@/components/Corners";
-import { parseContact } from "@/lib/contact-lead";
+import { isEmailInput, MAX_EMAIL_LENGTH, parseContact, sanitizeContactInput } from "@/lib/contact-lead";
 import { site } from "@/content/site";
 import styles from "@/app/home.module.css";
 
@@ -23,6 +23,11 @@ export default function ConsultLeadForm() {
   const inFlight = useRef(false);
   /** Last value accepted by the server — resubmitting it is blocked client-side too. */
   const lastAccepted = useRef<string | null>(null);
+
+  function applyInput(next: string) {
+    setValue(sanitizeContactInput(next));
+    if (status.type !== "idle") setStatus({ type: "idle" });
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -100,15 +105,21 @@ export default function ConsultLeadForm() {
           type="text"
           name="contact"
           autoComplete="tel email"
-          inputMode="text"
+          inputMode={isEmailInput(value) ? "email" : "tel"}
           placeholder="Telefonnummer oder E-Mail"
           value={value}
           disabled={submitting}
+          maxLength={isEmailInput(value) ? MAX_EMAIL_LENGTH : undefined}
           aria-invalid={status.type === "error" || status.type === "duplicate"}
           aria-describedby={status.type !== "idle" ? "consult-lead-status" : undefined}
-          onChange={(e) => {
-            setValue(e.target.value);
-            if (status.type !== "idle") setStatus({ type: "idle" });
+          onChange={(e) => applyInput(e.target.value)}
+          onPaste={(e) => {
+            e.preventDefault();
+            const pasted = e.clipboardData.getData("text");
+            const el = e.currentTarget;
+            const start = el.selectionStart ?? value.length;
+            const end = el.selectionEnd ?? value.length;
+            applyInput(value.slice(0, start) + pasted + value.slice(end));
           }}
         />
       </label>
@@ -119,7 +130,10 @@ export default function ConsultLeadForm() {
           {submitting ? "Wird gesendet…" : site.cta}
         </button>
         <span className={styles.consultPhone}>
-          oder anrufen: <span className={styles.placeholder}>{site.contact.phone}</span>
+          oder anrufen:{" "}
+          <a href={`tel:${site.contact.phoneTel}`} className={styles.consultPhoneLink}>
+            {site.contact.phone}
+          </a>
         </span>
       </div>
 

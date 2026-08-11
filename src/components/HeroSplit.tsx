@@ -50,6 +50,7 @@ export default function HeroSplit() {
           className={styles.video}
         />
       </div>
+      <div id="hero-zone-end" className={styles.end} aria-hidden="true" />
     </section>
   );
 }

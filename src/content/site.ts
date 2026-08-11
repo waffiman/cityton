@@ -16,7 +16,8 @@ export const site = {
     phone: "+43 677 61520700",
     phoneTel: "+4367761520700",
     email: "office@city-ton.com",
-    address: "[Adresse einfügen]",
+    /** TODO(client): replace with real AT address — Brandenburg Gate is a temporary map pin. */
+    address: "Pariser Platz, 10117 Berlin (Platzhalter)",
   },
   cta: "Kostenlose Beratung",
   /** "vollbild" = full-bleed photo hero, "split" = two-column hero with video. */

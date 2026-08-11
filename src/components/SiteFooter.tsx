@@ -53,7 +53,7 @@ export default function SiteFooter() {
               <a href={`mailto:${site.contact.email}`} className={styles.link}>
                 {site.contact.email}
               </a>
-              <span className={styles.placeholder}>{site.contact.address}</span>
+              <span className={styles.link}>{site.contact.address}</span>
             </div>
           </div>
         </div>

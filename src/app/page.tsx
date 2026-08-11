@@ -171,8 +171,7 @@ export default function HomePage() {
       {/* ── Ablauf ────────────────────────────────────────────────────────── */}
       <section className={`section--1 ${styles.band} ${styles.processBand}`}>
         <div className="container">
-          <h2 className={styles.processTitle}>Von der Anfrage bis zur fertigen Folierung</h2>
-          <ProcessMosaic steps={processSteps} />
+          <ProcessMosaic steps={processSteps} title="Von der Anfrage bis zur fertigen Folierung" />
         </div>
       </section>
 

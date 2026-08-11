@@ -160,15 +160,31 @@
 }
 
 /* ── Ablauf ──────────────────────────────────────────────────────────────── */
+/* Root-cause fix for the ramps sometimes painting over this section's cards
+   or ribbon: `.ramp` (globals.css) sets `isolation: isolate`, which forms
+   its own stacking context *regardless of `position`/`z-index`* — for CSS's
+   painting order that makes it a "positioned" element, and positioned
+   elements always paint above plain, non-positioned siblings wherever they
+   overlap on screen, *regardless of DOM order*. This section had no
+   `position` of its own (default `static`), so it sat in that
+   lower "non-positioned" bucket the whole time — normally invisible,
+   because the ramps immediately before/after never occupy the same screen
+   space as this section's (sticky, pinned) content, but the pinned stage's
+   exact release point is one-frame/subpixel-sensitive, and on whatever
+   frame that boundary and a ramp's own position land on the same pixels,
+   the ramp — being "positioned" — always won, regardless of the actual
+   scroll state. Giving this section its own stacking context with an
+   explicit z-index above the ramp's implicit one (isolation with no
+   z-index behaves as 0) removes that asymmetry outright, so the section —
+   and everything pinned inside it, including the ribbon and cards — always
+   wins against `ramp--4to1`/`ramp--1to2` on either side, not just "most of
+   the time". Scoped to this one CSS-module class; `.ramp` itself and every
+   other section's stacking are untouched. */
 .processBand {
+  position: relative;
+  isolation: isolate;
+  z-index: 2;
   overflow: visible;
-}
-
-.processTitle {
-  font-size: clamp(30px, 3.2vw, 44px);
-  line-height: 1.05;
-  margin: 0 0 clamp(40px, 5vw, 64px);
-  max-width: 22ch;
 }
 
 /* ── Serien ──────────────────────────────────────────────────────────────── */

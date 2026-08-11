@@ -473,6 +473,11 @@ body:has(.journey) {
   --page-end: var(--s3);
 }
 
+/* About CTA shares the footer rung; no ramp height left to bridge. */
+body:has(.about-descent) {
+  --page-end: var(--s6);
+}
+
 /* Pull the home hero under the sticky header so a transparent bar shows the
    photo/scrim instead of the light page ground. */
 body:has(.journey) #inhalt {

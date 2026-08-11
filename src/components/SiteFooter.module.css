@@ -7,6 +7,12 @@
 :global(body:not(:has(.journey))) .tailRamp {
   margin-top: 48px;
 }
+/* About already ends on s6; a light margin would flash page ground between CTA and footer. */
+:global(body:has(.about-descent)) .tailRamp {
+  margin-top: 0;
+  height: 0;
+  overflow: hidden;
+}
 
 .footer {
   background: var(--s6);

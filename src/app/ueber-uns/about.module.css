@@ -17,6 +17,40 @@
   object-fit: cover;
 }
 
+/* ── Stats ───────────────────────────────────────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--color-divider);
+  padding: 0;
+  overflow: hidden;
+}
+.stat {
+  background: var(--color-bg);
+  padding: 28px 22px;
+  text-align: left;
+}
+.statValue {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-accent-900);
+}
+.statPlaceholder {
+  color: color-mix(in srgb, var(--color-accent-700) 85%, transparent);
+}
+.statLabel {
+  margin-top: 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+
+/* ── Quote ───────────────────────────────────────────────────────────────── */
 .quotePlate {
   padding: 52px;
   background: var(--color-accent-900);
@@ -38,6 +72,127 @@
   margin-top: 26px;
 }
 
+/* ── Shared section head ─────────────────────────────────────────────────── */
+.sectionHead {
+  max-width: 58ch;
+  margin-bottom: 36px;
+}
+.sectionTitle {
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+.sectionBody {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-text) 68%, transparent);
+}
+.sectionCta {
+  margin-top: 28px;
+}
+
+.mosaicImg {
+  object-fit: cover;
+}
+
+.mosaicLabel {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 1;
+  padding: 6px 10px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-strong);
+  background: color-mix(in srgb, var(--color-accent-900) 78%, transparent);
+  border: 1px solid var(--color-on-dark-rule);
+}
+
+/* ── Team mosaic ─────────────────────────────────────────────────────────── */
+.teamMosaic {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.9fr);
+  gap: 14px;
+  align-items: stretch;
+  min-height: clamp(320px, 42vw, 520px);
+}
+.teamMain {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+  overflow: hidden;
+}
+.teamSide {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+  min-height: 100%;
+}
+.teamSideFig {
+  position: relative;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── On site ─────────────────────────────────────────────────────────────── */
+.onsiteGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.onsiteFig {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+/* ── People steps ────────────────────────────────────────────────────────── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: transparent;
+}
+.stepMedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--s2);
+}
+.stepCopy {
+  padding: 20px 18px 22px;
+}
+.stepNum {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--color-accent-700);
+  margin-bottom: 8px;
+}
+.stepTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.stepBody {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-text) 64%, transparent);
+}
+
+/* ── Partners ────────────────────────────────────────────────────────────── */
 .partnerGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -50,13 +205,130 @@
   background: color-mix(in srgb, var(--color-accent) 7%, transparent);
 }
 
-.advantageGrid {
+/* ── Why us ──────────────────────────────────────────────────────────────── */
+.whyGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
 }
-.advantageCard {
-  padding: 26px 22px;
+.whyCard {
+  padding: 24px 20px;
+}
+.whyNum {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--color-accent-700);
+  margin-bottom: 12px;
+}
+.whyTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.whyBody {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--color-text) 64%, transparent);
+}
+
+/* ── Rating ──────────────────────────────────────────────────────────────── */
+.ratingBlock {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr) auto;
+  gap: 28px;
+  align-items: center;
+  padding: 32px 28px;
+}
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+.ratingValue {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(36px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-accent-900);
+}
+.ratingScale {
+  font-size: 0.45em;
+  letter-spacing: 0;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.ratingMeta {
+  margin-top: 8px;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.ratingQuote {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--color-accent-900);
+  max-width: 28ch;
+}
+.ratingLink {
+  font-size: 14px;
+  color: var(--color-accent-700);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ratingLink:hover {
+  color: var(--color-accent-900);
+}
+
+/* ── Final CTA ───────────────────────────────────────────────────────────── */
+/* Soft brush from page ground into the footer-depth CTA (same rung as footer). */
+.intoCta {
+  --from: var(--color-bg);
+  --to: var(--s6);
+  margin-top: var(--section-gap);
+  height: clamp(64px, 9vw, 140px);
+}
+
+.finalCta {
+  margin-top: 0;
+  /* Match footer (--s6) so there is no light-teal / dark-teal seam. */
+  background: var(--s6);
+  padding-block: clamp(56px, 7vw, 88px);
+}
+.finalTitle {
+  margin: 0;
+  font-size: clamp(30px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--color-on-dark-strong);
+}
+.finalSubtitle {
+  margin: 10px 0 0;
+  font-size: clamp(20px, 2.2vw, 26px);
+  color: var(--color-accent-300);
+}
+.finalBody {
+  margin: 18px 0 28px;
+  max-width: 46ch;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-on-dark-muted);
+}
+
+@media (max-width: 1100px) {
+  .whyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ratingBlock {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -64,17 +336,44 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .partnerGrid,
-  .advantageGrid {
+  .stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .teamMosaic {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .teamMain {
+    aspect-ratio: 16 / 10;
+  }
+  .teamSide {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+  }
+  .teamSideFig {
+    aspect-ratio: 4 / 3;
+  }
+  .steps,
+  .partnerGrid,
+  .onsiteGrid {
+    grid-template-columns: 1fr;
+  }
+  .onsiteFig {
+    aspect-ratio: 16 / 10;
   }
   .quotePlate {
     padding: 34px 26px;
   }
 }
+
 @media (max-width: 640px) {
-  .partnerGrid,
-  .advantageGrid {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .teamSide {
+    grid-template-columns: 1fr;
+  }
+  .whyGrid {
     grid-template-columns: 1fr;
   }
 }

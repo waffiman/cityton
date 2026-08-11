@@ -237,7 +237,7 @@ export default function HomePage() {
       <div className="ramp ramp--5to3" />
 
       {/* ── Rezensionen ──────────────────────────────────────────────────── */}
-      <section className={`section--3 ${styles.band}`}>
+      <section id="bewertungen" className={`section--3 ${styles.band}`}>
         <div className="container">
           <h2 className={styles.reviewsTitle}>
             Werden Sie unser nächster <span className="accent-word">zufriedener Kunde.</span>

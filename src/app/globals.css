@@ -577,6 +577,10 @@ body:has(.journey) #inhalt {
   --from: var(--s3);
   --to: var(--s6);
 }
+.ramp--2to6 {
+  --from: var(--s2);
+  --to: var(--s6);
+}
 .eyebrow {
   margin: 0 0 14px;
   color: var(--color-accent-700);

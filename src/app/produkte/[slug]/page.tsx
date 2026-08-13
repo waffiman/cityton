@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Corners from "@/components/Corners";
+import FilmCard from "@/components/FilmCard";
+import InfoHint from "@/components/InfoHint";
 import SeriesGlyph from "@/components/diagrams/SeriesGlyph";
 import { getSeries, series } from "@/content/series";
 import { site } from "@/content/site";
+import filmCatalogStyles from "@/components/FilmCatalog.module.css";
 import styles from "./series.module.css";
 
 export function generateStaticParams() {
@@ -56,9 +58,12 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
 
             <div className={`blueprint ${styles.stats}`}>
               <Corners />
-              {stats.map((s) => (
-                <div key={s.label} className={styles.stat}>
-                  <div className={styles.statLabel}>{s.label.toUpperCase()}</div>
+              {stats.map((s, i) => (
+                <div key={`${s.label}-${i}`} className={styles.stat}>
+                  <div className={styles.statLabel}>
+                    {s.label.toUpperCase()}
+                    <InfoHint term={s.label.startsWith("VLT") ? "VLT" : s.label} label={s.label} />
+                  </div>
                   <div className={styles.statValue}>{s.value}</div>
                   {s.note && <div className={styles.statNote}>{s.note}</div>}
                 </div>
@@ -78,24 +83,10 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
             </div>
           </div>
 
-          {d?.hero ? (
-            <figure className={`blueprint ${styles.hero}`}>
-              <Corners />
-              <Image
-                src={d.hero.src}
-                alt={d.hero.alt}
-                fill
-                priority
-                sizes="(max-width: 1000px) 100vw, 45vw"
-                className={styles.heroImg}
-              />
-            </figure>
-          ) : (
-            <div className={`blueprint ${styles.glyphPlate}`}>
-              <Corners />
-              <SeriesGlyph variant={item.glyph} field="paper" />
-            </div>
-          )}
+          <div className={`blueprint ${styles.glyphPlate}`}>
+            <Corners />
+            <SeriesGlyph variant={item.glyph} field="paper" />
+          </div>
         </div>
       </section>
 
@@ -127,8 +118,13 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
             <table className="table">
               <thead>
                 <tr>
-                  {d.variants.columns.map((c) => (
-                    <th key={c}>{c}</th>
+                  {d.variants.columns.map((c, i) => (
+                    <th key={`${c}-${i}`}>
+                      <span className={styles.colHead}>
+                        {c}
+                        <InfoHint term={c} label={c} />
+                      </span>
+                    </th>
                   ))}
                 </tr>
               </thead>
@@ -143,22 +139,21 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
               </tbody>
             </table>
           </div>
-        </section>
-      )}
 
-      {d?.figures && (
-        <section className="container" style={{ paddingTop: 44 }}>
-          <div className={styles.figureGrid}>
-            {d.figures.map((f) => (
-              <figure key={f.src} className={`blueprint duotone ${styles.figure}`}>
-                <Corners />
-                <div className={styles.figureMedia}>
-                  <Image src={f.src} alt={f.alt} fill sizes="(max-width: 1000px) 100vw, 50vw" className={styles.figureImg} />
-                </div>
-                <figcaption>{f.caption}</figcaption>
-              </figure>
-            ))}
-          </div>
+          {d.variants.films.length > 0 && (
+            <div className={styles.variantFilms}>
+              <div className="rule-head">
+                <h6 className="eyebrow">Alle Folien der {item.name}</h6>
+              </div>
+              <ul className={filmCatalogStyles.grid}>
+                {d.variants.films.map((film) => (
+                  <li key={film.code}>
+                    <FilmCard film={film} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </section>
       )}
 
@@ -178,6 +173,8 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
           </div>
         </section>
       )}
+
+      <div className="ramp ramp--1to6" aria-hidden="true" />
     </>
   );
 }

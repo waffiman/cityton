@@ -33,6 +33,8 @@ export default async function ReferenzenPage() {
           <ReferenzenGallery images={images} />
         )}
       </section>
+
+      <div className="ramp ramp--1to6" aria-hidden="true" />
     </>
   );
 }

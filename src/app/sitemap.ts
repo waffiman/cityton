@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { series } from "@/content/series";
 import { nav, site } from "@/content/site";
+import { allFilmSlugs } from "@/lib/films";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -14,5 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     priority: 0.8,
   }));
-  return [...pages, ...products];
+  const foils = allFilmSlugs().map((slug) => ({
+    url: `${site.url}/produkte/folie/${slug}`,
+    lastModified: now,
+    priority: 0.65,
+  }));
+  return [...pages, ...products, ...foils];
 }

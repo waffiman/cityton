@@ -1,0 +1,93 @@
+.wrap {
+  margin-top: 8px;
+}
+
+.scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.table thead th {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--color-accent-900);
+  background: color-mix(in srgb, var(--s1) 70%, white);
+}
+
+.corner {
+  font-size: 12px !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent) !important;
+  font-family: inherit !important;
+  font-weight: 500 !important;
+}
+
+.table tbody th {
+  font-weight: 500;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+  white-space: nowrap;
+  width: 9.5rem;
+}
+
+.seriesLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.seriesLink:hover {
+  color: var(--color-accent-700);
+}
+
+.tag {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.metricLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metricValue {
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
+  color: var(--color-accent-900);
+}
+
+.track {
+  height: 4px;
+  background: color-mix(in srgb, var(--color-accent-900) 12%, transparent);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--color-accent-700);
+  border-radius: 2px;
+}

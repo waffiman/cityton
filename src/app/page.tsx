@@ -291,6 +291,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <div className="ramp ramp--3to6" />
     </div>
   );
 }

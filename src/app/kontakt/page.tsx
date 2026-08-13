@@ -78,6 +78,8 @@ export default function KontaktPage() {
           Größere Karte anzeigen
         </a>
       </section>
+
+      <div className="ramp ramp--6to1" aria-hidden="true" />
     </>
   );
 }

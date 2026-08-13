@@ -40,6 +40,8 @@ export default function PrinciplePage() {
           </Link>
         </div>
       </section>
+
+      <div className="ramp ramp--6to2" aria-hidden="true" />
     </>
   );
 }

@@ -8,7 +8,7 @@ export default function SiteFooter() {
     <>
       {/* Every page ends on the ground rung, so the ramp into the footer is the
           same everywhere and belongs here rather than at the end of each page. */}
-      <div className={`ramp ${styles.tailRamp}`} />
+      {/* <div className={`ramp ${styles.tailRamp}`} /> */}
       <footer className={styles.footer}>
         <div className={styles.grid}>
           <div>

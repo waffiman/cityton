@@ -48,6 +48,9 @@
   border-left: 1px solid var(--color-divider);
 }
 .statLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 10px;
   letter-spacing: 0.16em;
   color: var(--color-accent-700);
@@ -76,14 +79,6 @@
   flex-wrap: wrap;
 }
 
-.hero {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-}
-.heroImg {
-  object-fit: cover;
-}
 .glyphPlate {
   padding: 40px;
   background: var(--color-neutral-100);
@@ -108,25 +103,14 @@
 .tableWrap {
   overflow-x: auto;
 }
+.colHead {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 
-.figureGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 26px;
-}
-.figure {
-  margin: 0;
-}
-.figureMedia {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-.figureImg {
-  object-fit: cover;
-}
-.figure figcaption {
-  padding: 8px 2px;
+.variantFilms {
+  margin-top: 40px;
 }
 
 .pending {

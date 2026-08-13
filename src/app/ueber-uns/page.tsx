@@ -22,7 +22,7 @@ export default function AboutPage() {
             <h1 className={styles.title}>{about.title}</h1>
             <p className="lead">{about.body}</p>
           </div>
-          <figure className={`blueprint duotone ${styles.portrait}`}>
+          <figure className={`${styles.portrait}`}>
             <Corners />
             <Image
               src={about.image.src}

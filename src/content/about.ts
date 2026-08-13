@@ -17,8 +17,8 @@ export const about = {
   title: "Ein Team, das am Glas arbeitet.",
   body: "City-Ton Austria montiert Sonnenschutz-, UV-, Energiespar- und Sicherheitsfolien in Österreich und der Ukraine. Wir beraten, messen, montieren und betreuen selbst — ohne Zwischenstelle, die Verantwortung abschiebt.",
   image: {
-    src: "/media/install-detail.jpg",
-    alt: "Monteur bei der Folienmontage am Glas",
+    src: "/media/owner.jpg",
+    alt: "Inhaber und Ansprechpartner von City-Ton Austria",
   },
 
   /**
@@ -28,7 +28,7 @@ export const about = {
   stats: [
     { value: "[15]+", label: "Jahre Erfahrung", placeholder: true },
     { value: "20+", label: "Projekte", placeholder: false },
-    { value: "[XX.XXX]+", label: "m² verlegte Folie", placeholder: true },
+    { value: "[1000]+", label: "m² verlegte Folie", placeholder: true },
     { value: `${reviews.rating}/5`, label: "Kundenbewertung", placeholder: false },
   ],
 
@@ -41,20 +41,20 @@ export const about = {
     title: "Die Menschen hinter der Folie.",
     body: "Von der ersten Beratung und dem Aufmaß bis zur Montage und der Betreuung danach — bei City-Ton stecken dieselben Menschen hinter dem Ergebnis.",
     main: {
-      src: "/media/install-team.jpg",
-      alt: "Montageteam am Objekt",
-      label: "Montage vor Ort",
+      src: "/media/women-applying-window-tint.jpg",
+      alt: "Inhaber bei der Arbeit am Glas",
+      label: "Arbeit am Glas",
     } satisfies Media,
     side: [
       {
-        src: "/media/install-detail.jpg",
-        alt: "Detailaufnahme der Folienverlegung",
-        label: "Präzision am Glas",
+        src: "/media/Architect-1.jpg",
+        alt: "Material wird vor Ort ausgepackt und vorbereitet",
+        label: "Material bereit",
       },
       {
-        src: "/media/film-roll-1.jpg",
-        alt: "Folienrolle und Material",
-        label: "Material bereit",
+        src: "/media/facade-wide-crop.jpg",
+        alt: "Folienmontage an einem Schaufenster",
+        label: "Montage vor Ort",
       },
     ] satisfies Media[],
   },
@@ -64,9 +64,9 @@ export const about = {
     title: "Vor Ort.",
     body: "Ein kurzer Einblick in die Realität der Montage — fertige Objekte und Arbeit am Glas.",
     images: [
-      { src: "/media/install-shopfront.jpg", alt: "Schaufenster nach der Folierung" },
-      { src: "/media/facade-wide.jpg", alt: "Fassade mit Sonnenschutzfolie" },
-      { src: "/media/interior-2.jpg", alt: "Innenraum mit Folierung" },
+      { src: "/media/referenzen/gallery_4.png", alt: "Wohnobjekt mit dual-reflektierender Folie" },
+      { src: "/media/reflective-facade-upscaled.jpg", alt: "Fassade mit reflektierender Sonnenschutzfolie" },
+      { src: "/media/referenzen/gallery_1.png", alt: "Referenzobjekt nach der Folierung" },
     ] satisfies Media[],
     cta: { href: "/referenzen", label: "Alle Referenzen ansehen →" },
   },
@@ -80,19 +80,19 @@ export const about = {
         num: "01",
         title: "Beratung & Aufmaß",
         body: "Wir kommen vor Ort, hören zu und messen selbst — damit die Empfehlung zum Objekt passt.",
-        image: { src: "/media/install-detail.jpg", alt: "Aufmaß und Vorbereitung am Fenster" },
+        image: { src: "/media/consult-2.jpg", alt: "Vorbereitung und Material vor dem Aufmaß" },
       },
       {
         num: "02",
         title: "Professionelle Montage",
         body: "Zertifizierte Verklebung im laufenden Betrieb möglich — staubarm und abschnittsweise.",
-        image: { src: "/media/install-team.jpg", alt: "Montage am Schaufenster" },
+        image: { src: "/media/install-work-1.jpg", alt: "Professionelle Folienmontage am Fenster" },
       },
       {
         num: "03",
         title: "Übergabe & Betreuung",
         body: "Gemeinsame Abnahme, Pflegehinweise und ein Ansprechpartner auch danach.",
-        image: { src: "/media/install-shopfront.jpg", alt: "Fertiges Ergebnis am Eingang" },
+        image: { src: "/media/install-together-small.jpg", alt: "Montageabschluss am Objekt" },
       },
     ],
   },

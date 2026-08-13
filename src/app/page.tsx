@@ -8,7 +8,7 @@ import Corners from "@/components/Corners";
 import Faq from "@/components/Faq";
 import HeroFull from "@/components/HeroFull";
 import HeroSplit from "@/components/HeroSplit";
-import ProcessMosaic from "@/components/ProcessMosaic";
+import ProcessRibbon from "@/components/ProcessRibbon";
 import SeriesCard from "@/components/SeriesCard";
 import Stars from "@/components/Stars";
 import { benefits, comparisonRows, consultation, faq, processSteps, protectionRows, reviews } from "@/content/home";
@@ -166,12 +166,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="ramp ramp--4to1" />
+      <div className={`ramp ramp--4to1 ${styles.rampIntoProcess}`} />
 
       {/* ── Ablauf ────────────────────────────────────────────────────────── */}
       <section className={`section--1 ${styles.band} ${styles.processBand}`}>
         <div className="container">
-          <ProcessMosaic steps={processSteps} title="Von der Anfrage bis zur fertigen Folierung" />
+          <ProcessRibbon steps={processSteps} title="Von der Anfrage bis zur fertigen Folierung" />
         </div>
       </section>
 

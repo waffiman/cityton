@@ -185,6 +185,22 @@
   isolation: isolate;
   z-index: 2;
   overflow: visible;
+  /* Tight bottom: in-stage clearance is handled by `.cardsClip`; the ramp
+     already supplies the colour step into Serien — no extra white shelf. */
+  padding-bottom: 0;
+}
+
+/* Mobile: continuous dark→green into Ablauf — hide the light s4→s1 ramp and
+   the s1 shelf so ProcessRibbon's stage can settle from s4 into accent. */
+@media (max-width: 700px) {
+  .rampIntoProcess {
+    display: none;
+  }
+
+  .processBand {
+    padding-top: 0;
+    background: transparent;
+  }
 }
 
 /* ── Serien ──────────────────────────────────────────────────────────────── */

@@ -581,6 +581,43 @@ body:has(.journey) #inhalt {
   --from: var(--s2);
   --to: var(--s6);
 }
+.ramp--3to4 {
+  --from: var(--s3);
+  --to: var(--s4);
+}
+.ramp--5to3 {
+  --from: var(--s5);
+  --to: var(--s3);
+}
+.ramp--4to3 {
+  --from: var(--s4);
+  --to: var(--s3);
+}
+.ramp--3to2 {
+  --from: var(--s3);
+  --to: var(--s2);
+}
+.ramp--3to5 {
+  --from: var(--s3);
+  --to: var(--s5);
+}
+.ramp--2to3 {
+  --from: var(--s2);
+  --to: var(--s3);
+}
+.ramp--5to1 {
+  --from: var(--s5);
+  --to: var(--s1);
+}
+.ramp--1to3 {
+  --from: var(--s1);
+  --to: var(--s3);
+}
+.ramp--1 {
+  --from: var(--s1);
+  --to: var(--s1);
+}
+
 .eyebrow {
   margin: 0 0 14px;
   color: var(--color-accent-700);

@@ -297,11 +297,9 @@
    viewport — same "no timers, no IntersectionObserver" contract as
    desktop, just measured per-card instead of off one shared pinned stage.
 
-   The ribbon itself is hidden on mobile (see `.stripBleed` below) — instead
-   the whole section carries its own dark-green field, eased in from the
-   previous compare rung (`--s4`) and out onto `--s1` at the bottom (eased
-   `color-mix(in oklab, …)` stops), so it joins compare without a light shelf
-   and still settles into the Serien ramp below. */
+   The ribbon itself is hidden on mobile (see `.stripBleed` below) — the
+   section sits on the shared `--s1` band with benefits/compare above; the
+   stage no longer paints its own dark-green field. */
 @media (max-width: 700px) {
   .pinWrap {
     /* No sticky pin here, so no extra scroll-runway spacer needed — the
@@ -310,22 +308,6 @@
     height: auto;
   }
 
-  /* Full-bleed itself now (same breakout trick as `.stripBleed`, and it
-     composes fine nested inside — the maths only needs the containing
-     block's own center to coincide with the viewport's, which holds either
-     way): this is what lets the dark-green field below reach the true
-     viewport edges rather than stopping at `.container`'s page-gutter. Its
-     own padding then re-insets the actual content (heading, cards) by
-     roughly that same gutter, so nothing else downstream needs its own
-     horizontal margin to compensate.
-
-     The background is the same eased-gradient *pattern* as `.ramp`
-     (globals.css) — `--from`/`--to` interpolated in oklab across matching
-     stop percentages — just folded into one declaration so it settles onto
-     `--s1` (this section's own light band, and what the ramps immediately
-     above/below it already land on) at both the top and the bottom over a
-     fixed `--settle` distance, with a solid dark-green field in between,
-     instead of needing a separate ramp element. */
   .stage {
     position: relative;
     top: auto;
@@ -335,39 +317,11 @@
     height: auto;
     max-height: none;
     isolation: isolate;
-    --settle: clamp(64px, 14vw, 140px);
-    /* Top settles from compare's --s4 (no light shelf on mobile); bottom
-       still lands on --s1 for ramp--1to2 into Serien. */
-    background: linear-gradient(
-      180deg,
-      var(--s4) 0,
-      color-mix(in oklab, var(--s4) 92%, var(--color-accent-800)) calc(var(--settle) * 0.12),
-      color-mix(in oklab, var(--s4) 80%, var(--color-accent-800)) calc(var(--settle) * 0.24),
-      color-mix(in oklab, var(--s4) 64%, var(--color-accent-800)) calc(var(--settle) * 0.36),
-      color-mix(in oklab, var(--s4) 48%, var(--color-accent-800)) calc(var(--settle) * 0.48),
-      color-mix(in oklab, var(--s4) 32%, var(--color-accent-800)) calc(var(--settle) * 0.6),
-      color-mix(in oklab, var(--s4) 20%, var(--color-accent-800)) calc(var(--settle) * 0.72),
-      color-mix(in oklab, var(--s4) 10%, var(--color-accent-800)) calc(var(--settle) * 0.84),
-      color-mix(in oklab, var(--s4) 4%, var(--color-accent-800)) calc(var(--settle) * 0.92),
-      var(--color-accent-800) var(--settle),
-      var(--color-accent-800) calc(100% - var(--settle)),
-      color-mix(in oklab, var(--s1) 4%, var(--color-accent-800)) calc(100% - var(--settle) * 0.92),
-      color-mix(in oklab, var(--s1) 10%, var(--color-accent-800)) calc(100% - var(--settle) * 0.84),
-      color-mix(in oklab, var(--s1) 20%, var(--color-accent-800)) calc(100% - var(--settle) * 0.72),
-      color-mix(in oklab, var(--s1) 32%, var(--color-accent-800)) calc(100% - var(--settle) * 0.6),
-      color-mix(in oklab, var(--s1) 48%, var(--color-accent-800)) calc(100% - var(--settle) * 0.48),
-      color-mix(in oklab, var(--s1) 64%, var(--color-accent-800)) calc(100% - var(--settle) * 0.36),
-      color-mix(in oklab, var(--s1) 80%, var(--color-accent-800)) calc(100% - var(--settle) * 0.24),
-      color-mix(in oklab, var(--s1) 92%, var(--color-accent-800)) calc(100% - var(--settle) * 0.12),
-      var(--s1) 100%
-    );
+    background: transparent;
     padding: clamp(28px, 9vw, 44px) clamp(20px, 6vw, 32px) clamp(72px, 16vw, 104px);
   }
 
-  /* Normal-flow heading above the stack (a pinned overlay isn't needed
-     without a pinned stage). Light text color: unlike desktop/tablet, the
-     heading now sits directly on the section's own dark-green field, not
-     the page's light band. */
+  /* Normal-flow heading above the stack — dark text on the light s1 band. */
   .heading {
     position: relative;
     max-width: none;
@@ -375,13 +329,11 @@
     margin: 0 0 clamp(28px, 8vw, 44px);
     font-size: clamp(22px, 6vw, 28px);
     line-height: 1.15;
-    color: var(--color-on-dark-strong);
+    color: var(--color-accent-900);
   }
 
   /* Ribbon removed entirely on mobile — at this width/orientation it read
-     as a stray band rather than a structural element, and the section's
-     own dark-green field (above) already carries that "continuous
-     dark-green" identity on its own. */
+     as a stray band rather than a structural element. */
   .stripBleed {
     display: none;
   }

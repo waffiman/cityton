@@ -27,10 +27,8 @@ export default function HomePage() {
     <div className="journey">
       {site.heroVariant === "split" ? <HeroSplit /> : <HeroFull />}
 
-      <div className="ramp ramp--5to0" />
-
-      {site.heroVariant === "vollbild" && (
-        <section className="section--0">
+      {site.heroVariant === "vollbild" ? (
+        <div className={`ramp ramp--5to1 ${styles.rampWithPartners}`}>
           <div className={`container ${styles.partnerInner}`}>
             <span className={styles.partnerLabel}>OFFIZIELLER PARTNER VON</span>
             <a
@@ -52,11 +50,13 @@ export default function HomePage() {
               <Image src="/media/logo-armolan.png" alt="Armolan Europe" width={160} height={44} className={styles.logoArmolan} />
             </a>
           </div>
-        </section>
+        </div>
+      ) : (
+        <div className="ramp ramp--5to1" />
       )}
 
       {/* ── Was die Folie leistet ─────────────────────────────────────────── */}
-      <section className={`section--0 ${styles.band}`}>
+      <section className={`section--1 ${styles.band}`}>
         <div className="container">
           <h2 className={styles.benefitsTitle}>
             Vier Mikrometer Folie. <span className="accent-word">Ein anderes Gebäude.</span>
@@ -79,10 +79,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="ramp ramp--0to4" />
-
       {/* ── Vorher / Nachher ──────────────────────────────────────────────── */}
-      <section className={`on-dark section--4 ${styles.compare}`}>
+      <section className={`section--1 ${styles.compare}`}>
         <div className="container">
           <div className={styles.compareGrid}>
             <BeforeAfter
@@ -115,7 +113,7 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <Link href="/funktionsprinzip" className={`btn btn-inverse ${styles.compareCta}`}>
+              <Link href="/funktionsprinzip" className={`btn btn-secondary ${styles.compareCta}`}>
                 Funktionsprinzip ansehen
               </Link>
             </div>
@@ -124,7 +122,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Impact / safety-film comparison (mirrored) ─────────────────────── */}
-      <section className={`on-dark section--4 ${styles.compare}`}>
+      <section className={`section--1 ${styles.compare}`}>
         <div className="container">
           <div className={`${styles.compareGrid} ${styles.compareGridFlip}`}>
             <div>
@@ -141,7 +139,7 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <Link href="/funktionsprinzip" className={`btn btn-inverse ${styles.compareCta} ${styles.compareCtaEnd}`}>
+              <Link href="/funktionsprinzip" className={`btn btn-secondary ${styles.compareCta} ${styles.compareCtaEnd}`}>
                 Funktionsprinzip ansehen
               </Link>
             </div>
@@ -166,8 +164,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className={`ramp ramp--4to1 ${styles.rampIntoProcess}`} />
-
       {/* ── Ablauf ────────────────────────────────────────────────────────── */}
       <section className={`section--1 ${styles.band} ${styles.processBand}`}>
         <div className="container">
@@ -175,10 +171,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="ramp ramp--1to2" />
+      <div className="ramp ramp--1to3" />
 
       {/* ── Serien ────────────────────────────────────────────────────────── */}
-      <section className={`section--2 ${styles.band}`}>
+      <section className={`section--3 ${styles.band}`}>
         <div className="container">
           <div className={styles.seriesHead}>
             <h2 className="section-title">Vier Serien, ein Ziel je Objekt</h2>
@@ -195,7 +191,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="ramp ramp--2to5" />
+      <div className="ramp ramp--3to5" />
 
       {/* ── Beratungstermin ──────────────────────────────────────────────── */}
       <section className={`section--5 ${styles.consult}`}>

@@ -1,0 +1,434 @@
+/* Diagonal dark-green ribbon — video and copy plates staggered along one
+   continuous band. `top`/`left` on each `.card` are the *final* resting
+   spot; JS-driven translate3d on `.videoBox` / `.copy` is additive, large
+   enough at rest to sit off-stage and be clipped by `.cardsClip`. */
+
+.pinWrap {
+  position: relative;
+  height: 400vh;
+}
+
+/* Sticks *below* the site header (itself sticky, top:0, z-index:40) rather
+   than under it — otherwise the header would sit in front of / hide the top
+   of the stage for as long as the section is pinned. Height is driven by
+   100vh minus that header offset (capped by max-height on tall monitors)
+   and deliberately has no min-height: a sticky element taller than the
+   actual visible viewport would strand its lower content permanently
+   off-screen while pinned, so it must never be forced past that on short
+   windows. The component reads this same `top` value to keep its scroll
+   maths in sync.
+
+   Unlike before, `.stage` itself no longer clips overflow — the ribbon and
+   the cards each need a *different* clip boundary (viewport-wide vs.
+   stage-narrow), so each gets its own dedicated wrapper below instead.
+   `isolation: isolate` — the same technique the site's own `.ramp` divs
+   use — contains all of this section's z-index stacking to itself, so the
+   cards' z-index below is guaranteed to be compared only against the
+   ribbon and heading, never leaking out to (or getting silently out-ranked
+   by) some unrelated element elsewhere on the page. */
+.stage {
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  max-height: calc(1080px - var(--header-height));
+  isolation: isolate;
+}
+
+/* Section heading — top-right caption band. Above the cards in stacking
+   order; `.cardsClip` starts below this zone so plates cannot cover it. */
+.heading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  max-width: 20ch;
+  text-align: right;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.05;
+}
+
+/* Full-bleed breakout: spans the true viewport width regardless of how deep
+   inside the max-width `.container` this sits (the classic
+   `left:50%; width:100vw; margin-left:-50vw` trick — valid here because the
+   container is itself horizontally centered, so its midpoint already
+   coincides with the viewport's). `overflow: hidden` here — not on `.stage`
+   — is what stops the ribbon from ever causing page-level horizontal
+   scroll, while leaving `.cardsClip` free to clip independently for the
+   cards' own (narrower, stage-relative) hidden-below-start trick.
+
+   The generous `top`/`bottom` overhang (`vh`, not `%` — `%` top/bottom on an
+   absolutely positioned box don't resolve against a containing block whose
+   height is `auto`, which mobile's `.stage` is) gives `.strip`'s clip-path
+   below plenty of room to actually reach past the stage's own edges, not
+   just up to them. */
+.stripBleed {
+  position: absolute;
+  top: -50vh;
+  bottom: -50vh;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  overflow: hidden;
+  /* Behind all cards — decorative band visible only in the gaps between
+     plates, never over video content. */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Shared diagonal geometry for the solid band and its end fades. */
+.strip,
+.stripFadeBefore,
+.stripFadeAfter {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(-22% 4%, 122% 28%, 122% 52%, -22% 28%);
+  transform: translateY(240px);
+}
+
+/* Solid accent middle — no fill gradient. */
+.strip {
+  background: var(--color-accent-900);
+}
+
+/* Ramp-style dissolves at each end of the band (same eased oklab stops as
+   `.ramp`), along the TL→BR lean. Middles stay transparent so they don’t
+   tint the solid strip. */
+.stripFadeBefore {
+  background: linear-gradient(
+    113deg,
+    var(--s1) 0%,
+    color-mix(in oklab, var(--s1) 92%, var(--color-accent-900)) 8%,
+    color-mix(in oklab, var(--s1) 80%, var(--color-accent-900)) 16%,
+    color-mix(in oklab, var(--s1) 64%, var(--color-accent-900)) 24%,
+    color-mix(in oklab, var(--s1) 48%, var(--color-accent-900)) 32%,
+    color-mix(in oklab, var(--s1) 32%, var(--color-accent-900)) 40%,
+    color-mix(in oklab, var(--s1) 16%, var(--color-accent-900)) 48%,
+    transparent 56%
+  );
+}
+
+.stripFadeAfter {
+  background: linear-gradient(
+    113deg,
+    transparent 44%,
+    color-mix(in oklab, var(--s1) 16%, var(--color-accent-900)) 52%,
+    color-mix(in oklab, var(--s1) 32%, var(--color-accent-900)) 60%,
+    color-mix(in oklab, var(--s1) 48%, var(--color-accent-900)) 68%,
+    color-mix(in oklab, var(--s1) 64%, var(--color-accent-900)) 76%,
+    color-mix(in oklab, var(--s1) 80%, var(--color-accent-900)) 84%,
+    color-mix(in oklab, var(--s1) 92%, var(--color-accent-900)) 92%,
+    var(--s1) 100%
+  );
+}
+
+/* Cards sit below the caption band (`top` inset) so they never cover the
+   heading. Small bottom inset keeps the clip tall enough for full text plates. */
+.cardsClip {
+  position: absolute;
+  top: clamp(16px, 2.5vh, 32px);
+  right: 0;
+  left: 0;
+  bottom: clamp(16px, 2.5vh, 32px);
+  overflow: hidden;
+  z-index: 20;
+}
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: clamp(196px, 16.5vw, 248px);
+}
+
+/* Steeper diagonal: first card sits higher, last a bit lower. */
+.card0 {
+  left: 5%;
+  top: 0%;
+}
+.card1 {
+  left: 28.5%;
+  top: 6%;
+}
+.card2 {
+  left: 52%;
+  top: 12%;
+}
+.card3 {
+  left: 75.5%;
+  top: 18%;
+}
+/* Extra offset for a possible 5th step — keeps following the same line. */
+.card4 {
+  left: 88%;
+  top: 22%;
+  width: clamp(176px, 14vw, 214px);
+}
+
+.videoBox {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--color-accent-900);
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
+  will-change: transform;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.copy {
+  position: relative;
+  background: var(--color-surface);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  padding: 16px 16px 18px;
+  will-change: transform;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 19px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-accent-900);
+}
+
+.body {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-text) 64%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .videoBox,
+  .copy {
+    transform: none !important;
+  }
+}
+
+/* Tablet — same idea, tighter diagonal, steeper ribbon lean, less scroll
+   runway. Gutters ~3%; card width still leaves neighbouring `left` gaps
+   larger than the plate at ~700px. */
+@media (max-width: 1100px) {
+  .pinWrap {
+    height: 340vh;
+  }
+
+  .stage {
+    max-height: calc(900px - var(--header-height));
+  }
+
+  .heading {
+    max-width: 16ch;
+    font-size: clamp(24px, 3.6vw, 32px);
+  }
+
+  .cardsClip {
+    top: clamp(48px, 7vh, 72px);
+  }
+
+  .strip {
+    clip-path: polygon(-22% 0%, 122% 32%, 122% 56%, -22% 24%);
+  }
+
+  .card {
+    width: clamp(148px, 19vw, 210px);
+  }
+
+  .card0 {
+    left: 3%;
+    top: 0%;
+  }
+  .card1 {
+    left: 27%;
+    top: 6%;
+  }
+  .card2 {
+    left: 51%;
+    top: 12%;
+  }
+  .card3 {
+    left: 75%;
+    top: 18%;
+  }
+  .card4 {
+    left: 90%;
+    top: 22%;
+    width: clamp(130px, 16vw, 176px);
+  }
+
+  .title {
+    font-size: 17px;
+  }
+
+  .body {
+    font-size: 13.5px;
+  }
+}
+
+/* Mobile — a deliberate re-composition, not the desktop diagonal pin scaled
+   down. Portrait cards at ~80vw are tall enough that no amount of percentage
+   juggling inside one pinned viewport-height frame can space four of them
+   apart without overlapping their text — so mobile drops the sticky pin
+   entirely and lays the cards out in normal document flow instead: the
+   browser's own box layout is what guarantees zero overlap (a `gap`, not a
+   hand-tuned percentage), and "clipped at the bottom" becomes structurally
+   impossible because the stage is auto-height, sized to its content.
+   Each card still gets a small, independent, scroll-driven settling rise
+   (see the component) as its own natural position crosses into the
+   viewport — same "no timers, no IntersectionObserver" contract as
+   desktop, just measured per-card instead of off one shared pinned stage.
+
+   The ribbon itself is hidden on mobile (see `.stripBleed` below) — instead
+   the whole section carries its own dark-green field, eased in from the
+   previous compare rung (`--s4`) and out onto `--s1` at the bottom (eased
+   `color-mix(in oklab, …)` stops), so it joins compare without a light shelf
+   and still settles into the Serien ramp below. */
+@media (max-width: 700px) {
+  .pinWrap {
+    /* No sticky pin here, so no extra scroll-runway spacer needed — the
+       stacked cards' own (generous) height *is* the section's scroll
+       length. */
+    height: auto;
+  }
+
+  /* Full-bleed itself now (same breakout trick as `.stripBleed`, and it
+     composes fine nested inside — the maths only needs the containing
+     block's own center to coincide with the viewport's, which holds either
+     way): this is what lets the dark-green field below reach the true
+     viewport edges rather than stopping at `.container`'s page-gutter. Its
+     own padding then re-insets the actual content (heading, cards) by
+     roughly that same gutter, so nothing else downstream needs its own
+     horizontal margin to compensate.
+
+     The background is the same eased-gradient *pattern* as `.ramp`
+     (globals.css) — `--from`/`--to` interpolated in oklab across matching
+     stop percentages — just folded into one declaration so it settles onto
+     `--s1` (this section's own light band, and what the ramps immediately
+     above/below it already land on) at both the top and the bottom over a
+     fixed `--settle` distance, with a solid dark-green field in between,
+     instead of needing a separate ramp element. */
+  .stage {
+    position: relative;
+    top: auto;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    height: auto;
+    max-height: none;
+    isolation: isolate;
+    --settle: clamp(64px, 14vw, 140px);
+    /* Top settles from compare's --s4 (no light shelf on mobile); bottom
+       still lands on --s1 for ramp--1to2 into Serien. */
+    background: linear-gradient(
+      180deg,
+      var(--s4) 0,
+      color-mix(in oklab, var(--s4) 92%, var(--color-accent-800)) calc(var(--settle) * 0.12),
+      color-mix(in oklab, var(--s4) 80%, var(--color-accent-800)) calc(var(--settle) * 0.24),
+      color-mix(in oklab, var(--s4) 64%, var(--color-accent-800)) calc(var(--settle) * 0.36),
+      color-mix(in oklab, var(--s4) 48%, var(--color-accent-800)) calc(var(--settle) * 0.48),
+      color-mix(in oklab, var(--s4) 32%, var(--color-accent-800)) calc(var(--settle) * 0.6),
+      color-mix(in oklab, var(--s4) 20%, var(--color-accent-800)) calc(var(--settle) * 0.72),
+      color-mix(in oklab, var(--s4) 10%, var(--color-accent-800)) calc(var(--settle) * 0.84),
+      color-mix(in oklab, var(--s4) 4%, var(--color-accent-800)) calc(var(--settle) * 0.92),
+      var(--color-accent-800) var(--settle),
+      var(--color-accent-800) calc(100% - var(--settle)),
+      color-mix(in oklab, var(--s1) 4%, var(--color-accent-800)) calc(100% - var(--settle) * 0.92),
+      color-mix(in oklab, var(--s1) 10%, var(--color-accent-800)) calc(100% - var(--settle) * 0.84),
+      color-mix(in oklab, var(--s1) 20%, var(--color-accent-800)) calc(100% - var(--settle) * 0.72),
+      color-mix(in oklab, var(--s1) 32%, var(--color-accent-800)) calc(100% - var(--settle) * 0.6),
+      color-mix(in oklab, var(--s1) 48%, var(--color-accent-800)) calc(100% - var(--settle) * 0.48),
+      color-mix(in oklab, var(--s1) 64%, var(--color-accent-800)) calc(100% - var(--settle) * 0.36),
+      color-mix(in oklab, var(--s1) 80%, var(--color-accent-800)) calc(100% - var(--settle) * 0.24),
+      color-mix(in oklab, var(--s1) 92%, var(--color-accent-800)) calc(100% - var(--settle) * 0.12),
+      var(--s1) 100%
+    );
+    padding: clamp(28px, 9vw, 44px) clamp(20px, 6vw, 32px) clamp(72px, 16vw, 104px);
+  }
+
+  /* Normal-flow heading above the stack (a pinned overlay isn't needed
+     without a pinned stage). Light text color: unlike desktop/tablet, the
+     heading now sits directly on the section's own dark-green field, not
+     the page's light band. */
+  .heading {
+    position: relative;
+    max-width: none;
+    text-align: left;
+    margin: 0 0 clamp(28px, 8vw, 44px);
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.15;
+    color: var(--color-on-dark-strong);
+  }
+
+  /* Ribbon removed entirely on mobile — at this width/orientation it read
+     as a stray band rather than a structural element, and the section's
+     own dark-green field (above) already carries that "continuous
+     dark-green" identity on its own. */
+  .stripBleed {
+    display: none;
+  }
+
+  /* Without the pin, nothing here needs clipping — cards are already kept
+     apart by normal document flow, not a translate-and-clip trick, so this
+     wrapper is neutralized back to a plain, non-positioned pass-through
+     (an absolutely positioned `inset:0` box would otherwise fall out of
+     flow and collapse `.stage`'s auto height to nothing, since it'd have no
+     in-flow content left to size itself by). */
+  .cardsClip {
+    position: static;
+    inset: auto;
+    overflow: visible;
+  }
+
+  .cards {
+    position: static;
+    inset: auto;
+    display: flex;
+    flex-direction: column;
+    /* Centered, not staggered left/right — every card lines up on the same
+       axis (inset by `.stage`'s own padding above), so spacing is purely
+       the vertical `gap` below and cards can never overlap regardless of
+       viewport width. */
+    align-items: center;
+    /* The significant vertical spacing that keeps every card's video,
+       title and description fully clear of its neighbours. */
+    gap: clamp(72px, 20vw, 120px);
+  }
+
+  .card {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: clamp(260px, 82vw, 360px);
+  }
+
+  /* No per-card horizontal offsets any more — all cards share the centered
+     alignment set on `.cards` above. */
+  .card0,
+  .card1,
+  .card2,
+  .card3 {
+    margin-left: 0;
+  }
+  .card4 {
+    width: clamp(240px, 76vw, 330px);
+  }
+}

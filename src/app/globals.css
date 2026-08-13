@@ -609,9 +609,17 @@ body:has(.journey) #inhalt {
   --from: var(--s5);
   --to: var(--s1);
 }
+.ramp--1to5 {
+  --from: var(--s1);
+  --to: var(--s5);
+}
 .ramp--1to3 {
   --from: var(--s1);
   --to: var(--s3);
+}
+.ramp--1to6 {
+  --from: var(--s1);
+  --to: var(--s6);
 }
 .ramp--1 {
   --from: var(--s1);

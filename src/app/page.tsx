@@ -171,10 +171,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="ramp ramp--1to3" />
+      <div className="ramp ramp--1" />
 
       {/* ── Serien ────────────────────────────────────────────────────────── */}
-      <section className={`section--3 ${styles.band}`}>
+      <section className={`section--1 ${styles.band}`}>
         <div className="container">
           <div className={styles.seriesHead}>
             <h2 className="section-title">Vier Serien, ein Ziel je Objekt</h2>
@@ -191,7 +191,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="ramp ramp--3to5" />
+      <div className="ramp ramp--1to5" />
 
       {/* ── Beratungstermin ──────────────────────────────────────────────── */}
       <section className={`section--5 ${styles.consult}`}>
@@ -229,10 +229,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="ramp ramp--5to3" />
+      <div className="ramp ramp--5to1" />
 
       {/* ── Rezensionen ──────────────────────────────────────────────────── */}
-      <section id="bewertungen" className={`section--3 ${styles.band}`}>
+      <section id="bewertungen" className={`section--1 ${styles.band}`}>
         <div className="container">
           <h2 className={styles.reviewsTitle}>
             Werden Sie unser nächster <span className="accent-word">zufriedener Kunde.</span>
@@ -267,7 +267,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
-      <section className={`section--3 ${styles.band}`}>
+      <section className={`section--1 ${styles.band}`}>
         <div className="container">
           <div className={styles.faqGrid}>
             <div>
@@ -288,7 +288,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="ramp ramp--3to6" />
+      <div className="ramp ramp--1to6" />
     </div>
   );
 }

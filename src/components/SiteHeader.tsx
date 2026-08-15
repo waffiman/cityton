@@ -11,17 +11,18 @@ import styles from "./SiteHeader.module.css";
 export default function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  // Transparent header while the hero zone is still on screen (home only).
-  const [pastHero, setPastHero] = useState(false);
-  const overHero = pathname === "/" && !pastHero;
+  // Transparent over full-bleed heroes until the page is scrolled.
+  const [hasHero, setHasHero] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const overHero = hasHero && !scrolled;
 
   // Close the mobile drawer on navigation.
   useEffect(() => setOpen(false), [pathname]);
 
   useEffect(() => {
     const update = () => {
-      const sentinel = document.getElementById("hero-zone-end");
-      setPastHero(sentinel ? sentinel.getBoundingClientRect().top <= 0 : pathname !== "/");
+      setHasHero(!!document.getElementById("hero-zone-end"));
+      setScrolled(window.scrollY > 4);
     };
 
     update();

@@ -6,9 +6,10 @@
   display: grid;
   grid-template-columns: minmax(0, 300px) minmax(0, 1fr) minmax(0, 260px);
   align-items: stretch;
+  background: var(--s0);
 }
 .row:hover {
-  background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 5%, var(--s0));
   color: inherit;
 }
 

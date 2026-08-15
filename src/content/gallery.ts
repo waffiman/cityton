@@ -4,7 +4,7 @@
  */
 
 export const gallery = {
-  eyebrow: "Gallery",
+  eyebrow: "Galerie",
   title: "Objekte, an denen die Folie arbeitet",
   lead:
     "Ein Ausschnitt aus montierten Projekten — Fassaden, Innenräume und Schutzfolierungen. Tippen Sie ein Bild an, um es zu vergrößern.",

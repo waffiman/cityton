@@ -33,8 +33,6 @@ export default async function GalleryPage() {
           <GalleryMasonry images={images} />
         )}
       </section>
-
-      <div className="ramp ramp--1to6" aria-hidden="true" />
     </>
   );
 }

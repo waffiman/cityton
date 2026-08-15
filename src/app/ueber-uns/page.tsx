@@ -221,16 +221,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Soft brush into the dark CTA; CTA uses footer colour (--s6) so the
-          band and footer read as one continuous field. */}
-      <div className={`ramp ${styles.intoCta}`} />
-      <section className={`on-dark about-descent ${styles.finalCta}`}>
-        <div className="container">
-          <h2 className={styles.finalTitle}>{about.finalCta.title}</h2>
-          <p className={styles.finalSubtitle}>{about.finalCta.subtitle}</p>
-          <p className={styles.finalBody}>{about.finalCta.body}</p>
-          <Link href={about.finalCta.cta.href} className="btn btn-primary btn-lg blueprint">
-            <Corners />
+      <section className={`section--5 on-dark ${styles.ctaBand}`}>
+        <div className={styles.ctaFx} aria-hidden="true" />
+        <div className={`container ${styles.bandInner}`}>
+          <h2 className={styles.ctaTitle}>{about.finalCta.title}</h2>
+          <p className={styles.ctaSubtitle}>{about.finalCta.subtitle}</p>
+          <p className={styles.ctaBody}>{about.finalCta.body}</p>
+          <Link href={about.finalCta.cta.href} className="btn btn-primary btn-lg">
             {about.finalCta.cta.label}
           </Link>
         </div>

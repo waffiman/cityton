@@ -47,8 +47,8 @@ export default function PartnerCarousel({
   label?: string;
   logos?: PartnerLogo[];
 }) {
-  // Triple the set so wide viewports still fill while scrolling.
-  const track = [...logos, ...logos, ...logos];
+  // Quadruple the set so wide viewports stay filled with no empty gap at the loop.
+  const track = [...logos, ...logos, ...logos, ...logos];
 
   return (
     <div className={styles.wrap}>

@@ -16,8 +16,8 @@ export const site = {
     phone: "+43 677 61520700",
     phoneTel: "+4367761520700",
     email: "office@city-ton.com",
-    /** TODO(client): replace with real AT address — Brandenburg Gate is a temporary map pin. */
-    address: "Pariser Platz, 10117 Berlin (Platzhalter)",
+    /** TODO(client): replace with real AT street address — Wien is a temporary map pin. */
+    address: "Wien, Österreich (Platzhalter)",
   },
   cta: "Kostenlose Beratung",
   /** "vollbild" = full-bleed photo hero, "split" = two-column hero with video. */
@@ -35,7 +35,7 @@ export const nav: NavItem[] = [
   { href: "/ueber-uns", label: "Über uns" },
   { href: "/produkte", label: "Produkte" },
   { href: "/funktionsprinzip", label: "Funktionsprinzip" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/gallery", label: "Galerie" },
   // { href: "/blog", label: "Blog" },
   // { href: "/partner", label: "Für Partner" },
   { href: "/kontakt", label: "Kontakt" },

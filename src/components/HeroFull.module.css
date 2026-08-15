@@ -1,29 +1,10 @@
 .hero {
-  /* Cold open on the penultimate dark rung; the ramp below lands on s0 and the
-     descent begins. */
   position: relative;
   background: var(--s5);
   overflow: hidden;
   min-height: 640px;
   display: flex;
   align-items: flex-end;
-}
-/* The ramp below starts from flat colour, so the photo settles onto the hero's
-   own rung first. It has to stay under the copy: 110px of padding down there,
-   72px once .inner tightens on small screens. */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: clamp(48px, 6vw, 88px);
-  background: linear-gradient(
-    to top,
-    var(--s5) 0%,
-    color-mix(in oklab, var(--s5) 72%, transparent) 36%,
-    color-mix(in oklab, var(--s5) 34%, transparent) 66%,
-    transparent 100%
-  );
-  pointer-events: none;
 }
 
 .photo {

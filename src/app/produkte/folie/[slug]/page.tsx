@@ -181,8 +181,6 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
           </Link>
         </div>
       </section>
-
-      <div className="ramp ramp--2to6" aria-hidden="true" />
     </>
   );
 }

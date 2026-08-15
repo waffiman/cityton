@@ -29,14 +29,12 @@ export default function HomePage() {
       {site.heroVariant === "split" ? <HeroSplit /> : <HeroFull />}
 
       {site.heroVariant === "vollbild" ? (
-        <div className={`ramp ramp--5to1 ${styles.rampWithPartners}`}>
+        <section className={`section--1 ${styles.partnersBand}`}>
           <div className="container">
             <PartnerCarousel />
           </div>
-        </div>
-      ) : (
-        <div className="ramp ramp--5to1" />
-      )}
+        </section>
+      ) : null}
 
       {/* ── Was die Folie leistet ─────────────────────────────────────────── */}
       <section className={`section--1 ${styles.band}`}>
@@ -96,7 +94,7 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <Link href="/funktionsprinzip" className={`btn btn-secondary ${styles.compareCta}`}>
+              <Link href="/funktionsprinzip" className={`btn ${styles.compareCta}`}>
                 Funktionsprinzip ansehen
               </Link>
             </div>
@@ -122,7 +120,7 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <Link href="/funktionsprinzip" className={`btn btn-secondary ${styles.compareCta} ${styles.compareCtaEnd}`}>
+              <Link href="/funktionsprinzip" className={`btn ${styles.compareCta} ${styles.compareCtaEnd}`}>
                 Funktionsprinzip ansehen
               </Link>
             </div>
@@ -131,13 +129,13 @@ export default function HomePage() {
               aspectRatio="4 / 3"
               className={styles.compareProtectRail}
               before={{
-                src: "/media/default-break.png",
+                src: "/media/broken-default.png",
                 alt: "Glas zerbricht in scharfe Splitter → Splitter bleiben an der Folie haften",
                 label: "OHNE FOLIE",
                 objectPosition: "center center",
               }}
               after={{
-                src: "/media/armed-break.png",
+                src: "/media/broken-armed.png",
                 alt: "Splitter können sich beim Aufprall verteilen → Splitter bleiben zusammen",
                 label: "MIT FOLIE",
                 objectPosition: "center 42%",
@@ -153,8 +151,6 @@ export default function HomePage() {
           <ProcessRibbon steps={processSteps} title="Von der Anfrage bis zur fertigen Folierung" />
         </div>
       </section>
-
-      <div className="ramp ramp--1" />
 
       {/* ── Serien ────────────────────────────────────────────────────────── */}
       <section className={`section--1 ${styles.band}`}>
@@ -173,8 +169,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <div className="ramp ramp--1to5" />
 
       {/* ── Beratungstermin ──────────────────────────────────────────────── */}
       <section className={`section--5 ${styles.consult}`}>
@@ -211,8 +205,6 @@ export default function HomePage() {
           />
         </div>
       </section>
-
-      <div className="ramp ramp--5to1" />
 
       {/* ── Rezensionen ──────────────────────────────────────────────────── */}
       <section id="bewertungen" className={`section--1 ${styles.band}`}>
@@ -270,8 +262,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <div className="ramp ramp--1to6" />
     </div>
   );
 }

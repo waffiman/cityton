@@ -5,16 +5,25 @@
   line-height: 1.02;
 }
 
+.ctaSection {
+  padding-top: 48px;
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
 .cta {
   display: flex;
   align-items: center;
   gap: 28px;
   padding: 26px 32px;
   flex-wrap: wrap;
+  background: var(--s5);
+  color: var(--color-on-dark);
+  border-color: var(--color-on-dark-rule);
 }
 .ctaText {
   margin: 0;
   font-size: 17px;
   flex: 1;
   min-width: 280px;
+  color: var(--color-on-dark-muted);
 }

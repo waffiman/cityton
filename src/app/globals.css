@@ -13,9 +13,9 @@
 /* ── Layer 1: tokens ────────────────────────────────────────────────────── */
 :root {
   /* Section ladder — one continuous descent from paper white to the footer.
-     Every full-bleed band sits on a deeper rung than the one above it; a .ramp
-     between two bands interpolates the step. --s6 is the brand dark itself, so
-     plates drawn inside a field at that depth stay flush with it. */
+     Every full-bleed band sits on a deeper rung than the one above it; sections
+     meet with hard colour edges. --s6 is the brand dark itself, so plates drawn
+     inside a field at that depth stay flush with it. */
   --s0: #ffffff;
   --s1: #f4f6f7;
   --s2: #e2e9ea;
@@ -24,9 +24,7 @@
   --s5: #1e4a52; /* deep teal — penultimate stop before the footer */
   --s6: #0e3a40; /* footer: the darkest point of the journey */
 
-  /* Ground + ink. Interior pages open on s1 and end at the footer via .ramp.
-     Home marks itself with .journey; body:has(.journey) deepens --page-end so
-     the footer's ramp continues the descent instead of jumping from s1. */
+  /* Ground + ink. Interior pages open on s1; home deepens --page-end via .journey. */
   --color-bg: var(--s1);
   --page-end: var(--s1);
   --color-surface: #e9e9ea;
@@ -463,17 +461,12 @@ textarea.input {
 /* ── Section ladder ─────────────────────────────────────────────────────────
    Backgrounds alone carry the colour journey; block order stays as authored.
    Light bands step s0 → s1 → s2 → s3; inverted fields step s4 → s5; the footer
-   is s6, the darkest stop. A .ramp between two bands interpolates the step
-   (including returns from an inverted field onto the next deeper light rung).
-   A band whose own edge is photographic has to settle its media onto its rung
-   first (hero, consultation) — a ramp starts from flat colour and cannot
-   dissolve an image. */
+   is s6, the darkest stop. Sections meet with hard edges (no gradient bridges). */
 body:has(.journey) {
-  /* Last content band on home is s3 (reviews/FAQ); footer ramp continues to s6. */
   --page-end: var(--s3);
 }
 
-/* About CTA shares the footer rung; no ramp height left to bridge. */
+/* About CTA shares the footer rung. */
 body:has(.about-descent) {
   --page-end: var(--s6);
 }
@@ -509,121 +502,6 @@ body:has(.journey) #inhalt {
 }
 .section--6 {
   background: var(--s6);
-}
-
-.ramp {
-  /* Default: interior pages end on --page-end (s1) and land on the footer. */
-  --from: var(--page-end);
-  --to: var(--s6);
-  height: clamp(72px, 10vw, 160px);
-  /* Interpolated in oklab and eased at both ends: the ramp leaves --from and
-     arrives at --to at a near-flat slope, spending its steepest stretch in the
-     middle where no edge can be read into it. */
-  background: linear-gradient(
-    180deg,
-    var(--from) 0%,
-    color-mix(in oklab, var(--from) 92%, var(--to)) 12%,
-    color-mix(in oklab, var(--from) 80%, var(--to)) 24%,
-    color-mix(in oklab, var(--from) 64%, var(--to)) 36%,
-    color-mix(in oklab, var(--from) 48%, var(--to)) 48%,
-    color-mix(in oklab, var(--from) 32%, var(--to)) 60%,
-    color-mix(in oklab, var(--from) 20%, var(--to)) 72%,
-    color-mix(in oklab, var(--from) 10%, var(--to)) 84%,
-    color-mix(in oklab, var(--from) 4%, var(--to)) 92%,
-    var(--to) 100%
-  );
-  position: relative;
-  isolation: isolate;
-}
-/* Grain over the ramp: an 8-bit gradient this long bands into visible steps, and
-   a texture below the threshold of sight breaks them up. */
-.ramp::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0 1px, transparent 1px 3px);
-  mix-blend-mode: overlay;
-}
-
-/* Named steps used on the home journey. */
-.ramp--5to0 {
-  --from: var(--s5);
-  --to: var(--s0);
-}
-.ramp--0to4 {
-  --from: var(--s0);
-  --to: var(--s4);
-}
-.ramp--4to1 {
-  --from: var(--s4);
-  --to: var(--s1);
-}
-.ramp--1to2 {
-  --from: var(--s1);
-  --to: var(--s2);
-}
-.ramp--2to5 {
-  --from: var(--s2);
-  --to: var(--s5);
-}
-.ramp--5to3 {
-  --from: var(--s5);
-  --to: var(--s3);
-}
-.ramp--3to6 {
-  --from: var(--s3);
-  --to: var(--s6);
-}
-.ramp--2to6 {
-  --from: var(--s2);
-  --to: var(--s6);
-}
-.ramp--3to4 {
-  --from: var(--s3);
-  --to: var(--s4);
-}
-.ramp--5to3 {
-  --from: var(--s5);
-  --to: var(--s3);
-}
-.ramp--4to3 {
-  --from: var(--s4);
-  --to: var(--s3);
-}
-.ramp--3to2 {
-  --from: var(--s3);
-  --to: var(--s2);
-}
-.ramp--3to5 {
-  --from: var(--s3);
-  --to: var(--s5);
-}
-.ramp--2to3 {
-  --from: var(--s2);
-  --to: var(--s3);
-}
-.ramp--5to1 {
-  --from: var(--s5);
-  --to: var(--s1);
-}
-.ramp--1to5 {
-  --from: var(--s1);
-  --to: var(--s5);
-}
-.ramp--1to3 {
-  --from: var(--s1);
-  --to: var(--s3);
-}
-.ramp--1to6 {
-  --from: var(--s1);
-  --to: var(--s6);
-}
-.ramp--1 {
-  --from: var(--s1);
-  --to: var(--s1);
 }
 
 .eyebrow {

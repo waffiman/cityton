@@ -63,7 +63,7 @@ export default function KontaktPage() {
         </div>
         <div className={styles.mapFrame}>
           <iframe
-            title="Karte — Brandenburg Gate (Platzhalter)"
+            title={kontakt.mapTitle}
             src={kontakt.mapEmbedSrc}
             loading="lazy"
             allowFullScreen
@@ -79,8 +79,6 @@ export default function KontaktPage() {
           Größere Karte anzeigen
         </a>
       </section>
-
-      <div className="ramp ramp--6to1" aria-hidden="true" />
     </>
   );
 }

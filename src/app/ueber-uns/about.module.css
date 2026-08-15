@@ -271,39 +271,55 @@
   color: var(--color-accent-900);
 }
 
-/* ── Final CTA ───────────────────────────────────────────────────────────── */
-/* Soft brush from page ground into the footer-depth CTA (same rung as footer). */
-.intoCta {
-  --from: var(--color-bg);
-  --to: var(--s6);
+/* ── Final CTA (products-style dark band) ────────────────────────────────── */
+.ctaBand {
+  position: relative;
+  overflow: hidden;
   margin-top: var(--section-gap);
-  height: clamp(64px, 9vw, 140px);
+  padding-block: clamp(48px, 6vw, 80px);
 }
 
-.finalCta {
-  margin-top: 0;
-  /* Match footer (--s6) so there is no light-teal / dark-teal seam. */
-  background: var(--s6);
-  padding-block: clamp(56px, 7vw, 88px);
+.ctaFx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 60% 80% at 85% 20%,
+      color-mix(in srgb, var(--color-accent-400) 22%, transparent),
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 56px,
+      color-mix(in srgb, var(--color-on-dark) 5%, transparent) 56px 57px
+    );
 }
-.finalTitle {
-  margin: 0;
-  font-size: clamp(30px, 3.6vw, 48px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaTitle {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.1;
   color: var(--color-on-dark-strong);
 }
-.finalSubtitle {
-  margin: 10px 0 0;
-  font-size: clamp(20px, 2.2vw, 26px);
+
+.ctaSubtitle {
+  margin: 0 0 12px;
+  font-size: clamp(18px, 2vw, 24px);
   color: var(--color-accent-300);
 }
-.finalBody {
-  margin: 18px 0 28px;
-  max-width: 46ch;
+
+.ctaBody {
+  margin: 0 0 24px;
+  max-width: 42ch;
   font-size: 16px;
   line-height: 1.5;
-  color: var(--color-on-dark-muted);
+  color: color-mix(in srgb, var(--color-on-dark) 82%, transparent);
 }
 
 @media (max-width: 1100px) {

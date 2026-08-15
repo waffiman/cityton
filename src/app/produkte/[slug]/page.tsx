@@ -173,8 +173,6 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
           </div>
         </section>
       )}
-
-      <div className="ramp ramp--1to6" aria-hidden="true" />
     </>
   );
 }

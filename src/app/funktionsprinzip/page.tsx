@@ -27,21 +27,19 @@ export default function PrinciplePage() {
         <PrincipleScroller principles={principles} />
       </section>
 
-      <section className="container" style={{ paddingTop: 48 }}>
-        <div className={`blueprint ${styles.cta}`}>
+      <section className={`container ${styles.ctaSection}`}>
+        <div className={`blueprint  ${styles.cta}`}>
           <Corners />
           <p className={styles.ctaText}>
             Sie wollen die Werte an Ihrer eigenen Scheibe sehen? Wir bringen Musterstreifen und
             Messgerät mit.
           </p>
-          <Link href="/kontakt" className="btn btn-primary blueprint">
+          <Link href="/kontakt" className="btn btn-inverse blueprint">
             <Corners />
             {site.cta}
           </Link>
         </div>
       </section>
-
-      <div className="ramp ramp--6to2" aria-hidden="true" />
     </>
   );
 }

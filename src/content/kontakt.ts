@@ -1,6 +1,6 @@
 /**
  * Kontakt page copy and form option lists.
- * Temporary map pin: Brandenburg Gate until a real AT address arrives.
+ * Temporary map pin: Wien until a real street address arrives.
  */
 
 export const kontakt = {
@@ -10,11 +10,11 @@ export const kontakt = {
     "Schildern Sie kurz Objekt und Ziel — wir melden uns mit Terminvorschlag und den nächsten Schritten. Musterstreifen und Messung vor Ort möglich.",
   hours: "Mo–Fr 9:00–17:00",
   mapLabel: "Standort (Platzhalter)",
-  mapNote: "Adresse vorübergehend — Brandenburg Gate, Berlin.",
-  /** Google Maps embed around Brandenburg Gate (~52.5163, 13.3777). */
-  mapEmbedSrc:
-    "https://www.google.com/maps?q=52.516275,13.377704&hl=de&z=16&output=embed",
-  mapLinkHref: "https://www.google.com/maps?q=52.516275,13.377704&hl=de&z=16",
+  mapNote: "Adresse vorübergehend — Wien, Österreich.",
+  /** Google Maps embed centered on Wien. */
+  mapEmbedSrc: "https://www.google.com/maps?q=Wien,+Austria&hl=de&z=12&output=embed",
+  mapLinkHref: "https://www.google.com/maps?q=Wien,+Austria&hl=de&z=12",
+  mapTitle: "Karte — Wien, Österreich (Platzhalter)",
   success:
     "Danke — Ihre Anfrage ist eingegangen. Wir melden uns in Kürze bei Ihnen.",
   submit: "Anfrage senden",

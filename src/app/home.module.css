@@ -1,18 +1,12 @@
 /* Home page layout. Colours, type and spacing come from the tokens in globals.css. */
 
-/* A band on the ladder: the ramps either side carry most of the air between two
-   bands, so this only has to hold the content clear of the colour starting to
-   move. Bands sharing a rung sit back to back and read as one field. */
 .band {
   padding-block: clamp(36px, 3.4vw, 48px);
 }
 
-/* ── Partner bar (sits inside the post-hero ramp) ────────────────────────── */
-.rampWithPartners {
-  /* Taller than a plain colour step so the carousel + label fit in the mid fade. */
-  height: clamp(112px, 16vw, 160px);
-  display: flex;
-  align-items: center;
+/* ── Partner bar ─────────────────────────────────────────────────────────── */
+.partnersBand {
+  padding-block: clamp(28px, 4vw, 44px);
 }
 
 /* ── Benefits ────────────────────────────────────────────────────────────── */
@@ -114,7 +108,19 @@
 }
 .compareCta {
   margin-top: 26px;
-  background: var(--color-accent-700);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+.compareCta:hover {
+  background: var(--color-accent-900);
+  border-color: var(--color-accent-900);
+  color: #fff;
+}
+.compareCta:active {
+  background: var(--s6);
+  border-color: var(--s6);
+  color: #fff;
 }
 
 /* Mirrored impact comparison: copy left, slider right. */
@@ -344,18 +350,6 @@
   border-left: 1px solid var(--color-on-dark-rule);
   min-height: 320px;
 }
-/* The ramps outside this field start from flat colour, so the photo — which runs
-   to both of its edges — has to settle onto the field's own rung first. */
-.consultMedia::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  --settle: clamp(56px, 8vw, 104px);
-  background: linear-gradient(to bottom, var(--field), transparent var(--settle)),
-    linear-gradient(to top, var(--field), transparent var(--settle));
-}
 .consultImage {
   object-fit: cover;
   opacity: 0.9;
@@ -379,7 +373,7 @@
 }
 .ratingPlate {
   padding: 30px 26px;
-  background: var(--color-neutral-100);
+  background: var(--color-neutral-200);
 }
 .ratingValue {
   font-family: var(--font-heading);
@@ -408,7 +402,7 @@
   padding: 24px 22px;
   gap: 12px;
   margin: 0;
-  background: var(--color-neutral-100);
+  background: var(--color-neutral-200);
 }
 .quoteBody {
   font-size: 14.5px;

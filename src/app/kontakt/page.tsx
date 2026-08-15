@@ -66,6 +66,7 @@ export default function KontaktPage() {
             title="Karte — Brandenburg Gate (Platzhalter)"
             src={kontakt.mapEmbedSrc}
             loading="lazy"
+            allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>

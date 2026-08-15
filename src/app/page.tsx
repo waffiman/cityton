@@ -8,6 +8,7 @@ import Corners from "@/components/Corners";
 import Faq from "@/components/Faq";
 import HeroFull from "@/components/HeroFull";
 import HeroSplit from "@/components/HeroSplit";
+import PartnerCarousel from "@/components/PartnerCarousel";
 import ProcessRibbon from "@/components/ProcessRibbon";
 import SeriesCard from "@/components/SeriesCard";
 import Stars from "@/components/Stars";
@@ -29,26 +30,8 @@ export default function HomePage() {
 
       {site.heroVariant === "vollbild" ? (
         <div className={`ramp ramp--5to1 ${styles.rampWithPartners}`}>
-          <div className={`container ${styles.partnerInner}`}>
-            <span className={styles.partnerLabel}>OFFIZIELLER PARTNER VON</span>
-            <a
-              href="https://llumar.com/en/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.partnerLogoLink}
-              aria-label="LLumar — Website in neuem Tab öffnen"
-            >
-              <Image src="/media/logo-llumar.png" alt="LLumar" width={120} height={30} className={styles.logoLlumar} />
-            </a>
-            <a
-              href="https://armolan.de/en/home"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.partnerLogoLink}
-              aria-label="Armolan Europe — Website in neuem Tab öffnen"
-            >
-              <Image src="/media/logo-armolan.png" alt="Armolan Europe" width={160} height={44} className={styles.logoArmolan} />
-            </a>
+          <div className="container">
+            <PartnerCarousel />
           </div>
         </div>
       ) : (

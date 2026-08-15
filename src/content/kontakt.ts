@@ -11,10 +11,10 @@ export const kontakt = {
   hours: "Mo–Fr 9:00–17:00",
   mapLabel: "Standort (Platzhalter)",
   mapNote: "Adresse vorübergehend — Brandenburg Gate, Berlin.",
-  /** OSM embed bbox around Brandenburg Gate (~52.5163, 13.3777). */
+  /** Google Maps embed around Brandenburg Gate (~52.5163, 13.3777). */
   mapEmbedSrc:
-    "https://www.openstreetmap.org/export/embed.html?bbox=13.3707%2C52.5130%2C13.3847%2C52.5195&layer=mapnik&marker=52.516275%2C13.377704",
-  mapLinkHref: "https://www.openstreetmap.org/?mlat=52.516275&mlon=13.377704#map=17/52.516275/13.377704",
+    "https://www.google.com/maps?q=52.516275,13.377704&hl=de&z=16&output=embed",
+  mapLinkHref: "https://www.google.com/maps?q=52.516275,13.377704&hl=de&z=16",
   success:
     "Danke — Ihre Anfrage ist eingegangen. Wir melden uns in Kürze bei Ihnen.",
   submit: "Anfrage senden",

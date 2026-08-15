@@ -36,23 +36,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Stats ────────────────────────────────────────────────────────── */}
-      <section className="container section">
-        <div className={`blueprint ${styles.stats}`}>
-          <Corners />
-          {about.stats.map((s) => (
-            <div key={s.label} className={styles.stat}>
-              <div
-                className={`${styles.statValue}${s.placeholder ? ` ${styles.statPlaceholder}` : ""}`}
-              >
-                {s.value}
-              </div>
-              <div className={styles.statLabel}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── Quote ────────────────────────────────────────────────────────── */}
       <section className="container section">
         <blockquote className={`blueprint ${styles.quotePlate}`}>
@@ -170,6 +153,17 @@ export default function AboutPage() {
               className={`card blueprint ${styles.partnerCard} ${p.highlight ? styles.partnerHighlight : ""}`}
             >
               <Corners />
+              {p.logo ? (
+                <div className={styles.partnerLogoWrap}>
+                  <Image
+                    src={p.logo.src}
+                    alt={p.logo.alt}
+                    width={p.logo.width}
+                    height={p.logo.height}
+                    className={styles.partnerLogo}
+                  />
+                </div>
+              ) : null}
               <div className="card-kicker">{p.kicker}</div>
               <div className="card-title" style={{ fontSize: 20 }}>
                 {p.title}

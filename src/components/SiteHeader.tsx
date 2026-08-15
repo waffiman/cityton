@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -39,8 +40,14 @@ export default function SiteHeader() {
     <header className={`${styles.header}${overHero ? ` ${styles.overHero}` : ""}`}>
       <div className={styles.bar}>
         <Link href="/" className={styles.brand} aria-label={`${site.name} — Startseite`}>
-          <span className={styles.wordmark}>{site.wordmark}</span>
-          <span className={styles.tagline}>{site.tagline}</span>
+          <Image
+            src="/media/logo-city-ton.png"
+            alt=""
+            width={168}
+            height={50}
+            className={styles.logo}
+            priority
+          />
         </Link>
 
         <nav className={styles.nav} aria-label="Hauptnavigation">

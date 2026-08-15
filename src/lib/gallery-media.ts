@@ -1,7 +1,7 @@
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 
-export type ReferenzenImage = {
+export type GalleryImage = {
   src: string;
   alt: string;
 };
@@ -10,9 +10,9 @@ const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
 
 /**
  * List every image in public/media/referenzen/, sorted by filename.
- * Called from the Referenzen page so newly dropped files show after refresh.
+ * Called from the Gallery page so newly dropped files show after refresh.
  */
-export async function listReferenzenImages(): Promise<ReferenzenImage[]> {
+export async function listGalleryImages(): Promise<GalleryImage[]> {
   const dir = path.join(process.cwd(), "public", "media", "referenzen");
 
   let names: string[];
@@ -29,6 +29,6 @@ export async function listReferenzenImages(): Promise<ReferenzenImage[]> {
     .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
     .map((name) => ({
       src: `/media/referenzen/${name.split("/").map(encodeURIComponent).join("/")}`,
-      alt: "Referenzobjekt",
+      alt: "Montiertes Objekt",
     }));
 }

@@ -6,6 +6,7 @@ type Partner = {
   kicker: string;
   title: string;
   body: string;
+  logo?: { src: string; alt: string; width: number; height: number };
   link?: { href: string; label: string };
   highlight?: boolean;
 };
@@ -20,17 +21,6 @@ export const about = {
     src: "/media/owner.jpg",
     alt: "Inhaber und Ansprechpartner von City-Ton Austria",
   },
-
-  /**
-   * Trust strip. Bracketed values are placeholders — replace with real figures.
-   * Projekte (20+) and rating come from existing site content.
-   */
-  stats: [
-    { value: "[15]+", label: "Jahre Erfahrung", placeholder: true },
-    { value: "20+", label: "Projekte", placeholder: false },
-    { value: "[1000]+", label: "m² verlegte Folie", placeholder: true },
-    { value: `${reviews.rating}/5`, label: "Kundenbewertung", placeholder: false },
-  ],
 
   quote:
     "„Wir verkaufen keine Folienrollen — wir liefern ein fertiges Ergebnis: Beratung, Material, Montage und Betreuung in einem Paket.“",
@@ -68,7 +58,7 @@ export const about = {
       { src: "/media/reflective-facade-upscaled.jpg", alt: "Fassade mit reflektierender Sonnenschutzfolie" },
       { src: "/media/referenzen/gallery_1.png", alt: "Referenzobjekt nach der Folierung" },
     ] satisfies Media[],
-    cta: { href: "/referenzen", label: "Alle Referenzen ansehen →" },
+    cta: { href: "/gallery", label: "Zur Gallery →" },
   },
 
   peopleSteps: {
@@ -104,18 +94,21 @@ export const about = {
       kicker: "Hersteller",
       title: "LLumar",
       body: "Material, technische Daten und Garantie vom weltweiten Folienhersteller.",
+      logo: { src: "/media/logo-llumar.png", alt: "LLumar", width: 120, height: 30 },
       link: { href: "https://www.llumar.at", label: "llumar.at →" },
     },
     {
       kicker: "Hersteller",
       title: "Armolan Europe",
       body: "Serien, Schulung und Zertifizierung der Monteure.",
+      logo: { src: "/media/logo-armolan.png", alt: "Armolan Europe", width: 160, height: 44 },
       link: { href: "https://armolan.eu", label: "armolan.eu →" },
     },
     {
       kicker: "City-Ton Austria",
       title: "Beratung, Aufmaß, Montage, Betreuung",
       body: "Serie wählen, zertifiziert montieren, Ansprechpartner bleiben.",
+      logo: { src: "/media/logo-city-ton.png", alt: "City-Ton Austria", width: 160, height: 48 },
       highlight: true,
     },
   ] as Partner[],

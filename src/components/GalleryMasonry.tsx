@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useId, useState } from "react";
-import type { ReferenzenImage } from "@/lib/referenzen-media";
-import styles from "@/app/referenzen/referenzen.module.css";
+import type { GalleryImage } from "@/lib/gallery-media";
+import styles from "@/app/gallery/gallery.module.css";
 
 type Props = {
-  images: ReferenzenImage[];
+  images: GalleryImage[];
 };
 
-export default function ReferenzenGallery({ images }: Props) {
+export default function GalleryMasonry({ images }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const titleId = useId();
   const open = openIndex !== null;
@@ -82,7 +82,7 @@ export default function ReferenzenGallery({ images }: Props) {
           onClick={close}
         >
           <span id={titleId} className="sr-only">
-            Vergrößertes Referenzfoto
+            Vergrößertes Galeriefoto
           </span>
 
           <button

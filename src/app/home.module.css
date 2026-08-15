@@ -9,47 +9,10 @@
 
 /* ── Partner bar (sits inside the post-hero ramp) ────────────────────────── */
 .rampWithPartners {
-  /* Taller than a plain colour step so logos + label fit in the mid fade. */
-  height: clamp(96px, 14vw, 140px);
+  /* Taller than a plain colour step so the carousel + label fit in the mid fade. */
+  height: clamp(112px, 16vw, 160px);
   display: flex;
   align-items: center;
-}
-
-.partnerInner {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  padding-block: 0;
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.partnerLabel {
-  font-size: 19px;
-  letter-spacing: 0.18em;
-  color: color-mix(in srgb, var(--color-text) 58%, transparent);
-  font-family: var(--font-heading);
-}
-.partnerLogoLink {
-  display: inline-flex;
-  line-height: 0;
-  color: inherit;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  background: var(--color-surface);
-}
-.logoLlumar {
-  height: 30px;
-  width: auto;
-  object-fit: contain;
-}
-.logoArmolan {
-  height: 44px;
-  width: auto;
-  object-fit: contain;
 }
 
 /* ── Benefits ────────────────────────────────────────────────────────────── */

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import ReferenzenGallery from "@/components/ReferenzenGallery";
-import { referenzen } from "@/content/referenzen";
-import { listReferenzenImages } from "@/lib/referenzen-media";
-import styles from "./referenzen.module.css";
+import GalleryMasonry from "@/components/GalleryMasonry";
+import { gallery } from "@/content/gallery";
+import { listGalleryImages } from "@/lib/gallery-media";
+import styles from "./gallery.module.css";
 
 export const metadata: Metadata = {
-  title: "Referenzen",
+  title: "Gallery",
   description:
     "Objektgalerie montierter Sonnenschutz- und Sicherheitsfolien von City-Ton Austria.",
 };
@@ -13,24 +13,24 @@ export const metadata: Metadata = {
 /** Fresh folder scan so newly dropped photos appear after refresh. */
 export const dynamic = "force-dynamic";
 
-export default async function ReferenzenPage() {
-  const images = await listReferenzenImages();
+export default async function GalleryPage() {
+  const images = await listGalleryImages();
 
   return (
     <>
       <section className="container" style={{ paddingTop: 56 }}>
-        <h6 className="eyebrow">{referenzen.eyebrow}</h6>
-        <h1 className={styles.title}>{referenzen.title}</h1>
+        <h6 className="eyebrow">{gallery.eyebrow}</h6>
+        <h1 className={styles.title}>{gallery.title}</h1>
         <p className="lead" style={{ maxWidth: "58ch" }}>
-          {referenzen.lead}
+          {gallery.lead}
         </p>
       </section>
 
       <section className={`container ${styles.gallerySection}`}>
         {images.length === 0 ? (
-          <p className={styles.empty}>{referenzen.empty}</p>
+          <p className={styles.empty}>{gallery.empty}</p>
         ) : (
-          <ReferenzenGallery images={images} />
+          <GalleryMasonry images={images} />
         )}
       </section>
 

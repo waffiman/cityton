@@ -46,35 +46,22 @@ export default function AboutPage() {
       </section>
 
       {/* ── Team mosaic ──────────────────────────────────────────────────── */}
-      <section className="container section">
-        <div className={styles.sectionHead}>
-          <h6 className="eyebrow">{about.team.eyebrow}</h6>
-          <h2 className={styles.sectionTitle}>{about.team.title}</h2>
-          <p className={styles.sectionBody}>{about.team.body}</p>
-        </div>
-        <div className={styles.teamMosaic}>
-          <figure className={`blueprint ${styles.teamMain}`}>
-            <Corners />
-            <Image
-              src={about.team.main.src}
-              alt={about.team.main.alt}
-              fill
-              sizes="(max-width: 900px) 100vw, 60vw"
-              className={styles.mosaicImg}
-            />
-            {about.team.main.label ? (
-              <figcaption className={styles.mosaicLabel}>{about.team.main.label}</figcaption>
-            ) : null}
-          </figure>
-          <div className={styles.teamSide}>
-            {about.team.side.map((img) => (
-              <figure key={img.src} className={`blueprint ${styles.teamSideFig}`}>
+      <section className={`container section ${styles.teamSection}`}>
+        <div className={styles.teamLayout}>
+          <div className={styles.teamCopy}>
+            <h6 className="eyebrow">{about.team.eyebrow}</h6>
+            <h2 className={styles.sectionTitle}>{about.team.title}</h2>
+            <p className={styles.sectionBody}>{about.team.body}</p>
+          </div>
+          <div className={styles.teamMosaic}>
+            {[about.team.main, ...about.team.side].map((img) => (
+              <figure key={img.src} className={`blueprint ${styles.teamFig}`}>
                 <Corners />
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
-                  sizes="(max-width: 900px) 50vw, 28vw"
+                  sizes="(max-width: 1000px) 30vw, 140px"
                   className={styles.mosaicImg}
                 />
                 {img.label ? <figcaption className={styles.mosaicLabel}>{img.label}</figcaption> : null}
@@ -85,29 +72,31 @@ export default function AboutPage() {
       </section>
 
       {/* ── Vor Ort ──────────────────────────────────────────────────────── */}
-      <section className="container section">
-        <div className={styles.sectionHead}>
-          <h6 className="eyebrow">{about.onsite.eyebrow}</h6>
-          <h2 className={styles.sectionTitle}>{about.onsite.title}</h2>
-          <p className={styles.sectionBody}>{about.onsite.body}</p>
+      <section className={`section--5 on-dark ${styles.onsiteBand}`}>
+        <div className={`container ${styles.onsiteLayout}`}>
+          <div className={styles.onsiteCopy}>
+            <h6 className={`eyebrow ${styles.onsiteEyebrow}`}>{about.onsite.eyebrow}</h6>
+            <h2 className={styles.onsiteTitle}>{about.onsite.title}</h2>
+            <p className={styles.onsiteBody}>{about.onsite.body}</p>
+            <Link href={about.onsite.cta.href} className={`btn btn-inverse ${styles.sectionCta}`}>
+              {about.onsite.cta.label}
+            </Link>
+          </div>
+          <div className={styles.onsiteGrid}>
+            {about.onsite.images.map((img) => (
+              <figure key={img.src} className={`blueprint on-dark ${styles.onsiteFig}`}>
+                <Corners />
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 22vw"
+                  className={styles.mosaicImg}
+                />
+              </figure>
+            ))}
+          </div>
         </div>
-        <div className={styles.onsiteGrid}>
-          {about.onsite.images.map((img) => (
-            <figure key={img.src} className={`blueprint ${styles.onsiteFig}`}>
-              <Corners />
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 700px) 100vw, 33vw"
-                className={styles.mosaicImg}
-              />
-            </figure>
-          ))}
-        </div>
-        <Link href={about.onsite.cta.href} className={`btn btn-secondary ${styles.sectionCta}`}>
-          {about.onsite.cta.label}
-        </Link>
       </section>
 
       {/* ── People + process ─────────────────────────────────────────────── */}

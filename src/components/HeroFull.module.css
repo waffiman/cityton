@@ -2,7 +2,8 @@
   position: relative;
   background: var(--s5);
   overflow: hidden;
-  min-height: 640px;
+  /* Slightly past the fold so the next light band never peeks as a white stripe. */
+  min-height: calc(100svh + 32px);
   display: flex;
   align-items: flex-end;
 }
@@ -74,9 +75,6 @@
 }
 
 @media (max-width: 700px) {
-  .hero {
-    min-height: 520px;
-  }
   .inner {
     padding-block: 72px;
   }

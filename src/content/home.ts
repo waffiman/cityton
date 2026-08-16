@@ -145,5 +145,5 @@ export const consultation = {
     { label: "DAUER", value: "rund 30 Minuten vor Ort" },
     { label: "KOSTEN", value: "keine — auch ohne Auftrag" },
   ],
-  image: { src: "/media/interior-2.jpg", alt: "Wohnraum mit getönter Verglasung" },
+  image: { src: "/media/referenzen/interior-2.jpg", alt: "Wohnraum mit getönter Verglasung" },
 };

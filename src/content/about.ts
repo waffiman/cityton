@@ -37,12 +37,12 @@ export const about = {
     } satisfies Media,
     side: [
       {
-        src: "/media/material-copy.png",
+        src: "/media/material-2.png",
         alt: "Material wird vor Ort ausgepackt und vorbereitet",
         label: "Material bereit",
       },
       {
-        src: "/media/facade-wide-crop.jpg",
+        src: "/media/prof-montage.jpg",
         alt: "Folienmontage an einem Schaufenster",
         label: "Montage vor Ort",
       },
@@ -54,11 +54,11 @@ export const about = {
     title: "Vor Ort.",
     body: "Ein kurzer Einblick in die Realität der Montage — fertige Objekte und Arbeit am Glas.",
     images: [
-      { src: "/media/referenzen/gallery_4.png", alt: "Wohnobjekt mit dual-reflektierender Folie" },
-      { src: "/media/reflective-facade-upscaled.jpg", alt: "Fassade mit reflektierender Sonnenschutzfolie" },
+      { src: "/media/referenzen/gallery_2.png", alt: "Wohnobjekt mit dual-reflektierender Folie" },
+      { src: "/media/referenzen/reflective-facade-upscaled.jpg", alt: "Fassade mit reflektierender Sonnenschutzfolie" },
       { src: "/media/referenzen/gallery_1.png", alt: "Referenzobjekt nach der Folierung" },
     ] satisfies Media[],
-    cta: { href: "/gallery", label: "Zur Gallery →" },
+    cta: { href: "/gallery", label: "Zur Galerie →" },
   },
 
   peopleSteps: {
@@ -82,7 +82,7 @@ export const about = {
         num: "03",
         title: "Übergabe & Betreuung",
         body: "Gemeinsame Abnahme, Pflegehinweise und ein Ansprechpartner auch danach.",
-        image: { src: "/media/after-help.png", alt: "Montageabschluss am Objekt" },
+        image: { src: "/media/handshake-full.png", alt: "Montageabschluss am Objekt" },
       },
     ],
   },

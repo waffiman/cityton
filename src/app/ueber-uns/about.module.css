@@ -81,44 +81,98 @@
   border: 1px solid var(--color-on-dark-rule);
 }
 
-/* ── Team mosaic ─────────────────────────────────────────────────────────── */
+/* ── Team — copy left, smaller photos right ──────────────────────────────── */
+.teamSection {
+  padding-bottom: var(--section-gap);
+}
+
+.teamLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+}
+
+.teamCopy {
+  max-width: 42ch;
+  text-align: left;
+}
+
 .teamMosaic {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.9fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  align-items: stretch;
-  min-height: clamp(320px, 42vw, 520px);
+  width: 100%;
+  justify-self: stretch;
 }
-.teamMain {
+
+.teamFig {
   position: relative;
   margin: 0;
-  min-height: 100%;
-  overflow: hidden;
-}
-.teamSide {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 14px;
-  min-height: 100%;
-}
-.teamSideFig {
-  position: relative;
-  margin: 0;
-  min-height: 0;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
-/* ── On site ─────────────────────────────────────────────────────────────── */
+/* ── On site (Praxis) — dark band, photos left, copy right ───────────────── */
+.onsiteBand {
+  margin: 0;
+  padding-block: clamp(48px, 6vw, 80px);
+}
+
+.onsiteLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+  text-align: left;
+}
+
+.onsiteCopy {
+  max-width: 42ch;
+  justify-self: end;
+  order: 2;
+}
+
+.onsiteEyebrow {
+  color: var(--color-accent-300);
+}
+
+.onsiteTitle {
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: var(--color-on-dark-strong);
+}
+
+.onsiteBody {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-on-dark-muted);
+}
+
+.onsiteCopy .sectionCta {
+  display: inline-flex;
+  margin-top: 24px;
+}
+
 .onsiteGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+  order: 1;
 }
+
 .onsiteFig {
   position: relative;
   margin: 0;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
+}
+
+.onsiteFig .mosaicImg {
+  object-position: left center;
 }
 
 /* ── People steps ────────────────────────────────────────────────────────── */
@@ -338,26 +392,32 @@
     gap: 32px;
   }
   .teamMosaic {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+    justify-self: stretch;
+  }
+  .teamLayout {
     grid-template-columns: 1fr;
-    min-height: 0;
+    align-items: start;
   }
-  .teamMain {
-    aspect-ratio: 16 / 10;
+  .onsiteLayout {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
-  .teamSide {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: none;
+  .onsiteCopy,
+  .onsiteGrid {
+    order: unset;
+    justify-self: start;
   }
-  .teamSideFig {
-    aspect-ratio: 4 / 3;
+  .onsiteGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .steps,
-  .partnerGrid,
-  .onsiteGrid {
+  .partnerGrid {
     grid-template-columns: 1fr;
   }
   .onsiteFig {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 3 / 4;
   }
   .quotePlate {
     padding: 34px 26px;
@@ -365,10 +425,10 @@
 }
 
 @media (max-width: 640px) {
-  .teamSide {
+  .whyGrid {
     grid-template-columns: 1fr;
   }
-  .whyGrid {
+  .onsiteGrid {
     grid-template-columns: 1fr;
   }
 }

@@ -34,6 +34,7 @@
 }
 
 .tileBtn {
+  position: relative;
   display: block;
   width: 100%;
   padding: 0;
@@ -42,6 +43,7 @@
   background: var(--s2);
   cursor: zoom-in;
   line-height: 0;
+  overflow: hidden;
 }
 
 .tileBtn:focus-visible {
@@ -53,6 +55,51 @@
   width: 100%;
   height: auto;
   display: block;
+}
+
+.tileOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 16px;
+  text-align: center;
+  background: color-mix(in srgb, var(--color-accent-900) 55%, transparent);
+  color: var(--color-on-dark-strong);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+  line-height: 1.25;
+}
+
+.tileBtn:hover .tileOverlay,
+.tileBtn:focus-visible .tileOverlay {
+  opacity: 1;
+}
+
+.tileProject {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(15px, 1.5vw, 18px);
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+
+.tileFilm {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-300);
+  max-width: 22ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tileOverlay {
+    transition: none;
+  }
 }
 
 /* ── Lightbox ────────────────────────────────────────────────────────────── */
@@ -115,16 +162,43 @@
 .lightboxFigure {
   max-width: min(1200px, 100%);
   max-height: calc(100vh - 112px);
-  line-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  line-height: 1.25;
 }
 
 .lightboxImg {
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: calc(100vh - 112px);
+  max-height: calc(100vh - 180px);
   object-fit: contain;
   display: block;
+}
+
+.lightboxCaption {
+  text-align: center;
+  color: var(--color-on-dark-strong);
+  max-width: 36ch;
+  padding-inline: 12px;
+}
+
+.lightboxProject {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(18px, 2.2vw, 24px);
+  letter-spacing: -0.015em;
+}
+
+.lightboxFilm {
+  margin: 8px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-300);
 }
 
 @media (max-width: 1100px) {

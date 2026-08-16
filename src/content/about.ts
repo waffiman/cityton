@@ -31,13 +31,13 @@ export const about = {
     title: "Die Menschen hinter der Folie.",
     body: "Von der ersten Beratung und dem Aufmaß bis zur Montage und der Betreuung danach — bei City-Ton stecken dieselben Menschen hinter dem Ergebnis.",
     main: {
-      src: "/media/women-applying-window-tint.jpg",
+      src: "/media/glass-work.jpg",
       alt: "Inhaber bei der Arbeit am Glas",
       label: "Arbeit am Glas",
     } satisfies Media,
     side: [
       {
-        src: "/media/Architect-1.jpg",
+        src: "/media/material-copy.png",
         alt: "Material wird vor Ort ausgepackt und vorbereitet",
         label: "Material bereit",
       },
@@ -70,19 +70,19 @@ export const about = {
         num: "01",
         title: "Beratung & Aufmaß",
         body: "Wir kommen vor Ort, hören zu und messen selbst — damit die Empfehlung zum Objekt passt.",
-        image: { src: "/media/consult-2.jpg", alt: "Vorbereitung und Material vor dem Aufmaß" },
+        image: { src: "/media/measurement.jpg", alt: "Vorbereitung und Material vor dem Aufmaß" },
       },
       {
         num: "02",
         title: "Professionelle Montage",
         body: "Zertifizierte Verklebung im laufenden Betrieb möglich — staubarm und abschnittsweise.",
-        image: { src: "/media/install-work-1.jpg", alt: "Professionelle Folienmontage am Fenster" },
+        image: { src: "/media/montage.png", alt: "Professionelle Folienmontage am Fenster" },
       },
       {
         num: "03",
         title: "Übergabe & Betreuung",
         body: "Gemeinsame Abnahme, Pflegehinweise und ein Ansprechpartner auch danach.",
-        image: { src: "/media/install-together-small.jpg", alt: "Montageabschluss am Objekt" },
+        image: { src: "/media/after-help.png", alt: "Montageabschluss am Objekt" },
       },
     ],
   },

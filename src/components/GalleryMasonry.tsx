@@ -58,7 +58,7 @@ export default function GalleryMasonry({ images }: Props) {
               type="button"
               className={styles.tileBtn}
               onClick={() => setOpenIndex(i)}
-              aria-label="Bild vergrößern"
+              aria-label={`${img.project} — ${img.film}. Bild vergrößern`}
             >
               <Image
                 src={img.src}
@@ -68,6 +68,10 @@ export default function GalleryMasonry({ images }: Props) {
                 sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
                 className={styles.tileImg}
               />
+              <span className={styles.tileOverlay} aria-hidden="true">
+                <span className={styles.tileProject}>{img.project}</span>
+                <span className={styles.tileFilm}>{img.film}</span>
+              </span>
             </button>
           </li>
         ))}
@@ -82,7 +86,7 @@ export default function GalleryMasonry({ images }: Props) {
           onClick={close}
         >
           <span id={titleId} className="sr-only">
-            Vergrößertes Galeriefoto
+            {current.project} — {current.film}
           </span>
 
           <button
@@ -140,6 +144,10 @@ export default function GalleryMasonry({ images }: Props) {
               className={styles.lightboxImg}
               priority
             />
+            <div className={styles.lightboxCaption}>
+              <p className={styles.lightboxProject}>{current.project}</p>
+              <p className={styles.lightboxFilm}>{current.film}</p>
+            </div>
           </div>
         </div>
       ) : null}

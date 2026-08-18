@@ -1,0 +1,105 @@
+// Prisma schema — admin panel data model.
+// Client is generated (Prisma 7 `prisma-client` generator) into src/generated/prisma.
+// DATABASE_URL is provided via prisma.config.ts (dotenv).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Film manufacturer — Armolan, LLumar.
+model Producer {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  visible   Boolean   @default(true)
+  sortOrder Int       @default(0)
+  products  Product[]
+}
+
+/// A product "Serie" shown on the home page and /produkte.
+model Category {
+  id         String    @id @default(cuid())
+  slug       String    @unique
+  name       String
+  family     String
+  tag        String
+  extraTag   String?
+  summary    String
+  glyph      String // reflexion | absorption | kraft | uv
+  glyphField String // dark | paper
+  useCases   String[]
+  metrics    Json? // overview-card metrics (label/value/bar)
+  detail     Json? // long-form stats/facts/variants content
+  visible    Boolean   @default(true)
+  sortOrder  Int       @default(0)
+  products   Product[]
+}
+
+/// An individual film / "Folie".
+model Product {
+  id              String    @id @default(cuid())
+  code            String    @unique
+  name            String
+  slug            String    @unique
+  family          String
+  mount           String // innen | außen | innen / außen
+  thicknessMil    Int?
+  thicknessMicron Int?
+  application     String?
+  certification   String?
+  note            String?
+  single          Json // FilmValues
+  dual            Json? // FilmValues
+  imageUrl        String?
+  visible         Boolean   @default(true)
+  sortOrder       Int       @default(0)
+  producerId      String
+  producer        Producer  @relation(fields: [producerId], references: [id])
+  categoryId      String?
+  category        Category? @relation(fields: [categoryId], references: [id])
+
+  @@index([producerId])
+  @@index([categoryId])
+}
+
+/// CRM record — unifies kontakt inquiries, beratung leads and future chatbot leads.
+model Inquiry {
+  id         String   @id @default(cuid())
+  source     String // kontakt | beratung | chatbot
+  status     String   @default("new") // new | in_progress | done | archived
+  name       String?
+  objektart  String?
+  flaeche    String?
+  goals      String[]
+  phone      String?
+  email      String?
+  message    String?
+  dedupeKeys String[]
+  notes      String?
+  createdAt  DateTime @default(now())
+
+  @@index([dedupeKeys])
+  @@index([status])
+  @@index([source])
+}
+
+/// Blog post authored in the admin panel.
+model Post {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String?
+  coverUrl    String?
+  contentHtml String    @default("")
+  status      String    @default("draft") // draft | published
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([status])
+}

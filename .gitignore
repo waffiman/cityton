@@ -10,3 +10,10 @@ tsconfig.tsbuildinfo
 data/beratung-leads.json
 data/kontakt-inquiries.json
 
+
+/src/generated/prisma
+
+# VPS control (scripts/vps.sh) — never commit secrets
+scripts/.vps-secret
+scripts/vps.env
+scripts/.vps-known-hosts

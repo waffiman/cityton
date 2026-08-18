@@ -130,6 +130,50 @@ export default function SeriesGlyph({ variant, field }: { variant: Series["glyph
     );
   }
 
+  if (variant === "dekor") {
+    // Matt/privacy film: light still gets through, but the etched surface
+    // scatters it, so the view behind the glass dissolves.
+    return (
+      <svg viewBox="0 0 200 110" aria-hidden="true">
+        <rect x="96" y="8" width="9" height="94" fill="var(--color-accent-500)" opacity=".14" />
+        <line x1="96" y1="8" x2="96" y2="102" stroke={ink} strokeWidth="1" />
+
+        {/* etched face — the matt side that breaks the image up */}
+        <path
+          d="M105 12 L107.6 16.3 L105 20.6 L107.6 24.9 L105 29.2 L107.6 33.5 L105 37.8 L107.6 42.1 L105 46.4 L107.6 50.7 L105 55 L107.6 59.3 L105 63.6 L107.6 67.9 L105 72.2 L107.6 76.5 L105 80.8 L107.6 85.1 L105 89.4 L107.6 93.7 L105 98"
+          fill="none"
+          stroke={ink}
+          strokeWidth="1"
+          strokeLinejoin="round"
+        />
+
+        {/* one clean sightline in */}
+        <g stroke="var(--color-signal)" {...line} strokeWidth={1.7}>
+          <path d="M14 55 L93 55" />
+        </g>
+        <path d="M94 55 L87.4 57.5 L87.4 52.5 Z" fill="var(--color-signal)" />
+
+        {/* scattered on the way out — light passes, the image does not */}
+        <g stroke="var(--color-accent-400)" {...line} strokeWidth={1.1} opacity=".9">
+          <path d="M107.2 53 L148.8 15.5" />
+          <path d="M107.7 53.7 L163.4 26.5" />
+          <path d="M108 54.5 L169 43.7" />
+          <path d="M108 55.5 L169 66.3" />
+          <path d="M107.7 56.3 L163.4 83.5" />
+          <path d="M107.2 57 L148.8 94.5" />
+        </g>
+        <g fill="var(--color-accent-400)" opacity=".9">
+          <path d="M149.6 14.9 L146.8 20.7 L143.5 17 Z" />
+          <path d="M164.3 26.1 L160 30.9 L157.8 26.5 Z" />
+          <path d="M170 43.5 L164.5 47 L163.7 42.1 Z" />
+          <path d="M170 66.5 L163.7 67.9 L164.5 63 Z" />
+          <path d="M164.3 83.9 L157.8 83.5 L160 79.1 Z" />
+          <path d="M149.6 95.1 L143.5 93 L146.8 89.3 Z" />
+        </g>
+      </svg>
+    );
+  }
+
   return (
     <svg viewBox="0 0 200 110" aria-hidden="true">
       <rect x="96" y="8" width="7" height="94" fill="var(--color-accent-500)" opacity=".12" />

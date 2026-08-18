@@ -1,0 +1,306 @@
+{
+  "site": {
+    "name": "City-Ton Austria",
+    "wordmark": "CITY-TON",
+    "tagline": "TODO",
+    "description": "TODO",
+    "cta": "TODO",
+    "partners": "TODO"
+  },
+  "nav": {
+    "home": "TODO",
+    "about": "TODO",
+    "products": "TODO",
+    "principle": "TODO",
+    "references": "TODO",
+    "contact": "TODO"
+  },
+  "footer": {
+    "pagesTitle": "TODO",
+    "contactTitle": "TODO",
+    "legalTitle": "TODO",
+    "imprint": "TODO",
+    "privacy": "TODO",
+    "hours": "TODO",
+    "rights": "TODO"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "TODO",
+      "title": "TODO",
+      "subtitle": "TODO",
+      "cta": "TODO"
+    },
+    "benefits": {
+      "title": "TODO",
+      "footnote": "TODO",
+      "items": [
+        {
+          "title": "TODO",
+          "body": "TODO",
+          "meta": "TODO"
+        },
+        {
+          "title": "TODO",
+          "body": "TODO",
+          "meta": "TODO"
+        },
+        {
+          "title": "TODO",
+          "body": "TODO",
+          "meta": "TODO"
+        },
+        {
+          "title": "TODO",
+          "body": "TODO",
+          "meta": "TODO"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "TODO",
+      "withoutLabel": "TODO",
+      "appliedLabel": "TODO",
+      "rows": [
+        {
+          "without": "TODO",
+          "applied": "TODO"
+        },
+        {
+          "without": "TODO",
+          "applied": "TODO"
+        },
+        {
+          "without": "TODO",
+          "applied": "TODO"
+        },
+        {
+          "without": "TODO",
+          "applied": "TODO"
+        },
+        {
+          "without": "TODO",
+          "applied": "TODO"
+        }
+      ]
+    },
+    "process": {
+      "title": "TODO",
+      "note": "TODO",
+      "steps": [
+        {
+          "title": "TODO",
+          "body": "TODO"
+        },
+        {
+          "title": "TODO",
+          "body": "TODO"
+        },
+        {
+          "title": "TODO",
+          "body": "TODO"
+        },
+        {
+          "title": "TODO",
+          "body": "TODO"
+        }
+      ]
+    },
+    "live": {
+      "eyebrow": "TODO",
+      "title": "TODO",
+      "body": "TODO",
+      "value": "−7,6 °C",
+      "note": "TODO"
+    },
+    "industries": {
+      "title": "TODO",
+      "body": "TODO",
+      "items": [
+        "TODO",
+        "TODO",
+        "TODO",
+        "TODO",
+        "TODO",
+        "TODO"
+      ]
+    },
+    "series": {
+      "title": "TODO",
+      "intro": "TODO",
+      "more": "TODO"
+    },
+    "reviews": {
+      "title": "TODO",
+      "rating": "4,9",
+      "countLabel": "TODO"
+    },
+    "consultation": {
+      "eyebrow": "TODO",
+      "title": "TODO",
+      "body": "TODO"
+    }
+  },
+  "faq": {
+    "title": "TODO",
+    "items": [
+      {
+        "q": "TODO",
+        "a": "TODO"
+      },
+      {
+        "q": "TODO",
+        "a": "TODO"
+      },
+      {
+        "q": "TODO",
+        "a": "TODO"
+      },
+      {
+        "q": "TODO",
+        "a": "TODO"
+      },
+      {
+        "q": "TODO",
+        "a": "TODO"
+      },
+      {
+        "q": "TODO",
+        "a": "TODO"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "TODO",
+    "title": "TODO",
+    "lead": "TODO",
+    "quote": "TODO",
+    "whyTitle": "TODO",
+    "why": [
+      {
+        "title": "TODO",
+        "body": "TODO"
+      },
+      {
+        "title": "TODO",
+        "body": "TODO"
+      },
+      {
+        "title": "TODO",
+        "body": "TODO"
+      },
+      {
+        "title": "TODO",
+        "body": "TODO"
+      }
+    ],
+    "partnersTitle": "TODO",
+    "industriesTitle": "TODO",
+    "industries": [
+      "TODO",
+      "TODO",
+      "TODO",
+      "TODO",
+      "TODO",
+      "TODO",
+      "TODO",
+      "TODO",
+      "TODO",
+      "TODO"
+    ]
+  },
+  "products": {
+    "eyebrow": "TODO",
+    "title": "TODO",
+    "lead": "TODO",
+    "seriesTitle": "TODO",
+    "seriesNames": {
+      "reflective": "TODO",
+      "spectrallySelective": "TODO",
+      "lowE": "TODO",
+      "safety": "TODO",
+      "uvClear": "TODO"
+    },
+    "filterAll": "TODO",
+    "detailCta": "TODO"
+  },
+  "principle": {
+    "eyebrow": "TODO",
+    "title": "TODO",
+    "chapters": [
+      {
+        "kicker": "TODO",
+        "title": "TODO",
+        "body": "TODO",
+        "note": "TODO"
+      },
+      {
+        "kicker": "TODO",
+        "title": "TODO",
+        "body": "TODO",
+        "note": "TODO"
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "TODO",
+    "title": "TODO",
+    "lead": "TODO",
+    "hours": "TODO",
+    "hoursLabel": "TODO",
+    "location": "TODO",
+    "locationLabel": "TODO",
+    "phoneLabel": "TODO",
+    "emailLabel": "TODO",
+    "form": {
+      "name": "Name",
+      "email": "TODO",
+      "phone": "TODO",
+      "objectType": "TODO",
+      "goal": "TODO",
+      "message": "TODO",
+      "submit": "TODO",
+      "submitting": "TODO",
+      "success": "TODO",
+      "error": "TODO",
+      "privacyPrefix": "TODO",
+      "privacyLink": "TODO",
+      "privacySuffix": "TODO"
+    },
+    "objectTypes": {
+      "wohnung": "TODO",
+      "haus": "TODO",
+      "buero": "TODO",
+      "gewerbe": "TODO",
+      "sonstiges": "TODO"
+    },
+    "goals": {
+      "sonnenschutz": "TODO",
+      "uv": "TODO",
+      "energie": "TODO",
+      "einbruchschutz": "TODO",
+      "privatsphaere": "TODO"
+    }
+  },
+  "warranty": {
+    "short": "TODO"
+  },
+  "imprint": {
+    "title": "TODO",
+    "companyLabel": "TODO",
+    "company": "City-Ton Austria",
+    "addressLabel": "TODO",
+    "address": "TODO",
+    "vatLabel": "TODO",
+    "vat": "",
+    "contactLabel": "TODO"
+  },
+  "common": {
+    "readMore": "TODO",
+    "back": "TODO",
+    "close": "TODO",
+    "loading": "TODO",
+    "notFoundTitle": "TODO",
+    "notFoundBody": "TODO"
+  }
+}

@@ -1,6 +1,5 @@
 /**
  * Kontakt page copy and form option lists.
- * Temporary map pin: Wien until a real street address arrives.
  */
 
 export const kontakt = {
@@ -8,12 +7,11 @@ export const kontakt = {
   lead:
     "Schildern Sie kurz Objekt und Ziel — wir melden uns mit Terminvorschlag und den nächsten Schritten. Musterstreifen und Messung vor Ort möglich.",
   hours: "Mo–Fr 9:00–17:00",
-  mapLabel: "Standort (Platzhalter)",
-  mapNote: "Adresse vorübergehend — Wien, Österreich.",
+  mapLabel: "Standort",
   /** Google Maps embed centered on Wien. */
-  mapEmbedSrc: "https://www.google.com/maps?q=Wien,+Austria&hl=de&z=12&output=embed",
-  mapLinkHref: "https://www.google.com/maps?q=Wien,+Austria&hl=de&z=12",
-  mapTitle: "Karte — Wien, Österreich (Platzhalter)",
+  mapEmbedSrc: "https://www.google.com/maps?q=Adelheid-Popp-Gasse+24%2C+1220+Wien%2C+%C3%96sterreich&hl=de&z=16&output=embed",
+  mapLinkHref: "https://www.google.com/maps?q=Adelheid-Popp-Gasse+24%2C+1220+Wien%2C+%C3%96sterreich&hl=de&z=16",
+  mapTitle: "Karte — Adelheid-Popp-Gasse 24, 1220 Wien",
   success:
     "Danke — Ihre Anfrage ist eingegangen. Wir melden uns in Kürze bei Ihnen.",
   messageLabel: "Nachricht",

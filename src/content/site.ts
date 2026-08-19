@@ -16,8 +16,7 @@ export const site = {
     phone: "+43 677 61520700",
     phoneTel: "+4367761520700",
     email: "office@city-ton.com",
-    /** TODO(client): replace with real AT street address — Wien is a temporary map pin. */
-    address: "Wien, Österreich (Platzhalter)",
+    address: "Adelheid-Popp-Gasse 24, 1220 Wien",
   },
   cta: "Kostenlose Beratung",
   /** "vollbild" = full-bleed photo hero, "split" = two-column hero with video. */

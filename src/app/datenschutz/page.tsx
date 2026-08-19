@@ -32,9 +32,11 @@ export default function DatenschutzPage() {
           <p>
             <strong>City-Ton Austria</strong>
           </p>
+          <p>{site.contact.address}</p>
+          <p>Österreich</p>
           <p>
             <span className={styles.todo}>
-              Firmenwortlaut, Straße, PLZ und Ort — vom Kunden zu ergänzen
+              Firmenwortlaut und UID-Nummer — vom Kunden zu ergänzen
             </span>
           </p>
           <p>Telefon: {site.contact.phone}</p>

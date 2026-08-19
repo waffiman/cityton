@@ -70,13 +70,6 @@ a.sideValue:hover {
   color: var(--color-accent-700);
 }
 
-.sideNote {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.45;
-  color: color-mix(in srgb, var(--color-text) 55%, transparent);
-}
-
 .mapFrame {
   position: relative;
   width: 100%;

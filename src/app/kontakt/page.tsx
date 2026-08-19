@@ -69,7 +69,6 @@ export default function KontaktPage() {
                   <span className={styles.sideValue}>{kontakt.hours}</span>
                 </li>
               </ul>
-              <p className={styles.sideNote}>{kontakt.mapNote}</p>
             </aside>
           </div>
         </div>

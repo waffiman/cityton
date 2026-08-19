@@ -48,8 +48,11 @@ services:
       TURNSTILE_SECRET_KEY: ${TURNSTILE_SECRET_KEY:-}
       NODE_ENV: production
       PORT: 3000
+    # A Caddy reverse proxy on the host owns :80/:443 and terminates TLS, so the
+    # app binds loopback only. Publishing :80 here collides with Caddy and the
+    # container fails to start.
     ports:
-      - "80:3000"
+      - "${WEB_BIND:-127.0.0.1:3000}:3000"
 
 volumes:
   dbdata:

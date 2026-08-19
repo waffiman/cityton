@@ -5,14 +5,13 @@ import Corners from "@/components/Corners";
 import FilmCard from "@/components/FilmCard";
 import InfoHint from "@/components/InfoHint";
 import SeriesGlyph from "@/components/diagrams/SeriesGlyph";
-import { getSeries, series } from "@/content/series";
 import { site } from "@/content/site";
+import { getSeriesBySlug } from "@/lib/products";
 import filmCatalogStyles from "@/components/FilmCatalog.module.css";
 import styles from "./series.module.css";
 
-export function generateStaticParams() {
-  return series.map((s) => ({ slug: s.slug }));
-}
+// Rendered per request from the DB (no build-time database dependency).
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -20,7 +19,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const item = getSeries(slug);
+  const item = await getSeriesBySlug(slug);
   if (!item) return {};
   return {
     title: item.name,
@@ -30,7 +29,7 @@ export async function generateMetadata({
 
 export default async function SeriesPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = getSeries(slug);
+  const item = await getSeriesBySlug(slug);
   if (!item) notFound();
 
   const d = item.detail;
@@ -112,7 +111,6 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
       {d?.variants && (
         <section className="container section">
           <div className="rule-head">
-            <h6 className="eyebrow">Varianten der {item.name}</h6>
           </div>
           <div className={styles.tableWrap}>
             <table className="table">
@@ -143,7 +141,6 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
           {d.variants.films.length > 0 && (
             <div className={styles.variantFilms}>
               <div className="rule-head">
-                <h6 className="eyebrow">Alle Folien der {item.name}</h6>
               </div>
               <ul className={filmCatalogStyles.grid}>
                 {d.variants.films.map((film) => (
@@ -161,7 +158,6 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
         <section className="container section">
           <div className={`blueprint ${styles.pending}`}>
             <Corners />
-            <h6 className="eyebrow">Datenblatt in Arbeit</h6>
             <p style={{ margin: 0, maxWidth: "56ch" }}>
               Die ausführliche Produktseite für {item.name} folgt. Kennwerte, Varianten und
               Referenzobjekte kommen aus dem Herstellerdatenblatt — bis dahin beraten wir gerne

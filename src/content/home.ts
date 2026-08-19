@@ -4,7 +4,6 @@ export type Benefit = {
   icon: "sun" | "shield" | "bolt" | "impact";
   title: string;
   body: string;
-  meta: string;
 };
 
 export const benefits: Benefit[] = [
@@ -12,25 +11,21 @@ export const benefits: Benefit[] = [
     icon: "sun",
     title: "Sonnenschutz",
     body: "Bis zu 82 % der Sonnenenergie werden abgewiesen — messbar kühlere Räume ohne Klimaanlage.",
-    meta: "TSER BIS 82 %",
   },
   {
     icon: "shield",
     title: "UV-Schutz",
     body: "99 % der UV (A und B)-Strahlung bleiben draußen. Böden, Möbel und Ware verlieren ihre Farbe nicht.",
-    meta: "UV BIS 99 %",
   },
   {
     icon: "bolt",
     title: "Energieeffizienz",
     body: "Im Sommer weniger Kühllast, im Winter weniger Wärmeverlust durch das Glas.",
-    meta: "GANZJÄHRIG",
   },
   {
     icon: "impact",
     title: "Sicherheit",
     body: "Die Sicherheitsfolie hält Splitter zusammen und verteilt die Schlagkraft über die Fläche.",
-    meta: "100–300 MIKRON",
   },
 ];
 
@@ -137,7 +132,6 @@ export const faq: { q: string; a: string }[] = [
 ];
 
 export const consultation = {
-  eyebrow: "Für Privatkunden",
   title: ["Erst messen.", "Dann entscheiden."],
   body: "Wir kommen mit Messgerät und Musterstreifen zu Ihnen, halten die Werte an Ihrer eigenen Scheibe fest und rechnen aus, was die Folie bringt.",
   specs: [

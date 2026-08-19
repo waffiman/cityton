@@ -34,6 +34,7 @@ export async function POST(request: Request) {
     objektart: inquiry.objektart,
     flaeche: inquiry.flaeche,
     goals: inquiry.goals,
+    message: inquiry.message,
     phone: inquiry.phone,
     email: inquiry.email,
   });

@@ -5,6 +5,7 @@ import { useRef, useState, type FormEvent } from "react";
 import Corners from "@/components/Corners";
 import { kontakt, type GoalValue, type ObjektartValue } from "@/content/kontakt";
 import {
+  MAX_MESSAGE_LENGTH,
   sanitizeEmailField,
   sanitizePhoneField,
   validateInquiry,
@@ -22,6 +23,7 @@ type FormState = {
   objektart: ObjektartValue | "";
   flaeche: string;
   goals: GoalValue[];
+  message: string;
   phone: string;
   email: string;
   privacy: boolean;
@@ -33,6 +35,7 @@ const initial: FormState = {
   objektart: "",
   flaeche: "",
   goals: [],
+  message: "",
   phone: "",
   email: "",
   privacy: false,
@@ -70,6 +73,7 @@ export default function KontaktInquiryForm() {
       objektart: form.objektart,
       flaeche: form.flaeche,
       goals: form.goals,
+      message: form.message,
       phone: form.phone,
       email: form.email,
       privacy: form.privacy,
@@ -103,6 +107,7 @@ export default function KontaktInquiryForm() {
           objektart: form.objektart,
           flaeche: form.flaeche,
           goals: form.goals,
+          message: form.message,
           phone: form.phone,
           email: form.email,
           privacy: form.privacy,
@@ -265,6 +270,22 @@ export default function KontaktInquiryForm() {
         </label>
       </div>
       <p className={styles.hint}>Mindestens Telefon oder E-Mail angeben.</p>
+
+      <label className={styles.field}>
+        <span className={styles.label}>
+          {kontakt.messageLabel} <span className={styles.optional}>(optional)</span>
+        </span>
+        <textarea
+          className={styles.textarea}
+          name="message"
+          rows={5}
+          placeholder={kontakt.messagePlaceholder}
+          maxLength={MAX_MESSAGE_LENGTH}
+          value={form.message}
+          disabled={submitting}
+          onChange={(e) => patch({ message: e.target.value })}
+        />
+      </label>
 
       <label className={styles.privacy}>
         <input

@@ -2,9 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Corners from "./Corners";
-import { principleDiagrams } from "./diagrams/PrincipleDiagrams";
+import SeriesGlyph from "./diagrams/SeriesGlyph";
 import type { Principle } from "@/content/principles";
 import styles from "./PrincipleScroller.module.css";
+
+/** Each chapter reuses the overview-card glyph that illustrates the same physics. */
+const PRINCIPLE_GLYPH = {
+  sommer: "reflexion",
+  einbruchschutz: "kraft",
+} as const;
 
 /**
  * Scroll-linked explainer: the diagram column sticks while the copy column
@@ -29,14 +35,14 @@ export default function PrincipleScroller({ principles }: { principles: Principl
     return () => io.disconnect();
   }, []);
 
-  const Diagram = principleDiagrams[principles[active].id];
+  const glyph = PRINCIPLE_GLYPH[principles[active].id];
 
   return (
     <div className={styles.grid}>
       <div className={styles.sticky}>
         <div className={`blueprint ${styles.plate}`}>
           <Corners />
-          <Diagram />
+          <SeriesGlyph variant={glyph} field="dark" />
         </div>
         <div className={styles.ticks} aria-hidden="true">
           {principles.map((p, i) => (

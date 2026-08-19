@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Corners from "@/components/Corners";
+import CtaBand from "@/components/CtaBand";
 import PrincipleScroller from "@/components/PrincipleScroller";
 import { principles } from "@/content/principles";
-import { site } from "@/content/site";
 import styles from "./principle.module.css";
 
 export const metadata: Metadata = {
@@ -16,7 +14,6 @@ export default function PrinciplePage() {
   return (
     <>
       <section className="container" style={{ paddingTop: 56 }}>
-        <h6 className="eyebrow">Funktionsprinzip</h6>
         <h1 className={styles.title}>Was eine Folie am Glas physikalisch tut</h1>
         <p className="lead" style={{ maxWidth: "60ch" }}>
           Scrollen Sie — die Zeichnung links bleibt stehen und wechselt mit dem Abschnitt.
@@ -27,19 +24,10 @@ export default function PrinciplePage() {
         <PrincipleScroller principles={principles} />
       </section>
 
-      <section className={`container ${styles.ctaSection}`}>
-        <div className={`blueprint  ${styles.cta}`}>
-          <Corners />
-          <p className={styles.ctaText}>
-            Sie wollen die Werte an Ihrer eigenen Scheibe sehen? Wir bringen Musterstreifen und
-            Messgerät mit.
-          </p>
-          <Link href="/kontakt" className="btn btn-inverse blueprint">
-            <Corners />
-            {site.cta}
-          </Link>
-        </div>
-      </section>
+      <CtaBand
+        title="Unsicher, welche Folie passt?"
+        body="Wir bringen Musterstreifen und Messgerät mit und halten die Werte an Ihrer eigenen Scheibe fest."
+      />
     </>
   );
 }

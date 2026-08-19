@@ -99,11 +99,11 @@ export default function ConsultLeadForm() {
   return (
     <form className={styles.consultForm} onSubmit={onSubmit} noValidate>
       <label className={styles.consultField}>
-        <span className={styles.consultFieldLabel}>Telefon oder E-Mail</span>
         <input
           className={styles.consultInput}
           type="text"
           name="contact"
+          aria-label="Telefon oder E-Mail"
           autoComplete="tel email"
           inputMode={isEmailInput(value) ? "email" : "tel"}
           placeholder="Telefonnummer oder E-Mail"
@@ -129,12 +129,6 @@ export default function ConsultLeadForm() {
           <Corners />
           {submitting ? "Wird gesendet…" : site.cta}
         </button>
-        <span className={styles.consultPhone}>
-          oder anrufen:{" "}
-          <a href={`tel:${site.contact.phoneTel}`} className={styles.consultPhoneLink}>
-            {site.contact.phone}
-          </a>
-        </span>
       </div>
 
       {status.type !== "idle" ? (

@@ -4,7 +4,6 @@
  */
 
 export const kontakt = {
-  eyebrow: "Kontakt",
   title: "Kostenlose Beratung anfragen",
   lead:
     "Schildern Sie kurz Objekt und Ziel — wir melden uns mit Terminvorschlag und den nächsten Schritten. Musterstreifen und Messung vor Ort möglich.",
@@ -17,6 +16,9 @@ export const kontakt = {
   mapTitle: "Karte — Wien, Österreich (Platzhalter)",
   success:
     "Danke — Ihre Anfrage ist eingegangen. Wir melden uns in Kürze bei Ihnen.",
+  messageLabel: "Nachricht",
+  messagePlaceholder:
+    "Worum geht es? Glasart, Himmelsrichtung oder was Sie stört — alles hilft bei der Einschätzung.",
   submit: "Anfrage senden",
   submitting: "Wird gesendet…",
   privacyPrefix: "Ich habe die",

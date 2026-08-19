@@ -15,7 +15,6 @@ export default function KontaktPage() {
   return (
     <>
       <section className="container" style={{ paddingTop: 56 }}>
-        <h6 className="eyebrow">{kontakt.eyebrow}</h6>
         <h1 className={styles.title}>{kontakt.title}</h1>
         <p className="lead" style={{ maxWidth: "58ch" }}>
           {kontakt.lead}
@@ -58,7 +57,6 @@ export default function KontaktPage() {
 
       <section className={`container ${styles.mapSection}`}>
         <div className={styles.mapHead}>
-          <h6 className="eyebrow">{kontakt.mapLabel}</h6>
           <span className={styles.mapNote}>{kontakt.mapNote}</span>
         </div>
         <div className={styles.mapFrame}>

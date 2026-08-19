@@ -13,11 +13,14 @@ import {
 const OBJECT_VALUES = new Set(kontakt.objectTypes.map((o) => o.value));
 const GOAL_VALUES = new Set(kontakt.goals.map((g) => g.value));
 
+export const MAX_MESSAGE_LENGTH = 2000;
+
 export type InquiryInput = {
   name?: unknown;
   objektart?: unknown;
   flaeche?: unknown;
   goals?: unknown;
+  message?: unknown;
   phone?: unknown;
   email?: unknown;
   privacy?: unknown;
@@ -30,6 +33,7 @@ export type NormalizedInquiry = {
   objektart: ObjektartValue;
   flaeche: string;
   goals: GoalValue[];
+  message: string;
   phone: string | null;
   email: string | null;
   /** Dedup keys for phone and/or email. */
@@ -92,6 +96,11 @@ export function validateInquiry(body: InquiryInput): ValidateInquiryResult {
     return { ok: false, error: "Die Flächenangabe ist zu lang." };
   }
 
+  const message = asString(body.message);
+  if (message.length > MAX_MESSAGE_LENGTH) {
+    return { ok: false, error: "Die Nachricht ist zu lang." };
+  }
+
   let goalsRaw: unknown[] = [];
   if (Array.isArray(body.goals)) {
     goalsRaw = body.goals;
@@ -136,6 +145,7 @@ export function validateInquiry(body: InquiryInput): ValidateInquiryResult {
       objektart: objektart as ObjektartValue,
       flaeche,
       goals,
+      message,
       phone: phone?.ok ? phone.display : null,
       email: email?.ok ? email.display : null,
       keys,

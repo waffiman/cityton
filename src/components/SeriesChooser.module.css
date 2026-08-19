@@ -1,0 +1,53 @@
+.chooser {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip,
+.chipOn {
+  appearance: none;
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.chip:hover {
+  border-color: color-mix(in srgb, var(--color-accent-700) 40%, var(--color-divider));
+}
+
+.chipOn {
+  background: var(--color-accent-900);
+  border-color: var(--color-accent-900);
+  color: var(--color-on-dark-strong);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.empty {
+  margin: 0;
+  font-size: 15px;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+}

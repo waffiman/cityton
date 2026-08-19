@@ -22,11 +22,6 @@
 
 .seriesBand,
 .catalogBand,
-.ctaBand {
-  position: relative;
-  overflow: hidden;
-  padding-block: clamp(48px, 6vw, 80px);
-}
 
 /* ── Series: film-sheet diagonals + soft orb ─────────────────────────────── */
 .seriesFx {
@@ -122,22 +117,6 @@
 }
 
 /* ── CTA atmosphere ─────────────────────────────────────────────────────── */
-.ctaFx {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      ellipse 60% 80% at 85% 20%,
-      color-mix(in srgb, var(--color-accent-400) 22%, transparent),
-      transparent 60%
-    ),
-    repeating-linear-gradient(
-      115deg,
-      transparent 0 56px,
-      color-mix(in srgb, var(--color-on-dark) 5%, transparent) 56px 57px
-    );
-}
 
 .sectionTitle {
   margin: 0 0 10px;
@@ -158,20 +137,7 @@
   margin-bottom: 0;
 }
 
-.ctaTitle {
-  margin: 0 0 12px;
-  font-size: clamp(26px, 3vw, 38px);
-  line-height: 1.1;
-  color: var(--color-on-dark-strong);
-}
 
-.ctaBody {
-  margin: 0 0 24px;
-  max-width: 42ch;
-  font-size: 16px;
-  line-height: 1.5;
-  color: color-mix(in srgb, var(--color-on-dark) 82%, transparent);
-}
 
 @keyframes sheetDrift {
   from {

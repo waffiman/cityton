@@ -18,7 +18,6 @@ export default function AboutPage() {
       <section className="container" style={{ paddingTop: 56 }}>
         <div className={styles.intro}>
           <div>
-            <h6 className="eyebrow">{about.eyebrow}</h6>
             <h1 className={styles.title}>{about.title}</h1>
             <p className="lead">{about.body}</p>
           </div>
@@ -49,7 +48,6 @@ export default function AboutPage() {
       <section className={`container section ${styles.teamSection}`}>
         <div className={styles.teamLayout}>
           <div className={styles.teamCopy}>
-            <h6 className="eyebrow">{about.team.eyebrow}</h6>
             <h2 className={styles.sectionTitle}>{about.team.title}</h2>
             <p className={styles.sectionBody}>{about.team.body}</p>
           </div>
@@ -75,7 +73,6 @@ export default function AboutPage() {
       <section className={`section--5 on-dark ${styles.onsiteBand}`}>
         <div className={`container ${styles.onsiteLayout}`}>
           <div className={styles.onsiteCopy}>
-            <h6 className={`eyebrow ${styles.onsiteEyebrow}`}>{about.onsite.eyebrow}</h6>
             <h2 className={styles.onsiteTitle}>{about.onsite.title}</h2>
             <p className={styles.onsiteBody}>{about.onsite.body}</p>
             <Link href={about.onsite.cta.href} className={`btn btn-inverse ${styles.sectionCta}`}>
@@ -102,7 +99,6 @@ export default function AboutPage() {
       {/* ── People + process ─────────────────────────────────────────────── */}
       <section className="container section">
         <div className={styles.sectionHead}>
-          <h6 className="eyebrow">{about.peopleSteps.eyebrow}</h6>
           <h2 className={styles.sectionTitle}>{about.peopleSteps.title}</h2>
           <p className={styles.sectionBody}>{about.peopleSteps.body}</p>
         </div>
@@ -132,14 +128,13 @@ export default function AboutPage() {
       {/* ── Partners ─────────────────────────────────────────────────────── */}
       <section className="container section">
         <div className={styles.sectionHead}>
-          <h6 className="eyebrow">{about.partnersEyebrow}</h6>
           <h2 className={styles.sectionTitle}>{about.partnersTitle}</h2>
         </div>
         <div className={styles.partnerGrid}>
           {about.partners.map((p) => (
             <div
               key={p.title}
-              className={`card blueprint ${styles.partnerCard} ${p.highlight ? styles.partnerHighlight : ""}`}
+              className={`card blueprint ${styles.partnerCard}`}
             >
               <Corners />
               {p.logo ? (
@@ -173,7 +168,6 @@ export default function AboutPage() {
       {/* ── Why us ───────────────────────────────────────────────────────── */}
       <section className="container section">
         <div className={styles.sectionHead}>
-          <h6 className="eyebrow">{about.why.eyebrow}</h6>
           <h2 className={styles.sectionTitle}>{about.why.title}</h2>
         </div>
         <div className={styles.whyGrid}>
@@ -193,7 +187,6 @@ export default function AboutPage() {
         <div className={`blueprint ${styles.ratingBlock}`}>
           <Corners />
           <div>
-            <h6 className="eyebrow">{about.rating.eyebrow}</h6>
             <div className={styles.ratingRow}>
               <div className={styles.ratingValue}>
                 {about.rating.value}

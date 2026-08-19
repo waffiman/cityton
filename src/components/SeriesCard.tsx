@@ -26,13 +26,6 @@ export default function SeriesCard({ item }: { item: Series }) {
         <div className={`card-title ${styles.name}`}>{item.name}</div>
         <div className={styles.family}>{item.family}</div>
         <p className={`card-body ${styles.summary}`}>{item.summary}</p>
-        <div className={styles.useCases}>
-          {item.useCases.map((u) => (
-            <span key={u} className={styles.useCase}>
-              {u.toUpperCase()}
-            </span>
-          ))}
-        </div>
       </div>
 
       <div className={styles.metrics}>

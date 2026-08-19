@@ -1,6 +1,5 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import path from "node:path";
 import type { GoalValue, ObjektartValue } from "@/content/kontakt";
+import { prisma } from "@/lib/db";
 
 export type StoredInquiry = {
   id: string;
@@ -10,82 +9,76 @@ export type StoredInquiry = {
   objektart: ObjektartValue;
   flaeche: string;
   goals: GoalValue[];
+  message: string;
   phone: string | null;
   email: string | null;
   submittedAt: string;
 };
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const STORE_PATH = path.join(DATA_DIR, "kontakt-inquiries.json");
-
-type StoreFile = { inquiries: StoredInquiry[] };
-
-let queue: Promise<unknown> = Promise.resolve();
-
-function withLock<T>(fn: () => Promise<T>): Promise<T> {
-  const run = queue.then(fn, fn);
-  queue = run.then(
-    () => undefined,
-    () => undefined,
-  );
-  return run;
-}
-
-async function readStore(): Promise<StoreFile> {
-  try {
-    const raw = await readFile(STORE_PATH, "utf8");
-    const parsed = JSON.parse(raw) as StoreFile;
-    if (!parsed || !Array.isArray(parsed.inquiries)) return { inquiries: [] };
-    return parsed;
-  } catch (err) {
-    const code = (err as NodeJS.ErrnoException).code;
-    if (code === "ENOENT") return { inquiries: [] };
-    throw err;
-  }
-}
-
-async function writeStore(store: StoreFile): Promise<void> {
-  await mkdir(DATA_DIR, { recursive: true });
-  await writeFile(STORE_PATH, `${JSON.stringify(store, null, 2)}\n`, "utf8");
-}
-
 export type SaveInquiryResult =
   | { status: "created"; inquiry: StoredInquiry }
   | { status: "duplicate"; inquiry: StoredInquiry };
 
+type InquiryRow = {
+  id: string;
+  dedupeKeys: string[];
+  name: string | null;
+  objektart: string | null;
+  flaeche: string | null;
+  goals: string[];
+  message: string | null;
+  phone: string | null;
+  email: string | null;
+  createdAt: Date;
+};
+
+function toStored(row: InquiryRow): StoredInquiry {
+  return {
+    id: row.id,
+    keys: row.dedupeKeys,
+    name: row.name ?? "",
+    objektart: (row.objektart ?? "") as ObjektartValue,
+    flaeche: row.flaeche ?? "",
+    goals: row.goals as GoalValue[],
+    message: row.message ?? "",
+    phone: row.phone,
+    email: row.email,
+    submittedAt: row.createdAt.toISOString(),
+  };
+}
+
 /**
- * Persist an inquiry if none of its contact keys already exist.
- * Concurrent callers are serialized.
+ * Persist a kontakt inquiry if none of its contact keys already exist.
+ * Backed by Postgres (CRM `Inquiry` table, source="kontakt").
  */
-export function saveInquiry(input: {
+export async function saveInquiry(input: {
   keys: string[];
   name: string;
   objektart: ObjektartValue;
   flaeche: string;
   goals: GoalValue[];
+  message: string;
   phone: string | null;
   email: string | null;
 }): Promise<SaveInquiryResult> {
-  return withLock(async () => {
-    const store = await readStore();
-    const existing = store.inquiries.find((row) =>
-      row.keys.some((k) => input.keys.includes(k)),
-    );
-    if (existing) return { status: "duplicate", inquiry: existing };
+  const existing = await prisma.inquiry.findFirst({
+    where: { source: "kontakt", dedupeKeys: { hasSome: input.keys } },
+    orderBy: { createdAt: "asc" },
+  });
+  if (existing) return { status: "duplicate", inquiry: toStored(existing) };
 
-    const inquiry: StoredInquiry = {
-      id: `inq_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`,
-      keys: input.keys,
+  const created = await prisma.inquiry.create({
+    data: {
+      source: "kontakt",
+      dedupeKeys: input.keys,
       name: input.name,
       objektart: input.objektart,
       flaeche: input.flaeche,
       goals: input.goals,
+      message: input.message,
       phone: input.phone,
       email: input.email,
-      submittedAt: new Date().toISOString(),
-    };
-    store.inquiries.push(inquiry);
-    await writeStore(store);
-    return { status: "created", inquiry };
+    },
   });
+  return { status: "created", inquiry: toStored(created) };
 }

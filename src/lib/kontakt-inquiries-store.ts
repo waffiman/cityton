@@ -48,6 +48,12 @@ function toStored(row: InquiryRow): StoredInquiry {
 }
 
 /**
+ * Repeat submissions are only treated as duplicates inside this window. Without
+ * a bound, a customer who ever wrote once could never contact us again.
+ */
+const DEDUPE_WINDOW_MS = 24 * 60 * 60 * 1000;
+
+/**
  * Persist a kontakt inquiry if none of its contact keys already exist.
  * Backed by Postgres (CRM `Inquiry` table, source="kontakt").
  */
@@ -61,9 +67,14 @@ export async function saveInquiry(input: {
   phone: string | null;
   email: string | null;
 }): Promise<SaveInquiryResult> {
+  const since = new Date(Date.now() - DEDUPE_WINDOW_MS);
   const existing = await prisma.inquiry.findFirst({
-    where: { source: "kontakt", dedupeKeys: { hasSome: input.keys } },
-    orderBy: { createdAt: "asc" },
+    where: {
+      source: "kontakt",
+      dedupeKeys: { hasSome: input.keys },
+      createdAt: { gte: since },
+    },
+    orderBy: { createdAt: "desc" },
   });
   if (existing) return { status: "duplicate", inquiry: toStored(existing) };
 

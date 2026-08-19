@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import CtaBand from "@/components/CtaBand";
 import FilmCatalog from "@/components/FilmCatalog";
-import SeriesChooser from "@/components/SeriesChooser";
+import SeriesCard from "@/components/SeriesCard";
 import { getCatalogProducts, getVisibleSeries } from "@/lib/products";
 import styles from "./products.module.css";
 
@@ -32,7 +32,11 @@ export default async function ProductsPage() {
               Welche Folie passt, entscheidet die Glasart und das Ziel — nicht der Katalog.
             </p>
           </div>
-          <SeriesChooser series={series} />
+          <div className={styles.seriesList}>
+            {series.map((item) => (
+              <SeriesCard key={item.slug} item={item} />
+            ))}
+          </div>
         </div>
       </section>
 

@@ -14,7 +14,8 @@ export default function SiteHeader() {
   // Transparent over full-bleed heroes until the page is scrolled.
   const [hasHero, setHasHero] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const overHero = hasHero && !scrolled;
+  // Solid bar while the drawer is open so the close icon isn't light-on-light.
+  const overHero = hasHero && !scrolled && !open;
 
   // Close the mobile drawer on navigation.
   useEffect(() => setOpen(false), [pathname]);

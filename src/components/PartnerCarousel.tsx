@@ -14,13 +14,6 @@ export type PartnerLogo = {
 
 const DEFAULT_LOGOS: PartnerLogo[] = [
   {
-    name: "City-Ton Austria",
-    src: "/media/logo-city-ton.png",
-    href: "/",
-    width: 160,
-    height: 48,
-  },
-  {
     name: "LLumar",
     src: "/media/logo-llumar.png",
     href: "https://llumar.com/en/",
@@ -36,9 +29,64 @@ const DEFAULT_LOGOS: PartnerLogo[] = [
   },
 ];
 
+/** How many times to repeat the brand list inside one marquee half (fills wide screens). */
+const SET_REPEAT = 8;
+
+function LogoSet({
+  logos,
+  duplicate,
+}: {
+  logos: PartnerLogo[];
+  duplicate?: boolean;
+}) {
+  // One half of the track: repeated brands so the strip stays full on wide viewports.
+  const items = Array.from({ length: SET_REPEAT }, () => logos).flat();
+
+  return (
+    <ul className={styles.set} aria-hidden={duplicate || undefined}>
+      {items.map((logo, i) => {
+        const img = (
+          <Image
+            src={logo.src}
+            alt={logo.name}
+            width={logo.width}
+            height={logo.height}
+            className={styles.logo}
+          />
+        );
+        const interactive = !duplicate && i < logos.length;
+        return (
+          <li key={`${logo.name}-${i}`} className={styles.item}>
+            {logo.href ? (
+              <a
+                href={logo.href}
+                className={styles.link}
+                target={logo.href.startsWith("http") ? "_blank" : undefined}
+                rel={logo.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                tabIndex={interactive ? undefined : -1}
+                aria-label={
+                  interactive
+                    ? logo.href.startsWith("http")
+                      ? `${logo.name} — Website in neuem Tab öffnen`
+                      : logo.name
+                    : undefined
+                }
+              >
+                {img}
+              </a>
+            ) : (
+              <span className={styles.link}>{img}</span>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 /**
  * Infinite logo marquee for the post-hero partner strip.
- * Logos are duplicated so the CSS loop has no gap; pauses on hover/focus.
+ * Two identical halves + equal trailing gap so translateX(-50%) loops without a jump.
  */
 export default function PartnerCarousel({
   label = "OFFIZIELLER PARTNER VON",
@@ -47,49 +95,14 @@ export default function PartnerCarousel({
   label?: string;
   logos?: PartnerLogo[];
 }) {
-  // Quadruple the set so wide viewports stay filled with no empty gap at the loop.
-  const track = [...logos, ...logos, ...logos, ...logos];
-
   return (
     <div className={styles.wrap}>
       <span className={styles.label}>{label}</span>
       <div className={styles.viewport} aria-label="Partner-Logos">
-        <ul className={styles.track}>
-          {track.map((logo, i) => {
-            const img = (
-              <Image
-                src={logo.src}
-                alt={logo.name}
-                width={logo.width}
-                height={logo.height}
-                className={styles.logo}
-              />
-            );
-            const key = `${logo.name}-${i}`;
-            return (
-              <li key={key} className={styles.item} aria-hidden={i >= logos.length}>
-                {logo.href ? (
-                  <a
-                    href={logo.href}
-                    className={styles.link}
-                    target={logo.href.startsWith("http") ? "_blank" : undefined}
-                    rel={logo.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    tabIndex={i >= logos.length ? -1 : undefined}
-                    aria-label={
-                      logo.href.startsWith("http")
-                        ? `${logo.name} — Website in neuem Tab öffnen`
-                        : logo.name
-                    }
-                  >
-                    {img}
-                  </a>
-                ) : (
-                  <span className={styles.link}>{img}</span>
-                )}
-              </li>
-            );
-          })}
-        </ul>
+        <div className={styles.track}>
+          <LogoSet logos={logos} />
+          <LogoSet logos={logos} duplicate />
+        </div>
       </div>
     </div>
   );

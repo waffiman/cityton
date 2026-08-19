@@ -447,15 +447,36 @@
     grid-template-columns: 1fr;
   }
   .consult {
+    position: relative;
     grid-template-columns: 1fr;
+    isolation: isolate;
   }
   .consultCopy {
+    position: relative;
+    z-index: 1;
     padding: 64px var(--page-gutter);
   }
   .consultMedia {
-    aspect-ratio: 16 / 9;
-    border-left: none;
-    border-top: 1px solid var(--color-on-dark-rule);
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+    border: none;
+    z-index: 0;
+  }
+  .consultMedia::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--s5) 88%, transparent) 0%,
+      color-mix(in srgb, var(--s5) 62%, transparent) 48%,
+      color-mix(in srgb, var(--s5) 38%, transparent) 100%
+    );
+  }
+  .consultImage {
+    opacity: 1;
   }
 }
 

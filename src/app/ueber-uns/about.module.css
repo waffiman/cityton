@@ -391,6 +391,13 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
+  .portrait {
+    width: 100%;
+    margin-inline: auto;
+  }
+  .portraitImg {
+    object-position: center;
+  }
   .teamMosaic {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: none;
@@ -410,7 +417,7 @@
     justify-self: start;
   }
   .onsiteGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
   .steps,
   .partnerGrid {
@@ -426,9 +433,6 @@
 
 @media (max-width: 640px) {
   .whyGrid {
-    grid-template-columns: 1fr;
-  }
-  .onsiteGrid {
     grid-template-columns: 1fr;
   }
 }

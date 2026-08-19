@@ -51,10 +51,17 @@
   outline-offset: 2px;
 }
 
-.tileImg {
+.tileImg,
+.tileVideo {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.tileVideo {
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 .tileOverlay {
@@ -169,13 +176,18 @@
   line-height: 1.25;
 }
 
-.lightboxImg {
+.lightboxImg,
+.lightboxVideo {
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: calc(100vh - 180px);
   object-fit: contain;
   display: block;
+}
+
+.lightboxVideo {
+  background: var(--color-accent-900);
 }
 
 .lightboxCaption {

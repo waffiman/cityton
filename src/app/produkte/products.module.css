@@ -21,7 +21,11 @@
 }
 
 .seriesBand,
-.catalogBand,
+.catalogBand {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(48px, 6vw, 80px);
+}
 
 /* ── Series: film-sheet diagonals + soft orb ─────────────────────────────── */
 .seriesFx {

@@ -42,7 +42,8 @@ export default function PrincipleScroller({ principles }: { principles: Principl
       <div className={styles.sticky}>
         <div className={`blueprint ${styles.plate}`}>
           <Corners />
-          <SeriesGlyph variant={glyph} field="dark" />
+          {/* .plate is --color-neutral-100, so the glyph takes the paper ink. */}
+          <SeriesGlyph variant={glyph} field="paper" />
         </div>
         <div className={styles.ticks} aria-hidden="true">
           {principles.map((p, i) => (

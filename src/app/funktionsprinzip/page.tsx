@@ -7,7 +7,7 @@ import styles from "./principle.module.css";
 export const metadata: Metadata = {
   title: "Funktionsprinzip",
   description:
-    "Was eine Folie am Glas physikalisch tut: Reflexion der Sonnenenergie und Kraftverteilung beim Einbruchsversuch.",
+    "Was eine Folie am Glas physikalisch tut: Reflexion, Absorption, UV-Sperre, Kraftverteilung und Sichtschutz.",
 };
 
 export default function PrinciplePage() {

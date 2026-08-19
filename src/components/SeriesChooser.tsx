@@ -22,7 +22,6 @@ export default function SeriesChooser({ series }: { series: Series[] }) {
   return (
     <div>
       <div className={styles.chooser} role="group" aria-label="Serien nach Ziel filtern">
-        <span className={styles.label}>Was ist Ihr Ziel?</span>
         <div className={styles.chips}>
           {SERIES_GOALS.map(([value, label]) => (
             <button

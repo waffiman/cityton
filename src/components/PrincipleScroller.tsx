@@ -8,8 +8,11 @@ import styles from "./PrincipleScroller.module.css";
 
 /** Each chapter reuses the overview-card glyph that illustrates the same physics. */
 const PRINCIPLE_GLYPH = {
-  sommer: "reflexion",
+  reflexion: "reflexion",
+  absorption: "absorption",
+  uv: "uv",
   einbruchschutz: "kraft",
+  sichtschutz: "dekor",
 } as const;
 
 /**

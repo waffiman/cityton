@@ -4,12 +4,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Film, FilmValues } from "@/content/series";
 import { site } from "@/content/site";
-import { allFilmSlugs, filmImageSrc, getFilmBySlug } from "@/lib/films";
+import { getProductBySlug } from "@/lib/products";
 import styles from "./film.module.css";
 
-export function generateStaticParams() {
-  return allFilmSlugs().map((slug) => ({ slug }));
-}
+// Rendered per request from the DB (no build-time database dependency).
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -17,7 +16,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const film = getFilmBySlug(slug);
+  const film = await getProductBySlug(slug);
   if (!film) return {};
   return {
     title: `${film.name} · ${film.brand}`,
@@ -76,10 +75,10 @@ const FAMILY_LABEL: Record<Film["family"], string> = {
 
 export default async function FilmPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const film = getFilmBySlug(slug);
+  const film = await getProductBySlug(slug);
   if (!film) notFound();
 
-  const image = filmImageSrc(film);
+  const image = film.imageUrl;
   const thick = thickness(film);
   const metaRows: Row[] = [
     { label: "Marke", value: film.brand },
@@ -136,6 +135,7 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
                   sizes="(max-width: 900px) 100vw, 48vw"
                   className={styles.heroImg}
                   priority
+                  unoptimized
                 />
               </figure>
             ) : (

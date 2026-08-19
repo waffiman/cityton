@@ -1,0 +1,18 @@
+node_modules
+.next
+out
+build
+.git
+.env
+.env.*
+src/generated
+data
+scripts/.vps-secret
+scripts/.vps-known-hosts
+scripts/vps.env
+City-Ton Austria Broschuere*.pdf
+City-Ton Austria Broschuere*.md
+*.plan.md
+.agents
+.claude
+.windsurf

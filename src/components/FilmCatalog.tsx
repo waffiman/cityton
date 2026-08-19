@@ -6,7 +6,11 @@ import type { Film } from "@/content/series";
 import { type BrandFilter, type MountFilter, filterFilms } from "@/lib/films";
 import styles from "./FilmCatalog.module.css";
 
-export default function FilmCatalog({ films }: { films: Film[] }) {
+export default function FilmCatalog({
+  films,
+}: {
+  films: (Film & { imageUrl?: string | null })[];
+}) {
   const [brand, setBrand] = useState<BrandFilter>("alle");
   const [mount, setMount] = useState<MountFilter>("alle");
 

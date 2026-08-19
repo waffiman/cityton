@@ -12,7 +12,7 @@ export type GalleryImage = {
 const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
 
 function captionFor(name: string): GalleryCaption {
-  return gallery.captions[name] ?? gallery.captionFallback;
+  return (gallery.captions as Record<string, GalleryCaption>)[name] ?? gallery.captionFallback;
 }
 
 /**

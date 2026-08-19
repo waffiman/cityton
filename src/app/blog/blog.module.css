@@ -1,0 +1,150 @@
+.band {
+  padding-block: var(--section-gap);
+}
+
+.head {
+  max-width: 720px;
+  margin-bottom: var(--space-8);
+}
+
+.title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: var(--space-3);
+}
+
+.lead {
+  color: var(--color-accent-700);
+  font-size: 16px;
+  margin-top: var(--space-4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-8);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--color-divider);
+  background: var(--s0);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+}
+
+.cardMedia {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--s2);
+}
+
+.cardBody {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.cardDate {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-neutral-600);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cardExcerpt {
+  color: var(--color-neutral-600);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Detail */
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.articleDate {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-neutral-600);
+}
+
+.articleTitle {
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: var(--space-3) 0 var(--space-6);
+}
+
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--s2);
+  margin-bottom: var(--space-8);
+}
+
+.prose {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.prose h2 {
+  font-size: 26px;
+  margin: var(--space-8) 0 var(--space-4);
+}
+
+.prose h3 {
+  font-size: 21px;
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+.prose p {
+  margin: 0 0 var(--space-4);
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 var(--space-4);
+  padding-left: var(--space-8);
+}
+
+.prose li {
+  margin-bottom: var(--space-2);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-6);
+  margin: var(--space-6) 0;
+  color: var(--color-accent-700);
+  font-style: italic;
+}
+
+.prose a {
+  color: var(--color-accent-700);
+  text-decoration: underline;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: var(--space-6);
+  color: var(--color-accent-700);
+  text-decoration: none;
+  font-size: 14px;
+}

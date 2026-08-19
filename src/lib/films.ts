@@ -151,11 +151,11 @@ function pathFor(file: string): string {
 export type BrandFilter = "alle" | Film["brand"];
 export type MountFilter = "alle" | "innen" | "außen" | "innen / außen";
 
-export function filterFilms(
-  list: Film[],
+export function filterFilms<T extends Film>(
+  list: T[],
   brand: BrandFilter,
   mount: MountFilter,
-): Film[] {
+): T[] {
   return list.filter((f) => {
     if (brand !== "alle" && f.brand !== brand) return false;
     if (mount === "alle") return true;

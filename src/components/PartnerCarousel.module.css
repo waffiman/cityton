@@ -22,19 +22,26 @@
 }
 
 .track {
+  display: flex;
+  width: max-content;
+  animation: partnerMarquee 40s linear infinite;
+}
+
+.viewport:hover .track,
+.viewport:focus-within .track {
+  animation-play-state: paused;
+}
+
+/* Each half must be identical in width: same gap + matching trailing padding. */
+.set {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
   gap: clamp(40px, 5vw, 72px);
-  width: max-content;
-  animation: partnerMarquee 32s linear infinite;
-}
-
-.viewport:hover .track,
-.viewport:focus-within .track {
-  animation-play-state: paused;
+  padding-inline-end: clamp(40px, 5vw, 72px);
+  flex: none;
 }
 
 .item {
@@ -63,17 +70,22 @@
     transform: translateX(0);
   }
   to {
-    /* One quarter of the quadrupled track */
-    transform: translateX(-25%);
+    /* One identical half of the doubled track */
+    transform: translateX(-50%);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .track {
     animation: none;
-    flex-wrap: wrap;
     width: 100%;
     justify-content: center;
+  }
+
+  .set {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline-end: 0;
     gap: 28px;
   }
 
@@ -81,7 +93,8 @@
     overflow: visible;
   }
 
-  .item[aria-hidden="true"] {
+  /* Hide the duplicate half when not animating */
+  .set[aria-hidden="true"] {
     display: none;
   }
 }
@@ -95,7 +108,8 @@
     height: 30px;
   }
 
-  .track {
+  .set {
     gap: 32px;
+    padding-inline-end: 32px;
   }
 }

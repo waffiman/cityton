@@ -1,13 +1,66 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useId, useState } from "react";
-import type { GalleryImage } from "@/lib/gallery-media";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
+import type { GalleryItem } from "@/lib/gallery-media";
 import styles from "@/app/gallery/gallery.module.css";
 
 type Props = {
-  images: GalleryImage[];
+  images: GalleryItem[];
 };
+
+function MutedLoopVideo({
+  src,
+  className,
+  title,
+}: {
+  src: string;
+  className?: string;
+  title?: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+
+    v.muted = true;
+    v.defaultMuted = true;
+    v.volume = 0;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      v.removeAttribute("autoplay");
+      v.pause();
+      return;
+    }
+
+    const play = () => {
+      v.muted = true;
+      v.volume = 0;
+      void v.play().catch(() => {});
+    };
+
+    play();
+    v.addEventListener("loadeddata", play);
+    return () => v.removeEventListener("loadeddata", play);
+  }, [src]);
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      className={className}
+      title={title}
+      muted
+      loop
+      playsInline
+      autoPlay
+      preload="metadata"
+      disablePictureInPicture
+      controls={false}
+    />
+  );
+}
 
 export default function GalleryMasonry({ images }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -52,25 +105,29 @@ export default function GalleryMasonry({ images }: Props) {
   return (
     <>
       <ul className={styles.masonry}>
-        {images.map((img, i) => (
-          <li key={img.src} className={styles.tile}>
+        {images.map((item, i) => (
+          <li key={item.src} className={styles.tile}>
             <button
               type="button"
               className={styles.tileBtn}
               onClick={() => setOpenIndex(i)}
-              aria-label={`${img.project} — ${img.film}. Bild vergrößern`}
+              aria-label={`${item.project} — ${item.film}. ${item.kind === "video" ? "Video" : "Bild"} vergrößern`}
             >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                width={800}
-                height={1000}
-                sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                className={styles.tileImg}
-              />
+              {item.kind === "video" ? (
+                <MutedLoopVideo src={item.src} className={styles.tileVideo} title={item.alt} />
+              ) : (
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={800}
+                  height={1000}
+                  sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                  className={styles.tileImg}
+                />
+              )}
               <span className={styles.tileOverlay} aria-hidden="true">
-                <span className={styles.tileProject}>{img.project}</span>
-                <span className={styles.tileFilm}>{img.film}</span>
+                <span className={styles.tileProject}>{item.project}</span>
+                <span className={styles.tileFilm}>{item.film}</span>
               </span>
             </button>
           </li>
@@ -109,7 +166,7 @@ export default function GalleryMasonry({ images }: Props) {
                   e.stopPropagation();
                   go(-1);
                 }}
-                aria-label="Vorheriges Bild"
+                aria-label="Vorheriges"
               >
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M15 6l-6 6 6 6" />
@@ -122,7 +179,7 @@ export default function GalleryMasonry({ images }: Props) {
                   e.stopPropagation();
                   go(1);
                 }}
-                aria-label="Nächstes Bild"
+                aria-label="Nächstes"
               >
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M9 6l6 6-6 6" />
@@ -135,15 +192,19 @@ export default function GalleryMasonry({ images }: Props) {
             className={styles.lightboxFigure}
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={current.src}
-              alt={current.alt}
-              width={1600}
-              height={1200}
-              sizes="100vw"
-              className={styles.lightboxImg}
-              priority
-            />
+            {current.kind === "video" ? (
+              <MutedLoopVideo src={current.src} className={styles.lightboxVideo} title={current.alt} />
+            ) : (
+              <Image
+                src={current.src}
+                alt={current.alt}
+                width={1600}
+                height={1200}
+                sizes="100vw"
+                className={styles.lightboxImg}
+                priority
+              />
+            )}
             <div className={styles.lightboxCaption}>
               <p className={styles.lightboxProject}>{current.project}</p>
               <p className={styles.lightboxFilm}>{current.film}</p>

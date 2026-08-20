@@ -163,6 +163,9 @@
   .locales {
     display: none;
   }
+  .bar .cta {
+    display: none;
+  }
   .burger {
     display: inline-flex;
   }
@@ -176,9 +179,6 @@
 }
 
 @media (max-width: 560px) {
-  .cta {
-    display: none;
-  }
   .logo {
     height: 34px;
   }

@@ -14,7 +14,7 @@ export const gallery = {
   lead:
     "Ein Ausschnitt aus montierten Projekten — Fassaden, Innenräume und Schutzfolierungen. Tippen Sie ein Bild an, um es zu vergrößern.",
   empty:
-    "Noch keine Fotos hinterlegt. Legen Sie Bilder in public/media/referenzen/ ab — die Gallery aktualisiert sich nach dem Neuladen.",
+    "Noch keine Fotos oder Videos hinterlegt. Legen Sie Dateien in public/media/referenzen/ ab — die Gallery aktualisiert sich nach dem Neuladen.",
   /** Fallback when a file has no entry in `captions`. */
   captionFallback: {
     project: "Projekt",
@@ -64,6 +64,42 @@ export const gallery = {
     "reflective-facade-upscaled.jpg": {
       project: "Reflektierende Fassade",
       film: "Dual Reflective Serie",
+    },
+    "telegram_video.mp4": {
+      project: "Montage vor Ort",
+      film: "Sonnenschutzfolie",
+    },
+    "telegram_video(1).mp4": {
+      project: "Montage vor Ort",
+      film: "Sonnenschutzfolie",
+    },
+    "telegram_video(2).mp4": {
+      project: "Arbeit am Glas",
+      film: "Sicherheitsfolie",
+    },
+    "telegram_video(3).mp4": {
+      project: "Arbeit am Glas",
+      film: "Sicherheitsfolie",
+    },
+    "telegram_video(4).mp4": {
+      project: "Fassadenmontage",
+      film: "Dual Reflective Serie",
+    },
+    "telegram_video(5).mp4": {
+      project: "Fassadenmontage",
+      film: "Dual Reflective Serie",
+    },
+    "telegram_video(6).mp4": {
+      project: "Innenraum · Folierung",
+      film: "Sichtschutzfolie",
+    },
+    "telegram_video(7).mp4": {
+      project: "Innenraum · Folierung",
+      film: "Sichtschutzfolie",
+    },
+    "telegram_video(8).mp4": {
+      project: "Objekt nach der Montage",
+      film: "Folie auf Anfrage",
     },
   } satisfies Record<string, GalleryCaption>,
 };

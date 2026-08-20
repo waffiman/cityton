@@ -28,7 +28,7 @@ export const about = {
     title: "Die Menschen hinter der Folie.",
     body: "Von der ersten Beratung und dem Aufmaß bis zur Montage und der Betreuung danach — bei City-Ton stecken dieselben Menschen hinter dem Ergebnis.",
     main: {
-      src: "/media/glass-work.jpg",
+      src: "/media/glass-work.JPG",
       alt: "Inhaber bei der Arbeit am Glas",
       label: "Arbeit am Glas",
     } satisfies Media,
@@ -39,7 +39,7 @@ export const about = {
         label: "Material bereit",
       },
       {
-        src: "/media/prof-montage.jpg",
+        src: "/media/prof-montage.JPG",
         alt: "Folienmontage an einem Schaufenster",
         label: "Montage vor Ort",
       },
@@ -52,7 +52,7 @@ export const about = {
     images: [
       { src: "/media/referenzen/gallery_2.png", alt: "Wohnobjekt mit dual-reflektierender Folie" },
       { src: "/media/referenzen/reflective-facade-upscaled.jpg", alt: "Fassade mit reflektierender Sonnenschutzfolie" },
-      { src: "/media/referenzen/gallery_1.png", alt: "Referenzobjekt nach der Folierung" },
+      { src: "/media/referenzen/gallery_9.JPG", alt: "Referenzobjekt nach der Folierung" },
     ] satisfies Media[],
     cta: { href: "/gallery", label: "Zur Galerie →" },
   },
@@ -65,7 +65,7 @@ export const about = {
         num: "01",
         title: "Beratung & Aufmaß",
         body: "Wir kommen vor Ort, hören zu und messen selbst — damit die Empfehlung zum Objekt passt.",
-        image: { src: "/media/measurement.jpg", alt: "Vorbereitung und Material vor dem Aufmaß" },
+        image: { src: "/media/measurement.JPG", alt: "Vorbereitung und Material vor dem Aufmaß" },
       },
       {
         num: "02",

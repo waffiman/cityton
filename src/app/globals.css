@@ -458,6 +458,12 @@ textarea.input {
 .section {
   padding-top: var(--section-gap);
 }
+/* Only top padding above, so a page whose last block is a plain .section ran
+   straight into the footer. Full-bleed bands (CtaBand and friends) set their
+   own padding-block and are deliberately untouched. */
+main > .section:last-child {
+  padding-bottom: var(--section-gap);
+}
 /* ── Section ladder ─────────────────────────────────────────────────────────
    Backgrounds alone carry the colour journey; block order stays as authored.
    Light bands step s0 → s1 → s2 → s3; inverted fields step s4 → s5; the footer

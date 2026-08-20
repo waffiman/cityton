@@ -27,11 +27,6 @@
   padding: 26px 22px 24px;
   gap: 12px;
 }
-.benefitMeta {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-}
-
 /* ── Vorher / Nachher (light section--1 field) ───────────────────────────── */
 .compare {
   --field: var(--color-surface);
@@ -207,20 +202,6 @@
   justify-content: center;
   padding: 72px 56px 72px max(var(--page-gutter), calc((100vw - var(--page-max)) / 2 + var(--page-gutter)));
 }
-.consultEyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--color-accent-300);
-  margin-bottom: 20px;
-}
-.consultTick {
-  width: 24px;
-  height: 1px;
-  background: var(--color-accent-300);
-}
 .consultTitle {
   font-size: clamp(32px, 3.2vw, 46px);
   margin: 0 0 16px;
@@ -280,11 +261,6 @@
   flex-direction: column;
   gap: 6px;
 }
-.consultFieldLabel {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  color: var(--color-accent-300);
-}
 .consultInput {
   width: 100%;
   min-height: 48px;
@@ -327,19 +303,6 @@
   font-size: 13.5px;
   line-height: 1.4;
   color: var(--color-accent-300);
-}
-.consultPhone {
-  font-size: 14px;
-  color: var(--color-on-dark-muted);
-}
-.consultPhoneLink {
-  color: var(--color-on-dark-strong);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(242, 242, 243, 0.35);
-}
-.consultPhoneLink:hover {
-  color: var(--color-on-dark);
-  border-bottom-color: var(--color-accent-300);
 }
 .placeholder {
   color: var(--color-on-dark-faint);
@@ -425,11 +388,6 @@
   letter-spacing: -0.02em;
   margin: 0 0 14px;
 }
-.faqIntro {
-  font-size: 15px;
-  color: color-mix(in srgb, var(--color-text) 62%, transparent);
-}
-
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
   .benefitGrid {

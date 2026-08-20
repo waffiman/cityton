@@ -1,0 +1,303 @@
+{
+  "site": {
+    "name": "City-Ton Austria",
+    "wordmark": "CITY-TON",
+    "tagline": "Architekturfolien für Sonnenschutz, UV-Schutz und Sicherheit",
+    "description": "Montage von Architekturfolien von Armolan Europe und LLumar für private Objekte in Österreich. Glasprüfung, Auswahl und fachgerechte Montage aus einer Hand.",
+    "cta": "Erstberatung anfragen",
+    "partners": "Offizielle Partner · Armolan Europe & LLumar"
+  },
+
+  "nav": {
+    "home": "Home",
+    "about": "Über uns",
+    "products": "Produkte",
+    "principle": "Funktionsprinzip",
+    "references": "Referenzen",
+    "contact": "Kontakt"
+  },
+
+  "footer": {
+    "pagesTitle": "Seiten",
+    "contactTitle": "Kontakt",
+    "legalTitle": "Rechtliches",
+    "imprint": "Impressum",
+    "privacy": "Datenschutzerklärung",
+    "hours": "Mo–So 9:00–20:00",
+    "rights": "Alle Rechte vorbehalten."
+  },
+
+  "home": {
+    "hero": {
+      "eyebrow": "Offizielle Partner · Armolan Europe & LLumar",
+      "title": "Architekturfolien für Sonnenschutz, UV-Schutz und Sicherheit",
+      "subtitle": "Beratung, Material, Montage und Betreuung aus einer Hand — für Eigenheime in Österreich. Auf Glasaufbau und Einbausituation abgestimmt, fachgerecht montiert.",
+      "cta": "Erstberatung anfragen"
+    },
+
+    "benefits": {
+      "title": "Vier Gründe für eine Folie",
+      "footnote": "* Referenzwerte; abhängig von Glas, Folie und Einbausituation.",
+      "items": [
+        {
+          "title": "Weniger Hitze",
+          "body": "Ein großer Teil der Sonnenenergie wird abgewiesen, bevor sie den Raum erreicht — spürbar kühler an heißen Tagen.",
+          "meta": "TSER BIS 80 %*"
+        },
+        {
+          "title": "Weniger Blendung",
+          "body": "Angenehmere Lichtverhältnisse am Arbeitsplatz und im Wohnraum, ohne den Raum zu verdunkeln.",
+          "meta": "83 % BLENDREDUZIERUNG (REFERENZ R20)*"
+        },
+        {
+          "title": "UV-Schutz",
+          "body": "Böden, Möbel, Textilien und Ware behalten ihre Farbe deutlich länger.",
+          "meta": "UV ÜBER 99 %"
+        },
+        {
+          "title": "Splitter- und Durchbruchschutz",
+          "body": "Bei Glasbruch bleiben die Splitter im Verbund. Vollständiger Einbruchschutz wirkt nur als System aus Glas, Folie, Randverbund und Rahmen.",
+          "meta": "100–300 MIKRON"
+        }
+      ]
+    },
+
+    "comparison": {
+      "title": "Ohne Folie / mit Folie",
+      "withoutLabel": "Ohne Folie",
+      "appliedLabel": "Mit Folie",
+      "rows": [
+        { "without": "Ausbleichen von Böden und Möbeln", "applied": "UV über 99 % reduziert" },
+        { "without": "Aufheizen der Räume", "applied": "Weniger Wärmeeintrag (TSER bis 80 %*)" },
+        { "without": "Blendung am Bildschirm", "applied": "Angenehmere Lichtverhältnisse" },
+        { "without": "Glasbruch mit losen Splittern", "applied": "Splitter bleiben im Verbund" },
+        { "without": "Einblick von außen", "applied": "Sichtschutz nach Bedarf" }
+      ]
+    },
+
+    "process": {
+      "title": "Von der Anfrage bis zur fertigen Folierung",
+      "note": "Die Erstberatung ist kostenlos und unverbindlich.",
+      "steps": [
+        {
+          "title": "Beratung & Messung",
+          "body": "Vor Ort: Glasaufbau, Ausrichtung, Einbausituation und Ziel werden aufgenommen."
+        },
+        {
+          "title": "Muster & Auswahl",
+          "body": "Musterstreifen direkt am eigenen Fenster — Sie sehen die Wirkung vor der Entscheidung."
+        },
+        {
+          "title": "Montage",
+          "body": "Staubarm und im laufenden Betrieb möglich. Eine Wohnung ist oft an einem Arbeitstag fertig."
+        },
+        {
+          "title": "Abnahme & Garantie",
+          "body": "Gemeinsame Kontrolle, Pflegehinweise und die Herstellergarantie schriftlich."
+        }
+      ]
+    },
+
+    "live": {
+      "eyebrow": "Live-Messung",
+      "title": "Gemessen, nicht geschätzt",
+      "body": "Unter Testbedingungen sank die Oberflächentemperatur von 33,3 °C auf 25,7 °C — eine Differenz von 7,6 °C.",
+      "value": "−7,6 °C",
+      "note": "Messwerte unter Testbedingungen; im Objekt abhängig von Glas, Folie und Einbausituation."
+    },
+
+    "industries": {
+      "title": "Auch für Gewerbe",
+      "body": "Neben Eigenheimen betreuen wir Objekte, in denen Licht, Wärme und Sicherheit besonders zählen.",
+      "items": ["Juweliere", "Autohäuser", "Apotheken", "Hotels", "Büros", "Gastronomie"]
+    },
+
+    "series": {
+      "title": "Vier Serien, ein Ziel je Objekt",
+      "intro": "Welche Folie passt, entscheidet die Glasart und das Ziel — nicht der Katalog. Wir wählen die Serie im Aufmaß gemeinsam aus.",
+      "more": "Mehr erfahren"
+    },
+
+    "reviews": {
+      "title": "Was Kunden sagen",
+      "rating": "4,9",
+      "countLabel": "18 Bewertungen"
+    },
+
+    "consultation": {
+      "eyebrow": "Beratungstermin",
+      "title": "Erstberatung anfragen",
+      "body": "Schildern Sie kurz Objekt und Ziel. Die Erstberatung ist kostenlos und unverbindlich."
+    }
+  },
+
+  "faq": {
+    "title": "Häufige Fragen",
+    "items": [
+      {
+        "q": "Wird der Raum dunkel?",
+        "a": "Nicht zwangsläufig. Der Lichtdurchlass (VLT) reicht je nach Serie von etwa 8 % bis 90 %. Moderne Sputterfolien halten die Hitze zurück und lassen das Licht weitgehend durch."
+      },
+      {
+        "q": "Kann die Folie das Glas beschädigen?",
+        "a": "Bei richtiger Auswahl nein. Entscheidend sind Glasaufbau, Ausrichtung und Randverbund — deshalb ist die Prüfung jeder Scheibe vor der Empfehlung verpflichtend."
+      },
+      {
+        "q": "Wie lange dauert die Montage?",
+        "a": "Das hängt von Fläche und Zugänglichkeit ab. Eine Wohnung ist häufig an einem Arbeitstag fertig."
+      },
+      {
+        "q": "Was kostet eine Folierung?",
+        "a": "Den Preis nennen wir nach der Besichtigung — er hängt von Glasaufbau, Fläche, Folie und Einbausituation ab."
+      },
+      {
+        "q": "Ist die Beratung kostenpflichtig?",
+        "a": "Nein. Die Erstberatung ist kostenlos und unverbindlich."
+      },
+      {
+        "q": "Welche Garantie gibt es?",
+        "a": "Herstellergarantie bis 20 Jahre, Montagegarantie bis 15 Jahre."
+      }
+    ]
+  },
+
+  "about": {
+    "eyebrow": "Über uns",
+    "title": "Ein Team, das am Glas arbeitet.",
+    "lead": "City-Ton Austria plant und montiert Architekturfolien von Armolan Europe und LLumar. Von der Glasprüfung bis zur fachgerechten Montage — für Eigenheime, bei Bedarf auch für Büros und Gewerbeobjekte in Österreich.",
+    "quote": "Wir verkaufen keine Folienrollen — wir liefern das fertige Ergebnis: Beratung, Material, Montage und Betreuung aus einer Hand.",
+    "whyTitle": "Warum Kunden mit uns arbeiten.",
+    "why": [
+      {
+        "title": "Prüfung vor der Empfehlung",
+        "body": "Jede Scheibe wird auf Glasaufbau, Ausrichtung und Randverbund geprüft, bevor eine Folie vorgeschlagen wird."
+      },
+      {
+        "title": "Transparente Kalkulation",
+        "body": "Der Preis steht nach der Besichtigung fest — nachvollziehbar nach Fläche, Folie und Aufwand."
+      },
+      {
+        "title": "Ausführung nach Herstellervorgaben",
+        "body": "Montage nach den Vorgaben von Armolan Europe und LLumar, mit schriftlicher Garantie."
+      },
+      {
+        "title": "Betreuung nach der Montage",
+        "body": "Pflegehinweise, Ansprechpartner und Unterstützung auch nach der Abnahme."
+      }
+    ],
+    "partnersTitle": "Offizielle Partner",
+    "industriesTitle": "Objekte, die wir betreuen",
+    "industries": [
+      "Eigenheime",
+      "Wohnungen",
+      "Büros",
+      "Juweliere",
+      "Autohäuser",
+      "Apotheken",
+      "Hotels",
+      "Gastronomie",
+      "Ordinationen",
+      "Handel"
+    ]
+  },
+
+  "products": {
+    "eyebrow": "Produkte",
+    "title": "Folienlösungen für unterschiedliche Anforderungen",
+    "lead": "Die Auswahl richtet sich nach Glasaufbau und Ziel. Welche Serie passt, klären wir im Aufmaß.",
+    "seriesTitle": "Serien",
+    "seriesNames": {
+      "reflective": "Reflektierend",
+      "spectrallySelective": "Spektralselektiv",
+      "lowE": "Low-E / AIR",
+      "safety": "Safety",
+      "uvClear": "UV Clear"
+    },
+    "filterAll": "Alle",
+    "detailCta": "Details ansehen"
+  },
+
+  "principle": {
+    "eyebrow": "Funktionsprinzip",
+    "title": "Wie eine Architekturfolie wirkt",
+    "chapters": [
+      {
+        "kicker": "Sonnenschutz",
+        "title": "Reflektierende Sonnenschutzfolie",
+        "body": "Eine metallisierte Schicht weist einen Teil der Sonnenenergie zurück, bevor sie in den Raum gelangt. Beispiel aus der Praxis: LLumar R20 SR CDF. Vor jeder Empfehlung wird der Glasaufbau geprüft, damit Thermik und Randverbund berücksichtigt sind.",
+        "note": "Live-Messung unter Testbedingungen: 33,3 °C auf 25,7 °C, also −7,6 °C."
+      },
+      {
+        "kicker": "Sicherheit",
+        "title": "Sicherheitsfolie",
+        "body": "Eine PET-Folie mit druckempfindlichem Klebstoff (PSA) hält die Scherben bei Glasbruch im Verbund. Geprüfte Konfigurationen erreichen EN 356 P1A (8 mil) beziehungsweise P2A (13 mil).",
+        "note": "* Klassifizierung gilt nur für die jeweils geprüfte Konfiguration."
+      }
+    ]
+  },
+
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Erstberatung anfragen",
+    "lead": "Schildern Sie kurz Objekt und Ziel — wir melden uns mit Terminvorschlag und den nächsten Schritten. Die Erstberatung ist kostenlos und unverbindlich. Musterstreifen und Messung vor Ort sind möglich.",
+    "hours": "Mo–So 9:00–20:00",
+    "hoursLabel": "Öffnungszeiten",
+    "location": "Wien, Österreich",
+    "locationLabel": "Standort",
+    "phoneLabel": "Telefon",
+    "emailLabel": "E-Mail",
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "objectType": "Objektart",
+      "goal": "Ziel",
+      "message": "Nachricht",
+      "submit": "Anfrage senden",
+      "submitting": "Wird gesendet…",
+      "success": "Danke — Ihre Anfrage ist eingegangen. Wir melden uns in Kürze bei Ihnen.",
+      "error": "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+      "privacyPrefix": "Ich habe die",
+      "privacyLink": "Datenschutzerklärung",
+      "privacySuffix": "gelesen und willige in die Verarbeitung meiner Angaben zur Bearbeitung der Anfrage ein."
+    },
+    "objectTypes": {
+      "wohnung": "Wohnung",
+      "haus": "Haus",
+      "buero": "Büro",
+      "gewerbe": "Gewerbe",
+      "sonstiges": "Sonstiges"
+    },
+    "goals": {
+      "sonnenschutz": "Sonnenschutz",
+      "uv": "UV-Schutz",
+      "energie": "Energieeffizienz",
+      "einbruchschutz": "Einbruchschutz",
+      "privatsphaere": "Privatsphäre"
+    }
+  },
+
+  "warranty": {
+    "short": "Herstellergarantie bis 20 Jahre · Montagegarantie bis 15 Jahre"
+  },
+
+  "imprint": {
+    "title": "Impressum",
+    "companyLabel": "Medieninhaber und Herausgeber",
+    "company": "City-Ton Austria",
+    "addressLabel": "Anschrift",
+    "address": "Wien, Österreich",
+    "vatLabel": "UID-Nummer",
+    "vat": "",
+    "contactLabel": "Kontakt"
+  },
+
+  "common": {
+    "readMore": "Mehr erfahren",
+    "back": "Zurück",
+    "close": "Schließen",
+    "loading": "Wird geladen…",
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundBody": "Die aufgerufene Seite existiert nicht oder wurde verschoben."
+  }
+}

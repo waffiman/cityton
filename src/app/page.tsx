@@ -13,9 +13,12 @@ import ProcessRibbon from "@/components/ProcessRibbon";
 import SeriesCard from "@/components/SeriesCard";
 import Stars from "@/components/Stars";
 import { benefits, comparisonRows, consultation, faq, processSteps, protectionRows, reviews } from "@/content/home";
-import { series } from "@/content/series";
 import { site } from "@/content/site";
+import { getVisibleSeries } from "@/lib/products";
 import styles from "./home.module.css";
+
+// Reads live category data; rendered per request so admin edits show immediately.
+export const dynamic = "force-dynamic";
 
 /**
  * Block order is fixed. Backgrounds alone carry the colour journey: each light
@@ -23,7 +26,8 @@ import styles from "./home.module.css";
  * and each inverted field is one rung deeper than the previous inverted field
  * (s4 → s5), with the footer on s6 as the darkest stop.
  */
-export default function HomePage() {
+export default async function HomePage() {
+  const series = await getVisibleSeries();
   return (
     <div className="journey">
       {site.heroVariant === "split" ? <HeroSplit /> : <HeroFull />}
@@ -53,7 +57,6 @@ export default function HomePage() {
                 <p className="card-body" style={{ fontSize: 14 }}>
                   {b.body}
                 </p>
-                <div className={`card-meta ${styles.benefitMeta}`}>{b.meta}</div>
               </div>
             ))}
           </div>
@@ -173,10 +176,6 @@ export default function HomePage() {
       {/* ── Beratungstermin ──────────────────────────────────────────────── */}
       <section className={`section--5 ${styles.consult}`}>
         <div className={styles.consultCopy}>
-          <div className={styles.consultEyebrow}>
-            <span className={styles.consultTick} />
-            {consultation.eyebrow.toUpperCase()}
-          </div>
           <h3 className={styles.consultTitle}>
             {consultation.title[0]}
             <br />
@@ -251,9 +250,6 @@ export default function HomePage() {
                 <br />
                 <span className="accent-word">Aufmaß gestellt werden.</span>
               </h2>
-              <p className={styles.faqIntro}>
-                Ihre Frage ist nicht dabei? Rufen Sie an — die Antwort dauert meist zwei Minuten.
-              </p>
               <Link href="/kontakt" className="btn btn-secondary" style={{ marginTop: 12 }}>
                 Frage stellen
               </Link>

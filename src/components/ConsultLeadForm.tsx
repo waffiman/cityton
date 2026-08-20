@@ -2,6 +2,7 @@
 
 import { useRef, useState, type FormEvent } from "react";
 import Corners from "@/components/Corners";
+import TurnstileWidget from "@/components/TurnstileWidget";
 import { isEmailInput, MAX_EMAIL_LENGTH, parseContact, sanitizeContactInput } from "@/lib/contact-lead";
 import { site } from "@/content/site";
 import styles from "@/app/home.module.css";
@@ -20,6 +21,7 @@ export default function ConsultLeadForm() {
   const [value, setValue] = useState("");
   const [status, setStatus] = useState<Status>({ type: "idle" });
   const [submitting, setSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const inFlight = useRef(false);
   /** Last value accepted by the server — resubmitting it is blocked client-side too. */
   const lastAccepted = useRef<string | null>(null);
@@ -55,7 +57,7 @@ export default function ConsultLeadForm() {
       const res = await fetch("/api/beratung", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contact: value }),
+        body: JSON.stringify({ contact: value, turnstileToken }),
       });
       const data = (await res.json()) as {
         ok?: boolean;
@@ -99,11 +101,11 @@ export default function ConsultLeadForm() {
   return (
     <form className={styles.consultForm} onSubmit={onSubmit} noValidate>
       <label className={styles.consultField}>
-        <span className={styles.consultFieldLabel}>Telefon oder E-Mail</span>
         <input
           className={styles.consultInput}
           type="text"
           name="contact"
+          aria-label="Telefon oder E-Mail"
           autoComplete="tel email"
           inputMode={isEmailInput(value) ? "email" : "tel"}
           placeholder="Telefonnummer oder E-Mail"
@@ -124,17 +126,13 @@ export default function ConsultLeadForm() {
         />
       </label>
 
+      <TurnstileWidget onToken={setTurnstileToken} />
+
       <div className={styles.consultFormActions}>
         <button type="submit" className="btn btn-primary btn-lg blueprint" disabled={submitting}>
           <Corners />
           {submitting ? "Wird gesendet…" : site.cta}
         </button>
-        <span className={styles.consultPhone}>
-          oder anrufen:{" "}
-          <a href={`tel:${site.contact.phoneTel}`} className={styles.consultPhoneLink}>
-            {site.contact.phone}
-          </a>
-        </span>
       </div>
 
       {status.type !== "idle" ? (

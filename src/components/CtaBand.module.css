@@ -1,0 +1,41 @@
+.band {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(48px, 6vw, 80px);
+}
+
+.fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 60% 80% at 85% 20%,
+      color-mix(in srgb, var(--color-accent-400) 22%, transparent),
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 56px,
+      color-mix(in srgb, var(--color-on-dark) 5%, transparent) 56px 57px
+    );
+}
+
+.inner {
+  position: relative;
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.1;
+  color: var(--color-on-dark-strong);
+}
+
+.body {
+  margin: 0 0 24px;
+  max-width: 42ch;
+  font-size: 16px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-on-dark) 82%, transparent);
+}

@@ -8,13 +8,11 @@ type Partner = {
   body: string;
   logo?: { src: string; alt: string; width: number; height: number };
   link?: { href: string; label: string };
-  highlight?: boolean;
 };
 
 type Media = { src: string; alt: string; label?: string };
 
 export const about = {
-  eyebrow: "Über uns",
   title: "Ein Team, das am Glas arbeitet.",
   body: "City-Ton Austria montiert Sonnenschutz-, UV-, Energiespar- und Sicherheitsfolien in Österreich und der Ukraine. Wir beraten, messen, montieren und betreuen selbst — ohne Zwischenstelle, die Verantwortung abschiebt.",
   image: {
@@ -27,7 +25,6 @@ export const about = {
   quoteMeta: "Grundsatz · City-Ton Austria",
 
   team: {
-    eyebrow: "Team",
     title: "Die Menschen hinter der Folie.",
     body: "Von der ersten Beratung und dem Aufmaß bis zur Montage und der Betreuung danach — bei City-Ton stecken dieselben Menschen hinter dem Ergebnis.",
     main: {
@@ -50,7 +47,6 @@ export const about = {
   },
 
   onsite: {
-    eyebrow: "Praxis",
     title: "Vor Ort.",
     body: "Ein kurzer Einblick in die Realität der Montage — fertige Objekte und Arbeit am Glas.",
     images: [
@@ -62,7 +58,6 @@ export const about = {
   },
 
   peopleSteps: {
-    eyebrow: "Ablauf",
     title: "Vom ersten Gespräch bis zum fertigen Ergebnis.",
     body: "Kurz und persönlich — wir übernehmen Verantwortung in jedem Schritt.",
     items: [
@@ -87,7 +82,6 @@ export const about = {
     ],
   },
 
-  partnersEyebrow: "Partnerschaft",
   partnersTitle: "Hersteller, denen wir vertrauen.",
   partners: [
     {
@@ -104,17 +98,9 @@ export const about = {
       logo: { src: "/media/logo-armolan.png", alt: "Armolan Europe", width: 160, height: 44 },
       link: { href: "https://armolan.eu", label: "armolan.eu →" },
     },
-    {
-      kicker: "City-Ton Austria",
-      title: "Beratung, Aufmaß, Montage, Betreuung",
-      body: "Serie wählen, zertifiziert montieren, Ansprechpartner bleiben.",
-      logo: { src: "/media/logo-city-ton.png", alt: "City-Ton Austria", width: 160, height: 48 },
-      highlight: true,
-    },
   ] as Partner[],
 
   why: {
-    eyebrow: "Vertrauen",
     title: "Warum Kunden mit uns arbeiten.",
     items: [
       {
@@ -141,7 +127,6 @@ export const about = {
   },
 
   rating: {
-    eyebrow: "Kundenbewertung",
     value: reviews.rating,
     scale: "5",
     count: reviews.count,

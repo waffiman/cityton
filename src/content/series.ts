@@ -869,7 +869,7 @@ export type Series = {
   tag: string;
   extraTag?: string;
   /** Diagram drawn on the overview card. */
-  glyph: "reflexion" | "absorption" | "kraft" | "uv";
+  glyph: "reflexion" | "absorption" | "kraft" | "uv" | "dekor";
   /** Overview-card glyph plate: dark field or paper. */
   glyphField: "dark" | "paper";
   summary: string;
@@ -1186,7 +1186,7 @@ export const series: Series[] = [
     name: "Sichtschutz & Dekor",
     family: "Matt- und Blickschutzfolien",
     tag: "Privatsphäre",
-    glyph: "absorption",
+    glyph: "dekor",
     glyphField: "paper",
     summary:
       "Mattierte und blickdichte Folien für Trennwände, Besprechungsräume und " +

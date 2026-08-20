@@ -17,7 +17,7 @@ const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
 const VIDEO_EXT = new Set([".mp4", ".webm"]);
 
 function captionFor(name: string): GalleryCaption {
-  return gallery.captions[name] ?? gallery.captionFallback;
+  return (gallery.captions as Record<string, GalleryCaption>)[name] ?? gallery.captionFallback;
 }
 
 function toItem(name: string, kind: GalleryItem["kind"]): GalleryItem {

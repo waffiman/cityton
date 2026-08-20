@@ -10,8 +10,8 @@ import styles from "./FilmCatalog.module.css";
  * and the per-series film list on `/produkte/[slug]` — one card, reused
  * everywhere a single film needs to be listed.
  */
-export default function FilmCard({ film }: { film: Film }) {
-  const src = filmImageSrc(film);
+export default function FilmCard({ film }: { film: Film & { imageUrl?: string | null } }) {
+  const src = film.imageUrl ?? filmImageSrc(film);
   return (
     <Link href={`/produkte/folie/${filmSlug(film.code)}`} className={styles.card}>
       <div className={styles.media}>
@@ -22,6 +22,7 @@ export default function FilmCard({ film }: { film: Film }) {
             fill
             sizes="(max-width: 700px) 50vw, 25vw"
             className={styles.img}
+            unoptimized
           />
         ) : (
           <span className={styles.mediaEmpty} />

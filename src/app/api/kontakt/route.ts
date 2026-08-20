@@ -1,5 +1,8 @@
 import { validateInquiry } from "@/lib/kontakt-inquiry";
 import { saveInquiry } from "@/lib/kontakt-inquiries-store";
+import { sendInquiryAutoReply, sendInquiryNotification } from "@/lib/mailer";
+import { allowRequest, clientIp, tooManyRequests } from "@/lib/rate-limit";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
 
@@ -7,6 +10,9 @@ export const runtime = "nodejs";
  * POST /api/kontakt — accept a full inquiry, validate, honeypot-check, dedupe.
  */
 export async function POST(request: Request) {
+  const ip = clientIp(request);
+  if (!allowRequest(ip)) return tooManyRequests();
+
   let body: unknown;
   try {
     body = await request.json();
@@ -18,7 +24,15 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "Ungültige Anfrage." }, { status: 400 });
   }
 
-  const parsed = validateInquiry(body as Record<string, unknown>);
+  const record = body as Record<string, unknown>;
+  if (!(await verifyTurnstile(record.turnstileToken, ip))) {
+    return Response.json(
+      { ok: false, error: "Bot-Prüfung fehlgeschlagen. Bitte Seite neu laden." },
+      { status: 400 },
+    );
+  }
+
+  const parsed = validateInquiry(record);
   if (!parsed.ok) {
     if (parsed.spam) {
       // Pretend success so bots do not retry.
@@ -34,6 +48,7 @@ export async function POST(request: Request) {
     objektart: inquiry.objektart,
     flaeche: inquiry.flaeche,
     goals: inquiry.goals,
+    message: inquiry.message,
     phone: inquiry.phone,
     email: inquiry.email,
   });
@@ -47,6 +62,19 @@ export async function POST(request: Request) {
       },
       { status: 409 },
     );
+  }
+
+  // Best effort: the lead is already saved, so a mail failure must not surface
+  // as a failed submission. Log rejections so a broken SMTP config is visible
+  // in the container logs rather than silently swallowed.
+  const sent = await Promise.allSettled([
+    sendInquiryNotification(result.inquiry),
+    sendInquiryAutoReply(result.inquiry),
+  ]);
+  for (const outcome of sent) {
+    if (outcome.status === "rejected") {
+      console.error("[kontakt] mail failed:", outcome.reason);
+    }
   }
 
   return Response.json({ ok: true, id: result.inquiry.id });

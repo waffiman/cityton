@@ -80,6 +80,10 @@ export async function listGalleryImages(): Promise<GalleryItem[]> {
   const videos: GalleryItem[] = [];
 
   for (const name of names.sort(byName)) {
+    // Skip dotfiles and macOS AppleDouble siblings ("._foo.mp4"), which a tar
+    // upload from a Mac leaves next to real files. They end in a media
+    // extension, so without this they become uncaptioned, unplayable tiles.
+    if (name.startsWith(".")) continue;
     const ext = path.extname(name).toLowerCase();
     if (IMAGE_EXT.has(ext)) photos.push(toItem(name, "image"));
     else if (VIDEO_EXT.has(ext)) videos.push(toItem(name, "video"));

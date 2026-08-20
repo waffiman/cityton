@@ -53,6 +53,10 @@ export const gallery = {
       project: "Fassadenband",
       film: "Energiesparfolie",
     },
+    "gallery_6.jpg": {
+      project: "Eckfenster · Wohnung",
+      film: "Sonnenschutzfolie",
+    },
     "interior-2.jpg": {
       project: "Interieur · Glaswand",
       film: "Sonnenschutzfolie",

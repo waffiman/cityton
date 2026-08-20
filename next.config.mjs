@@ -18,6 +18,11 @@ const nextConfig = {
     // Local imagery lives in public/media; admin uploads come from S3 (see remotePatterns).
     formats: ["image/avif", "image/webp"],
     remotePatterns,
+    // Sources are 24-megapixel photos, so regenerating a variant is expensive.
+    // 30 days instead of the 4-hour default. Note this is also the browser
+    // max-age: replacing a file under the same name can stay stale in an
+    // already-warm browser until it expires, so rename on replacement.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   async redirects() {
     return [{ source: "/referenzen", destination: "/gallery", permanent: true }];

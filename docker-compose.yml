@@ -48,6 +48,12 @@ services:
       TURNSTILE_SECRET_KEY: ${TURNSTILE_SECRET_KEY:-}
       NODE_ENV: production
       PORT: 3000
+    # Generated image variants live in .next/cache. Without this volume every
+    # `up --build` discards them and the next visitors pay to regenerate all of
+    # them from 24-megapixel sources.
+    volumes:
+      - nextcache:/app/.next/cache
+
     # A Caddy reverse proxy on the host owns :80/:443 and terminates TLS, so the
     # app binds loopback only. Publishing :80 here collides with Caddy and the
     # container fails to start.
@@ -56,3 +62,4 @@ services:
 
 volumes:
   dbdata:
+  nextcache:

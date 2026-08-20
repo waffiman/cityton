@@ -7,7 +7,7 @@
  */
 
 const WINDOW_MS = 10 * 60 * 1000;
-const MAX_HITS = 5;
+const MAX_HITS = 12;
 /** Stop the map from growing without bound if many IPs hit the endpoint. */
 const MAX_TRACKED_IPS = 10_000;
 

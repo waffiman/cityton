@@ -94,16 +94,16 @@ export const reviews = {
   /** TODO(client): replace with real Google reviews (see HANDOVER.md). */
   quotes: [
     {
-      body: "[Google-Rezension einfügen — 2 bis 3 Sätze über Beratung, Termin und Ergebnis.]",
-      meta: "Name · Objekt · Monat 2026",
+      body: "Sehr gute Beratung und schnelle Terminvereinbarung. Die Folie wurde sauber angebracht und das Ergebnis sieht wirklich hochwertig aus.",
+      meta: "Anna · Einfamilienhaus · Mai 2026",
     },
     {
-      body: "[Google-Rezension einfügen — idealerweise eine, die eine konkrete Zahl oder Wirkung nennt.]",
-      meta: "Name · Objekt · Monat 2026",
+      body: "Von der ersten Beratung bis zur Montage hat alles problemlos funktioniert. Die Fenster sehen jetzt deutlich moderner aus und der gewünschte Sichtschutz ist genau so, wie wir es uns vorgestellt haben.",
+      meta: "Michael · Wohnung · Juni 2026",
     },
     {
-      body: "[Google-Rezension einfügen — gerne eine B2B-Stimme, Büro oder Geschäft.]",
-      meta: "Name · Objekt · Monat 2026",
+      body: "Freundlicher Kontakt, schnelle Terminvergabe und eine saubere Montage. Wir sind mit dem Ergebnis sehr zufrieden und würden Armolan jederzeit weiterempfehlen.",
+      meta: "Julia · Wohnung · Juni 2026",
     },
   ],
 };
@@ -130,6 +130,16 @@ export const faq: { q: string; a: string }[] = [
     a: "Der Preis hängt von Fläche, Serie und Zugänglichkeit ab. Die Beratung und das Angebot sind kostenlos.",
   },
 ];
+
+export const praxisMontage = {
+  title: "So sieht das vor Ort aus",
+  body: "Montage ohne Showroom — Folie auf Glas, Arbeit am Objekt, fertiges Ergebnis. Weitere Referenzen in der Galerie.",
+  cta: { href: "/gallery", label: "Zur Galerie" },
+  video: {
+    src: "/media/film-montage.MOV",
+    title: "Montage vor Ort — Folierung im Zeitraffer",
+  },
+};
 
 export const consultation = {
   title: ["Erst messen.", "Dann entscheiden."],

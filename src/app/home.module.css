@@ -189,6 +189,46 @@
   gap: 26px;
 }
 
+/* ── Vor Ort / Montage ───────────────────────────────────────────────────── */
+.praxis {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  min-height: 520px;
+}
+.praxisMedia {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+}
+.praxisVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.praxisCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 72px max(var(--page-gutter), calc((100vw - var(--page-max)) / 2 + var(--page-gutter))) 72px 56px;
+}
+.praxisTitle {
+  font-size: clamp(32px, 3.2vw, 46px);
+  margin: 0 0 16px;
+  color: var(--color-on-dark-strong);
+  line-height: 1.04;
+  max-width: 16ch;
+}
+.praxisBody {
+  margin: 0 0 30px;
+  color: var(--color-on-dark-muted);
+  font-size: 17px;
+  line-height: 1.55;
+  max-width: 44ch;
+}
+
 /* ── Beratungstermin ─────────────────────────────────────────────────────── */
 .consult {
   --field: var(--s5);
@@ -403,6 +443,16 @@
   }
   .quoteGrid {
     grid-template-columns: 1fr;
+  }
+  .praxis {
+    grid-template-columns: 1fr;
+  }
+  .praxisMedia {
+    min-height: 320px;
+    aspect-ratio: 16 / 10;
+  }
+  .praxisCopy {
+    padding: 48px var(--page-gutter) 64px;
   }
   .consult {
     position: relative;

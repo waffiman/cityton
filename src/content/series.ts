@@ -790,6 +790,29 @@ export const filmsOf = (
     .filter((f) => f.brand === brand && f.family === family)
     .sort((a, b) => a.single.vlt - b.single.vlt);
 
+/**
+ * True if a code's leading token equals `prefix` — "R GREY 10" matches "R",
+ * "N1040 SR PS 8" matches "N" (no space before the model number), but
+ * "RA CHARCOAL 22" and "RHE 20 SI ER HPR" do NOT match "R": the character
+ * after the prefix has to be a space, a digit, or the end of the string, so
+ * a bare token never swallows a longer one (R vs. RA/RHE/RN, DR vs. DRN).
+ */
+const hasCodePrefix = (code: string, prefix: string): boolean => {
+  if (!code.startsWith(prefix)) return false;
+  const rest = code.slice(prefix.length);
+  return rest === "" || rest.startsWith(" ") || /^[0-9]/.test(rest);
+};
+
+/**
+ * Folien über alle Marken, deren Codepräfix in `prefixes` liegt — aufsteigend
+ * nach Lichtdurchlässigkeit sortiert. Grundlage für Serien, die per Codepräfix
+ * statt per `family` gruppiert sind (Serie R, Spektralselektive).
+ */
+const filmsWithCodePrefix = (prefixes: string[]): Film[] =>
+  films
+    .filter((f) => prefixes.some((p) => hasCodePrefix(f.code, p)))
+    .sort((a, b) => a.single.vlt - b.single.vlt);
+
 /** Prozentwert für die Anzeige: 17 → "17 %". */
 const pct = (n: number): string => `${n} %`;
 
@@ -818,7 +841,29 @@ const thickness = (f: Film): string => {
 
 /* --- Vorgefilterte Listen für die Serien --- */
 
-const reflektierend = filmsOf("reflektierend");
+/**
+ * Serie R: alles mit Codepräfix R, RHE, DR oder NF — markenübergreifend
+ * (Armolan + LLumar). Ersetzt die frühere Beschränkung auf Armolans
+ * `family: "reflektierend"`.
+ */
+const reflektierend = filmsWithCodePrefix(["R", "RHE", "DR", "NF"]);
+/**
+ * Spektralselektive Folien: alles mit Codepräfix N, DRN, V, VS, VE, AIR, NHE,
+ * XHE oder THE — markenübergreifend. Ersetzt die vormals leere Kategorie
+ * "ARM Platinum / Spectrum" (Nano-keramische Folien), für die nie ein
+ * Musterbuch-Eintrag vorlag.
+ */
+const spektralselektiv = filmsWithCodePrefix([
+  "N",
+  "DRN",
+  "V",
+  "VS",
+  "VE",
+  "AIR",
+  "NHE",
+  "XHE",
+  "THE",
+]);
 const sichtschutz = filmsOf("sichtschutz");
 /** Sicherheitsfolien, nach Materialstärke aufsteigend. */
 const sicherheit = filmsOf("sicherheit").sort(
@@ -827,6 +872,8 @@ const sicherheit = filmsOf("sicherheit").sort(
 
 const rVlt = span(reflektierend, (v) => v.vlt);
 const rTser = span(reflektierend, (v) => v.tser);
+const xVlt = span(spektralselektiv, (v) => v.vlt);
+const xTser = span(spektralselektiv, (v) => v.tser);
 const sVlt = span(sichtschutz, (v) => v.vlt);
 const sTser = span(sichtschutz, (v) => v.tser);
 const safetyTser = span(sicherheit, (v) => v.tser);
@@ -841,6 +888,11 @@ const rLead = getFilm("R SILVER 20"); // Leitprodukt der Serie R
 const rLightest = reflektierend[reflektierend.length - 1]!;
 const rBestTser = reflektierend.reduce((a, b) => (b.single.tser > a.single.tser ? b : a));
 const rAussen = reflektierend.filter((f) => f.mount !== "innen").length;
+const rArmolan = reflektierend.filter((f) => f.brand === "Armolan").length;
+const rLLumar = reflektierend.filter((f) => f.brand === "LLumar").length;
+
+const xLead = getFilm("XHE 70 SS ER HPR"); // Leitprodukt der spektralselektiven Serie
+const xAussen = spektralselektiv.filter((f) => f.mount !== "innen").length;
 
 const en356 = getFilm("SAFETY 12 MIL CLEAR");
 // const en12600 = getFilm("ARM SAFETY 8 MIL");
@@ -918,16 +970,17 @@ export const series: Series[] = [
       intro:
         `Die metallisierte Reflexionsfolie für stark besonnte Flächen. Wo Hitze das ` +
         `Hauptproblem ist — Südfassaden, Schaufenster, Dachverglasungen — arbeitet die ` +
-        `Serie R am wirtschaftlichsten. ${reflektierend.length} Varianten decken alles ab, ` +
-        `von der fast blickdichten Hallenfolie bis zum hellen Bürofilter.`,
+        `Serie R am wirtschaftlichsten. ${reflektierend.length} Varianten von Armolan ` +
+        `(${rArmolan}) und LLumar (${rLLumar}) decken alles ab, von der fast blickdichten ` +
+        `Hallenfolie bis zum hellen Bürofilter.`,
       stats: [
         { label: "TSER", value: pct(rLead.single.tser), note: "Gesamtenergie abgewiesen" },
         { label: "VLT", value: pct(rLead.single.vlt), note: "Lichtdurchlass" },
         { label: "Blendschutz", value: pct(rLead.single.glare ?? 0), note: "Blendung reduziert" },
       ],
       statsFootnote:
-        `Werte für ${rLead.name} an Einfachverglasung, Quelle: Armolan-Musterbuch. Andere ` +
-        `Varianten siehe Tabelle. Bitte gegen das aktuelle Herstellerdatenblatt prüfen.`,
+        `Werte für ${rLead.name} (Armolan) an Einfachverglasung. Andere Varianten — auch ` +
+        `LLumar — siehe Tabelle. Bitte gegen das aktuelle Herstellerdatenblatt prüfen.`,
       facts: [
         {
           kicker: "Technologie",
@@ -989,28 +1042,104 @@ export const series: Series[] = [
     },
   },
   {
-    // ACHTUNG: Für diese Serie gibt es KEINEN Eintrag in `films` — im
-    // fotografierten Armolan-Musterbuch ist keine Platinum-/Spectrum-Seite
-    // enthalten. Die Zahlen unten stammen aus der Partnerbroschüre und sind
-    // deshalb die einzigen auf dieser Seite, die noch hartkodiert sind.
-    // Sobald ein Datenblatt vorliegt: Folien in `films` aufnehmen (family
-    // "sputtered") und diesen Block wie die anderen ableiten.
-    slug: "arm-platinum-spectrum",
-    name: "ARM Platinum / Spectrum",
-    family: "Nano-keramische Folien",
-    tag: "Premium · Sputter",
+    // Ersetzt die vormals leere Kategorie "ARM Platinum / Spectrum" (Nano-
+    // keramische Folien) — dafür lag nie ein Musterbuch-Eintrag vor. Diese
+    // Serie fasst stattdessen alles zusammen, was tatsächlich im Programm
+    // steht und spektralselektiv arbeitet: LLumars gesputterte Metalloxid-
+    // Beschichtungen (Codepräfix N, DRN, V, VS, VE, AIR, NHE, XHE, THE).
+    slug: "spektralselektive",
+    name: "Spektralselektive Folien",
+    family: "Spektralselektive & Sputter-Folien",
+    tag: "Premium · Spektralselektiv",
     glyph: "absorption",
     glyphField: "paper",
     summary:
-      "Feine, dicht aufgetragene Partikel blockieren die Sonnenenergie statt sie zu " +
-      "reflektieren — dadurch heller, neutraler und ohne Spiegeleffekt.",
-    useCases: ["Büro", "Architektur", "Wohnraum"],
+      `Gesputterte Metalloxidschicht statt Aluminium-Spiegel: blockiert gezielt Infrarot- ` +
+      `und UV-Anteile, lässt sichtbares Licht weitgehend durch — heller, neutraler und ohne ` +
+      `Spiegeleffekt. ${spektralselektiv.length} Varianten von ${pct(xVlt.min)} bis ` +
+      `${pct(xVlt.max)} Lichtdurchlass.`,
+    useCases: ["Büro", "Architektur", "Wohnraum", "Fassade ohne Spiegeleffekt"],
     metrics: [
-      { label: "TSER", value: "bis 60 %", bar: 60 },
-      { label: "VLT", value: "bis 80 %", bar: 80 },
-      { label: "UV-Schutz", value: "> 99 %", bar: 99 },
+      { label: "TSER", value: `bis ${pct(xTser.max)}`, bar: xTser.max },
+      { label: "VLT", value: `${xVlt.min}–${pct(xVlt.max)}`, bar: xVlt.max },
+      { label: "UV-Schutz", value: uvLabel(xLead.single), bar: 99 },
     ],
-    // detail: TODO — erst schreiben, wenn belastbare Herstellerwerte vorliegen.
+    detail: {
+      kicker: "Sonnenschutzfolie · Spektralselektiv · LLumar",
+      intro:
+        `Statt Sonnenwärme wie ein Spiegel zurückzuwerfen, filtert diese Beschichtung ` +
+        `gezielt die Wellenlängen heraus, die Hitze bringen, und lässt sichtbares Licht ` +
+        `vergleichsweise ungehindert durch. Das Ergebnis: eine neutrale, kaum reflektierende ` +
+        `Optik bei spürbarer Kühlwirkung. ${spektralselektiv.length} Varianten decken die ` +
+        `Spanne von dezent getönt bis nahezu unsichtbar ab.`,
+      stats: [
+        { label: "TSER", value: pct(xLead.single.tser), note: "Gesamtenergie abgewiesen" },
+        { label: "VLT", value: pct(xLead.single.vlt), note: "Lichtdurchlass" },
+        { label: "UV-Schutz", value: uvLabel(xLead.single), note: "UV-Durchlässigkeit" },
+      ],
+      statsFootnote:
+        `Werte für ${xLead.name} (LLumar) an Einfachverglasung. Andere Varianten siehe ` +
+        `Tabelle. Bitte gegen das aktuelle Herstellerdatenblatt prüfen.`,
+      facts: [
+        {
+          kicker: "Technologie",
+          title: "Gesputterte Metalloxidschicht",
+          body:
+            "Eine hauchdünne, im Vakuum aufgesputterte Metalloxidschicht wirkt als " +
+            "spektralselektiver Filter: Sie blockiert Infrarot- und UV-Strahlung gezielt, " +
+            "statt das gesamte Sonnenlicht zu spiegeln — dadurch bleibt die Optik neutral " +
+            "und heller als bei einer klassischen Reflexionsfolie gleicher Hitzeschutzklasse.",
+        },
+        {
+          kicker: "Einsatz",
+          title: "Wo der Spiegeleffekt stört",
+          body:
+            `Bürofassaden, Architekturglas, Wohnräume mit Blick nach außen — überall dort, ` +
+            `wo Hitzeschutz gefragt ist, ein Spiegelbild an der Fassade aber nicht. ` +
+            `${xAussen} der ${spektralselektiv.length} Varianten (die Helios-Linie) sind ` +
+            `auch als Außenfolie erhältlich.`,
+        },
+        {
+          kicker: "Unterschied zur Serie R",
+          title: "Filtern statt spiegeln",
+          body:
+            "Wo die Serie R mit einer reflektierenden Aluminiumschicht arbeitet, filtert " +
+            "diese Serie die Sonnenenergie spektralselektiv heraus. Das kostet bei " +
+            "gleichem VLT etwas TSER — dafür bleibt die Scheibe von außen unauffälliger " +
+            "und wirkt tagsüber nicht wie ein Spiegel.",
+        },
+        {
+          kicker: "Auswahl",
+          title: "Von dezent bis nahezu unsichtbar",
+          body:
+            `Zwischen ${xVlt.min} % und ${pct(xVlt.max)} Lichtdurchlass liegen alle Stufen ` +
+            `zwischen deutlich sichtbarer Tönung und einer Folie, die im eingebauten ` +
+            `Zustand kaum auffällt. Je heller die Variante, desto geringer die ` +
+            `Wärmeabweisung — auch hier gilt der Zielkonflikt aus der Serie R.`,
+        },
+      ],
+      variants: {
+        columns: [
+          "Variante",
+          "VLT",
+          "TSER",
+          "UV-Schutz",
+          "Blendschutz",
+          "Montage",
+          "Typische Anwendung",
+        ],
+        rows: spektralselektiv.map((f) => [
+          f.name,
+          pct(f.single.vlt),
+          pct(f.single.tser),
+          uvLabel(f.single),
+          f.single.glare !== undefined ? pct(f.single.glare) : "—",
+          f.mount,
+          f.application ?? "—",
+        ]),
+        films: spektralselektiv,
+      },
+    },
   },
   {
     slug: "safety",

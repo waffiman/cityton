@@ -36,6 +36,7 @@ async function main() {
 
   // 2. Categories (series) — remember which film codes belong to each, via detail.variants.films
   const categoryIdByFilmCode = new Map<string, string>();
+  const currentSlugs = series.map((s) => s.slug);
   for (let i = 0; i < series.length; i++) {
     const s = series[i];
     const row = await prisma.category.upsert({
@@ -72,6 +73,16 @@ async function main() {
       categoryIdByFilmCode.set(f.code, row.id);
     }
   }
+
+  // A renamed slug (e.g. arm-platinum-spectrum → spektralselektive) leaves the
+  // old row behind — upsert only ever creates/updates, never deletes. Hide
+  // anything no longer in `series` rather than deleting it, so no product
+  // history is lost and a typo'd rename is trivially reversible.
+  const { count: hidden } = await prisma.category.updateMany({
+    where: { slug: { notIn: currentSlugs } },
+    data: { visible: false },
+  });
+  if (hidden > 0) console.log(`Hid ${hidden} categorie(s) no longer in src/content/series.ts.`);
 
   // 3. Products (films)
   for (let i = 0; i < films.length; i++) {

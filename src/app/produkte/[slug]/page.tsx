@@ -3,8 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Corners from "@/components/Corners";
 import FilmCard from "@/components/FilmCard";
+import FilmStructure from "@/components/FilmStructure";
 import InfoHint from "@/components/InfoHint";
 import SeriesGlyph from "@/components/diagrams/SeriesGlyph";
+import { structureForSeries } from "@/content/film-structure";
 import { site } from "@/content/site";
 import { getSeriesBySlug } from "@/lib/products";
 import filmCatalogStyles from "@/components/FilmCatalog.module.css";
@@ -35,9 +37,10 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
   const d = item.detail;
   const stats: { label: string; value: string; note: string }[] =
     d?.stats ?? item.metrics.map((m) => ({ label: m.label, value: m.value, note: "" }));
+  const structure = structureForSeries(item.slug, d?.structure);
 
   return (
-    <>
+    <div className={styles.page}>
       <section className="container" style={{ paddingTop: 44 }}>
         <nav className={styles.crumbs} aria-label="Brotkrumen">
           <Link href="/">HOME</Link>
@@ -88,6 +91,14 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
           </div>
         </div>
       </section>
+
+      {structure ? (
+        <section className="section--1">
+          <div className="container">
+            <FilmStructure {...structure} />
+          </div>
+        </section>
+      ) : null}
 
       {d?.facts && (
         <section className="container section">
@@ -155,7 +166,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
       )}
 
       {!d && (
-        <section className="container section">
+        <section className={`container section ${styles.end}`}>
           <div className={`blueprint ${styles.pending}`}>
             <Corners />
             <p style={{ margin: 0, maxWidth: "56ch" }}>
@@ -163,12 +174,12 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
               Referenzobjekte kommen aus dem Herstellerdatenblatt — bis dahin beraten wir gerne
               direkt.
             </p>
-            <Link href="/kontakt" className="btn btn-secondary" style={{ marginTop: 18 }}>
+            <Link href="/kontakt" className={`btn btn-secondary ${styles.pendingCta}`}>
               {site.cta}
             </Link>
           </div>
         </section>
       )}
-    </>
+    </div>
   );
 }

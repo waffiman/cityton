@@ -205,6 +205,36 @@
   text-decoration: underline;
 }
 
+/* Row reordering */
+.sortBtns {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.sortBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--color-divider);
+  background: var(--s0);
+  color: var(--color-neutral-600);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sortBtn:hover:not(:disabled) {
+  background: var(--s1);
+  color: var(--color-text);
+}
+
+.sortBtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 /* Badges */
 .badge {
   display: inline-block;

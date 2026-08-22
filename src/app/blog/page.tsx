@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Corners from "@/components/Corners";
 import { prisma } from "@/lib/db";
 import styles from "./blog.module.css";
 
@@ -26,21 +27,28 @@ export default async function BlogPage() {
     <section className={`section--1 ${styles.band}`}>
       <div className="container">
         <div className={styles.head}>
+          <div className="rule-head">
+            <span className="eyebrow">Blog</span>
+          </div>
           <h1 className={styles.title}>Aktuelles rund um Folien</h1>
-          <p className={styles.lead}>
+          <p className="lead">
             Neuigkeiten, Tipps und Projektberichte — sobald neue Beiträge erscheinen, finden Sie
             sie hier.
           </p>
         </div>
 
         {posts.length === 0 ? (
-          <p className={styles.cardExcerpt}>Es sind noch keine Beiträge veröffentlicht.</p>
+          <div className={`blueprint ${styles.empty}`}>
+            <Corners />
+            Es sind noch keine Beiträge veröffentlicht.
+          </div>
         ) : (
           <div className={styles.grid}>
             {posts.map((p) => (
-              <Link key={p.id} href={`/blog/${p.slug}`} className={styles.card}>
+              <Link key={p.id} href={`/blog/${p.slug}`} className={`blueprint ${styles.card}`}>
+                <Corners />
                 {p.coverUrl && (
-                  <div className={styles.cardMedia}>
+                  <div className={`${styles.cardMedia} duotone`}>
                     <Image
                       src={p.coverUrl}
                       alt={p.title}
@@ -53,7 +61,7 @@ export default async function BlogPage() {
                 )}
                 <div className={styles.cardBody}>
                   {p.publishedAt && (
-                    <span className={styles.cardDate}>{formatDate(p.publishedAt)}</span>
+                    <span className="card-kicker">{formatDate(p.publishedAt)}</span>
                   )}
                   <h2 className={styles.cardTitle}>{p.title}</h2>
                   {p.excerpt && <p className={styles.cardExcerpt}>{p.excerpt}</p>}

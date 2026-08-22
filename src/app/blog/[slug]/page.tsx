@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Corners from "@/components/Corners";
 import { prisma } from "@/lib/db";
 import { sanitizeHtml } from "@/lib/sanitize-html";
 import styles from "../blog.module.css";
@@ -40,11 +41,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             ← Alle Beiträge
           </Link>
           {post.publishedAt && (
-            <p className={styles.articleDate}>{formatDate(post.publishedAt)}</p>
+            <div className={styles.meta}>
+              <span className="eyebrow">{formatDate(post.publishedAt)}</span>
+            </div>
           )}
           <h1 className={styles.articleTitle}>{post.title}</h1>
           {post.coverUrl && (
-            <div className={styles.cover}>
+            <div className={`blueprint duotone ${styles.coverFrame}`}>
+              <Corners />
               <Image
                 src={post.coverUrl}
                 alt={post.title}

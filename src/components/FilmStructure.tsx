@@ -1,10 +1,12 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import type { FilmStructureContent } from "@/content/film-structure";
 import styles from "./FilmStructure.module.css";
 
 export default function FilmStructure({ title, layers }: FilmStructureContent) {
+  const t = useTranslations("filmStructure");
   const [active, setActive] = useState<number | null>(null);
 
   const set = (n: number | null) => () => setActive(n);
@@ -13,7 +15,7 @@ export default function FilmStructure({ title, layers }: FilmStructureContent) {
     <div className={styles.wrap}>
       <h2 className={styles.title}>{title}</h2>
 
-      <div className={styles.schema} aria-label={`${title}: ${layers.length} Schichten`}>
+      <div className={styles.schema} aria-label={`${title}: ${layers.length} ${t("layersAriaSuffix")}`}>
         {layers.map((layer) => {
           const on = active === layer.n;
           return (

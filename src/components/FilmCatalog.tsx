@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 import FilmCard from "./FilmCard";
 import type { Film } from "@/content/series";
@@ -11,24 +12,31 @@ export default function FilmCatalog({
 }: {
   films: (Film & { imageUrl?: string | null })[];
 }) {
+  const t = useTranslations("filmCatalog");
   const [brand, setBrand] = useState<BrandFilter>("alle");
   const [mount, setMount] = useState<MountFilter>("alle");
 
   const visible = useMemo(() => filterFilms(films, brand, mount), [films, brand, mount]);
 
+  const brandOptions: [BrandFilter, string][] = [
+    ["alle", t("all")],
+    ["Armolan", "Armolan"],
+    ["LLumar", "LLumar"],
+  ];
+  const mountOptions: [MountFilter, string][] = [
+    ["alle", t("all")],
+    ["innen", t("mountInnen")],
+    ["außen", t("mountAussen")],
+    ["innen / außen", t("mountBoth")],
+  ];
+
   return (
     <div>
-      <div className={styles.filters} role="group" aria-label="Folien filtern">
+      <div className={styles.filters} role="group" aria-label={t("filterAriaLabel")}>
         <div className={styles.filterBlock}>
-          <span className={styles.filterLabel}>Marke</span>
+          <span className={styles.filterLabel}>{t("brand")}</span>
           <div className={styles.chips}>
-            {(
-              [
-                ["alle", "Alle"],
-                ["Armolan", "Armolan"],
-                ["LLumar", "LLumar"],
-              ] as const
-            ).map(([value, label]) => (
+            {brandOptions.map(([value, label]) => (
               <button
                 key={value}
                 type="button"
@@ -42,16 +50,9 @@ export default function FilmCatalog({
           </div>
         </div>
         <div className={styles.filterBlock}>
-          <span className={styles.filterLabel}>Montage</span>
+          <span className={styles.filterLabel}>{t("mount")}</span>
           <div className={styles.chips}>
-            {(
-              [
-                ["alle", "Alle"],
-                ["innen", "Innen"],
-                ["außen", "Außen"],
-                ["innen / außen", "Innen / Außen"],
-              ] as const
-            ).map(([value, label]) => (
+            {mountOptions.map(([value, label]) => (
               <button
                 key={value}
                 type="button"
@@ -67,7 +68,7 @@ export default function FilmCatalog({
       </div>
 
       <p className={styles.count}>
-        {visible.length} {visible.length === 1 ? "Folie" : "Folien"}
+        {visible.length} {visible.length === 1 ? t("filmSingular") : t("filmPlural")}
       </p>
 
       <ul className={styles.grid}>

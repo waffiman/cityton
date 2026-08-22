@@ -1,28 +1,28 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { series } from "@/content/series";
 import { footerColumns, site } from "@/content/site";
 import styles from "./SiteFooter.module.css";
 
-export default function SiteFooter() {
+export default async function SiteFooter() {
+  const t = await getTranslations();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.grid}>
         <div>
           <div className={styles.wordmark}>CITY-TON AUSTRIA</div>
           <div className={styles.tagline}>SUN PROTECTION · SAFETY FILMS</div>
-          <p className={styles.blurb}>
-            Sonnenschutz, UV-Schutz, Energieeffizienz und Einbruchschutz für Glasflächen.
-            Österreich &amp; Ukraine.
-          </p>
+          <p className={styles.blurb}>{t("footer.blurb")}</p>
         </div>
 
         {footerColumns.map((col) => (
-          <div key={col.title}>
-            <h6 className={styles.colTitle}>{col.title}</h6>
+          <div key={col.titleKey}>
+            <h6 className={styles.colTitle}>{t(`footer.${col.titleKey}`)}</h6>
             <div className={styles.links}>
               {col.links.map((l) => (
                 <Link key={l.href} href={l.href} className={styles.link}>
-                  {l.label}
+                  {t(`nav.${l.key}`)}
                 </Link>
               ))}
             </div>
@@ -30,7 +30,7 @@ export default function SiteFooter() {
         ))}
 
         <div>
-          <h6 className={styles.colTitle}>Serien</h6>
+          <h6 className={styles.colTitle}>{t("footer.seriesTitle")}</h6>
           <div className={styles.links}>
             {series.map((s) => (
               <Link key={s.slug} href={`/produkte/${s.slug}`} className={styles.link}>
@@ -41,7 +41,7 @@ export default function SiteFooter() {
         </div>
 
         <div>
-          <h6 className={styles.colTitle}>Kontakt</h6>
+          <h6 className={styles.colTitle}>{t("footer.contactTitle")}</h6>
           <div className={styles.links}>
             <a href={`tel:${site.contact.phoneTel}`} className={styles.link}>
               {site.contact.phone}
@@ -55,14 +55,16 @@ export default function SiteFooter() {
       </div>
 
       <div className={styles.legal}>
-        <span>© {new Date().getFullYear()} City-Ton Austria · Offizieller Partner von LLumar &amp; Armolan Europe</span>
+        <span>
+          © {new Date().getFullYear()} {site.name} · {t("footer.partnerLine")}
+        </span>
         <span>
           <Link href="/impressum" className={styles.legalLink}>
-            Impressum
+            {t("footer.imprint")}
           </Link>{" "}
           ·{" "}
           <Link href="/datenschutz" className={styles.legalLink}>
-            Datenschutz
+            {t("footer.privacy")}
           </Link>
         </span>
       </div>

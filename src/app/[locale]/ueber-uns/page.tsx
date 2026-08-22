@@ -1,31 +1,50 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
 import Stars from "@/components/Stars";
+import { Link } from "@/i18n/navigation";
 import { about } from "@/content/about";
 import styles from "./about.module.css";
 
-export const metadata: Metadata = {
-  title: "Über uns",
-  description: about.body.slice(0, 155),
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "about" });
+  return { title: t("title"), description: t("body").slice(0, 155) };
+}
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const t = await getTranslations("about");
+
+  const teamImages = [
+    { ...about.team.main, alt: t("team.mainAlt"), label: t("team.mainLabel") },
+    { ...about.team.side[0], alt: t("team.side1Alt"), label: t("team.side1Label") },
+    { ...about.team.side[1], alt: t("team.side2Alt"), label: t("team.side2Label") },
+  ];
+  const onsiteImages = [
+    { ...about.onsite.images[0], alt: t("onsite.img1Alt") },
+    { ...about.onsite.images[1], alt: t("onsite.img2Alt") },
+    { ...about.onsite.images[2], alt: t("onsite.img3Alt") },
+  ];
+
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="container" style={{ paddingTop: 56 }}>
         <div className={styles.intro}>
           <div>
-            <h1 className={styles.title}>{about.title}</h1>
-            <p className="lead">{about.body}</p>
+            <h1 className={styles.title}>{t("title")}</h1>
+            <p className="lead">{t("body")}</p>
           </div>
           <figure className={`${styles.portrait}`}>
             <Corners />
             <Image
               src={about.image.src}
-              alt={about.image.alt}
+              alt={t("imageAlt")}
               fill
               sizes="(max-width: 900px) 100vw, 45vw"
               className={styles.portraitImg}
@@ -39,8 +58,8 @@ export default function AboutPage() {
       <section className="container section">
         <blockquote className={`blueprint ${styles.quotePlate}`}>
           <Corners />
-          <p className={styles.quote}>{about.quote}</p>
-          <footer className={styles.quoteMeta}>{about.quoteMeta.toUpperCase()}</footer>
+          <p className={styles.quote}>{t("quote")}</p>
+          <footer className={styles.quoteMeta}>{t("quoteMeta").toUpperCase()}</footer>
         </blockquote>
       </section>
 
@@ -48,11 +67,11 @@ export default function AboutPage() {
       <section className={`container section ${styles.teamSection}`}>
         <div className={styles.teamLayout}>
           <div className={styles.teamCopy}>
-            <h2 className={styles.sectionTitle}>{about.team.title}</h2>
-            <p className={styles.sectionBody}>{about.team.body}</p>
+            <h2 className={styles.sectionTitle}>{t("team.title")}</h2>
+            <p className={styles.sectionBody}>{t("team.body")}</p>
           </div>
           <div className={styles.teamMosaic}>
-            {[about.team.main, ...about.team.side].map((img) => (
+            {teamImages.map((img) => (
               <figure key={img.src} className={`blueprint ${styles.teamFig}`}>
                 <Corners />
                 <Image
@@ -62,7 +81,7 @@ export default function AboutPage() {
                   sizes="(max-width: 1000px) 30vw, 140px"
                   className={styles.mosaicImg}
                 />
-                {img.label ? <figcaption className={styles.mosaicLabel}>{img.label}</figcaption> : null}
+                <figcaption className={styles.mosaicLabel}>{img.label}</figcaption>
               </figure>
             ))}
           </div>
@@ -73,14 +92,14 @@ export default function AboutPage() {
       <section className={`section--5 on-dark ${styles.onsiteBand}`}>
         <div className={`container ${styles.onsiteLayout}`}>
           <div className={styles.onsiteCopy}>
-            <h2 className={styles.onsiteTitle}>{about.onsite.title}</h2>
-            <p className={styles.onsiteBody}>{about.onsite.body}</p>
+            <h2 className={styles.onsiteTitle}>{t("onsite.title")}</h2>
+            <p className={styles.onsiteBody}>{t("onsite.body")}</p>
             <Link href={about.onsite.cta.href} className={`btn btn-inverse ${styles.sectionCta}`}>
-              {about.onsite.cta.label}
+              {t("onsite.cta")}
             </Link>
           </div>
           <div className={styles.onsiteGrid}>
-            {about.onsite.images.map((img) => (
+            {onsiteImages.map((img) => (
               <figure key={img.src} className={`blueprint on-dark ${styles.onsiteFig}`}>
                 <Corners />
                 <Image
@@ -99,17 +118,17 @@ export default function AboutPage() {
       {/* ── People + process ─────────────────────────────────────────────── */}
       <section className="container section">
         <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>{about.peopleSteps.title}</h2>
-          <p className={styles.sectionBody}>{about.peopleSteps.body}</p>
+          <h2 className={styles.sectionTitle}>{t("peopleSteps.title")}</h2>
+          <p className={styles.sectionBody}>{t("peopleSteps.body")}</p>
         </div>
         <div className={styles.steps}>
           {about.peopleSteps.items.map((step) => (
-            <article key={step.num} className={`blueprint ${styles.step}`}>
+            <article key={step.key} className={`blueprint ${styles.step}`}>
               <Corners />
               <div className={styles.stepMedia}>
                 <Image
                   src={step.image.src}
-                  alt={step.image.alt}
+                  alt={t(`peopleSteps.${step.key}.imageAlt`)}
                   fill
                   sizes="(max-width: 900px) 100vw, 30vw"
                   className={styles.mosaicImg}
@@ -117,8 +136,8 @@ export default function AboutPage() {
               </div>
               <div className={styles.stepCopy}>
                 <div className={styles.stepNum}>{step.num}</div>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepBody}>{step.body}</p>
+                <h3 className={styles.stepTitle}>{t(`peopleSteps.${step.key}.title`)}</h3>
+                <p className={styles.stepBody}>{t(`peopleSteps.${step.key}.body`)}</p>
               </div>
             </article>
           ))}
@@ -128,38 +147,31 @@ export default function AboutPage() {
       {/* ── Partners ─────────────────────────────────────────────────────── */}
       <section className="container section">
         <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>{about.partnersTitle}</h2>
+          <h2 className={styles.sectionTitle}>{t("partnersTitle")}</h2>
         </div>
         <div className={styles.partnerGrid}>
           {about.partners.map((p) => (
-            <div
-              key={p.title}
-              className={`card blueprint ${styles.partnerCard}`}
-            >
+            <div key={p.key} className={`card blueprint ${styles.partnerCard}`}>
               <Corners />
-              {p.logo ? (
-                <div className={styles.partnerLogoWrap}>
-                  <Image
-                    src={p.logo.src}
-                    alt={p.logo.alt}
-                    width={p.logo.width}
-                    height={p.logo.height}
-                    className={styles.partnerLogo}
-                  />
-                </div>
-              ) : null}
-              <div className="card-kicker">{p.kicker}</div>
+              <div className={styles.partnerLogoWrap}>
+                <Image
+                  src={p.logo.src}
+                  alt={t(`partners.${p.key}.title`)}
+                  width={p.logo.width}
+                  height={p.logo.height}
+                  className={styles.partnerLogo}
+                />
+              </div>
+              <div className="card-kicker">{t(`partners.${p.key}.kicker`)}</div>
               <div className="card-title" style={{ fontSize: 20 }}>
-                {p.title}
+                {t(`partners.${p.key}.title`)}
               </div>
               <p className="card-body" style={{ fontSize: 14 }}>
-                {p.body}
+                {t(`partners.${p.key}.body`)}
               </p>
-              {p.link ? (
-                <a href={p.link.href} style={{ fontSize: 13 }} target="_blank" rel="noreferrer">
-                  {p.link.label}
-                </a>
-              ) : null}
+              <a href={p.href} style={{ fontSize: 13 }} target="_blank" rel="noreferrer">
+                {t(`partners.${p.key}.link`)}
+              </a>
             </div>
           ))}
         </div>
@@ -168,14 +180,14 @@ export default function AboutPage() {
       {/* ── Why us ───────────────────────────────────────────────────────── */}
       <section className="container section">
         <div className={styles.sectionHead}>
-          <h2 className={styles.sectionTitle}>{about.why.title}</h2>
+          <h2 className={styles.sectionTitle}>{t("why.title")}</h2>
         </div>
         <div className={styles.whyGrid}>
-          {about.why.items.map((item) => (
-            <div key={item.title} className={`blueprint ${styles.whyCard}`}>
+          {about.why.keys.map((key) => (
+            <div key={key} className={`blueprint ${styles.whyCard}`}>
               <Corners />
-              <h3 className={styles.whyTitle}>{item.title}</h3>
-              <p className={styles.whyBody}>{item.body}</p>
+              <h3 className={styles.whyTitle}>{t(`why.${key}.title`)}</h3>
+              <p className={styles.whyBody}>{t(`why.${key}.body`)}</p>
             </div>
           ))}
         </div>
@@ -189,15 +201,17 @@ export default function AboutPage() {
             <div className={styles.ratingRow}>
               <div className={styles.ratingValue}>
                 {about.rating.value}
-                <span className={styles.ratingScale}> / {about.rating.scale}</span>
+                <span className={styles.ratingScale}> / {t("rating.scale")}</span>
               </div>
               <Stars size={18} />
             </div>
-            <div className={styles.ratingMeta}>aus {about.rating.count} Google-Rezensionen</div>
+            <div className={styles.ratingMeta}>
+              {t("rating.metaPrefix")} {about.rating.count} {t("rating.metaSuffix")}
+            </div>
           </div>
-          <blockquote className={styles.ratingQuote}>„{about.rating.quote}“</blockquote>
+          <blockquote className={styles.ratingQuote}>„{t("rating.quote")}“</blockquote>
           <Link href={about.rating.cta.href} className={styles.ratingLink}>
-            {about.rating.cta.label}
+            {t("rating.cta")}
           </Link>
         </div>
       </section>
@@ -205,11 +219,11 @@ export default function AboutPage() {
       <section className={`section--5 on-dark ${styles.ctaBand}`}>
         <div className={styles.ctaFx} aria-hidden="true" />
         <div className={`container ${styles.bandInner}`}>
-          <h2 className={styles.ctaTitle}>{about.finalCta.title}</h2>
-          <p className={styles.ctaSubtitle}>{about.finalCta.subtitle}</p>
-          <p className={styles.ctaBody}>{about.finalCta.body}</p>
+          <h2 className={styles.ctaTitle}>{t("finalCta.title")}</h2>
+          <p className={styles.ctaSubtitle}>{t("finalCta.subtitle")}</p>
+          <p className={styles.ctaBody}>{t("finalCta.body")}</p>
           <Link href={about.finalCta.cta.href} className="btn btn-primary btn-lg">
-            {about.finalCta.cta.label}
+            {t("finalCta.cta")}
           </Link>
         </div>
       </section>

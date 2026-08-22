@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import styles from "./PartnerCarousel.module.css";
 
 export type PartnerLogo = {
@@ -35,9 +36,11 @@ const SET_REPEAT = 8;
 function LogoSet({
   logos,
   duplicate,
+  openInNewTabSuffix,
 }: {
   logos: PartnerLogo[];
   duplicate?: boolean;
+  openInNewTabSuffix: string;
 }) {
   // One half of the track: repeated brands so the strip stays full on wide viewports.
   const items = Array.from({ length: SET_REPEAT }, () => logos).flat();
@@ -67,7 +70,7 @@ function LogoSet({
                 aria-label={
                   interactive
                     ? logo.href.startsWith("http")
-                      ? `${logo.name} — Website in neuem Tab öffnen`
+                      ? `${logo.name} ${openInNewTabSuffix}`
                       : logo.name
                     : undefined
                 }
@@ -89,19 +92,20 @@ function LogoSet({
  * Two identical halves + equal trailing gap so translateX(-50%) loops without a jump.
  */
 export default function PartnerCarousel({
-  label = "OFFIZIELLER PARTNER VON",
+  label,
   logos = DEFAULT_LOGOS,
 }: {
   label?: string;
   logos?: PartnerLogo[];
 }) {
+  const t = useTranslations("partnerCarousel");
   return (
     <div className={styles.wrap}>
-      <span className={styles.label}>{label}</span>
-      <div className={styles.viewport} aria-label="Partner-Logos">
+      <span className={styles.label}>{label ?? t("defaultLabel")}</span>
+      <div className={styles.viewport} aria-label={t("ariaLabel")}>
         <div className={styles.track}>
-          <LogoSet logos={logos} />
-          <LogoSet logos={logos} duplicate />
+          <LogoSet logos={logos} openInNewTabSuffix={t("openInNewTab")} />
+          <LogoSet logos={logos} duplicate openInNewTabSuffix={t("openInNewTab")} />
         </div>
       </div>
     </div>

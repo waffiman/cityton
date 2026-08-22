@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
 import FilmCard from "@/components/FilmCard";
 import FilmStructure from "@/components/FilmStructure";
 import InfoHint from "@/components/InfoHint";
 import SeriesGlyph from "@/components/diagrams/SeriesGlyph";
+import { Link } from "@/i18n/navigation";
 import { seriesCertificates } from "@/content/certificates";
 import { structureForSeries } from "@/content/film-structure";
-import { site } from "@/content/site";
 import { getSeriesBySlug } from "@/lib/products";
 import filmCatalogStyles from "@/components/FilmCatalog.module.css";
 import styles from "./series.module.css";
@@ -36,19 +36,26 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
   const item = await getSeriesBySlug(slug);
   if (!item) notFound();
 
+  const [t, tc, tsite, tStructure] = await Promise.all([
+    getTranslations("produkteSeriePage"),
+    getTranslations("common"),
+    getTranslations("site"),
+    getTranslations("filmStructure"),
+  ]);
+
   const d = item.detail;
   const stats: { label: string; value: string; note: string }[] =
     d?.stats ?? item.metrics.map((m) => ({ label: m.label, value: m.value, note: "" }));
-  const structure = structureForSeries(item.slug, d?.structure);
+  const structure = structureForSeries(item.slug, tStructure, d?.structure);
   const certificates = seriesCertificates[item.slug];
 
   return (
     <div className={styles.page}>
       <section className="container" style={{ paddingTop: 44 }}>
-        <nav className={styles.crumbs} aria-label="Brotkrumen">
-          <Link href="/">HOME</Link>
+        <nav className={styles.crumbs} aria-label={tc("breadcrumbAriaLabel")}>
+          <Link href="/">{tc("breadcrumbHome")}</Link>
           <span>/</span>
-          <Link href="/produkte">PRODUKTE</Link>
+          <Link href="/produkte">{tc("breadcrumbProdukte")}</Link>
           <span>/</span>
           <span className={styles.crumbCurrent}>{item.name.toUpperCase()}</span>
         </nav>
@@ -77,10 +84,10 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
             <div className={styles.actions}>
               <Link href="/kontakt" className="btn btn-primary btn-lg blueprint">
                 <Corners />
-                {site.cta}
+                {tsite("cta")}
               </Link>
               <Link href="/funktionsprinzip" className="btn btn-secondary btn-lg">
-                Funktionsprinzip ansehen
+                {t("funktionsprinzipCta")}
               </Link>
             </div>
           </div>
@@ -103,7 +110,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
       {certificates?.length ? (
         <section className="container section" aria-labelledby="pruefberichte">
           <h2 id="pruefberichte" className={styles.certsTitle}>
-            Prüfberichte
+            {t("certsSectionTitle")}
           </h2>
           <ul className={styles.certsGrid}>
             {certificates.map((cert) => (
@@ -203,12 +210,10 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
           <div className={`blueprint ${styles.pending}`}>
             <Corners />
             <p style={{ margin: 0, maxWidth: "56ch" }}>
-              Die ausführliche Produktseite für {item.name} folgt. Kennwerte, Varianten und
-              Referenzobjekte kommen aus dem Herstellerdatenblatt — bis dahin beraten wir gerne
-              direkt.
+              {t("pendingText", { name: item.name })}
             </p>
             <Link href="/kontakt" className={`btn btn-secondary ${styles.pendingCta}`}>
-              {site.cta}
+              {tsite("cta")}
             </Link>
           </div>
         </section>

@@ -10,8 +10,8 @@
  */
 
 import nodemailer, { type Transporter } from "nodemailer";
-import { kontakt } from "@/content/kontakt";
 import { site } from "@/content/site";
+import deMessages from "@/messages/de.json";
 import type { StoredInquiry } from "@/lib/kontakt-inquiries-store";
 
 let cached: Transporter | null | undefined;
@@ -46,8 +46,10 @@ function to(): string {
   return process.env.MAIL_TO ?? site.contact.email;
 }
 
-const OBJECT_LABEL = new Map(kontakt.objectTypes.map((o) => [o.value as string, o.label]));
-const GOAL_LABEL = new Map(kontakt.goals.map((g) => [g.value as string, g.label]));
+// These notifications go to the business, not the visitor — always German
+// regardless of which locale the inquiry was submitted from.
+const OBJECT_LABEL = new Map(Object.entries(deMessages.kontakt.objectTypes));
+const GOAL_LABEL = new Map(Object.entries(deMessages.kontakt.goals));
 
 function line(label: string, value: string | null | undefined): string | null {
   return value ? `${label}: ${value}` : null;

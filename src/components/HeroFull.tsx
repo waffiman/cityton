@@ -1,13 +1,16 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import styles from "./HeroFull.module.css";
 
 /** Full-bleed photo hero (site.heroVariant === "vollbild"). */
-export default function HeroFull() {
+export default async function HeroFull() {
+  const t = await getTranslations("home.hero");
+
   return (
     <section className={styles.hero}>
       <Image
         src="/media/hero-section.jpg"
-        alt="Fassade mit Sonnenschutzfolie von außen"
+        alt={t("imageAlt")}
         fill
         priority
         sizes="100vw"
@@ -18,17 +21,14 @@ export default function HeroFull() {
         <div className={styles.copy}>
           <div className={styles.eyebrow}>
             <span className={styles.tick} />
-            OFFIZIELLER PARTNER · LLUMAR &amp; ARMOLAN
+            {t("eyebrow")}
           </div>
           <h1 className={styles.title}>
-            Wir verkaufen keine Folienrollen.
+            {t("titleLine1")}
             <br />
-            Wir liefern das Ergebnis.
+            {t("titleLine2")}
           </h1>
-          <p className={styles.body}>
-            Beratung, Material, Montage und Betreuung in einem Paket — für Sonnenschutz,
-            UV-Schutz, Energieeffizienz und Einbruchschutz an Glasflächen in ganz Österreich.
-          </p>
+          <p className={styles.body}>{t("subtitle")}</p>
         </div>
       </div>
       <div id="hero-zone-end" className={styles.end} aria-hidden="true" />

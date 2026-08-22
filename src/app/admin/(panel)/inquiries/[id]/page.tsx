@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import InquiryEditor from "@/components/admin/InquiryEditor";
-import { kontakt } from "@/content/kontakt";
 import { prisma } from "@/lib/db";
+import deMessages from "@/messages/de.json";
 import styles from "../../../admin.module.css";
 
 const SOURCE_LABEL: Record<string, string> = {
@@ -11,8 +11,10 @@ const SOURCE_LABEL: Record<string, string> = {
   chatbot: "Chatbot",
 };
 
-const OBJEKT_LABEL = new Map<string, string>(kontakt.objectTypes.map((o) => [o.value, o.label]));
-const GOAL_LABEL = new Map<string, string>(kontakt.goals.map((g) => [g.value, g.label]));
+// Admin panel stays German-only — labels sourced directly from the German
+// message catalogue rather than a locale-aware lookup.
+const OBJEKT_LABEL = new Map<string, string>(Object.entries(deMessages.kontakt.objectTypes));
+const GOAL_LABEL = new Map<string, string>(Object.entries(deMessages.kontakt.goals));
 
 function formatDate(d: Date): string {
   return new Intl.DateTimeFormat("de-AT", { dateStyle: "long", timeStyle: "short" }).format(d);

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import type { Film, FilmValues } from "@/content/series";
-import { site } from "@/content/site";
 import { getProductBySlug } from "@/lib/products";
 import styles from "./film.module.css";
 
@@ -40,64 +40,60 @@ function thickness(f: Film): string | null {
 }
 
 type Row = { label: string; value: string };
+type T = Awaited<ReturnType<typeof getTranslations>>;
 
-function valueRows(v: FilmValues): Row[] {
+function valueRows(v: FilmValues, t: T): Row[] {
   const rows: Row[] = [
-    { label: "VLT (Lichtdurchlass)", value: pct(v.vlt) },
-    { label: "TSER (Sonnenenergie abgewiesen)", value: pct(v.tser) },
-    { label: "UV-Durchlass", value: `${v.uv} %` },
+    { label: t("vlt"), value: pct(v.vlt) },
+    { label: t("tser"), value: pct(v.tser) },
+    { label: t("uvDurchlass"), value: `${v.uv} %` },
   ];
-  if (v.glare != null) rows.push({ label: "Blendschutz", value: pct(v.glare) });
-  if (v.solarTransmission != null) rows.push({ label: "Strahlungsdurchlass", value: pct(v.solarTransmission) });
-  if (v.solarReflection != null) rows.push({ label: "Strahlungsreflexion außen", value: pct(v.solarReflection) });
-  if (v.solarAbsorption != null) rows.push({ label: "Strahlungsabsorption", value: pct(v.solarAbsorption) });
-  if (v.visibleReflection != null) rows.push({ label: "Lichtreflexion", value: pct(v.visibleReflection) });
-  if (v.visibleReflectionExt != null) rows.push({ label: "Lichtreflexion außen", value: pct(v.visibleReflectionExt) });
-  if (v.visibleReflectionInt != null) rows.push({ label: "Lichtreflexion innen", value: pct(v.visibleReflectionInt) });
-  if (v.sc != null) rows.push({ label: "Abschirmgrad (SC)", value: dec(v.sc) });
-  if (v.g != null) rows.push({ label: "g-Wert", value: dec(v.g) });
-  if (v.emissivity != null) rows.push({ label: "Emissivität", value: dec(v.emissivity) });
-  if (v.uValue != null) rows.push({ label: "Ug-Wert (EN 673)", value: `${dec(v.uValue)} W/m²K` });
-  if (v.colourRendering != null) rows.push({ label: "Farbwiedergabe", value: String(v.colourRendering) });
+  if (v.glare != null) rows.push({ label: t("blendschutz"), value: pct(v.glare) });
+  if (v.solarTransmission != null) rows.push({ label: t("strahlungsdurchlass"), value: pct(v.solarTransmission) });
+  if (v.solarReflection != null) rows.push({ label: t("strahlungsreflexionAussen"), value: pct(v.solarReflection) });
+  if (v.solarAbsorption != null) rows.push({ label: t("strahlungsabsorption"), value: pct(v.solarAbsorption) });
+  if (v.visibleReflection != null) rows.push({ label: t("lichtreflexion"), value: pct(v.visibleReflection) });
+  if (v.visibleReflectionExt != null) rows.push({ label: t("lichtreflexionAussen"), value: pct(v.visibleReflectionExt) });
+  if (v.visibleReflectionInt != null) rows.push({ label: t("lichtreflexionInnen"), value: pct(v.visibleReflectionInt) });
+  if (v.sc != null) rows.push({ label: t("abschirmgrad"), value: dec(v.sc) });
+  if (v.g != null) rows.push({ label: t("gWert"), value: dec(v.g) });
+  if (v.emissivity != null) rows.push({ label: t("emissivitaet"), value: dec(v.emissivity) });
+  if (v.uValue != null) rows.push({ label: t("ugWert"), value: `${dec(v.uValue)} W/m²K` });
+  if (v.colourRendering != null) rows.push({ label: t("farbwiedergabe"), value: String(v.colourRendering) });
   return rows;
 }
-
-const FAMILY_LABEL: Record<Film["family"], string> = {
-  reflektierend: "Reflektierend",
-  sputtered: "Sputtered / Nano",
-  "dual-reflektierend": "Dual-reflektierend",
-  spektralselektiv: "Spektralselektiv",
-  "low-e": "Low-E",
-  klar: "Klar",
-  sicherheit: "Sicherheit",
-  sichtschutz: "Sichtschutz",
-};
 
 export default async function FilmPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const film = await getProductBySlug(slug);
   if (!film) notFound();
 
+  const [t, tc] = await Promise.all([
+    getTranslations("produkteFolieDetail"),
+    getTranslations("common"),
+  ]);
+
   const image = film.imageUrl;
   const thick = thickness(film);
+  const familyLabel = t(`family.${film.family}`);
   const metaRows: Row[] = [
-    { label: "Marke", value: film.brand },
-    { label: "Code", value: film.code },
-    { label: "Familie", value: FAMILY_LABEL[film.family] },
-    { label: "Montage", value: film.mount },
+    { label: t("marke"), value: film.brand },
+    { label: t("code"), value: film.code },
+    { label: t("familie"), value: familyLabel },
+    { label: t("montage"), value: film.mount },
   ];
-  if (thick) metaRows.push({ label: "Stärke", value: thick });
-  if (film.application) metaRows.push({ label: "Typische Anwendung", value: film.application });
-  if (film.certification) metaRows.push({ label: "Prüfung", value: film.certification });
+  if (thick) metaRows.push({ label: t("staerke"), value: thick });
+  if (film.application) metaRows.push({ label: t("anwendung"), value: film.application });
+  if (film.certification) metaRows.push({ label: t("pruefung"), value: film.certification });
 
   return (
     <>
       <section className={`section--1 ${styles.band}`}>
         <div className="container">
-          <nav className={styles.crumbs} aria-label="Brotkrumen">
-            <Link href="/">HOME</Link>
+          <nav className={styles.crumbs} aria-label={tc("breadcrumbAriaLabel")}>
+            <Link href="/">{tc("breadcrumbHome")}</Link>
             <span>/</span>
-            <Link href="/produkte">PRODUKTE</Link>
+            <Link href="/produkte">{tc("breadcrumbProdukte")}</Link>
             <span>/</span>
             <span className={styles.crumbCurrent}>{film.name.toUpperCase()}</span>
           </nav>
@@ -105,11 +101,11 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
           <div className={styles.head}>
             <div>
               <p className={styles.kicker}>
-                {film.brand} · {FAMILY_LABEL[film.family]}
+                {film.brand} · {familyLabel}
               </p>
               <h1 className={styles.title}>{film.name}</h1>
               <p className={styles.sub}>
-                {film.code} · Montage {film.mount}
+                {film.code} · {t("montagePrefix")} {film.mount}
               </p>
 
               <dl className={styles.meta}>
@@ -122,7 +118,7 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
               </dl>
 
               <Link href="/kontakt" className={`btn btn-primary btn-lg ${styles.cta}`}>
-                {site.cta}
+                {t("ctaLabel")}
               </Link>
             </div>
 
@@ -147,9 +143,9 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
 
       <section className={`section--2 ${styles.band}`}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>Kennwerte · Einfachverglasung</h2>
+          <h2 className={styles.sectionTitle}>{t("kennwerteEinfach")}</h2>
           <dl className={styles.specGrid}>
-            {valueRows(film.single).map((r) => (
+            {valueRows(film.single, t).map((r) => (
               <div key={r.label} className={styles.specRow}>
                 <dt>{r.label}</dt>
                 <dd>{r.value}</dd>
@@ -159,9 +155,9 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
 
           {film.dual ? (
             <>
-              <h2 className={styles.sectionTitle}>Kennwerte · Isolierglas</h2>
+              <h2 className={styles.sectionTitle}>{t("kennwerteIso")}</h2>
               <dl className={styles.specGrid}>
-                {valueRows(film.dual).map((r) => (
+                {valueRows(film.dual, t).map((r) => (
                   <div key={`d-${r.label}`} className={styles.specRow}>
                     <dt>{r.label}</dt>
                     <dd>{r.value}</dd>
@@ -172,7 +168,7 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
           ) : null}
 
           <Link href="/kontakt" className="btn btn-primary">
-            Beratung zu dieser Folie anfragen
+            {t("ctaLabel")}
           </Link>
         </div>
       </section>

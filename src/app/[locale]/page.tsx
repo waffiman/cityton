@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { Fragment } from "react";
 import BeforeAfter from "@/components/BeforeAfter";
 import BenefitIcon from "@/components/BenefitIcon";
@@ -8,27 +8,23 @@ import Corners from "@/components/Corners";
 import Faq from "@/components/Faq";
 import HeroFull from "@/components/HeroFull";
 import HeroSplit from "@/components/HeroSplit";
+import { Link } from "@/i18n/navigation";
 import MutedLoopVideo from "@/components/MutedLoopVideo";
 import PartnerCarousel from "@/components/PartnerCarousel";
 import ProcessRibbon from "@/components/ProcessRibbon";
 import SeriesCard from "@/components/SeriesCard";
 import Stars from "@/components/Stars";
-import {
-  benefits,
-  comparisonRows,
-  consultation,
-  faq,
-  praxisMontage,
-  processSteps,
-  protectionRows,
-  reviews,
-} from "@/content/home";
+import { benefits, consultation, praxisMontage, processSteps, reviews } from "@/content/home";
 import { site } from "@/content/site";
 import { getVisibleSeries } from "@/lib/products";
 import styles from "./home.module.css";
 
 // Reads live category data; rendered per request so admin edits show immediately.
 export const dynamic = "force-dynamic";
+
+type Row = { without: string; with: string };
+type Quote = { body: string; meta: string };
+type FaqItem = { q: string; a: string };
 
 /**
  * Block order is fixed. Backgrounds alone carry the colour journey: each light
@@ -37,7 +33,12 @@ export const dynamic = "force-dynamic";
  * (s4 → s5), with the footer on s6 as the darkest stop.
  */
 export default async function HomePage() {
-  const series = await getVisibleSeries();
+  const [series, t] = await Promise.all([getVisibleSeries(), getTranslations("home")]);
+  const compareRows = t.raw("compare.rows") as Row[];
+  const protectionRows = t.raw("compare.protectionRows") as Row[];
+  const quotes = t.raw("reviews.quotes") as Quote[];
+  const faqItems = t.raw("faq.items") as FaqItem[];
+
   return (
     <div className="journey">
       {site.heroVariant === "split" ? <HeroSplit /> : <HeroFull />}
@@ -54,18 +55,18 @@ export default async function HomePage() {
       <section className={`section--1 ${styles.band}`}>
         <div className="container">
           <h2 className={styles.benefitsTitle}>
-            Vier Mikrometer Folie. <span className="accent-word">Ein anderes Gebäude.</span>
+            {t("benefits.titleLine1")} <span className="accent-word">{t("benefits.titleAccent")}</span>
           </h2>
           <div className={styles.benefitGrid}>
             {benefits.map((b) => (
-              <div key={b.title} className={`card blueprint ${styles.benefitCard}`}>
+              <div key={b.key} className={`card blueprint ${styles.benefitCard}`}>
                 <Corners />
                 <BenefitIcon name={b.icon} />
                 <div className="card-title" style={{ fontSize: 20 }}>
-                  {b.title}
+                  {t(`benefits.items.${b.key}.title`)}
                 </div>
                 <p className="card-body" style={{ fontSize: 14 }}>
-                  {b.body}
+                  {t(`benefits.items.${b.key}.body`)}
                 </p>
               </div>
             ))}
@@ -78,37 +79,47 @@ export default async function HomePage() {
         <div className="container">
           <div className={styles.compareGrid}>
             <BeforeAfter
-              before={{ src: "/media/before.jpg", alt: "Ohne Folie", label: "OHNE FOLIE", value: "33,3 °C" }}
-              after={{ src: "/media/after.jpg", alt: "Mit Sonnenschutzfolie", label: "MIT FOLIE", value: "25,7 °C" }}
+              before={{
+                src: "/media/before.jpg",
+                alt: t("compare.img1WithoutAlt"),
+                label: t("compare.withoutLabel"),
+                value: t("compare.img1WithoutValue"),
+              }}
+              after={{
+                src: "/media/after.jpg",
+                alt: t("compare.img1AfterAlt"),
+                label: t("compare.withLabel"),
+                value: t("compare.img1AfterValue"),
+              }}
             />
 
             <div>
-              <h2 className={styles.compareTitle}>Der Unterschied ist messbar</h2>
+              <h2 className={styles.compareTitle}>{t("compare.title")}</h2>
 
               <div className={styles.compareStats}>
                 <div className={styles.compareStat}>
-                  <div className={styles.compareStatValue}>−7,6 °C</div>
-                  <div className={styles.compareStatLabel}>OBERFLÄCHE</div>
+                  <div className={styles.compareStatValue}>{t("compare.surfaceValue")}</div>
+                  <div className={styles.compareStatLabel}>{t("compare.surfaceLabel")}</div>
                 </div>
                 <div className={styles.compareStat}>
-                  <div className={styles.compareStatValue}>99 %</div>
-                  <div className={styles.compareStatLabel}>UV GEFILTERT</div>
+                  <div className={styles.compareStatValue}>{t("compare.uvValue")}</div>
+                  <div className={styles.compareStatLabel}>{t("compare.uvLabel")}</div>
                 </div>
               </div>
 
               <div className={styles.compareTable}>
-                <div className={styles.compareHeadWarm}>OHNE FOLIE</div>
-                <div className={styles.compareHeadCool}>MIT FOLIE</div>
-                {comparisonRows.map(([without, withFilm]) => (
-                  <Fragment key={without}>
-                    <div className={styles.compareCellWithout}>{without}</div>
-                    <div className={styles.compareCellWith}>{withFilm}</div>
+                <div className={styles.compareHeadWarm}>{t("compare.withoutLabel")}</div>
+                <div className={styles.compareHeadCool}>{t("compare.withLabel")}</div>
+                {compareRows.map((row) => (
+                  <Fragment key={row.without}>
+                    <div className={styles.compareCellWithout}>{row.without}</div>
+                    <div className={styles.compareCellWith}>{row.with}</div>
                   </Fragment>
                 ))}
               </div>
 
               <Link href="/funktionsprinzip" className={`btn ${styles.compareCta}`}>
-                Funktionsprinzip ansehen
+                {t("compare.cta")}
               </Link>
             </div>
           </div>
@@ -120,21 +131,24 @@ export default async function HomePage() {
         <div className="container">
           <div className={`${styles.compareGrid} ${styles.compareGridFlip}`}>
             <div>
-              <h2 className={styles.compareTitle}>Der Unterschied liegt im Schutz</h2>
+              <h2 className={styles.compareTitle}>{t("compare.titleProtect")}</h2>
 
               <div className={styles.compareTable}>
-                <div className={styles.compareHeadWarm}>OHNE FOLIE</div>
-                <div className={styles.compareHeadCool}>MIT FOLIE</div>
-                {protectionRows.map(([without, withFilm]) => (
-                  <Fragment key={without}>
-                    <div className={styles.compareCellWithout}>{without}</div>
-                    <div className={styles.compareCellWith}>{withFilm}</div>
+                <div className={styles.compareHeadWarm}>{t("compare.withoutLabel")}</div>
+                <div className={styles.compareHeadCool}>{t("compare.withLabel")}</div>
+                {protectionRows.map((row) => (
+                  <Fragment key={row.without}>
+                    <div className={styles.compareCellWithout}>{row.without}</div>
+                    <div className={styles.compareCellWith}>{row.with}</div>
                   </Fragment>
                 ))}
               </div>
 
-              <Link href="/funktionsprinzip" className={`btn ${styles.compareCta} ${styles.compareCtaEnd}`}>
-                Funktionsprinzip ansehen
+              <Link
+                href="/funktionsprinzip"
+                className={`btn ${styles.compareCta} ${styles.compareCtaEnd}`}
+              >
+                {t("compare.cta")}
               </Link>
             </div>
 
@@ -143,14 +157,14 @@ export default async function HomePage() {
               className={styles.compareProtectRail}
               before={{
                 src: "/media/broken-default.png",
-                alt: "Glas zerbricht in scharfe Splitter → Splitter bleiben an der Folie haften",
-                label: "OHNE FOLIE",
+                alt: t("compare.img2WithoutAlt"),
+                label: t("compare.withoutLabel"),
                 objectPosition: "center center",
               }}
               after={{
                 src: "/media/broken-armed.png",
-                alt: "Splitter können sich beim Aufprall verteilen → Splitter bleiben zusammen",
-                label: "MIT FOLIE",
+                alt: t("compare.img2AfterAlt"),
+                label: t("compare.withLabel"),
                 objectPosition: "center 42%",
               }}
             />
@@ -161,7 +175,17 @@ export default async function HomePage() {
       {/* ── Ablauf ────────────────────────────────────────────────────────── */}
       <section className={`section--1 ${styles.band} ${styles.processBand}`}>
         <div className="container">
-          <ProcessRibbon steps={processSteps} title="Von der Anfrage bis zur fertigen Folierung" />
+          <ProcessRibbon
+            steps={processSteps.map((s) => ({
+              title: t(`process.steps.${s.key}.title`),
+              body: t(`process.steps.${s.key}.body`),
+              video: s.video,
+              poster: s.poster,
+              startAt: s.startAt,
+              clipLength: s.clipLength,
+            }))}
+            title={t("process.title")}
+          />
         </div>
       </section>
 
@@ -170,16 +194,16 @@ export default async function HomePage() {
         <div className={styles.praxisMedia}>
           <MutedLoopVideo
             src={praxisMontage.video.src}
-            title={praxisMontage.video.title}
+            title={t("praxis.videoTitle")}
             className={styles.praxisVideo}
             alwaysAutoplay
           />
         </div>
         <div className={styles.praxisCopy}>
-          <h2 className={styles.praxisTitle}>{praxisMontage.title}</h2>
-          <p className={styles.praxisBody}>{praxisMontage.body}</p>
+          <h2 className={styles.praxisTitle}>{t("praxis.title")}</h2>
+          <p className={styles.praxisBody}>{t("praxis.body")}</p>
           <Link href={praxisMontage.cta.href} className="btn btn-inverse">
-            {praxisMontage.cta.label}
+            {t("praxis.cta")}
           </Link>
         </div>
       </section>
@@ -188,11 +212,8 @@ export default async function HomePage() {
       <section className={`section--1 ${styles.band}`}>
         <div className="container">
           <div className={styles.seriesHead}>
-            <h2 className="section-title">Vier Serien, ein Ziel je Objekt</h2>
-            <p className={styles.seriesIntro}>
-              Welche Folie passt, entscheidet die Glasart und das Ziel — nicht der Katalog. Wir wählen
-              die Serie im Aufmaß gemeinsam aus.
-            </p>
+            <h2 className="section-title">{t("series.title")}</h2>
+            <p className={styles.seriesIntro}>{t("series.lead")}</p>
           </div>
           <div className={styles.seriesList}>
             {series.map((item) => (
@@ -202,22 +223,20 @@ export default async function HomePage() {
         </div>
       </section>
 
-      
-
       {/* ── Beratungstermin ──────────────────────────────────────────────── */}
       <section className={`section--5 ${styles.consult}`}>
         <div className={styles.consultCopy}>
           <h3 className={styles.consultTitle}>
-            {consultation.title[0]}
+            {t("consultation.titleLine1")}
             <br />
-            {consultation.title[1]}
+            {t("consultation.titleLine2")}
           </h3>
-          <p className={styles.consultBody}>{consultation.body}</p>
+          <p className={styles.consultBody}>{t("consultation.body")}</p>
           <div className={styles.consultSpecs}>
-            {consultation.specs.map((s) => (
-              <div key={s.label} className={styles.consultSpec}>
-                <span className={styles.consultSpecLabel}>{s.label}</span>
-                <span className={styles.consultSpecValue}>{s.value}</span>
+            {consultation.specKeys.map((key) => (
+              <div key={key} className={styles.consultSpec}>
+                <span className={styles.consultSpecLabel}>{t(`consultation.specs.${key}.label`)}</span>
+                <span className={styles.consultSpecValue}>{t(`consultation.specs.${key}.value`)}</span>
               </div>
             ))}
           </div>
@@ -228,7 +247,7 @@ export default async function HomePage() {
         <div className={styles.consultMedia}>
           <Image
             src={consultation.image.src}
-            alt={consultation.image.alt}
+            alt={t("consultation.imageAlt")}
             fill
             sizes="(max-width: 900px) 100vw, 45vw"
             className={styles.consultImage}
@@ -240,7 +259,7 @@ export default async function HomePage() {
       <section id="bewertungen" className={`section--1 ${styles.band}`}>
         <div className="container">
           <h2 className={styles.reviewsTitle}>
-            Werden Sie unser nächster <span className="accent-word">zufriedener Kunde.</span>
+            {t("reviews.titleLine1")} <span className="accent-word">{t("reviews.titleAccent")}</span>
           </h2>
           <div className={styles.reviewsGrid}>
             <div className={`blueprint ${styles.ratingPlate}`}>
@@ -249,13 +268,15 @@ export default async function HomePage() {
               <div className={styles.ratingStars}>
                 <Stars size={18} />
               </div>
-              <div className={styles.ratingMeta}>aus {reviews.count} Google-Rezensionen</div>
+              <div className={styles.ratingMeta}>
+                {t("reviews.metaPrefix")} {reviews.count} {t("reviews.metaSuffix")}
+              </div>
               {/* TODO(client): link to the real Google Business profile. */}
               <a href="#" className={styles.ratingLink}>
-                Alle Rezensionen ansehen →
+                {t("reviews.allLink")}
               </a>
             </div>
-            {reviews.quotes.map((q) => (
+            {quotes.map((q) => (
               <figure key={q.meta + q.body} className={`card blueprint ${styles.quoteCard}`}>
                 <Corners />
                 <Stars />
@@ -275,15 +296,15 @@ export default async function HomePage() {
           <div className={styles.faqGrid}>
             <div>
               <h2 className={styles.faqTitle}>
-                Fragen, die vor jedem
+                {t("faq.titleLine1")}
                 <br />
-                <span className="accent-word">Aufmaß gestellt werden.</span>
+                <span className="accent-word">{t("faq.titleAccent")}</span>
               </h2>
               <Link href="/kontakt" className="btn btn-secondary" style={{ marginTop: 12 }}>
-                Frage stellen
+                {t("faq.askButton")}
               </Link>
             </div>
-            <Faq items={faq} />
+            <Faq items={faqItems} />
           </div>
         </div>
       </section>

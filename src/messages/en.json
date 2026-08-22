@@ -1,306 +1,489 @@
 {
   "site": {
     "name": "City-Ton Austria",
-    "wordmark": "CITY-TON",
-    "tagline": "TODO",
-    "description": "TODO",
-    "cta": "TODO",
-    "partners": "TODO"
+    "tagline": "AUSTRIA · SUN PROTECTION",
+    "titleTagline": "Solar Control & Security Films",
+    "description": "Solar control, UV protection, energy efficiency and security films for glass. Consultation, material, installation and support in one package.",
+    "cta": "Free consultation"
   },
+
   "nav": {
-    "home": "TODO",
-    "about": "TODO",
-    "products": "TODO",
-    "principle": "TODO",
-    "references": "TODO",
-    "contact": "TODO"
+    "home": "Home",
+    "about": "About us",
+    "products": "Products",
+    "principle": "How it works",
+    "gallery": "Gallery",
+    "blog": "Blog",
+    "partner": "For partners",
+    "contact": "Contact",
+    "menu": "Menu",
+    "mainNav": "Main navigation",
+    "mobileNav": "Navigation (mobile)",
+    "language": "Language"
   },
+
   "footer": {
-    "pagesTitle": "TODO",
-    "contactTitle": "TODO",
-    "legalTitle": "TODO",
-    "imprint": "TODO",
-    "privacy": "TODO",
-    "hours": "TODO",
-    "rights": "TODO"
+    "pagesTitle": "Pages",
+    "seriesTitle": "Series",
+    "contactTitle": "Contact",
+    "imprint": "Imprint",
+    "privacy": "Privacy",
+    "rightsPrefix": "All rights reserved.",
+    "partnerLine": "Official partner of LLumar & Armolan Europe",
+    "blurb": "Solar control, UV protection, energy efficiency and security films for glass. Austria & Ukraine."
   },
+
   "home": {
-    "hero": {
-      "eyebrow": "TODO",
-      "title": "TODO",
-      "subtitle": "TODO",
-      "cta": "TODO"
-    },
     "benefits": {
-      "title": "TODO",
-      "footnote": "TODO",
-      "items": [
-        {
-          "title": "TODO",
-          "body": "TODO",
-          "meta": "TODO"
-        },
-        {
-          "title": "TODO",
-          "body": "TODO",
-          "meta": "TODO"
-        },
-        {
-          "title": "TODO",
-          "body": "TODO",
-          "meta": "TODO"
-        },
-        {
-          "title": "TODO",
-          "body": "TODO",
-          "meta": "TODO"
-        }
-      ]
+      "titleLine1": "Four microns of film.",
+      "titleAccent": "A different building.",
+      "items": {
+        "sun": { "title": "Solar control", "body": "Up to 82 % of solar energy is rejected — noticeably cooler rooms without air conditioning." },
+        "uv": { "title": "UV protection", "body": "99 % of UV (A and B) radiation stays outside. Floors, furniture and merchandise keep their colour." },
+        "energy": { "title": "Energy efficiency", "body": "Less cooling load in summer, less heat loss through the glass in winter." },
+        "safety": { "title": "Safety", "body": "The security film holds shattered glass together and spreads the impact force across the surface." }
+      }
     },
-    "comparison": {
-      "title": "TODO",
-      "withoutLabel": "TODO",
-      "appliedLabel": "TODO",
+    "compare": {
+      "title": "The difference is measurable",
+      "titleProtect": "The difference is in the protection",
+      "withoutLabel": "WITHOUT FILM",
+      "withLabel": "WITH FILM",
+      "surfaceLabel": "SURFACE",
+      "surfaceValue": "−7.6 °C",
+      "uvLabel": "UV FILTERED",
+      "uvValue": "99 %",
+      "cta": "See how it works",
       "rows": [
-        {
-          "without": "TODO",
-          "applied": "TODO"
-        },
-        {
-          "without": "TODO",
-          "applied": "TODO"
-        },
-        {
-          "without": "TODO",
-          "applied": "TODO"
-        },
-        {
-          "without": "TODO",
-          "applied": "TODO"
-        },
-        {
-          "without": "TODO",
-          "applied": "TODO"
-        }
-      ]
+        { "without": "Furniture fades", "with": "99 % UV blocked" },
+        { "without": "Room heats up", "with": "Up to 80 % heat reflected" },
+        { "without": "Glass shatters into shards", "with": "Shards stay bonded" },
+        { "without": "Glare on the monitor", "with": "Light gently diffused" },
+        { "without": "Visible from outside all day", "with": "One-way mirror by day" }
+      ],
+      "protectionRows": [
+        { "without": "Glass shatters into sharp shards", "with": "Shards stick to the film" },
+        { "without": "Shards can scatter on impact", "with": "Shards stay together" },
+        { "without": "Impact leaves an open, fragmented surface", "with": "Film helps hold broken glass in place" },
+        { "without": "Broken glass falls freely", "with": "Broken glass stays contained" }
+      ],
+      "beforeAfterLabel": "Before / after comparison",
+      "img1WithoutAlt": "Without film",
+      "img1AfterAlt": "With solar control film",
+      "img1WithoutValue": "33.3 °C",
+      "img1AfterValue": "25.7 °C",
+      "img2WithoutAlt": "Glass shatters into sharp shards → shards stick to the film",
+      "img2AfterAlt": "Shards can scatter on impact → shards stay together"
     },
     "process": {
-      "title": "TODO",
-      "note": "TODO",
-      "steps": [
-        {
-          "title": "TODO",
-          "body": "TODO"
-        },
-        {
-          "title": "TODO",
-          "body": "TODO"
-        },
-        {
-          "title": "TODO",
-          "body": "TODO"
-        },
-        {
-          "title": "TODO",
-          "body": "TODO"
-        }
-      ]
+      "title": "From enquiry to finished installation",
+      "steps": {
+        "beratung": { "title": "Consultation & measurement", "body": "On site: glass type, orientation, temperature and goal are assessed." },
+        "muster": { "title": "Samples & selection", "body": "Sample strips right on your own window — you see the effect beforehand." },
+        "montage": { "title": "Installation", "body": "Low-dust, possible during normal operation. Usually done within one working day." },
+        "abnahme": { "title": "Handover & warranty", "body": "Joint inspection, care instructions, manufacturer warranty in writing." }
+      }
     },
-    "live": {
-      "eyebrow": "TODO",
-      "title": "TODO",
-      "body": "TODO",
-      "value": "−7,6 °C",
-      "note": "TODO"
-    },
-    "industries": {
-      "title": "TODO",
-      "body": "TODO",
-      "items": [
-        "TODO",
-        "TODO",
-        "TODO",
-        "TODO",
-        "TODO",
-        "TODO"
-      ]
+    "praxis": {
+      "title": "What it looks like on site",
+      "body": "Installation without a showroom — film on glass, work on the object, finished result. More references in the gallery.",
+      "cta": "View gallery",
+      "videoTitle": "Installation on site — time-lapse film application"
     },
     "series": {
-      "title": "TODO",
-      "intro": "TODO",
-      "more": "TODO"
+      "title": "Four series, one goal per building",
+      "lead": "Which film fits depends on the glass and the goal — not the catalogue. We settle on the series together during the measurement visit."
     },
     "reviews": {
-      "title": "TODO",
-      "rating": "4,9",
-      "countLabel": "TODO"
+      "titleLine1": "Become our next",
+      "titleAccent": "satisfied customer.",
+      "allLink": "See all reviews →",
+      "metaPrefix": "from",
+      "metaSuffix": "Google reviews",
+      "quotes": [
+        { "body": "Very good advice and a quick appointment. The film was applied cleanly and the result looks really high-quality.", "meta": "Anna · Single-family home · May 2026" },
+        { "body": "Everything went smoothly from the first consultation to installation. The windows look much more modern now and the privacy we wanted is exactly as we imagined.", "meta": "Michael · Apartment · June 2026" },
+        { "body": "Friendly contact, a quick appointment and a clean installation. We're very happy with the result and would recommend Armolan any time.", "meta": "Julia · Apartment · June 2026" }
+      ]
+    },
+    "faq": {
+      "titleLine1": "Questions we're asked before",
+      "titleAccent": "almost every measurement visit.",
+      "askButton": "Ask a question",
+      "items": [
+        { "q": "How long does window film last?", "a": "Films applied on the interior typically last 10–15 years, exterior-applied ones 7–10 years. Material and workmanship carry a manufacturer warranty." },
+        { "q": "Will the room get dark?", "a": "Not necessarily. Visible light transmission (VLT) ranges from 18 % to 90 % depending on the series — modern sputtered films hold back heat while letting light through." },
+        { "q": "Can the film damage the glass?", "a": "Not with the right selection. Glass build-up, orientation and edge seal are what matter — that's why we check every pane before recommending anything." },
+        { "q": "How long does installation take?", "a": "An apartment or a shop window is usually finished in one working day, during normal operation. We schedule large façades in sections." },
+        { "q": "What does it cost?", "a": "The price depends on area, series and accessibility. The consultation and quote are free." }
+      ]
     },
     "consultation": {
-      "eyebrow": "TODO",
-      "title": "TODO",
-      "body": "TODO"
+      "titleLine1": "Measure first.",
+      "titleLine2": "Then decide.",
+      "body": "We come to you with a measuring device and sample strips, record the values on your own pane, and calculate what the film would achieve.",
+      "specs": {
+        "termin": { "label": "APPOINTMENT", "value": "within 48 hours" },
+        "dauer": { "label": "DURATION", "value": "about 30 minutes on site" },
+        "kosten": { "label": "COST", "value": "none — even without an order" }
+      },
+      "imageAlt": "Living room with tinted glazing"
+    },
+    "hero": {
+      "eyebrow": "OFFICIAL PARTNER · LLUMAR & ARMOLAN",
+      "titleLine1": "We don't sell rolls of film.",
+      "titleLine2": "We deliver the result.",
+      "subtitle": "Consultation, material, installation and support in one package — for solar control, UV protection, energy efficiency and security on glass surfaces across Austria.",
+      "imageAlt": "Façade with solar control film, seen from outside"
     }
   },
-  "faq": {
-    "title": "TODO",
-    "items": [
-      {
-        "q": "TODO",
-        "a": "TODO"
-      },
-      {
-        "q": "TODO",
-        "a": "TODO"
-      },
-      {
-        "q": "TODO",
-        "a": "TODO"
-      },
-      {
-        "q": "TODO",
-        "a": "TODO"
-      },
-      {
-        "q": "TODO",
-        "a": "TODO"
-      },
-      {
-        "q": "TODO",
-        "a": "TODO"
-      }
-    ]
-  },
+
   "about": {
-    "eyebrow": "TODO",
-    "title": "TODO",
-    "lead": "TODO",
-    "quote": "TODO",
-    "whyTitle": "TODO",
-    "why": [
-      {
-        "title": "TODO",
-        "body": "TODO"
-      },
-      {
-        "title": "TODO",
-        "body": "TODO"
-      },
-      {
-        "title": "TODO",
-        "body": "TODO"
-      },
-      {
-        "title": "TODO",
-        "body": "TODO"
-      }
-    ],
-    "partnersTitle": "TODO",
-    "industriesTitle": "TODO",
-    "industries": [
-      "TODO",
-      "TODO",
-      "TODO",
-      "TODO",
-      "TODO",
-      "TODO",
-      "TODO",
-      "TODO",
-      "TODO",
-      "TODO"
-    ]
-  },
-  "products": {
-    "eyebrow": "TODO",
-    "title": "TODO",
-    "lead": "TODO",
-    "seriesTitle": "TODO",
-    "seriesNames": {
-      "reflective": "TODO",
-      "spectrallySelective": "TODO",
-      "lowE": "TODO",
-      "safety": "TODO",
-      "uvClear": "TODO"
+    "title": "A team that works on glass.",
+    "body": "City-Ton Austria installs solar control, UV, energy-saving and security films in Austria and Ukraine. We advise, measure, install and support the work ourselves — no middleman to pass the responsibility to.",
+    "imageAlt": "Owner and main contact at City-Ton Austria",
+    "quote": "“We don't sell rolls of film — we deliver a finished result: consultation, material, installation and support in one package.”",
+    "quoteMeta": "Our principle · City-Ton Austria",
+    "team": {
+      "title": "The people behind the film.",
+      "body": "From the first consultation and measurement to installation and ongoing support — the same people stand behind the result at City-Ton.",
+      "mainAlt": "Owner at work on glass",
+      "mainLabel": "Work on glass",
+      "side1Alt": "Material being unpacked and prepared on site",
+      "side1Label": "Material ready",
+      "side2Alt": "Film installation on a shop window",
+      "side2Label": "On-site installation"
     },
-    "filterAll": "TODO",
-    "detailCta": "TODO"
+    "onsite": {
+      "title": "On site.",
+      "body": "A brief look at what installation really looks like — finished objects and work on glass.",
+      "cta": "View gallery →",
+      "img1Alt": "Residential building with dual-reflective film",
+      "img2Alt": "Façade with reflective solar control film",
+      "img3Alt": "Reference object after film installation"
+    },
+    "peopleSteps": {
+      "title": "From the first conversation to the finished result.",
+      "body": "Short and personal — we take responsibility at every step.",
+      "step1": { "title": "Consultation & measurement", "body": "We come on site, listen and measure ourselves — so the recommendation fits the building.", "imageAlt": "Preparation and material ahead of the measurement" },
+      "step2": { "title": "Professional installation", "body": "Certified application possible during normal operation — low-dust and in sections.", "imageAlt": "Professional film installation on a window" },
+      "step3": { "title": "Handover & support", "body": "Joint inspection, care instructions, and a point of contact afterwards too.", "imageAlt": "Completed installation on site" }
+    },
+    "partnersTitle": "Manufacturers we trust.",
+    "partners": {
+      "llumar": { "kicker": "Manufacturer", "title": "LLumar", "body": "Material, technical data and warranty from the global film manufacturer.", "link": "llumar.at →" },
+      "armolan": { "kicker": "Manufacturer", "title": "Armolan Europe", "body": "Series, training and certification for installers.", "link": "armolan.eu →" }
+    },
+    "why": {
+      "title": "Why customers work with us.",
+      "item1": { "title": "One personal contact", "body": "The same person from the first measurement through to the warranty." },
+      "item2": { "title": "Professional measurement", "body": "Glass type, orientation and goal are recorded on site." },
+      "item3": { "title": "Certified installation", "body": "Manufacturer training and a valid manufacturer warranty." },
+      "item4": { "title": "Support after installation too", "body": "Care instructions, follow-up questions and warranty handling." }
+    },
+    "rating": {
+      "scale": "5",
+      "metaPrefix": "from",
+      "metaSuffix": "Google reviews",
+      "quote": "Professional and reliable, from consultation through to installation.",
+      "cta": "See all reviews →"
+    },
+    "finalCta": {
+      "title": "Planning a project?",
+      "subtitle": "We're happy to advise you in person.",
+      "body": "Whether it's solar control, UV protection, security or energy efficiency — we'll find the right solution for your building.",
+      "cta": "Request a consultation →"
+    }
   },
+
+  "gallery": {
+    "title": "Objects the film is working on",
+    "lead": "A selection of completed projects — façades, interiors and protective films. Tap an image to enlarge it.",
+    "empty": "No photos or videos have been added yet.",
+    "captionFallbackProject": "Project",
+    "captionFallbackFilm": "Film on request",
+    "enlargeImage": "Enlarge image",
+    "enlargeVideo": "Enlarge video",
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next",
+    "captions": {
+      "gallery_1.png": { "project": "Residential · Solar control", "film": "Dual Reflective series" },
+      "gallery_2.png": { "project": "Façade · Daylight", "film": "LLumar Architectural" },
+      "gallery_4.png": { "project": "Residential · Dual Reflective", "film": "Armolan Dual Reflective" },
+      "gallery_5.JPG": { "project": "Office · Glare control", "film": "Solar control film" },
+      "gallery_7.JPG": { "project": "Commercial object", "film": "Security film" },
+      "gallery_8.jpg": { "project": "Shop window", "film": "UV protection film" },
+      "gallery_9.JPG": { "project": "Interior · Privacy", "film": "Privacy film" },
+      "gallery_10.JPG": { "project": "Façade band", "film": "Energy-saving film" },
+      "gallery_6.jpg": { "project": "Corner window · Apartment", "film": "Solar control film" },
+      "interior-2.jpg": { "project": "Interior · Glass wall", "film": "Solar control film" },
+      "photo_2026-08-14_23-59-53.jpg": { "project": "Installation object", "film": "Film on request" },
+      "reflective-facade-upscaled.jpg": { "project": "Reflective façade", "film": "Dual Reflective series" },
+      "telegram_video.mp4": { "project": "On-site installation", "film": "Solar control film" },
+      "telegram_video(1).mp4": { "project": "On-site installation", "film": "Solar control film" },
+      "telegram_video(2).mp4": { "project": "Work on glass", "film": "Security film" },
+      "telegram_video(3).mp4": { "project": "Work on glass", "film": "Security film" },
+      "telegram_video(4).mp4": { "project": "Façade installation", "film": "Dual Reflective series" },
+      "telegram_video(5).mp4": { "project": "Façade installation", "film": "Dual Reflective series" },
+      "telegram_video(6).mp4": { "project": "Interior · Film application", "film": "Privacy film" },
+      "telegram_video(7).mp4": { "project": "Interior · Film application", "film": "Privacy film" },
+      "telegram_video(8).mp4": { "project": "Object after installation", "film": "Film on request" }
+    }
+  },
+
   "principle": {
-    "eyebrow": "TODO",
-    "title": "TODO",
-    "chapters": [
-      {
-        "kicker": "TODO",
-        "title": "TODO",
-        "body": "TODO",
-        "note": "TODO"
-      },
-      {
-        "kicker": "TODO",
-        "title": "TODO",
-        "body": "TODO",
-        "note": "TODO"
-      }
-    ]
+    "reflexion": { "kicker": "Reflection", "title": "Heat is rejected before it enters the room", "body": "About half of sunlight is infrared radiation. The metallised layer reflects this portion back outside at the glass surface — up to 79 % of total solar energy never reaches the room. The air conditioning runs less, and on south-facing façades we typically measure 3–7.6 °C less." },
+    "absorption": { "kicker": "Absorption", "title": "The same effect, without the mirror look", "body": "Nano-ceramic particles absorb solar energy instead of reflecting it. The pane stays close to neutral from outside — no mirror image on the façade — while heat gain drops noticeably. The choice when daylight and a clear view outside need to be preserved." },
+    "uv": { "kicker": "UV protection", "title": "Over 99 % of UV radiation stops at the film", "body": "The UV barrier layer is highly transparent — clear as glass. Visible light passes through almost unhindered while UV is held back. Floors, furniture, textiles and displayed goods keep their colour far longer, without the room getting darker." },
+    "einbruchschutz": { "kicker": "Security", "title": "The pane breaks — but it stays in the frame", "body": "The 100–300 micron security film is fully bonded with a pressure-sensitive adhesive. An impact isn't absorbed at one point but spread across the entire film surface. The glass shatters but holds together — a break-in attempt takes longer and is loud." },
+    "sichtschutz": { "kicker": "Privacy", "title": "Light passes through, the view doesn't", "body": "The matte surface scatters passing light in every direction. The room stays bright while the image behind it dissolves — a frosted-glass look, without replacing the pane. For partitions, meeting rooms, practices and restrooms." },
+    "pageTitle": "What a film physically does on glass",
+    "pageLead": "Scroll down — the diagram on the left stays in place and changes with each section.",
+    "metaDescription": "What a film physically does on glass: reflection, absorption, UV blocking, force distribution and privacy.",
+    "ctaTitle": "Not sure which film fits?",
+    "ctaBody": "We bring sample strips and a measuring device and record the values on your own pane."
   },
-  "contact": {
-    "eyebrow": "TODO",
-    "title": "TODO",
-    "lead": "TODO",
-    "hours": "TODO",
-    "hoursLabel": "TODO",
-    "location": "TODO",
-    "locationLabel": "TODO",
-    "phoneLabel": "TODO",
-    "emailLabel": "TODO",
-    "form": {
-      "name": "Name",
-      "email": "TODO",
-      "phone": "TODO",
-      "objectType": "TODO",
-      "goal": "TODO",
-      "message": "TODO",
-      "submit": "TODO",
-      "submitting": "TODO",
-      "success": "TODO",
-      "error": "TODO",
-      "privacyPrefix": "TODO",
-      "privacyLink": "TODO",
-      "privacySuffix": "TODO"
-    },
+
+  "kontakt": {
+    "title": "Request a free consultation",
+    "lead": "Tell us briefly about the building and your goal — we'll get back to you with a suggested appointment and next steps. Sample strips and an on-site measurement are possible.",
+    "hours": "Mon–Fri 9:00 AM–5:00 PM",
+    "mapLabel": "Location",
+    "mapTitle": "Map — Adelheid-Popp-Gasse 24, 1220 Vienna",
+    "success": "Thank you — your enquiry has been received. We'll get back to you shortly.",
+    "nameLabel": "Name",
+    "objektartLabel": "Type of building",
+    "objektartPlaceholder": "Please select",
+    "flaecheLabel": "Area",
+    "optional": "(optional)",
+    "flaechePlaceholder": "e.g. approx. 40 m² of glass / 8 windows",
+    "goalLabel": "Goal",
+    "phoneLabel": "Phone",
+    "phonePlaceholder": "+43 …",
+    "emailLabel": "Email",
+    "emailPlaceholder": "name@company.com",
+    "contactHint": "Please provide at least a phone number or email address.",
+    "messageLabel": "Message",
+    "messagePlaceholder": "What's it about? Glass type, orientation, or what's bothering you — anything helps us assess it.",
+    "submit": "Send enquiry",
+    "submitting": "Sending…",
+    "privacyPrefix": "I have read the",
+    "privacyLink": "privacy policy",
+    "privacySuffix": "and consent to the processing of my details to handle this enquiry.",
+    "duplicateError": "An enquiry with these details has already been submitted.",
+    "sendFailedError": "Sending failed. Please try again.",
+    "networkError": "Network error. Please check your connection and try again.",
+    "honeypotLabel": "Website",
     "objectTypes": {
-      "wohnung": "TODO",
-      "haus": "TODO",
-      "buero": "TODO",
-      "gewerbe": "TODO",
-      "sonstiges": "TODO"
+      "wohnung": "Apartment",
+      "haus": "House",
+      "buero": "Office",
+      "gewerbe": "Commercial",
+      "sonstiges": "Other"
     },
     "goals": {
-      "sonnenschutz": "TODO",
-      "uv": "TODO",
-      "energie": "TODO",
-      "einbruchschutz": "TODO",
-      "privatsphaere": "TODO"
+      "sonnenschutz": "Solar control",
+      "uv": "UV protection",
+      "energie": "Energy efficiency",
+      "einbruchschutz": "Security",
+      "privatsphaere": "Privacy"
+    },
+    "metaTitle": "Contact",
+    "metaDescription": "Request a free consultation: type of building, goal and contact method — City-Ton Austria will get back to you with a suggested appointment.",
+    "showLargerMap": "Show larger map",
+    "sideTitle": "Get in touch directly",
+    "sidePhoneLabel": "Phone",
+    "sideEmailLabel": "Email",
+    "sideAddressLabel": "Address",
+    "sideHoursLabel": "Hours",
+    "quickForm": {
+      "placeholder": "Phone number or email",
+      "ariaLabel": "Phone or email",
+      "duplicateError": "This contact detail has already been submitted.",
+      "sendFailedError": "Sending failed. Please try again.",
+      "success": "Thanks — we'll get back to you shortly.",
+      "networkError": "Network error. Please check your connection and try again.",
+      "sending": "Sending…"
     }
   },
-  "warranty": {
-    "short": "TODO"
+
+  "certificates": {
+    "sectionTitle": "Test reports",
+    "safety1": "DIN EN 356 · ARM Safety Clear 12 mil",
+    "safety2": "DIN EN 12600 · ARM Safety 8 mil"
   },
-  "imprint": {
-    "title": "TODO",
-    "companyLabel": "TODO",
-    "company": "City-Ton Austria",
-    "addressLabel": "TODO",
-    "address": "TODO",
-    "vatLabel": "TODO",
-    "vat": "",
-    "contactLabel": "TODO"
+
+  "filmStructure": {
+    "layersAriaSuffix": "layers",
+    "reflective": {
+      "title": "Film build-up · Reflective",
+      "layer1": "Scratch-resistant hardcoat",
+      "layer2": "Clear polyester film",
+      "layer3": "Metallised aluminium layer",
+      "layer4": "Clear/tinted PET film with UV absorbers",
+      "layer5": "Adhesive with UV absorbers",
+      "layer6": "Release liner"
+    },
+    "safety": {
+      "title": "Film build-up · Safety",
+      "layer1": "Scratch-resistant hardcoat",
+      "layer2": "Clear polyester film",
+      "layer3": "Laminating adhesive",
+      "layer4": "Clear polyester film",
+      "layer5": "Adhesive with UV absorbers",
+      "layer6": "Release liner"
+    },
+    "sputtered": {
+      "title": "Film build-up · Sputtered",
+      "layer1": "Scratch-resistant hardcoat",
+      "layer2": "Clear polyester film",
+      "layer3": "Sputtered metal layer",
+      "layer4": "Clear/tinted PET film with UV absorbers",
+      "layer5": "Adhesive with UV absorbers",
+      "layer6": "Release liner"
+    }
   },
+
+  "produkte": {
+    "title": "Four series, one goal per building",
+    "lead": "Which film fits depends on the glass and the goal — not the catalogue.",
+    "metaDescription": "Four film series at a glance and the full catalogue — Armolan and LLumar, with specifications and mounting notes.",
+    "catalogTitle": "All films",
+    "catalogLead": "Filter by brand and mounting side. Every card leads to a detail page with all specifications.",
+    "ctaTitle": "Not sure which film fits?",
+    "ctaBody": "We bring sample strips and a measuring device — and settle on the series on site.",
+    "seriesSectionTitle": "All films",
+    "brandLabel": "Brand",
+    "mountLabel": "Mounting",
+    "mountAll": "All",
+    "mountInnen": "Interior",
+    "mountAussen": "Exterior",
+    "mountBoth": "Interior / exterior",
+    "resultsOne": "film",
+    "resultsMany": "films",
+    "filterAriaLabel": "Filter films",
+    "breadcrumbHome": "HOME",
+    "breadcrumbProdukte": "PRODUCTS",
+    "certPrefix": "Open test report:"
+  },
+
+  "produkteFolie": {
+    "breadcrumbProdukte": "PRODUCTS",
+    "family": {
+      "reflektierend": "Reflective",
+      "sputtered": "Sputtered",
+      "dual-reflektierend": "Dual Reflective",
+      "spektralselektiv": "Spectrally selective",
+      "low-e": "Low-E",
+      "klar": "Clear",
+      "sicherheit": "Security",
+      "sichtschutz": "Privacy"
+    },
+    "vltLabel": "VLT (visible light transmission)",
+    "tserLabel": "TSER (total solar energy rejected)",
+    "uvLabel": "UV protection",
+    "glareLabel": "Glare reduction",
+    "mountLabel": "Mounting",
+    "thicknessLabel": "Material thickness",
+    "applicationLabel": "Typical application",
+    "certificationLabel": "Certification",
+    "ctaLabel": "Ask about this film"
+  },
+
+  "blog": {
+    "title": "News about window film",
+    "lead": "News, tips and project reports — you'll find them here as soon as new posts appear.",
+    "empty": "No posts have been published yet.",
+    "back": "← All posts",
+    "notFoundTitle": "Post not found",
+    "eyebrow": "Blog",
+    "metaTitle": "Blog & News",
+    "metaDescription": "News, tips and project reports from City-Ton Austria."
+  },
+
+  "partner": {
+    "title": "For partners",
+    "note": "This page is being prepared."
+  },
+
+  "filmCatalog": {
+    "brand": "Brand",
+    "mount": "Mounting",
+    "all": "All",
+    "mountInnen": "Interior",
+    "mountAussen": "Exterior",
+    "mountBoth": "Interior / exterior",
+    "filmSingular": "film",
+    "filmPlural": "films",
+    "filterAriaLabel": "Filter films"
+  },
+
+  "partnerCarousel": {
+    "defaultLabel": "OFFICIAL PARTNER OF",
+    "ariaLabel": "Partner logos",
+    "openInNewTab": "— opens website in a new tab"
+  },
+
   "common": {
-    "readMore": "TODO",
-    "back": "TODO",
-    "close": "TODO",
-    "loading": "TODO",
-    "notFoundTitle": "TODO",
-    "notFoundBody": "TODO"
+    "breadcrumbAriaLabel": "Breadcrumb",
+    "breadcrumbHome": "HOME",
+    "breadcrumbProdukte": "PRODUCTS",
+    "ctaFilmTitle": "Not sure which film fits?",
+    "ctaFilmBody": "We bring sample strips and a measuring device — and settle on the series on site.",
+    "ctaGalleryTitle": "Your building could be next.",
+    "ctaGalleryBody": "We bring sample strips and a measuring device — the initial consultation is free and non-binding.",
+    "funktionsprinzipAnsehen": "See how it works"
+  },
+
+  "produkteSeriePage": {
+    "funktionsprinzipCta": "See how it works",
+    "certsSectionTitle": "Test reports",
+    "pendingText": "The full product page for {name} is coming. Specifications, variants and reference objects come from the manufacturer datasheet — until then we're happy to advise you directly."
+  },
+
+  "produkteFolieDetail": {
+    "kennwerteEinfach": "Specifications · Single glazing",
+    "kennwerteIso": "Specifications · Insulated glazing",
+    "montagePrefix": "Mounting",
+    "ctaLabel": "Ask about this film",
+    "vlt": "VLT (visible light transmission)",
+    "tser": "TSER (solar energy rejected)",
+    "uvDurchlass": "UV transmission",
+    "blendschutz": "Glare reduction",
+    "strahlungsdurchlass": "Solar transmission",
+    "strahlungsreflexionAussen": "Solar reflection, exterior",
+    "strahlungsabsorption": "Solar absorption",
+    "lichtreflexion": "Visible light reflection",
+    "lichtreflexionAussen": "Visible light reflection, exterior",
+    "lichtreflexionInnen": "Visible light reflection, interior",
+    "abschirmgrad": "Shading coefficient (SC)",
+    "gWert": "g-value",
+    "emissivitaet": "Emissivity",
+    "ugWert": "Ug-value (EN 673)",
+    "farbwiedergabe": "Colour rendering",
+    "marke": "Brand",
+    "code": "Code",
+    "familie": "Family",
+    "montage": "Mounting",
+    "staerke": "Thickness",
+    "anwendung": "Typical application",
+    "pruefung": "Certification",
+    "family": {
+      "reflektierend": "Reflective",
+      "sputtered": "Sputtered / Nano",
+      "dual-reflektierend": "Dual-reflective",
+      "spektralselektiv": "Spectrally selective",
+      "low-e": "Low-E",
+      "klar": "Clear",
+      "sicherheit": "Security",
+      "sichtschutz": "Privacy"
+    }
+  },
+
+  "legal": {
+    "impressumTitle": "Imprint",
+    "datenschutzTitle": "Privacy policy",
+    "germanOnlyNote": "This page is legally required and is only maintained in German."
   }
 }

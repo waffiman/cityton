@@ -1,11 +1,11 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useRef, useState, type FormEvent } from "react";
 import Corners from "@/components/Corners";
 import TurnstileWidget from "@/components/TurnstileWidget";
 import { isEmailInput, MAX_EMAIL_LENGTH, parseContact, sanitizeContactInput } from "@/lib/contact-lead";
-import { site } from "@/content/site";
-import styles from "@/app/home.module.css";
+import styles from "@/app/[locale]/home.module.css";
 
 type Status =
   | { type: "idle" }
@@ -18,6 +18,7 @@ type Status =
  * client hints plus authoritative server validation and dedupe.
  */
 export default function ConsultLeadForm() {
+  const t = useTranslations();
   const [value, setValue] = useState("");
   const [status, setStatus] = useState<Status>({ type: "idle" });
   const [submitting, setSubmitting] = useState(false);
@@ -44,7 +45,7 @@ export default function ConsultLeadForm() {
     if (lastAccepted.current && parsed.key === lastAccepted.current) {
       setStatus({
         type: "duplicate",
-        message: "Diese Kontaktangabe wurde bereits übermittelt.",
+        message: t("kontakt.quickForm.duplicateError"),
       });
       return;
     }
@@ -69,7 +70,7 @@ export default function ConsultLeadForm() {
         lastAccepted.current = parsed.key;
         setStatus({
           type: "duplicate",
-          message: data.error ?? "Diese Kontaktangabe wurde bereits übermittelt.",
+          message: data.error ?? t("kontakt.quickForm.duplicateError"),
         });
         return;
       }
@@ -77,7 +78,7 @@ export default function ConsultLeadForm() {
       if (!res.ok || !data.ok) {
         setStatus({
           type: "error",
-          message: data.error ?? "Senden fehlgeschlagen. Bitte erneut versuchen.",
+          message: data.error ?? t("kontakt.quickForm.sendFailedError"),
         });
         return;
       }
@@ -85,12 +86,12 @@ export default function ConsultLeadForm() {
       lastAccepted.current = parsed.key;
       setStatus({
         type: "success",
-        message: "Danke — wir melden uns in Kürze bei Ihnen.",
+        message: t("kontakt.quickForm.success"),
       });
     } catch {
       setStatus({
         type: "error",
-        message: "Netzwerkfehler. Bitte Verbindung prüfen und erneut senden.",
+        message: t("kontakt.quickForm.networkError"),
       });
     } finally {
       inFlight.current = false;
@@ -105,10 +106,10 @@ export default function ConsultLeadForm() {
           className={styles.consultInput}
           type="text"
           name="contact"
-          aria-label="Telefon oder E-Mail"
+          aria-label={t("kontakt.quickForm.ariaLabel")}
           autoComplete="tel email"
           inputMode={isEmailInput(value) ? "email" : "tel"}
-          placeholder="Telefonnummer oder E-Mail"
+          placeholder={t("kontakt.quickForm.placeholder")}
           value={value}
           disabled={submitting}
           maxLength={isEmailInput(value) ? MAX_EMAIL_LENGTH : undefined}
@@ -131,7 +132,7 @@ export default function ConsultLeadForm() {
       <div className={styles.consultFormActions}>
         <button type="submit" className="btn btn-primary btn-lg blueprint" disabled={submitting}>
           <Corners />
-          {submitting ? "Wird gesendet…" : site.cta}
+          {submitting ? t("kontakt.quickForm.sending") : t("site.cta")}
         </button>
       </div>
 

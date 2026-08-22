@@ -1,143 +1,51 @@
-/** /ueber-uns content — people, trust, work. Not a Home duplicate. */
+/**
+ * /ueber-uns structural data — image paths only. Copy lives in messages
+ * under `about.*`; item order/keys here must match the message keys.
+ */
 
 import { reviews } from "@/content/home";
 
-type Partner = {
-  kicker: string;
-  title: string;
-  body: string;
-  logo?: { src: string; alt: string; width: number; height: number };
-  link?: { href: string; label: string };
-};
-
-type Media = { src: string; alt: string; label?: string };
-
 export const about = {
-  title: "Ein Team, das am Glas arbeitet.",
-  body: "City-Ton Austria montiert Sonnenschutz-, UV-, Energiespar- und Sicherheitsfolien in Österreich und der Ukraine. Wir beraten, messen, montieren und betreuen selbst — ohne Zwischenstelle, die Verantwortung abschiebt.",
-  image: {
-    src: "/media/owner.jpg",
-    alt: "Inhaber und Ansprechpartner von City-Ton Austria",
-  },
-
-  quote:
-    "„Wir verkaufen keine Folienrollen — wir liefern ein fertiges Ergebnis: Beratung, Material, Montage und Betreuung in einem Paket.“",
-  quoteMeta: "Grundsatz · City-Ton Austria",
+  image: { src: "/media/owner.jpg" },
 
   team: {
-    title: "Die Menschen hinter der Folie.",
-    body: "Von der ersten Beratung und dem Aufmaß bis zur Montage und der Betreuung danach — bei City-Ton stecken dieselben Menschen hinter dem Ergebnis.",
-    main: {
-      src: "/media/glass-work.JPG",
-      alt: "Inhaber bei der Arbeit am Glas",
-      label: "Arbeit am Glas",
-    } satisfies Media,
-    side: [
-      {
-        src: "/media/material-2.png",
-        alt: "Material wird vor Ort ausgepackt und vorbereitet",
-        label: "Material bereit",
-      },
-      {
-        src: "/media/prof-montage.JPG",
-        alt: "Folienmontage an einem Schaufenster",
-        label: "Montage vor Ort",
-      },
-    ] satisfies Media[],
+    main: { src: "/media/glass-work.JPG" },
+    side: [{ src: "/media/material-2.png" }, { src: "/media/prof-montage.JPG" }],
   },
 
   onsite: {
-    title: "Vor Ort.",
-    body: "Ein kurzer Einblick in die Realität der Montage — fertige Objekte und Arbeit am Glas.",
     images: [
-      { src: "/media/referenzen/gallery_2.png", alt: "Wohnobjekt mit dual-reflektierender Folie" },
-      { src: "/media/referenzen/reflective-facade-upscaled.jpg", alt: "Fassade mit reflektierender Sonnenschutzfolie" },
-      { src: "/media/referenzen/gallery_9.JPG", alt: "Referenzobjekt nach der Folierung" },
-    ] satisfies Media[],
-    cta: { href: "/gallery", label: "Zur Galerie →" },
+      { src: "/media/referenzen/gallery_2.png" },
+      { src: "/media/referenzen/reflective-facade-upscaled.jpg" },
+      { src: "/media/referenzen/gallery_9.JPG" },
+    ],
+    cta: { href: "/gallery" },
   },
 
   peopleSteps: {
-    title: "Vom ersten Gespräch bis zum fertigen Ergebnis.",
-    body: "Kurz und persönlich — wir übernehmen Verantwortung in jedem Schritt.",
     items: [
-      {
-        num: "01",
-        title: "Beratung & Aufmaß",
-        body: "Wir kommen vor Ort, hören zu und messen selbst — damit die Empfehlung zum Objekt passt.",
-        image: { src: "/media/measurement.JPG", alt: "Vorbereitung und Material vor dem Aufmaß" },
-      },
-      {
-        num: "02",
-        title: "Professionelle Montage",
-        body: "Zertifizierte Verklebung im laufenden Betrieb möglich — staubarm und abschnittsweise.",
-        image: { src: "/media/montage.png", alt: "Professionelle Folienmontage am Fenster" },
-      },
-      {
-        num: "03",
-        title: "Übergabe & Betreuung",
-        body: "Gemeinsame Abnahme, Pflegehinweise und ein Ansprechpartner auch danach.",
-        image: { src: "/media/handshake-full.png", alt: "Montageabschluss am Objekt" },
-      },
+      { key: "step1", num: "01", image: { src: "/media/measurement.JPG" } },
+      { key: "step2", num: "02", image: { src: "/media/montage.png" } },
+      { key: "step3", num: "03", image: { src: "/media/handshake-full.png" } },
     ],
   },
 
-  partnersTitle: "Hersteller, denen wir vertrauen.",
   partners: [
     {
-      kicker: "Hersteller",
-      title: "LLumar",
-      body: "Material, technische Daten und Garantie vom weltweiten Folienhersteller.",
-      logo: { src: "/media/logo-llumar.png", alt: "LLumar", width: 120, height: 30 },
-      link: { href: "https://www.llumar.at", label: "llumar.at →" },
+      key: "llumar",
+      logo: { src: "/media/logo-llumar.png", width: 120, height: 30 },
+      href: "https://www.llumar.at",
     },
     {
-      kicker: "Hersteller",
-      title: "Armolan Europe",
-      body: "Serien, Schulung und Zertifizierung der Monteure.",
-      logo: { src: "/media/logo-armolan.png", alt: "Armolan Europe", width: 160, height: 44 },
-      link: { href: "https://armolan.eu", label: "armolan.eu →" },
+      key: "armolan",
+      logo: { src: "/media/logo-armolan.png", width: 160, height: 44 },
+      href: "https://armolan.eu",
     },
-  ] as Partner[],
+  ],
 
-  why: {
-    title: "Warum Kunden mit uns arbeiten.",
-    items: [
-      {
-        num: "01",
-        title: "Persönlicher Ansprechpartner",
-        body: "Von der ersten Messung bis zur Garantie dieselbe Person.",
-      },
-      {
-        num: "02",
-        title: "Professionelles Aufmaß",
-        body: "Glasart, Ausrichtung und Ziel werden vor Ort erfasst.",
-      },
-      {
-        num: "03",
-        title: "Zertifizierte Montage",
-        body: "Herstellerschulung und gültige Herstellergarantie.",
-      },
-      {
-        num: "04",
-        title: "Betreuung auch nach der Montage",
-        body: "Pflegehinweise, Nachfragen und Garantieabwicklung.",
-      },
-    ],
-  },
+  why: { keys: ["item1", "item2", "item3", "item4"] as const },
 
-  rating: {
-    value: reviews.rating,
-    scale: "5",
-    count: reviews.count,
-    quote: "Von der Beratung bis zur Montage – professionell und zuverlässig.",
-    cta: { href: "/#bewertungen", label: "Alle Bewertungen ansehen →" },
-  },
+  rating: { value: reviews.rating, count: reviews.count, cta: { href: "/#bewertungen" } },
 
-  finalCta: {
-    title: "Sie planen ein Projekt?",
-    subtitle: "Wir beraten Sie gerne persönlich.",
-    body: "Ob Sonnenschutz, UV-Schutz, Sicherheit oder Energieeffizienz — wir finden die passende Lösung für Ihr Objekt.",
-    cta: { href: "/kontakt", label: "Beratung anfragen →" },
-  },
+  finalCta: { cta: { href: "/kontakt" } },
 };

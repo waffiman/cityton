@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import AutoplayVideo from "@/components/AutoplayVideo";
-import type { ProcessStep } from "@/content/home";
+import type { ResolvedProcessStep } from "@/content/home";
 import styles from "./ProcessRibbon.module.css";
 
 /** How much of the overall section progress each card's own rise animation spans. */
@@ -64,7 +64,7 @@ function localT(progress: number, start: number, range: number, lag = 0): number
  * spaced vertical stack, and each card's small settling rise is driven by
  * its own scroll position crossing into the viewport, independently.
  */
-export default function ProcessRibbon({ steps, title }: { steps: ProcessStep[]; title: string }) {
+export default function ProcessRibbon({ steps, title }: { steps: ResolvedProcessStep[]; title: string }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Array<HTMLLIElement | null>>([]);

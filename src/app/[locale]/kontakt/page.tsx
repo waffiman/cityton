@@ -1,23 +1,30 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
 import KontaktInquiryForm from "@/components/KontaktInquiryForm";
-import { kontakt } from "@/content/kontakt";
+import { mapEmbedSrc, mapLinkHref } from "@/content/kontakt";
 import { site } from "@/content/site";
 import styles from "./kontakt.module.css";
 
-export const metadata: Metadata = {
-  title: "Kontakt",
-  description:
-    "Kostenlose Beratung anfragen: Objektart, Ziel und Kontaktweg — City-Ton Austria meldet sich mit Terminvorschlag.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "kontakt" });
+  return { title: t("metaTitle"), description: t("metaDescription") };
+}
 
-export default function KontaktPage() {
+export default async function KontaktPage() {
+  const t = await getTranslations("kontakt");
+
   return (
     <>
       <section className="container" style={{ paddingTop: 56 }}>
-        <h1 className={styles.title}>{kontakt.title}</h1>
+        <h1 className={styles.title}>{t("title")}</h1>
         <p className="lead" style={{ maxWidth: "58ch" }}>
-          {kontakt.lead}
+          {t("lead")}
         </p>
       </section>
 
@@ -28,52 +35,51 @@ export default function KontaktPage() {
           <div className={styles.sideColumn}>
             <div className={styles.mapFrame}>
               <iframe
-                title={kontakt.mapTitle}
-                src={kontakt.mapEmbedSrc}
+                title={t("mapTitle")}
+                src={mapEmbedSrc}
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
             <a
-              href={kontakt.mapLinkHref}
+              href={mapLinkHref}
               className={styles.mapLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              Größere Karte anzeigen
+              {t("showLargerMap")}
             </a>
 
             <aside className={`blueprint ${styles.side}`}>
               <Corners />
-              <h2 className={styles.sideTitle}>Direkt erreichen</h2>
+              <h2 className={styles.sideTitle}>{t("sideTitle")}</h2>
               <ul className={styles.sideList}>
                 <li className={styles.sideItem}>
-                  <span className={styles.sideLabel}>Telefon</span>
+                  <span className={styles.sideLabel}>{t("sidePhoneLabel")}</span>
                   <a href={`tel:${site.contact.phoneTel}`} className={styles.sideValue}>
                     {site.contact.phone}
                   </a>
                 </li>
                 <li className={styles.sideItem}>
-                  <span className={styles.sideLabel}>E-Mail</span>
+                  <span className={styles.sideLabel}>{t("sideEmailLabel")}</span>
                   <a href={`mailto:${site.contact.email}`} className={styles.sideValue}>
                     {site.contact.email}
                   </a>
                 </li>
                 <li className={styles.sideItem}>
-                  <span className={styles.sideLabel}>Adresse</span>
+                  <span className={styles.sideLabel}>{t("sideAddressLabel")}</span>
                   <span className={styles.sideValue}>{site.contact.address}</span>
                 </li>
                 <li className={styles.sideItem}>
-                  <span className={styles.sideLabel}>Erreichbarkeit</span>
-                  <span className={styles.sideValue}>{kontakt.hours}</span>
+                  <span className={styles.sideLabel}>{t("sideHoursLabel")}</span>
+                  <span className={styles.sideValue}>{t("hours")}</span>
                 </li>
               </ul>
             </aside>
           </div>
         </div>
       </section>
-
     </>
   );
 }

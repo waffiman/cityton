@@ -1,16 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useId, useState } from "react";
 import type { GalleryItem } from "@/lib/gallery-media";
 import MutedLoopVideo from "@/components/MutedLoopVideo";
-import styles from "@/app/gallery/gallery.module.css";
+import styles from "@/app/[locale]/gallery/gallery.module.css";
 
 type Props = {
   images: GalleryItem[];
 };
 
 export default function GalleryMasonry({ images }: Props) {
+  const t = useTranslations("gallery");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const titleId = useId();
   const open = openIndex !== null;
@@ -59,7 +61,7 @@ export default function GalleryMasonry({ images }: Props) {
               type="button"
               className={styles.tileBtn}
               onClick={() => setOpenIndex(i)}
-              aria-label={`${item.project} — ${item.film}. ${item.kind === "video" ? "Video" : "Bild"} vergrößern`}
+              aria-label={`${item.project} — ${item.film}. ${item.kind === "video" ? t("enlargeVideo") : t("enlargeImage")}`}
             >
               {item.kind === "video" ? (
                 <MutedLoopVideo
@@ -103,7 +105,7 @@ export default function GalleryMasonry({ images }: Props) {
             type="button"
             className={styles.lightboxClose}
             onClick={close}
-            aria-label="Schließen"
+            aria-label={t("close")}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M5 5l14 14M19 5L5 19" />
@@ -119,7 +121,7 @@ export default function GalleryMasonry({ images }: Props) {
                   e.stopPropagation();
                   go(-1);
                 }}
-                aria-label="Vorheriges"
+                aria-label={t("prev")}
               >
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M15 6l-6 6 6 6" />
@@ -132,7 +134,7 @@ export default function GalleryMasonry({ images }: Props) {
                   e.stopPropagation();
                   go(1);
                 }}
-                aria-label="Nächstes"
+                aria-label={t("next")}
               >
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M9 6l6 6-6 6" />

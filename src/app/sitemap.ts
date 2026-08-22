@@ -4,6 +4,11 @@ import { nav, site } from "@/content/site";
 import { prisma } from "@/lib/db";
 import { allFilmSlugs } from "@/lib/films";
 
+// Queries Post via prisma, so this can't be statically prerendered at Docker
+// build time (the db container isn't reachable during `npm run build` there,
+// only once the compose network is up at runtime) — must render per request.
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const pages = nav.map((n) => ({

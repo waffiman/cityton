@@ -21,11 +21,15 @@ type Props = {
  */
 function MutedLoopVideo({
   src,
+  poster,
   className,
   title,
   alwaysAutoplay = false,
 }: {
   src: string;
+  /** First-frame still shown until playback starts (or forever, on mobile
+   * where autoplay stays off) — without it the tile is blank. */
+  poster?: string;
   className?: string;
   title?: string;
   /** Lightbox: the user asked for this one, so always play it. */
@@ -65,6 +69,7 @@ function MutedLoopVideo({
     <video
       ref={ref}
       src={src}
+      poster={poster}
       className={className}
       title={title}
       muted
@@ -130,7 +135,12 @@ export default function GalleryMasonry({ images }: Props) {
               aria-label={`${item.project} — ${item.film}. ${item.kind === "video" ? "Video" : "Bild"} vergrößern`}
             >
               {item.kind === "video" ? (
-                <MutedLoopVideo src={item.src} className={styles.tileVideo} title={item.alt} />
+                <MutedLoopVideo
+                  src={item.src}
+                  poster={item.poster}
+                  className={styles.tileVideo}
+                  title={item.alt}
+                />
               ) : (
                 <Image
                   src={item.src}
@@ -211,6 +221,7 @@ export default function GalleryMasonry({ images }: Props) {
             {current.kind === "video" ? (
               <MutedLoopVideo
                 src={current.src}
+                poster={current.poster}
                 className={styles.lightboxVideo}
                 title={current.alt}
                 alwaysAutoplay

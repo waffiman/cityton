@@ -5,6 +5,8 @@ import { gallery, type GalleryCaption } from "@/content/gallery";
 export type GalleryItem = {
   kind: "image" | "video";
   src: string;
+  /** First-frame still for video tiles — see public/media/video-posters/. */
+  poster?: string;
   alt: string;
   project: string;
   film: string;
@@ -22,9 +24,16 @@ function captionFor(name: string): GalleryCaption {
 
 function toItem(name: string, kind: GalleryItem["kind"]): GalleryItem {
   const { project, film } = captionFor(name);
+  const base = name.slice(0, name.length - path.extname(name).length);
   return {
     kind,
     src: `/media/referenzen/${name.split("/").map(encodeURIComponent).join("/")}`,
+    // Grid videos don't autoplay on mobile (see MutedLoopVideo) and
+    // preload="metadata" alone doesn't guarantee a decoded frame — without a
+    // poster the tile is just blank until tapped. Generated once via ffmpeg
+    // (first frame, scripts/generate-video-posters.sh), not per-request.
+    poster:
+      kind === "video" ? `/media/video-posters/${encodeURIComponent(base)}.jpg` : undefined,
     alt: `${project} — ${film}`,
     project,
     film,

@@ -21,16 +21,18 @@ export default function AboutPage() {
             <h1 className={styles.title}>{about.title}</h1>
             <p className="lead">{about.body}</p>
           </div>
-          <figure className={`${styles.portrait}`}>
+          <figure className={`blueprint ${styles.portrait}`}>
+            <div className={styles.portraitClip}>
+              <Image
+                src={about.image.src}
+                alt={about.image.alt}
+                fill
+                sizes="(max-width: 900px) 100vw, 45vw"
+                className={styles.portraitImg}
+                priority
+              />
+            </div>
             <Corners />
-            <Image
-              src={about.image.src}
-              alt={about.image.alt}
-              fill
-              sizes="(max-width: 900px) 100vw, 45vw"
-              className={styles.portraitImg}
-              priority
-            />
           </figure>
         </div>
       </section>
@@ -82,14 +84,16 @@ export default function AboutPage() {
           <div className={styles.onsiteGrid}>
             {about.onsite.images.map((img) => (
               <figure key={img.src} className={`blueprint on-dark ${styles.onsiteFig}`}>
+                <div className={styles.onsiteClip}>
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 22vw"
+                    className={styles.mosaicImg}
+                  />
+                </div>
                 <Corners />
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 22vw"
-                  className={styles.mosaicImg}
-                />
               </figure>
             ))}
           </div>
@@ -116,7 +120,6 @@ export default function AboutPage() {
                 />
               </div>
               <div className={styles.stepCopy}>
-                <div className={styles.stepNum}>{step.num}</div>
                 <h3 className={styles.stepTitle}>{step.title}</h3>
                 <p className={styles.stepBody}>{step.body}</p>
               </div>

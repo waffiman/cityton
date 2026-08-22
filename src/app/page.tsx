@@ -8,11 +8,21 @@ import Corners from "@/components/Corners";
 import Faq from "@/components/Faq";
 import HeroFull from "@/components/HeroFull";
 import HeroSplit from "@/components/HeroSplit";
+import MutedLoopVideo from "@/components/MutedLoopVideo";
 import PartnerCarousel from "@/components/PartnerCarousel";
 import ProcessRibbon from "@/components/ProcessRibbon";
 import SeriesCard from "@/components/SeriesCard";
 import Stars from "@/components/Stars";
-import { benefits, comparisonRows, consultation, faq, processSteps, protectionRows, reviews } from "@/content/home";
+import {
+  benefits,
+  comparisonRows,
+  consultation,
+  faq,
+  praxisMontage,
+  processSteps,
+  protectionRows,
+  reviews,
+} from "@/content/home";
 import { site } from "@/content/site";
 import { getVisibleSeries } from "@/lib/products";
 import styles from "./home.module.css";
@@ -155,6 +165,25 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* ── Vor Ort / Montage ────────────────────────────────────────────── */}
+      <section className={`section--4 ${styles.praxis}`}>
+        <div className={styles.praxisMedia}>
+          <MutedLoopVideo
+            src={praxisMontage.video.src}
+            title={praxisMontage.video.title}
+            className={styles.praxisVideo}
+            alwaysAutoplay
+          />
+        </div>
+        <div className={styles.praxisCopy}>
+          <h2 className={styles.praxisTitle}>{praxisMontage.title}</h2>
+          <p className={styles.praxisBody}>{praxisMontage.body}</p>
+          <Link href={praxisMontage.cta.href} className="btn btn-inverse">
+            {praxisMontage.cta.label}
+          </Link>
+        </div>
+      </section>
+
       {/* ── Serien ────────────────────────────────────────────────────────── */}
       <section className={`section--1 ${styles.band}`}>
         <div className="container">
@@ -172,6 +201,8 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      
 
       {/* ── Beratungstermin ──────────────────────────────────────────────── */}
       <section className={`section--5 ${styles.consult}`}>

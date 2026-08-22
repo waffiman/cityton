@@ -1,87 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useState } from "react";
 import type { GalleryItem } from "@/lib/gallery-media";
+import MutedLoopVideo from "@/components/MutedLoopVideo";
 import styles from "@/app/gallery/gallery.module.css";
 
 type Props = {
   images: GalleryItem[];
 };
-
-/**
- * Grid videos autoplay on desktop but not on touch devices: the nine clips are
- * ~20 MB together, which is a lot to spend on someone's mobile data before they
- * have asked for any of it. On mobile we only pull metadata (enough for the
- * first frame) and play on tap.
- *
- * `autoplay` starts off so the server-rendered markup is the cheap variant and
- * desktop opts in after hydration — that also keeps SSR and first client render
- * identical.
- */
-function MutedLoopVideo({
-  src,
-  poster,
-  className,
-  title,
-  alwaysAutoplay = false,
-}: {
-  src: string;
-  /** First-frame still shown until playback starts (or forever, on mobile
-   * where autoplay stays off) — without it the tile is blank. */
-  poster?: string;
-  className?: string;
-  title?: string;
-  /** Lightbox: the user asked for this one, so always play it. */
-  alwaysAutoplay?: boolean;
-}) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [autoplay, setAutoplay] = useState(false);
-
-  useEffect(() => {
-    const v = ref.current;
-    if (!v) return;
-
-    v.muted = true;
-    v.defaultMuted = true;
-    v.volume = 0;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      v.pause();
-      return;
-    }
-
-    const touch = window.matchMedia("(max-width: 900px), (pointer: coarse)").matches;
-    if (touch && !alwaysAutoplay) return;
-
-    setAutoplay(true);
-    const play = () => {
-      v.muted = true;
-      v.volume = 0;
-      void v.play().catch(() => {});
-    };
-    play();
-    v.addEventListener("loadeddata", play);
-    return () => v.removeEventListener("loadeddata", play);
-  }, [src, alwaysAutoplay]);
-
-  return (
-    <video
-      ref={ref}
-      src={src}
-      poster={poster}
-      className={className}
-      title={title}
-      muted
-      loop
-      playsInline
-      autoPlay={autoplay}
-      preload="metadata"
-      disablePictureInPicture
-      controls={false}
-    />
-  );
-}
 
 export default function GalleryMasonry({ images }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

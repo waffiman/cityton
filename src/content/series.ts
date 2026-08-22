@@ -934,6 +934,10 @@ export type Series = {
     stats: { label: string; value: string; note: string }[];
     statsFootnote: string;
     facts: { kicker: string; title: string; body: string }[];
+    /** Optional caption/colour overrides for this series' layer schema. */
+    structure?: {
+      layers: { n: number; caption: string; color?: string }[];
+    };
     variants?: {
       columns: string[];
       rows: string[][];

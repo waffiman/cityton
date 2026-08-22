@@ -35,7 +35,7 @@ export const nav: NavItem[] = [
   { href: "/produkte", label: "Produkte" },
   { href: "/funktionsprinzip", label: "Funktionsprinzip" },
   { href: "/gallery", label: "Galerie" },
-  // { href: "/blog", label: "Blog" },
+  { href: "/blog", label: "Blog" },
   // { href: "/partner", label: "Für Partner" },
   { href: "/kontakt", label: "Kontakt" },
 ];

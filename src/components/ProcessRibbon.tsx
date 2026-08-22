@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import AutoplayVideo from "@/components/AutoplayVideo";
+import Corners from "@/components/Corners";
 import type { ProcessStep } from "@/content/home";
 import styles from "./ProcessRibbon.module.css";
 
@@ -213,21 +214,25 @@ export default function ProcessRibbon({ steps, title }: { steps: ProcessStep[]; 
                   className={`${styles.card} ${styles[`card${i}`] ?? ""}`}
                 >
                   <div
-                    className={styles.videoBox}
+                    className={`blueprint ${styles.videoBox}`}
                     style={{ transform: `translate3d(${videoX.toFixed(1)}px, ${videoY.toFixed(1)}px, 0)` }}
                   >
-                    <AutoplayVideo
-                      src={step.video}
-                      poster={step.poster}
-                      startAt={step.startAt}
-                      clipLength={step.clipLength}
-                      className={styles.video}
-                    />
+                    <Corners />
+                    <div className={styles.videoClip}>
+                      <AutoplayVideo
+                        src={step.video}
+                        poster={step.poster}
+                        startAt={step.startAt}
+                        clipLength={step.clipLength}
+                        className={styles.video}
+                      />
+                    </div>
                   </div>
                   <div
-                    className={styles.copy}
+                    className={`blueprint ${styles.copy}`}
                     style={{ transform: `translate3d(0, ${copyY.toFixed(1)}px, 0)` }}
                   >
+                    <Corners />
                     <h3 className={styles.title}>{step.title}</h3>
                     <p className={styles.body}>{step.body}</p>
                   </div>

@@ -172,9 +172,8 @@ export default function AboutPage() {
         </div>
         <div className={styles.whyGrid}>
           {about.why.items.map((item) => (
-            <div key={item.num} className={`blueprint ${styles.whyCard}`}>
+            <div key={item.title} className={`blueprint ${styles.whyCard}`}>
               <Corners />
-              <div className={styles.whyNum}>{item.num}</div>
               <h3 className={styles.whyTitle}>{item.title}</h3>
               <p className={styles.whyBody}>{item.body}</p>
             </div>

@@ -254,18 +254,16 @@ export default async function HomePage() {
                 Alle Rezensionen ansehen →
               </a>
             </div>
-            <div className={styles.quoteGrid}>
-              {reviews.quotes.map((q) => (
-                <figure key={q.meta + q.body} className={`card blueprint ${styles.quoteCard}`}>
-                  <Corners />
-                  <Stars />
-                  <blockquote className={`card-body ${styles.quoteBody}`}>{q.body}</blockquote>
-                  <figcaption className="card-meta" style={{ fontSize: 12 }}>
-                    {q.meta}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            {reviews.quotes.map((q) => (
+              <figure key={q.meta + q.body} className={`card blueprint ${styles.quoteCard}`}>
+                <Corners />
+                <Stars />
+                <blockquote className={`card-body ${styles.quoteBody}`}>{q.body}</blockquote>
+                <figcaption className="card-meta" style={{ fontSize: 12 }}>
+                  {q.meta}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>

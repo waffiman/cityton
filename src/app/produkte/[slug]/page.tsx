@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Corners from "@/components/Corners";
@@ -6,6 +7,7 @@ import FilmCard from "@/components/FilmCard";
 import FilmStructure from "@/components/FilmStructure";
 import InfoHint from "@/components/InfoHint";
 import SeriesGlyph from "@/components/diagrams/SeriesGlyph";
+import { seriesCertificates } from "@/content/certificates";
 import { structureForSeries } from "@/content/film-structure";
 import { site } from "@/content/site";
 import { getSeriesBySlug } from "@/lib/products";
@@ -38,6 +40,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
   const stats: { label: string; value: string; note: string }[] =
     d?.stats ?? item.metrics.map((m) => ({ label: m.label, value: m.value, note: "" }));
   const structure = structureForSeries(item.slug, d?.structure);
+  const certificates = seriesCertificates[item.slug];
 
   return (
     <div className={styles.page}>
@@ -67,12 +70,9 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
                     <InfoHint term={s.label.startsWith("VLT") ? "VLT" : s.label} label={s.label} />
                   </div>
                   <div className={styles.statValue}>{s.value}</div>
-                  {s.note && <div className={styles.statNote}>{s.note}</div>}
                 </div>
               ))}
             </div>
-
-            {d?.statsFootnote && <p className={styles.footnote}>{d.statsFootnote}</p>}
 
             <div className={styles.actions}>
               <Link href="/kontakt" className="btn btn-primary btn-lg blueprint">
@@ -97,6 +97,39 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
           <div className="container">
             <FilmStructure {...structure} />
           </div>
+        </section>
+      ) : null}
+
+      {certificates?.length ? (
+        <section className="container section" aria-labelledby="pruefberichte">
+          <h2 id="pruefberichte" className={styles.certsTitle}>
+            Prüfberichte
+          </h2>
+          <ul className={styles.certsGrid}>
+            {certificates.map((cert) => (
+              <li key={cert.href}>
+                <a
+                  href={cert.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`blueprint ${styles.certCard}`}
+                >
+                  <Corners />
+                  <span className={styles.certPreview}>
+                    <Image
+                      src={cert.preview}
+                      alt={cert.caption}
+                      fill
+                      sizes="(max-width: 700px) 100vw, 40vw"
+                      className={styles.certImg}
+                      unoptimized
+                    />
+                  </span>
+                  <span className={styles.certCaption}>{cert.caption}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </section>
       ) : null}
 

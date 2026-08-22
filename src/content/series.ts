@@ -1210,12 +1210,12 @@ export const series: Series[] = [
         `entfernbar.`,
       stats: [
         {
-          label: "VLT · White Matt",
+          label: "WHITE MATT",
           value: pct(whiteMatt.single.vlt),
           note: `${whiteMatt.name} — Milchglas-Optik`,
         },
         {
-          label: "VLT · White Out",
+          label: "WHITE OUT",
           value: pct(whiteOut.single.vlt),
           note: `${whiteOut.name} — nahezu blickdicht`,
         },

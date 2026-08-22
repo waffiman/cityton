@@ -249,12 +249,6 @@
 .whyCard {
   padding: 24px 20px;
 }
-.whyNum {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: var(--color-accent-700);
-  margin-bottom: 12px;
-}
 .whyTitle {
   margin: 0;
   font-family: var(--font-heading);

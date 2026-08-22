@@ -26,7 +26,7 @@
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: clamp(28px, 4vw, 56px);
-  align-items: start;
+  align-items: stretch;
 }
 
 .kicker {
@@ -83,7 +83,8 @@
 .hero {
   position: relative;
   margin: 0;
-  aspect-ratio: 4 / 5;
+  height: 100%;
+  min-height: 0;
   overflow: hidden;
   background: var(--s2);
   border-radius: 4px;
@@ -95,7 +96,8 @@
 }
 
 .heroEmpty {
-  aspect-ratio: 4 / 5;
+  height: 100%;
+  min-height: 0;
   background: var(--s2);
   border-radius: 4px;
 }
@@ -163,6 +165,8 @@
 
   .hero,
   .heroEmpty {
+    aspect-ratio: 4 / 5;
+    height: auto;
     max-width: 420px;
   }
 

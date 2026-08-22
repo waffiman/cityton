@@ -171,11 +171,6 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
             </>
           ) : null}
 
-          <p className={styles.disclaimer}>
-            Werte laut Herstellerdaten / Musterbuch. Vor dem Angebot gegen das aktuelle Datenblatt
-            prüfen.
-          </p>
-
           <Link href="/kontakt" className="btn btn-primary">
             Beratung zu dieser Folie anfragen
           </Link>

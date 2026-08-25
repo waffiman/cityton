@@ -27,7 +27,6 @@ export const nav: NavItem[] = [
   { href: "/produkte", key: "products" },
   { href: "/funktionsprinzip", key: "principle" },
   { href: "/gallery", key: "gallery" },
-  { href: "/blog", key: "blog" },
   // { href: "/partner", key: "partner" },
   { href: "/kontakt", key: "contact" },
 ];

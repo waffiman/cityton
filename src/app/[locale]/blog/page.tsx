@@ -41,7 +41,6 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
             <span className="eyebrow">{t("eyebrow")}</span>
           </div>
           <h1 className={styles.title}>{t("title")}</h1>
-          <p className="lead">{t("lead")}</p>
         </div>
 
         {posts.length === 0 ? (

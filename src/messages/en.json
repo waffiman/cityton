@@ -3,7 +3,7 @@
     "name": "City-Ton Austria",
     "tagline": "AUSTRIA · SUN PROTECTION",
     "titleTagline": "Solar Control & Security Films",
-    "description": "Solar control, UV protection, energy efficiency and security films for glass. Consultation, material, installation and support in one package.",
+    "description": "Architectural films for solar control, UV protection and more security: less heat gain, over 99 % UV protection and reliable splinter retention if glass breaks.",
     "cta": "Free consultation"
   },
 
@@ -30,7 +30,7 @@
     "privacy": "Privacy",
     "rightsPrefix": "All rights reserved.",
     "partnerLine": "Official partner of LLumar & Armolan Europe",
-    "blurb": "Solar control, UV protection, energy efficiency and security films for glass. Austria & Ukraine."
+    "blurb": "Architectural films for solar control, UV protection and more security on glass surfaces. Austria & Ukraine."
   },
 
   "home": {
@@ -38,10 +38,10 @@
       "titleLine1": "Four microns of film.",
       "titleAccent": "A different building.",
       "items": {
-        "sun": { "title": "Solar control", "body": "Up to 82 % of solar energy is rejected — noticeably cooler rooms without air conditioning." },
-        "uv": { "title": "UV protection", "body": "99 % of UV (A and B) radiation stays outside. Floors, furniture and merchandise keep their colour." },
+        "sun": { "title": "Solar control", "body": "Without film, energy transmittance is 83 %. With a solar control film like LLumar R20 SR CDF, it drops to 11 %, while 57 % is reflected and 32 % absorbed." },
+        "uv": { "title": "UV protection", "body": "Over 99 % of UV radiation stays outside. Floors, furniture and merchandise keep their colour." },
         "energy": { "title": "Energy efficiency", "body": "Less cooling load in summer, less heat loss through the glass in winter." },
-        "safety": { "title": "Safety", "body": "The security film holds shattered glass together and spreads the impact force across the surface." }
+        "safety": { "title": "Safety", "body": "The security film holds shattered glass together and spreads the impact force across the surface. In a reinforced version, it also makes forced entry more difficult." }
       }
     },
     "compare": {
@@ -133,14 +133,14 @@
       "eyebrow": "OFFICIAL PARTNER · LLUMAR & ARMOLAN",
       "titleLine1": "We don't sell rolls of film.",
       "titleLine2": "We deliver the result.",
-      "subtitle": "Consultation, material, installation and support in one package — for solar control, UV protection, energy efficiency and security on glass surfaces across Austria.",
+      "subtitle": "Intense sunlight, distracting reflections or the effects of broken glass: with professionally installed architectural films we reduce fading of goods, lower the heat gain in rooms and create a more comfortable indoor climate across Austria.",
       "imageAlt": "Façade with solar control film, seen from outside"
     }
   },
 
   "about": {
-    "title": "A team that works on glass.",
-    "body": "City-Ton Austria installs solar control, UV, energy-saving and security films in Austria and Ukraine. We advise, measure, install and support the work ourselves — no middleman to pass the responsibility to.",
+    "title": "Architectural films for solar control, UV protection and more security.",
+    "body": "City-Ton Austria plans and installs professional window films on glass surfaces, in Austria and Ukraine. Our expert team checks the glass build-up, installation conditions and any existing coatings, selects the right film system and carries out the installation on site.",
     "imageAlt": "Owner and main contact at City-Ton Austria",
     "quote": "“We don't sell rolls of film — we deliver a finished result: consultation, material, installation and support in one package.”",
     "quoteMeta": "Our principle · City-Ton Austria",
@@ -176,10 +176,10 @@
     },
     "why": {
       "title": "Why customers work with us.",
-      "item1": { "title": "One personal contact", "body": "The same person from the first measurement through to the warranty." },
-      "item2": { "title": "Professional measurement", "body": "Glass type, orientation and goal are recorded on site." },
-      "item3": { "title": "Certified installation", "body": "Manufacturer training and a valid manufacturer warranty." },
-      "item4": { "title": "Support after installation too", "body": "Care instructions, follow-up questions and warranty handling." }
+      "item1": { "title": "Thorough analysis before installation", "body": "Glass build-up, coating, installation conditions and glass type are all considered before mounting." },
+      "item2": { "title": "Transparent calculation", "body": "An individual calculation, matched to solar control, privacy, UV protection, heat protection, heat-loss protection and security requirements." },
+      "item3": { "title": "Professional installation", "body": "Installation according to manufacturer recommendations by trained specialists, usually without interrupting ongoing operations." },
+      "item4": { "title": "Support after installation too", "body": "Personal support with a fixed contact person for your questions." }
     },
     "rating": {
       "scale": "5",
@@ -189,9 +189,9 @@
       "cta": "See all reviews →"
     },
     "finalCta": {
-      "title": "Planning a project?",
-      "subtitle": "We're happy to advise you in person.",
-      "body": "Whether it's solar control, UV protection, security or energy efficiency — we'll find the right solution for your building.",
+      "title": "Contact and free consultation",
+      "subtitle": "We advise you free of charge and without obligation, on site.",
+      "body": "Whether a solar control film, a security film or a UV-protection film suits your needs best: a specialist checks the conditions on site and then prepares a quote.",
       "cta": "Request a consultation →"
     }
   },
@@ -236,7 +236,7 @@
     "reflexion": { "kicker": "Reflection", "title": "Heat is rejected before it enters the room", "body": "About half of sunlight is infrared radiation. The metallised layer reflects this portion back outside at the glass surface — up to 79 % of total solar energy never reaches the room. The air conditioning runs less, and on south-facing façades we typically measure 3–7.6 °C less." },
     "absorption": { "kicker": "Absorption", "title": "The same effect, without the mirror look", "body": "Nano-ceramic particles absorb solar energy instead of reflecting it. The pane stays close to neutral from outside — no mirror image on the façade — while heat gain drops noticeably. The choice when daylight and a clear view outside need to be preserved." },
     "uv": { "kicker": "UV protection", "title": "Over 99 % of UV radiation stops at the film", "body": "The UV barrier layer is highly transparent — clear as glass. Visible light passes through almost unhindered while UV is held back. Floors, furniture, textiles and displayed goods keep their colour far longer, without the room getting darker." },
-    "einbruchschutz": { "kicker": "Security", "title": "The pane breaks — but it stays in the frame", "body": "The 100–300 micron security film is fully bonded with a pressure-sensitive adhesive. An impact isn't absorbed at one point but spread across the entire film surface. The glass shatters but holds together — a break-in attempt takes longer and is loud." },
+    "einbruchschutz": { "kicker": "Security", "title": "The pane breaks — but it stays in the frame", "body": "The 100–300 micron security film is fully bonded with a pressure-sensitive adhesive. An impact isn't absorbed at one point but spread across the entire film surface. The glass splinters stick to the film instead of flying uncontrolled into the room, and the pane initially stays together as one piece. This makes a full break-through harder and can noticeably delay entry." },
     "sichtschutz": { "kicker": "Privacy", "title": "Light passes through, the view doesn't", "body": "The matte surface scatters passing light in every direction. The room stays bright while the image behind it dissolves — a frosted-glass look, without replacing the pane. For partitions, meeting rooms, practices and restrooms." },
     "pageTitle": "What a film physically does on glass",
     "pageLead": "Scroll down — the diagram on the left stays in place and changes with each section.",

@@ -127,7 +127,6 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 26px;
-  max-width: 52rem;
 }
 
 .certCard {
@@ -141,7 +140,7 @@
 .certPreview {
   position: relative;
   display: block;
-  aspect-ratio: 1 / 0.707;
+  aspect-ratio: 1 / 1.414;
   overflow: hidden;
   background: #fff;
 }

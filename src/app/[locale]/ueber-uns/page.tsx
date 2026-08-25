@@ -40,16 +40,18 @@ export default async function AboutPage() {
             <h1 className={styles.title}>{t("title")}</h1>
             <p className="lead">{t("body")}</p>
           </div>
-          <figure className={`${styles.portrait}`}>
+          <figure className={`blueprint ${styles.portrait}`}>
+            <div className={styles.portraitClip}>
+              <Image
+                src={about.image.src}
+                alt={t("imageAlt")}
+                fill
+                sizes="(max-width: 900px) 100vw, 45vw"
+                className={styles.portraitImg}
+                priority
+              />
+            </div>
             <Corners />
-            <Image
-              src={about.image.src}
-              alt={t("imageAlt")}
-              fill
-              sizes="(max-width: 900px) 100vw, 45vw"
-              className={styles.portraitImg}
-              priority
-            />
           </figure>
         </div>
       </section>
@@ -101,14 +103,16 @@ export default async function AboutPage() {
           <div className={styles.onsiteGrid}>
             {onsiteImages.map((img) => (
               <figure key={img.src} className={`blueprint on-dark ${styles.onsiteFig}`}>
+                <div className={styles.onsiteClip}>
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 22vw"
+                    className={styles.mosaicImg}
+                  />
+                </div>
                 <Corners />
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 22vw"
-                  className={styles.mosaicImg}
-                />
               </figure>
             ))}
           </div>

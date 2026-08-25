@@ -14,10 +14,19 @@
   aspect-ratio: 4 / 3;
   width: 85%;
   margin-left: auto;
+  overflow: visible;
+}
+.portraitClip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 .portraitImg {
   object-fit: cover;
   object-position: center top;
+}
+.portrait :global(.corner) {
+  z-index: 2;
 }
 
 /* ── Quote ───────────────────────────────────────────────────────────────── */
@@ -160,19 +169,27 @@
 .onsiteGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: 20px;
   order: 1;
+  overflow: visible;
 }
 
 .onsiteFig {
   position: relative;
   margin: 0;
   aspect-ratio: 3 / 4;
+  overflow: visible;
+}
+.onsiteClip {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
 }
-
 .onsiteFig .mosaicImg {
   object-position: left center;
+}
+.onsiteFig :global(.corner) {
+  z-index: 2;
 }
 
 /* ── People steps ────────────────────────────────────────────────────────── */

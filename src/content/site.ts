@@ -7,7 +7,7 @@
 export const site = {
   name: "City-Ton Austria",
   wordmark: "CITY-TON",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.city-ton.at",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://city-ton.com",
   contact: {
     phone: "+43 677 61520700",
     phoneTel: "+4367761520700",

@@ -11,6 +11,7 @@ import { Link } from "@/i18n/navigation";
 import { seriesCertificates } from "@/content/certificates";
 import { structureForSeries } from "@/content/film-structure";
 import { getSeriesBySlug } from "@/lib/products";
+import { pageAlternates } from "@/lib/seo";
 import filmCatalogStyles from "@/components/FilmCatalog.module.css";
 import styles from "./series.module.css";
 
@@ -28,6 +29,8 @@ export async function generateMetadata({
   return {
     title: item.name,
     description: item.summary,
+    // Content is DB-sourced German only — see pageAlternates' doc comment.
+    alternates: pageAlternates(`/produkte/${slug}`, "de", { hasEnglish: false }),
   };
 }
 

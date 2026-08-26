@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import CtaBand from "@/components/CtaBand";
 import GalleryMasonry from "@/components/GalleryMasonry";
 import { listGalleryImages, type GalleryCaption } from "@/lib/gallery-media";
+import { pageAlternates } from "@/lib/seo";
 import styles from "./gallery.module.css";
 
 export async function generateMetadata({
@@ -15,6 +16,7 @@ export async function generateMetadata({
   return {
     title: "Gallery",
     description: t("lead"),
+    alternates: pageAlternates("/gallery", locale),
   };
 }
 

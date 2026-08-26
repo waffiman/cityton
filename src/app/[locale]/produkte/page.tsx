@@ -4,6 +4,7 @@ import CtaBand from "@/components/CtaBand";
 import FilmCatalog from "@/components/FilmCatalog";
 import SeriesCard from "@/components/SeriesCard";
 import { getCatalogProducts, getVisibleSeries } from "@/lib/products";
+import { pageAlternates } from "@/lib/seo";
 import styles from "./products.module.css";
 
 export async function generateMetadata({
@@ -14,7 +15,11 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "nav" });
   const tp = await getTranslations({ locale, namespace: "produkte" });
-  return { title: t("products"), description: tp("metaDescription") };
+  return {
+    title: t("products"),
+    description: tp("metaDescription"),
+    alternates: pageAlternates("/produkte", locale),
+  };
 }
 
 export default async function ProductsPage() {

@@ -6,6 +6,7 @@ import Corners from "@/components/Corners";
 import { Link } from "@/i18n/navigation";
 import { prisma } from "@/lib/db";
 import { sanitizeHtml } from "@/lib/sanitize-html";
+import { pageAlternates } from "@/lib/seo";
 import styles from "../blog.module.css";
 
 // Rendered per request from the DB (no build-time database dependency).
@@ -29,6 +30,8 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt ?? undefined,
+    // Post content is DB-sourced German only — see pageAlternates' doc comment.
+    alternates: pageAlternates(`/blog/${slug}`, "de", { hasEnglish: false }),
   };
 }
 

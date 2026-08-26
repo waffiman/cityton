@@ -4,6 +4,7 @@ import Corners from "@/components/Corners";
 import KontaktInquiryForm from "@/components/KontaktInquiryForm";
 import { mapEmbedSrc, mapLinkHref } from "@/content/kontakt";
 import { site } from "@/content/site";
+import { pageAlternates } from "@/lib/seo";
 import styles from "./kontakt.module.css";
 
 export async function generateMetadata({
@@ -13,7 +14,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "kontakt" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    alternates: pageAlternates("/kontakt", locale),
+  };
 }
 
 export default async function KontaktPage() {

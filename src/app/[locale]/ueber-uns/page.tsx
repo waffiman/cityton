@@ -5,6 +5,7 @@ import Corners from "@/components/Corners";
 import Stars from "@/components/Stars";
 import { Link } from "@/i18n/navigation";
 import { about } from "@/content/about";
+import { pageAlternates } from "@/lib/seo";
 import styles from "./about.module.css";
 
 export async function generateMetadata({
@@ -14,7 +15,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "about" });
-  return { title: t("title"), description: t("body").slice(0, 155) };
+  return {
+    title: t("title"),
+    description: t("body").slice(0, 155),
+    alternates: pageAlternates("/ueber-uns", locale),
+  };
 }
 
 export default async function AboutPage() {

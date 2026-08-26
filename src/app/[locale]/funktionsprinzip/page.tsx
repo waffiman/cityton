@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import CtaBand from "@/components/CtaBand";
 import PrincipleScroller from "@/components/PrincipleScroller";
 import { principleIds, type Principle } from "@/content/principles";
+import { pageAlternates } from "@/lib/seo";
 import styles from "./principle.module.css";
 
 export async function generateMetadata({
@@ -12,7 +13,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "principle" });
-  return { title: t("pageTitle"), description: t("metaDescription") };
+  return {
+    title: t("pageTitle"),
+    description: t("metaDescription"),
+    alternates: pageAlternates("/funktionsprinzip", locale),
+  };
 }
 
 export default async function PrinciplePage() {

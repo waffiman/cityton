@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Fragment } from "react";
@@ -16,11 +17,21 @@ import SeriesCard from "@/components/SeriesCard";
 import Stars from "@/components/Stars";
 import { benefits, consultation, praxisMontage, processSteps, reviews } from "@/content/home";
 import { site } from "@/content/site";
+import { pageAlternates } from "@/lib/seo";
 import { getVisibleSeries } from "@/lib/products";
 import styles from "./home.module.css";
 
 // Reads live category data; rendered per request so admin edits show immediately.
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return { alternates: pageAlternates("/", locale) };
+}
 
 type Row = { without: string; with: string };
 type Quote = { body: string; meta: string };

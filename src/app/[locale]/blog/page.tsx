@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
 import { Link } from "@/i18n/navigation";
 import { prisma } from "@/lib/db";
+import { pageAlternates } from "@/lib/seo";
 import styles from "./blog.module.css";
 
 export async function generateMetadata({
@@ -13,7 +14,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
-  return { title: t("metaTitle"), description: t("metaDescription") };
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    // Listed posts are DB-sourced German only — see pageAlternates' doc comment.
+    alternates: pageAlternates("/blog", "de", { hasEnglish: false }),
+  };
 }
 
 // Rendered per request so newly published posts appear immediately.

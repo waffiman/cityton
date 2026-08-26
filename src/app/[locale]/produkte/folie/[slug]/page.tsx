@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { Film, FilmValues } from "@/content/series";
 import { getProductBySlug } from "@/lib/products";
+import { pageAlternates } from "@/lib/seo";
 import styles from "./film.module.css";
 
 // Rendered per request from the DB (no build-time database dependency).
@@ -21,6 +22,8 @@ export async function generateMetadata({
   return {
     title: `${film.name} · ${film.brand}`,
     description: `${film.brand} ${film.name} (${film.code}) — ${film.family}, Montage ${film.mount}. Kennwerte und Beratung bei City-Ton Austria.`,
+    // Content is DB-sourced German only — see pageAlternates' doc comment.
+    alternates: pageAlternates(`/produkte/folie/${slug}`, "de", { hasEnglish: false }),
   };
 }
 

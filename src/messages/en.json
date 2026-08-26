@@ -6,7 +6,6 @@
     "description": "Architectural films for solar control, UV protection and more security: less heat gain, over 99 % UV protection and reliable splinter retention if glass breaks.",
     "cta": "Free consultation"
   },
-
   "nav": {
     "home": "Home",
     "about": "About us",
@@ -21,7 +20,6 @@
     "mobileNav": "Navigation (mobile)",
     "language": "Language"
   },
-
   "footer": {
     "pagesTitle": "Pages",
     "seriesTitle": "Series",
@@ -32,16 +30,27 @@
     "partnerLine": "Official partner of LLumar & Armolan Europe",
     "blurb": "Architectural films for solar control, UV protection and more security on glass surfaces. Austria & Ukraine."
   },
-
   "home": {
     "benefits": {
       "titleLine1": "Four microns of film.",
       "titleAccent": "A different building.",
       "items": {
-        "sun": { "title": "Solar control", "body": "A solar control window film works by reflecting or absorbing a substantial share of the incoming solar energy at the glass surface. Without such a film, energy transmittance is 83 %, reflection 8 % and absorption 9 %. Fit a solar control film — LLumar R20 SR CDF, for example — and only 11 % of the solar energy still passes through, while 57 % is reflected and 32 % absorbed." },
-        "uv": { "title": "UV protection", "body": "Over 99 % of UV radiation stays outside. Floors, furniture and merchandise keep their colour." },
-        "energy": { "title": "Energy efficiency", "body": "Less cooling load in summer, less heat loss through the glass in winter." },
-        "safety": { "title": "Safety", "body": "A security film holds shattered glass together and, in a reinforced version, can offer additional protection against forced entry by making it harder to break through the glazing quickly." }
+        "sun": {
+          "title": "Solar control",
+          "body": "A solar control window film works by reflecting or absorbing a substantial share of the incoming solar energy at the glass surface."
+        },
+        "uv": {
+          "title": "UV protection",
+          "body": "Over 99 % of UV radiation stays outside. Floors, furniture and merchandise keep their colour."
+        },
+        "energy": {
+          "title": "Energy efficiency",
+          "body": "Less cooling load in summer, less heat loss through the glass in winter."
+        },
+        "safety": {
+          "title": "Safety",
+          "body": "A security film holds shattered glass together and, in a reinforced version, can offer additional protection against forced entry by making it harder to break through the glazing quickly."
+        }
       }
     },
     "compare": {
@@ -55,17 +64,44 @@
       "uvValue": "99 %",
       "cta": "See how it works",
       "rows": [
-        { "without": "Furniture fades", "with": "99 % UV blocked" },
-        { "without": "Room heats up", "with": "Up to 80 % heat reflected" },
-        { "without": "Glass shatters into shards", "with": "Shards stay bonded" },
-        { "without": "Glare on the monitor", "with": "Light gently diffused" },
-        { "without": "Visible from outside all day", "with": "One-way mirror by day" }
+        {
+          "without": "Furniture fades",
+          "with": "99 % UV blocked"
+        },
+        {
+          "without": "Room heats up",
+          "with": "Up to 80 % heat reflected"
+        },
+        {
+          "without": "Glass shatters into shards",
+          "with": "Shards stay bonded"
+        },
+        {
+          "without": "Glare on the monitor",
+          "with": "Light gently diffused"
+        },
+        {
+          "without": "Visible from outside all day",
+          "with": "One-way mirror by day"
+        }
       ],
       "protectionRows": [
-        { "without": "Glass shatters into sharp shards", "with": "Shards stick to the film" },
-        { "without": "Shards can scatter on impact", "with": "Shards stay together" },
-        { "without": "Impact leaves an open, fragmented surface", "with": "Film helps hold broken glass in place" },
-        { "without": "Broken glass falls freely", "with": "Broken glass stays contained" }
+        {
+          "without": "Glass shatters into sharp shards",
+          "with": "Shards stick to the film"
+        },
+        {
+          "without": "Shards can scatter on impact",
+          "with": "Shards stay together"
+        },
+        {
+          "without": "Impact leaves an open, fragmented surface",
+          "with": "Film helps hold broken glass in place"
+        },
+        {
+          "without": "Broken glass falls freely",
+          "with": "Broken glass stays contained"
+        }
       ],
       "beforeAfterLabel": "Before / after comparison",
       "img1WithoutAlt": "Without film",
@@ -78,10 +114,22 @@
     "process": {
       "title": "From enquiry to finished installation",
       "steps": {
-        "beratung": { "title": "Consultation & measurement", "body": "On site: glass type, orientation, temperature and goal are assessed." },
-        "muster": { "title": "Samples & selection", "body": "Sample strips right on your own window — you see the effect beforehand." },
-        "montage": { "title": "Installation", "body": "Low-dust, possible during normal operation. Usually done within one working day." },
-        "abnahme": { "title": "Handover & warranty", "body": "Joint inspection, care instructions, manufacturer warranty in writing." }
+        "beratung": {
+          "title": "Consultation & measurement",
+          "body": "On site: glass type, orientation, temperature and goal are assessed."
+        },
+        "muster": {
+          "title": "Samples & selection",
+          "body": "Sample strips right on your own window — you see the effect beforehand."
+        },
+        "montage": {
+          "title": "Installation",
+          "body": "Low-dust, possible during normal operation. Usually done within one working day."
+        },
+        "abnahme": {
+          "title": "Handover & warranty",
+          "body": "Joint inspection, care instructions, manufacturer warranty in writing."
+        }
       }
     },
     "praxis": {
@@ -101,9 +149,18 @@
       "metaPrefix": "from",
       "metaSuffix": "Google reviews",
       "quotes": [
-        { "body": "Very good advice and a quick appointment. The film was applied cleanly and the result looks really high-quality.", "meta": "Anna · Single-family home · May 2026" },
-        { "body": "Everything went smoothly from the first consultation to installation. The windows look much more modern now and the privacy we wanted is exactly as we imagined.", "meta": "Michael · Apartment · June 2026" },
-        { "body": "Friendly contact, a quick appointment and a clean installation. We're very happy with the result and would recommend Armolan any time.", "meta": "Julia · Apartment · June 2026" }
+        {
+          "body": "Very good advice and a quick appointment. The film was applied cleanly and the result looks really high-quality.",
+          "meta": "Anna · Single-family home · May 2026"
+        },
+        {
+          "body": "Everything went smoothly from the first consultation to installation. The windows look much more modern now and the privacy we wanted is exactly as we imagined.",
+          "meta": "Michael · Apartment · June 2026"
+        },
+        {
+          "body": "Friendly contact, a quick appointment and a clean installation. We're very happy with the result and would recommend Armolan any time.",
+          "meta": "Julia · Apartment · June 2026"
+        }
       ]
     },
     "faq": {
@@ -111,11 +168,26 @@
       "titleAccent": "almost every measurement visit.",
       "askButton": "Ask a question",
       "items": [
-        { "q": "How long does window film last?", "a": "Films applied on the interior typically last 10–15 years, exterior-applied ones 7–10 years. Material and workmanship carry a manufacturer warranty." },
-        { "q": "Will the room get dark?", "a": "Not necessarily. Visible light transmission (VLT) ranges from 18 % to 90 % depending on the series — modern sputtered films hold back heat while letting light through." },
-        { "q": "Can the film damage the glass?", "a": "Not with the right selection. Glass build-up, orientation and edge seal are what matter — that's why we check every pane before recommending anything." },
-        { "q": "How long does installation take?", "a": "An apartment or a shop window is usually finished in one working day, during normal operation. We schedule large façades in sections." },
-        { "q": "What does it cost?", "a": "The price depends on area, series and accessibility. The consultation and quote are free." }
+        {
+          "q": "How long does window film last?",
+          "a": "Films applied on the interior typically last 10–15 years, exterior-applied ones 7–10 years. Material and workmanship carry a manufacturer warranty."
+        },
+        {
+          "q": "Will the room get dark?",
+          "a": "Not necessarily. Visible light transmission (VLT) ranges from 18 % to 90 % depending on the series — modern sputtered films hold back heat while letting light through."
+        },
+        {
+          "q": "Can the film damage the glass?",
+          "a": "Not with the right selection. Glass build-up, orientation and edge seal are what matter — that's why we check every pane before recommending anything."
+        },
+        {
+          "q": "How long does installation take?",
+          "a": "An apartment or a shop window is usually finished in one working day, during normal operation. We schedule large façades in sections."
+        },
+        {
+          "q": "What does it cost?",
+          "a": "The price depends on area, series and accessibility. The consultation and quote are free."
+        }
       ]
     },
     "consultation": {
@@ -123,9 +195,18 @@
       "titleLine2": "Then decide.",
       "body": "We offer you a free consultation directly on site. We analyse the existing glazing, advise you on choosing the right film and calculate the cost of the solution you want. We use only high-quality original films from LLumar and Armolan, with a manufacturer's warranty. The professional installation is covered by a warranty as well, and on request it includes cleaning the glass surfaces before the film is applied.",
       "specs": {
-        "termin": { "label": "APPOINTMENT", "value": "within 48 hours" },
-        "dauer": { "label": "DURATION", "value": "about 30 minutes on site" },
-        "kosten": { "label": "COST", "value": "none — even without an order" }
+        "termin": {
+          "label": "APPOINTMENT",
+          "value": "within 48 hours"
+        },
+        "dauer": {
+          "label": "DURATION",
+          "value": "about 30 minutes on site"
+        },
+        "kosten": {
+          "label": "COST",
+          "value": "none — even without an order"
+        }
       },
       "imageAlt": "Living room with tinted glazing"
     },
@@ -137,7 +218,6 @@
       "imageAlt": "Façade with solar control film, seen from outside"
     }
   },
-
   "about": {
     "title": "Architectural films for solar control, UV protection and more security.",
     "body": "City-Ton Austria plans and installs professional window films on glass surfaces. Our expert team checks the glass build-up, installation conditions and any existing coatings, selects the right film system and carries out the installation on site. The result: lower heat gain, over 99 % UV protection, reliable splinter retention and less glare.",
@@ -166,21 +246,55 @@
     "peopleSteps": {
       "title": "From the first conversation to the finished result.",
       "body": "Short and personal — we take responsibility at every step.",
-      "step1": { "title": "Consultation & measurement", "body": "We come on site, listen and measure ourselves — so the recommendation fits the building.", "imageAlt": "Preparation and material ahead of the measurement" },
-      "step2": { "title": "Professional installation", "body": "Certified application possible during normal operation — low-dust and in sections.", "imageAlt": "Professional film installation on a window" },
-      "step3": { "title": "Handover & support", "body": "Joint inspection, care instructions, and a point of contact afterwards too.", "imageAlt": "Completed installation on site" }
+      "step1": {
+        "title": "Consultation & measurement",
+        "body": "We come on site, listen and measure ourselves — so the recommendation fits the building.",
+        "imageAlt": "Preparation and material ahead of the measurement"
+      },
+      "step2": {
+        "title": "Professional installation",
+        "body": "Certified application possible during normal operation — low-dust and in sections.",
+        "imageAlt": "Professional film installation on a window"
+      },
+      "step3": {
+        "title": "Handover & support",
+        "body": "Joint inspection, care instructions, and a point of contact afterwards too.",
+        "imageAlt": "Completed installation on site"
+      }
     },
     "partnersTitle": "Manufacturers we trust.",
     "partners": {
-      "llumar": { "kicker": "Manufacturer", "title": "LLumar", "body": "Material, technical data and warranty from the global film manufacturer.", "link": "llumar.at →" },
-      "armolan": { "kicker": "Manufacturer", "title": "Armolan Europe", "body": "Series, training and certification for installers.", "link": "armolan.eu →" }
+      "llumar": {
+        "kicker": "Manufacturer",
+        "title": "LLumar",
+        "body": "Material, technical data and warranty from the global film manufacturer.",
+        "link": "llumar.at →"
+      },
+      "armolan": {
+        "kicker": "Manufacturer",
+        "title": "Armolan Europe",
+        "body": "Series, training and certification for installers.",
+        "link": "armolan.eu →"
+      }
     },
     "why": {
       "title": "Why customers work with us.",
-      "item1": { "title": "Thorough analysis before installation", "body": "glass build-up, coating, installation conditions and glass type all taken into account before bonding" },
-      "item2": { "title": "Transparent calculation", "body": "an individual and transparent calculation of a suitable film solution for your building – matched to solar control, privacy, UV protection, heat protection, heat-loss protection and security requirements" },
-      "item3": { "title": "Professional installation", "body": "professional installation in line with the manufacturers' recommendations, by trained specialists" },
-      "item4": { "title": "Support after installation too", "body": "personal support even after the heat-protection film is installed, with a fixed contact person for your questions" }
+      "item1": {
+        "title": "Thorough analysis before installation",
+        "body": "glass build-up, coating, installation conditions and glass type all taken into account before bonding"
+      },
+      "item2": {
+        "title": "Transparent calculation",
+        "body": "an individual and transparent calculation of a suitable film solution for your building – matched to solar control, privacy, UV protection, heat protection, heat-loss protection and security requirements"
+      },
+      "item3": {
+        "title": "Professional installation",
+        "body": "professional installation in line with the manufacturers' recommendations, by trained specialists"
+      },
+      "item4": {
+        "title": "Support after installation too",
+        "body": "personal support even after the heat-protection film is installed, with a fixed contact person for your questions"
+      }
     },
     "rating": {
       "scale": "5",
@@ -196,7 +310,6 @@
       "cta": "Request a consultation →"
     }
   },
-
   "gallery": {
     "title": "Objects the film is working on",
     "lead": "A selection of completed projects — façades, interiors and protective films. Tap an image to enlarge it.",
@@ -205,47 +318,125 @@
     "captionFallbackFilm": "Film on request",
     "enlargeImage": "Enlarge image",
     "enlargeVideo": "Enlarge video",
-    "close": "Close",
-    "prev": "Previous",
-    "next": "Next",
     "captions": {
-      "gallery_1.png": { "project": "Residential · Solar control", "film": "Dual Reflective series" },
-      "gallery_2.png": { "project": "Façade · Daylight", "film": "LLumar Architectural" },
-      "gallery_4.png": { "project": "Residential · Dual Reflective", "film": "Armolan Dual Reflective" },
-      "gallery_5.JPG": { "project": "Office · Glare control", "film": "Solar control film" },
-      "gallery_7.JPG": { "project": "Commercial object", "film": "Security film" },
-      "gallery_8.jpg": { "project": "Shop window", "film": "UV protection film" },
-      "gallery_9.JPG": { "project": "Interior · Privacy", "film": "Privacy film" },
-      "gallery_10.JPG": { "project": "Façade band", "film": "Energy-saving film" },
-      "gallery_6.jpg": { "project": "Corner window · Apartment", "film": "Solar control film" },
-      "interior-2.jpg": { "project": "Interior · Glass wall", "film": "Solar control film" },
-      "photo_2026-08-14_23-59-53.jpg": { "project": "Installation object", "film": "Film on request" },
-      "reflective-facade-upscaled.jpg": { "project": "Reflective façade", "film": "Dual Reflective series" },
-      "telegram_video.mp4": { "project": "On-site installation", "film": "Solar control film" },
-      "telegram_video(1).mp4": { "project": "On-site installation", "film": "Solar control film" },
-      "telegram_video(2).mp4": { "project": "Work on glass", "film": "Security film" },
-      "telegram_video(3).mp4": { "project": "Work on glass", "film": "Security film" },
-      "telegram_video(4).mp4": { "project": "Façade installation", "film": "Dual Reflective series" },
-      "telegram_video(5).mp4": { "project": "Façade installation", "film": "Dual Reflective series" },
-      "telegram_video(6).mp4": { "project": "Interior · Film application", "film": "Privacy film" },
-      "telegram_video(7).mp4": { "project": "Interior · Film application", "film": "Privacy film" },
-      "telegram_video(8).mp4": { "project": "Object after installation", "film": "Film on request" }
+      "gallery_1.png": {
+        "project": "Residential · Solar control",
+        "film": "Dual Reflective series"
+      },
+      "gallery_2.png": {
+        "project": "Façade · Daylight",
+        "film": "LLumar Architectural"
+      },
+      "gallery_4.png": {
+        "project": "Residential · Dual Reflective",
+        "film": "Armolan Dual Reflective"
+      },
+      "gallery_5.JPG": {
+        "project": "Office · Glare control",
+        "film": "Solar control film"
+      },
+      "gallery_7.JPG": {
+        "project": "Commercial object",
+        "film": "Security film"
+      },
+      "gallery_8.jpg": {
+        "project": "Shop window",
+        "film": "UV protection film"
+      },
+      "gallery_9.JPG": {
+        "project": "Interior · Privacy",
+        "film": "Privacy film"
+      },
+      "gallery_10.JPG": {
+        "project": "Façade band",
+        "film": "Energy-saving film"
+      },
+      "gallery_6.jpg": {
+        "project": "Corner window · Apartment",
+        "film": "Solar control film"
+      },
+      "interior-2.jpg": {
+        "project": "Interior · Glass wall",
+        "film": "Solar control film"
+      },
+      "photo_2026-08-14_23-59-53.jpg": {
+        "project": "Installation object",
+        "film": "Film on request"
+      },
+      "reflective-facade-upscaled.jpg": {
+        "project": "Reflective façade",
+        "film": "Dual Reflective series"
+      },
+      "telegram_video.mp4": {
+        "project": "On-site installation",
+        "film": "Solar control film"
+      },
+      "telegram_video(1).mp4": {
+        "project": "On-site installation",
+        "film": "Solar control film"
+      },
+      "telegram_video(2).mp4": {
+        "project": "Work on glass",
+        "film": "Security film"
+      },
+      "telegram_video(3).mp4": {
+        "project": "Work on glass",
+        "film": "Security film"
+      },
+      "telegram_video(4).mp4": {
+        "project": "Façade installation",
+        "film": "Dual Reflective series"
+      },
+      "telegram_video(5).mp4": {
+        "project": "Façade installation",
+        "film": "Dual Reflective series"
+      },
+      "telegram_video(6).mp4": {
+        "project": "Interior · Film application",
+        "film": "Privacy film"
+      },
+      "telegram_video(7).mp4": {
+        "project": "Interior · Film application",
+        "film": "Privacy film"
+      },
+      "telegram_video(8).mp4": {
+        "project": "Object after installation",
+        "film": "Film on request"
+      }
     }
   },
-
   "principle": {
-    "reflexion": { "kicker": "Reflection", "title": "Heat is rejected before it enters the room", "body": "About half of sunlight is infrared radiation. The metallised layer reflects this portion back outside at the glass surface — up to 79 % of total solar energy never reaches the room. The air conditioning runs less, and on south-facing façades we typically measure 3–7.6 °C less." },
-    "absorption": { "kicker": "Absorption", "title": "The same effect, without the mirror look", "body": "Nano-ceramic particles absorb solar energy instead of reflecting it. The pane stays close to neutral from outside — no mirror image on the façade — while heat gain drops noticeably. The choice when daylight and a clear view outside need to be preserved." },
-    "uv": { "kicker": "UV protection", "title": "Over 99 % of UV radiation stops at the film", "body": "The UV barrier layer is highly transparent — clear as glass. Visible light passes through almost unhindered while UV is held back. Floors, furniture, textiles and displayed goods keep their colour far longer, without the room getting darker." },
-    "einbruchschutz": { "kicker": "Security", "title": "The pane breaks — but it stays in the frame", "body": "The glass splinters stay stuck to the film and are prevented from flying uncontrolled into the room. At the same time, the security film spreads the force of the impact across a larger area of the glazing. After a break, the pane therefore largely stays together as one surface at first. This additional protection makes a full break-through harder and can noticeably delay entry through the glazing. Depending on the film system and glass build-up, tested and certified security solutions offering increased protection against forced entry are also available." },
-    "sichtschutz": { "kicker": "Privacy", "title": "Light passes through, the view doesn't", "body": "The matte surface scatters passing light in every direction. The room stays bright while the image behind it dissolves — a frosted-glass look, without replacing the pane. For partitions, meeting rooms, practices and restrooms." },
+    "reflexion": {
+      "kicker": "Reflection",
+      "title": "Heat is rejected before it enters the room",
+      "body": "About half of sunlight is infrared radiation. The metallised layer reflects this portion back outside at the glass surface — up to 79 % of total solar energy never reaches the room. The air conditioning runs less, and on south-facing façades we typically measure 3–7.6 °C less."
+    },
+    "absorption": {
+      "kicker": "Absorption",
+      "title": "The same effect, without the mirror look",
+      "body": "Nano-ceramic particles absorb solar energy instead of reflecting it. The pane stays close to neutral from outside — no mirror image on the façade — while heat gain drops noticeably. The choice when daylight and a clear view outside need to be preserved."
+    },
+    "uv": {
+      "kicker": "UV protection",
+      "title": "Over 99 % of UV radiation stops at the film",
+      "body": "The UV barrier layer is highly transparent — clear as glass. Visible light passes through almost unhindered while UV is held back. Floors, furniture, textiles and displayed goods keep their colour far longer, without the room getting darker."
+    },
+    "einbruchschutz": {
+      "kicker": "Security",
+      "title": "The pane breaks — but it stays in the frame",
+      "body": "The glass splinters stay stuck to the film and are prevented from flying uncontrolled into the room. At the same time, the security film spreads the force of the impact across a larger area of the glazing. After a break, the pane therefore largely stays together as one surface at first. This additional protection makes a full break-through harder and can noticeably delay entry through the glazing. Depending on the film system and glass build-up, tested and certified security solutions offering increased protection against forced entry are also available."
+    },
+    "sichtschutz": {
+      "kicker": "Privacy",
+      "title": "Light passes through, the view doesn't",
+      "body": "The matte surface scatters passing light in every direction. The room stays bright while the image behind it dissolves — a frosted-glass look, without replacing the pane. For partitions, meeting rooms, practices and restrooms."
+    },
     "pageTitle": "What a film physically does on glass",
     "pageLead": "Scroll down — the diagram on the left stays in place and changes with each section.",
     "metaDescription": "What a film physically does on glass: reflection, absorption, UV blocking, force distribution and privacy.",
     "ctaTitle": "Not sure which film fits?",
     "ctaBody": "We bring sample strips and a measuring device and record the values on your own pane."
   },
-
   "kontakt": {
     "title": "Request a free consultation",
     "lead": "Tell us briefly about the building and your goal — we'll get back to you with a suggested appointment and next steps. Sample strips and an on-site measurement are possible.",
@@ -308,13 +499,11 @@
       "sending": "Sending…"
     }
   },
-
   "certificates": {
     "sectionTitle": "Test reports",
     "safety1": "DIN EN 356 · ARM Safety Clear 12 mil",
     "safety2": "DIN EN 12600 · ARM Safety 8 mil"
   },
-
   "filmStructure": {
     "layersAriaSuffix": "layers",
     "reflective": {
@@ -345,7 +534,6 @@
       "layer6": "Release liner"
     }
   },
-
   "produkte": {
     "title": "Five series, one goal per building",
     "lead": "Which film fits depends on the glass and the goal — not the catalogue.",
@@ -368,7 +556,6 @@
     "breadcrumbProdukte": "PRODUCTS",
     "certPrefix": "Open test report:"
   },
-
   "produkteFolie": {
     "breadcrumbProdukte": "PRODUCTS",
     "family": {
@@ -391,7 +578,6 @@
     "certificationLabel": "Certification",
     "ctaLabel": "Ask about this film"
   },
-
   "blog": {
     "title": "News about window film",
     "lead": "News, tips and project reports — you'll find them here as soon as new posts appear.",
@@ -402,12 +588,10 @@
     "metaTitle": "Blog & News",
     "metaDescription": "News, tips and project reports from City-Ton Austria."
   },
-
   "partner": {
     "title": "For partners",
     "note": "This page is being prepared."
   },
-
   "filmCatalog": {
     "brand": "Brand",
     "mount": "Mounting",
@@ -419,13 +603,11 @@
     "filmPlural": "films",
     "filterAriaLabel": "Filter films"
   },
-
   "partnerCarousel": {
     "defaultLabel": "OFFICIAL PARTNER OF",
     "ariaLabel": "Partner logos",
     "openInNewTab": "— opens website in a new tab"
   },
-
   "common": {
     "breadcrumbAriaLabel": "Breadcrumb",
     "breadcrumbHome": "HOME",
@@ -434,15 +616,17 @@
     "ctaFilmBody": "We bring sample strips and a measuring device — and settle on the series on site.",
     "ctaGalleryTitle": "Your building could be next.",
     "ctaGalleryBody": "We bring sample strips and a measuring device — the initial consultation is free and non-binding.",
-    "funktionsprinzipAnsehen": "See how it works"
+    "funktionsprinzipAnsehen": "See how it works",
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next",
+    "enlargeImage": "Enlarge image"
   },
-
   "produkteSeriePage": {
     "funktionsprinzipCta": "See how it works",
     "certsSectionTitle": "Test reports",
     "pendingText": "The full product page for {name} is coming. Specifications, variants and reference objects come from the manufacturer datasheet — until then we're happy to advise you directly."
   },
-
   "produkteFolieDetail": {
     "kennwerteEinfach": "Specifications · Single glazing",
     "kennwerteIso": "Specifications · Insulated glazing",
@@ -481,13 +665,11 @@
       "sichtschutz": "Privacy"
     }
   },
-
   "legal": {
     "impressumTitle": "Imprint",
     "datenschutzTitle": "Privacy policy",
     "germanOnlyNote": "This page is legally required and is only maintained in German."
   },
-
   "cookieConsent": {
     "title": "Cookie consent",
     "body": "We use Google Analytics to understand how visitors use this site. It only runs with your consent. Details in our",

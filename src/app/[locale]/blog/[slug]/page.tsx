@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
+import PostGallery from "@/components/PostGallery";
 import { Link } from "@/i18n/navigation";
 import { prisma } from "@/lib/db";
 import { sanitizeHtml } from "@/lib/sanitize-html";
@@ -79,6 +80,7 @@ export default async function BlogPostPage({
             // Content is admin-authored and sanitized server-side.
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.contentHtml) }}
           />
+          <PostGallery urls={post.galleryUrls} postTitle={post.title} />
         </article>
       </div>
     </section>

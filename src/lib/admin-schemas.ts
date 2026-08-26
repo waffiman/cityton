@@ -113,6 +113,9 @@ export const postInputSchema = z.object({
   title: z.string().min(1).max(200),
   excerpt: z.string().max(400).nullable().optional(),
   coverUrl: z.string().max(600).nullable().optional(),
+  // Plain strings, not z.url(): with the local-disk storage backend uploadImage
+  // returns site-relative paths like "/uploads/posts/…jpg".
+  galleryUrls: z.array(z.string().max(600)).max(24).optional(),
   contentHtml: z.string().max(200000),
   status: z.enum(["draft", "published"]),
 });

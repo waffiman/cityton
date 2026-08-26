@@ -36,6 +36,7 @@ export async function POST(request: Request) {
         title: d.title,
         excerpt: d.excerpt ?? null,
         coverUrl: d.coverUrl ?? null,
+        galleryUrls: d.galleryUrls ?? [],
         contentHtml: d.contentHtml,
         status: d.status,
         publishedAt: d.status === "published" ? new Date() : null,

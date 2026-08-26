@@ -49,6 +49,9 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
         title: d.title,
         excerpt: "excerpt" in d ? (d.excerpt ?? null) : undefined,
         coverUrl: "coverUrl" in d ? (d.coverUrl ?? null) : undefined,
+        // Scalar list: undefined means "leave alone", an array replaces it.
+        // No null-dance needed — unlike the nullable scalars above.
+        galleryUrls: d.galleryUrls ?? undefined,
         contentHtml: d.contentHtml,
         status: d.status,
         publishedAt,

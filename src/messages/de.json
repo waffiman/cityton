@@ -6,7 +6,6 @@
     "description": "Architekturfolien für Sonnenschutz, UV-Schutz und mehr Sicherheit: weniger Aufheizung, über 99 % UV-Schutz und zuverlässige Splitterbindung bei Glasbruch.",
     "cta": "Kostenlose Beratung"
   },
-
   "nav": {
     "home": "Home",
     "about": "Über uns",
@@ -21,7 +20,6 @@
     "mobileNav": "Navigation (mobil)",
     "language": "Sprache"
   },
-
   "footer": {
     "pagesTitle": "Seiten",
     "seriesTitle": "Serien",
@@ -32,17 +30,27 @@
     "partnerLine": "Offizieller Partner von LLumar & Armolan Europe",
     "blurb": "Architekturfolien für Sonnenschutz, UV-Schutz und mehr Sicherheit an Glasflächen. Österreich & Ukraine."
   },
-
-
   "home": {
     "benefits": {
       "titleLine1": "Vier Mikrometer Folie.",
       "titleAccent": "Ein anderes Gebäude.",
       "items": {
-        "sun": { "title": "Sonnenschutz", "body": "Das Funktionsprinzip einer Fensterfolie mit Sonnenschutz besteht darin, einen erheblichen Teil der auftreffenden Sonnenenergie an der Glasfläche zu reflektieren oder zu absorbieren. Ohne eine solche Folie beträgt die Energiedurchlässigkeit 83 %, die Reflexion 8 % und die Absorption 9 %. Wenn Sie hingegen eine Sonnenschutzfolie anbringen, beispielsweise LLumar R20 SR CDF, werden nur noch 11 % der Sonnenenergie durchgelassen, während 57 % reflektiert und 32 % absorbiert werden." },
-        "uv": { "title": "UV-Schutz", "body": "Über 99 % der UV-Strahlung bleiben draußen. Böden, Möbel und Ware verlieren ihre Farbe nicht." },
-        "energy": { "title": "Energieeffizienz", "body": "Im Sommer weniger Kühllast, im Winter weniger Wärmeverlust durch das Glas." },
-        "safety": { "title": "Sicherheit", "body": "Eine Sicherheitsfolie hält Glassplitter bei Glasbruch zusammen und kann in verstärkter Ausführung zusätzlichen Schutz vor gewaltsamem Eindringen bieten, indem sie das schnelle Durchdringen der Verglasung erschwert." }
+        "sun": {
+          "title": "Sonnenschutz",
+          "body": "Das Funktionsprinzip einer Fensterfolie mit Sonnenschutz besteht darin, einen erheblichen Teil der auftreffenden Sonnenenergie an der Glasfläche zu reflektieren oder zu absorbieren."
+        },
+        "uv": {
+          "title": "UV-Schutz",
+          "body": "Über 99 % der UV-Strahlung bleiben draußen. Böden, Möbel und Ware verlieren ihre Farbe nicht."
+        },
+        "energy": {
+          "title": "Energieeffizienz",
+          "body": "Im Sommer weniger Kühllast, im Winter weniger Wärmeverlust durch das Glas."
+        },
+        "safety": {
+          "title": "Sicherheit",
+          "body": "Eine Sicherheitsfolie hält Glassplitter bei Glasbruch zusammen und kann in verstärkter Ausführung zusätzlichen Schutz vor gewaltsamem Eindringen bieten, indem sie das schnelle Durchdringen der Verglasung erschwert."
+        }
       }
     },
     "compare": {
@@ -56,17 +64,44 @@
       "uvValue": "99 %",
       "cta": "Funktionsprinzip ansehen",
       "rows": [
-        { "without": "Möbel bleichen aus", "with": "99 % UV blockiert" },
-        { "without": "Raum heizt sich auf", "with": "bis 80 % Hitze reflektiert" },
-        { "without": "Splitter fliegen", "with": "Splitter bleiben gebunden" },
-        { "without": "Blendung am Monitor", "with": "Licht sanft gestreut" },
-        { "without": "Alltag einsehbar", "with": "Einwegspiegel am Tag" }
+        {
+          "without": "Möbel bleichen aus",
+          "with": "99 % UV blockiert"
+        },
+        {
+          "without": "Raum heizt sich auf",
+          "with": "bis 80 % Hitze reflektiert"
+        },
+        {
+          "without": "Splitter fliegen",
+          "with": "Splitter bleiben gebunden"
+        },
+        {
+          "without": "Blendung am Monitor",
+          "with": "Licht sanft gestreut"
+        },
+        {
+          "without": "Alltag einsehbar",
+          "with": "Einwegspiegel am Tag"
+        }
       ],
       "protectionRows": [
-        { "without": "Glas zerbricht in scharfe Splitter", "with": "Splitter bleiben an der Folie haften" },
-        { "without": "Splitter können sich beim Aufprall verteilen", "with": "Splitter bleiben zusammen" },
-        { "without": "Aufprall lässt eine offene, fragmentierte Oberfläche zurück", "with": "Folie hilft, gebrochene Glasstücke anzuhalten" },
-        { "without": "Gebrochene Glasstücke fallen frei", "with": "Gebrochene Glasstücke bleiben enthalten" }
+        {
+          "without": "Glas zerbricht in scharfe Splitter",
+          "with": "Splitter bleiben an der Folie haften"
+        },
+        {
+          "without": "Splitter können sich beim Aufprall verteilen",
+          "with": "Splitter bleiben zusammen"
+        },
+        {
+          "without": "Aufprall lässt eine offene, fragmentierte Oberfläche zurück",
+          "with": "Folie hilft, gebrochene Glasstücke anzuhalten"
+        },
+        {
+          "without": "Gebrochene Glasstücke fallen frei",
+          "with": "Gebrochene Glasstücke bleiben enthalten"
+        }
       ],
       "beforeAfterLabel": "Vergleich Vorher / Nachher",
       "img1WithoutAlt": "Ohne Folie",
@@ -79,10 +114,22 @@
     "process": {
       "title": "Von der Anfrage bis zur fertigen Folierung",
       "steps": {
-        "beratung": { "title": "Beratung & Messung", "body": "Vor Ort: Glasart, Ausrichtung, Temperatur und Ziel werden aufgenommen." },
-        "muster": { "title": "Muster & Auswahl", "body": "Musterstreifen direkt am eigenen Fenster — Sie sehen die Wirkung vorher." },
-        "montage": { "title": "Montage", "body": "Staubarm, im laufenden Betrieb möglich. Meist an einem Arbeitstag fertig." },
-        "abnahme": { "title": "Abnahme & Garantie", "body": "Gemeinsame Kontrolle, Pflegehinweise, Herstellergarantie schriftlich." }
+        "beratung": {
+          "title": "Beratung & Messung",
+          "body": "Vor Ort: Glasart, Ausrichtung, Temperatur und Ziel werden aufgenommen."
+        },
+        "muster": {
+          "title": "Muster & Auswahl",
+          "body": "Musterstreifen direkt am eigenen Fenster — Sie sehen die Wirkung vorher."
+        },
+        "montage": {
+          "title": "Montage",
+          "body": "Staubarm, im laufenden Betrieb möglich. Meist an einem Arbeitstag fertig."
+        },
+        "abnahme": {
+          "title": "Abnahme & Garantie",
+          "body": "Gemeinsame Kontrolle, Pflegehinweise, Herstellergarantie schriftlich."
+        }
       }
     },
     "praxis": {
@@ -102,9 +149,18 @@
       "metaPrefix": "aus",
       "metaSuffix": "Google-Rezensionen",
       "quotes": [
-        { "body": "Sehr gute Beratung und schnelle Terminvereinbarung. Die Folie wurde sauber angebracht und das Ergebnis sieht wirklich hochwertig aus.", "meta": "Anna · Einfamilienhaus · Mai 2026" },
-        { "body": "Von der ersten Beratung bis zur Montage hat alles problemlos funktioniert. Die Fenster sehen jetzt deutlich moderner aus und der gewünschte Sichtschutz ist genau so, wie wir es uns vorgestellt haben.", "meta": "Michael · Wohnung · Juni 2026" },
-        { "body": "Freundlicher Kontakt, schnelle Terminvergabe und eine saubere Montage. Wir sind mit dem Ergebnis sehr zufrieden und würden Armolan jederzeit weiterempfehlen.", "meta": "Julia · Wohnung · Juni 2026" }
+        {
+          "body": "Sehr gute Beratung und schnelle Terminvereinbarung. Die Folie wurde sauber angebracht und das Ergebnis sieht wirklich hochwertig aus.",
+          "meta": "Anna · Einfamilienhaus · Mai 2026"
+        },
+        {
+          "body": "Von der ersten Beratung bis zur Montage hat alles problemlos funktioniert. Die Fenster sehen jetzt deutlich moderner aus und der gewünschte Sichtschutz ist genau so, wie wir es uns vorgestellt haben.",
+          "meta": "Michael · Wohnung · Juni 2026"
+        },
+        {
+          "body": "Freundlicher Kontakt, schnelle Terminvergabe und eine saubere Montage. Wir sind mit dem Ergebnis sehr zufrieden und würden Armolan jederzeit weiterempfehlen.",
+          "meta": "Julia · Wohnung · Juni 2026"
+        }
       ]
     },
     "faq": {
@@ -112,11 +168,26 @@
       "titleAccent": "Aufmaß gestellt werden.",
       "askButton": "Frage stellen",
       "items": [
-        { "q": "Wie lange hält eine Fensterfolie?", "a": "Innen verklebte Folien halten in der Regel 10–15 Jahre, außen verklebte 7–10 Jahre. Auf Material und Ausführung gibt es Herstellergarantie." },
-        { "q": "Wird der Raum dunkel?", "a": "Nicht zwangsläufig. Der Lichtdurchlass (VLT) reicht je Serie von 18 % bis 90 % — moderne Sputterfolien halten die Hitze zurück und lassen das Licht durch." },
-        { "q": "Kann die Folie das Glas beschädigen?", "a": "Bei richtiger Auswahl nein. Entscheidend sind Glasaufbau, Ausrichtung und Randverbund — deshalb prüfen wir jede Scheibe vor der Empfehlung." },
-        { "q": "Wie lange dauert die Montage?", "a": "Eine Wohnung oder ein Schaufenster meist an einem Arbeitstag, im laufenden Betrieb. Große Fassaden planen wir in Abschnitten." },
-        { "q": "Was kostet das?", "a": "Der Preis hängt von Fläche, Serie und Zugänglichkeit ab. Die Beratung und das Angebot sind kostenlos." }
+        {
+          "q": "Wie lange hält eine Fensterfolie?",
+          "a": "Innen verklebte Folien halten in der Regel 10–15 Jahre, außen verklebte 7–10 Jahre. Auf Material und Ausführung gibt es Herstellergarantie."
+        },
+        {
+          "q": "Wird der Raum dunkel?",
+          "a": "Nicht zwangsläufig. Der Lichtdurchlass (VLT) reicht je Serie von 18 % bis 90 % — moderne Sputterfolien halten die Hitze zurück und lassen das Licht durch."
+        },
+        {
+          "q": "Kann die Folie das Glas beschädigen?",
+          "a": "Bei richtiger Auswahl nein. Entscheidend sind Glasaufbau, Ausrichtung und Randverbund — deshalb prüfen wir jede Scheibe vor der Empfehlung."
+        },
+        {
+          "q": "Wie lange dauert die Montage?",
+          "a": "Eine Wohnung oder ein Schaufenster meist an einem Arbeitstag, im laufenden Betrieb. Große Fassaden planen wir in Abschnitten."
+        },
+        {
+          "q": "Was kostet das?",
+          "a": "Der Preis hängt von Fläche, Serie und Zugänglichkeit ab. Die Beratung und das Angebot sind kostenlos."
+        }
       ]
     },
     "consultation": {
@@ -124,9 +195,18 @@
       "titleLine2": "Dann entscheiden.",
       "body": "Wir bieten Ihnen eine kostenlose Beratung direkt vor Ort. Dabei analysieren wir die vorhandene Verglasung, beraten Sie bei der Auswahl der passenden Folie und berechnen die Kosten für die gewünschte Lösung. Zum Einsatz kommen ausschließlich hochwertige Originalfolien von LLumar und Armolan mit Herstellergarantie. Die fachgerechte Montage ist ebenfalls durch eine Garantie abgesichert und umfasst auf Wunsch auch die Reinigung der Glasflächen vor der Folienmontage.",
       "specs": {
-        "termin": { "label": "TERMIN", "value": "innerhalb von 48 Stunden" },
-        "dauer": { "label": "DAUER", "value": "rund 30 Minuten vor Ort" },
-        "kosten": { "label": "KOSTEN", "value": "keine — auch ohne Auftrag" }
+        "termin": {
+          "label": "TERMIN",
+          "value": "innerhalb von 48 Stunden"
+        },
+        "dauer": {
+          "label": "DAUER",
+          "value": "rund 30 Minuten vor Ort"
+        },
+        "kosten": {
+          "label": "KOSTEN",
+          "value": "keine — auch ohne Auftrag"
+        }
       },
       "imageAlt": "Wohnraum mit getönter Verglasung"
     },
@@ -138,7 +218,6 @@
       "imageAlt": "Fassade mit Sonnenschutzfolie von außen"
     }
   },
-
   "about": {
     "title": "Architekturfolien für Sonnenschutz, UV-Schutz und mehr Sicherheit.",
     "body": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen. Unser Expertenteam prüft Glasaufbau, Montagebedingungen und vorhandene Beschichtungen, wählt das passende Foliensystem aus und übernimmt die Montage vor Ort. So profitieren Sie von geringerem Wärmeeintrag, über 99 % UV-Schutz, zuverlässiger Splitterbindung und weniger Blendungen.",
@@ -167,21 +246,55 @@
     "peopleSteps": {
       "title": "Vom ersten Gespräch bis zum fertigen Ergebnis.",
       "body": "Kurz und persönlich — wir übernehmen Verantwortung in jedem Schritt.",
-      "step1": { "title": "Beratung & Aufmaß", "body": "Wir kommen vor Ort, hören zu und messen selbst — damit die Empfehlung zum Objekt passt.", "imageAlt": "Vorbereitung und Material vor dem Aufmaß" },
-      "step2": { "title": "Professionelle Montage", "body": "Zertifizierte Verklebung im laufenden Betrieb möglich — staubarm und abschnittsweise.", "imageAlt": "Professionelle Folienmontage am Fenster" },
-      "step3": { "title": "Übergabe & Betreuung", "body": "Gemeinsame Abnahme, Pflegehinweise und ein Ansprechpartner auch danach.", "imageAlt": "Montageabschluss am Objekt" }
+      "step1": {
+        "title": "Beratung & Aufmaß",
+        "body": "Wir kommen vor Ort, hören zu und messen selbst — damit die Empfehlung zum Objekt passt.",
+        "imageAlt": "Vorbereitung und Material vor dem Aufmaß"
+      },
+      "step2": {
+        "title": "Professionelle Montage",
+        "body": "Zertifizierte Verklebung im laufenden Betrieb möglich — staubarm und abschnittsweise.",
+        "imageAlt": "Professionelle Folienmontage am Fenster"
+      },
+      "step3": {
+        "title": "Übergabe & Betreuung",
+        "body": "Gemeinsame Abnahme, Pflegehinweise und ein Ansprechpartner auch danach.",
+        "imageAlt": "Montageabschluss am Objekt"
+      }
     },
     "partnersTitle": "Hersteller, denen wir vertrauen.",
     "partners": {
-      "llumar": { "kicker": "Hersteller", "title": "LLumar", "body": "Material, technische Daten und Garantie vom weltweiten Folienhersteller.", "link": "llumar.at →" },
-      "armolan": { "kicker": "Hersteller", "title": "Armolan Europe", "body": "Serien, Schulung und Zertifizierung der Monteure.", "link": "armolan.eu →" }
+      "llumar": {
+        "kicker": "Hersteller",
+        "title": "LLumar",
+        "body": "Material, technische Daten und Garantie vom weltweiten Folienhersteller.",
+        "link": "llumar.at →"
+      },
+      "armolan": {
+        "kicker": "Hersteller",
+        "title": "Armolan Europe",
+        "body": "Serien, Schulung und Zertifizierung der Monteure.",
+        "link": "armolan.eu →"
+      }
     },
     "why": {
       "title": "Warum Kunden mit uns arbeiten.",
-      "item1": { "title": "Fachgerechte Analyse vor der Verklebung", "body": "Berücksichtigung von Glasaufbau, Beschichtung, Montagebedingungen und Glasart vor der Verklebung" },
-      "item2": { "title": "Transparente Kalkulation", "body": "individuelle und transparente Kalkulation einer passenden Folienlösung für Ihr Objekt – abgestimmt auf Sonnenschutz, Sichtschutz, UV-Schutz, Hitzeschutz, Wärmeverlustschutz und Sicherheitsanforderungen" },
-      "item3": { "title": "Fachgerechte Montage", "body": "fachgerechte Montage gemäß den Empfehlungen der Hersteller durch geschulte Spezialisten" },
-      "item4": { "title": "Betreuung auch nach der Montage", "body": "persönliche Betreuung auch nach der Montage der Hitzeschutzfolie mit einem festen Ansprechpartner für Ihre Fragen" }
+      "item1": {
+        "title": "Fachgerechte Analyse vor der Verklebung",
+        "body": "Berücksichtigung von Glasaufbau, Beschichtung, Montagebedingungen und Glasart vor der Verklebung"
+      },
+      "item2": {
+        "title": "Transparente Kalkulation",
+        "body": "individuelle und transparente Kalkulation einer passenden Folienlösung für Ihr Objekt – abgestimmt auf Sonnenschutz, Sichtschutz, UV-Schutz, Hitzeschutz, Wärmeverlustschutz und Sicherheitsanforderungen"
+      },
+      "item3": {
+        "title": "Fachgerechte Montage",
+        "body": "fachgerechte Montage gemäß den Empfehlungen der Hersteller durch geschulte Spezialisten"
+      },
+      "item4": {
+        "title": "Betreuung auch nach der Montage",
+        "body": "persönliche Betreuung auch nach der Montage der Hitzeschutzfolie mit einem festen Ansprechpartner für Ihre Fragen"
+      }
     },
     "rating": {
       "scale": "5",
@@ -197,7 +310,6 @@
       "cta": "Beratung anfragen →"
     }
   },
-
   "gallery": {
     "title": "Objekte, an denen die Folie arbeitet",
     "lead": "Ein Ausschnitt aus montierten Projekten — Fassaden, Innenräume und Schutzfolierungen. Tippen Sie ein Bild an, um es zu vergrößern.",
@@ -206,47 +318,125 @@
     "captionFallbackFilm": "Folie auf Anfrage",
     "enlargeImage": "Bild vergrößern",
     "enlargeVideo": "Video vergrößern",
-    "close": "Schließen",
-    "prev": "Vorheriges",
-    "next": "Nächstes",
     "captions": {
-      "gallery_1.png": { "project": "Wohnobjekt · Sonnenschutz", "film": "Dual Reflective Serie" },
-      "gallery_2.png": { "project": "Fassade · Tageslicht", "film": "LLumar Architectural" },
-      "gallery_4.png": { "project": "Wohnobjekt · Dual Reflective", "film": "Armolan Dual Reflective" },
-      "gallery_5.JPG": { "project": "Büro · Blendschutz", "film": "Sonnenschutzfolie" },
-      "gallery_7.JPG": { "project": "Gewerbeobjekt", "film": "Sicherheitsfolie" },
-      "gallery_8.jpg": { "project": "Schaufenster", "film": "UV-Schutzfolie" },
-      "gallery_9.JPG": { "project": "Innenraum · Privatsphäre", "film": "Sichtschutzfolie" },
-      "gallery_10.JPG": { "project": "Fassadenband", "film": "Energiesparfolie" },
-      "gallery_6.jpg": { "project": "Eckfenster · Wohnung", "film": "Sonnenschutzfolie" },
-      "interior-2.jpg": { "project": "Interieur · Glaswand", "film": "Sonnenschutzfolie" },
-      "photo_2026-08-14_23-59-53.jpg": { "project": "Montageobjekt", "film": "Folie auf Anfrage" },
-      "reflective-facade-upscaled.jpg": { "project": "Reflektierende Fassade", "film": "Dual Reflective Serie" },
-      "telegram_video.mp4": { "project": "Montage vor Ort", "film": "Sonnenschutzfolie" },
-      "telegram_video(1).mp4": { "project": "Montage vor Ort", "film": "Sonnenschutzfolie" },
-      "telegram_video(2).mp4": { "project": "Arbeit am Glas", "film": "Sicherheitsfolie" },
-      "telegram_video(3).mp4": { "project": "Arbeit am Glas", "film": "Sicherheitsfolie" },
-      "telegram_video(4).mp4": { "project": "Fassadenmontage", "film": "Dual Reflective Serie" },
-      "telegram_video(5).mp4": { "project": "Fassadenmontage", "film": "Dual Reflective Serie" },
-      "telegram_video(6).mp4": { "project": "Innenraum · Folierung", "film": "Sichtschutzfolie" },
-      "telegram_video(7).mp4": { "project": "Innenraum · Folierung", "film": "Sichtschutzfolie" },
-      "telegram_video(8).mp4": { "project": "Objekt nach der Montage", "film": "Folie auf Anfrage" }
+      "gallery_1.png": {
+        "project": "Wohnobjekt · Sonnenschutz",
+        "film": "Dual Reflective Serie"
+      },
+      "gallery_2.png": {
+        "project": "Fassade · Tageslicht",
+        "film": "LLumar Architectural"
+      },
+      "gallery_4.png": {
+        "project": "Wohnobjekt · Dual Reflective",
+        "film": "Armolan Dual Reflective"
+      },
+      "gallery_5.JPG": {
+        "project": "Büro · Blendschutz",
+        "film": "Sonnenschutzfolie"
+      },
+      "gallery_7.JPG": {
+        "project": "Gewerbeobjekt",
+        "film": "Sicherheitsfolie"
+      },
+      "gallery_8.jpg": {
+        "project": "Schaufenster",
+        "film": "UV-Schutzfolie"
+      },
+      "gallery_9.JPG": {
+        "project": "Innenraum · Privatsphäre",
+        "film": "Sichtschutzfolie"
+      },
+      "gallery_10.JPG": {
+        "project": "Fassadenband",
+        "film": "Energiesparfolie"
+      },
+      "gallery_6.jpg": {
+        "project": "Eckfenster · Wohnung",
+        "film": "Sonnenschutzfolie"
+      },
+      "interior-2.jpg": {
+        "project": "Interieur · Glaswand",
+        "film": "Sonnenschutzfolie"
+      },
+      "photo_2026-08-14_23-59-53.jpg": {
+        "project": "Montageobjekt",
+        "film": "Folie auf Anfrage"
+      },
+      "reflective-facade-upscaled.jpg": {
+        "project": "Reflektierende Fassade",
+        "film": "Dual Reflective Serie"
+      },
+      "telegram_video.mp4": {
+        "project": "Montage vor Ort",
+        "film": "Sonnenschutzfolie"
+      },
+      "telegram_video(1).mp4": {
+        "project": "Montage vor Ort",
+        "film": "Sonnenschutzfolie"
+      },
+      "telegram_video(2).mp4": {
+        "project": "Arbeit am Glas",
+        "film": "Sicherheitsfolie"
+      },
+      "telegram_video(3).mp4": {
+        "project": "Arbeit am Glas",
+        "film": "Sicherheitsfolie"
+      },
+      "telegram_video(4).mp4": {
+        "project": "Fassadenmontage",
+        "film": "Dual Reflective Serie"
+      },
+      "telegram_video(5).mp4": {
+        "project": "Fassadenmontage",
+        "film": "Dual Reflective Serie"
+      },
+      "telegram_video(6).mp4": {
+        "project": "Innenraum · Folierung",
+        "film": "Sichtschutzfolie"
+      },
+      "telegram_video(7).mp4": {
+        "project": "Innenraum · Folierung",
+        "film": "Sichtschutzfolie"
+      },
+      "telegram_video(8).mp4": {
+        "project": "Objekt nach der Montage",
+        "film": "Folie auf Anfrage"
+      }
     }
   },
-
   "principle": {
-    "reflexion": { "kicker": "Reflexion", "title": "Die Hitze wird abgewiesen, bevor sie im Raum ist", "body": "Sonnenlicht ist zu etwa der Hälfte Infrarotstrahlung. Die metallisierte Schicht reflektiert diesen Anteil an der Glasoberfläche zurück nach außen — bis zu 79 % der Gesamtenergie erreichen den Raum nie. Die Klimaanlage läuft kürzer, an Südfassaden messen wir typisch 3–7,6 °C weniger." },
-    "absorption": { "kicker": "Absorption", "title": "Dieselbe Wirkung, ohne Spiegeleffekt", "body": "Nano-keramische Partikel nehmen die Sonnenenergie auf, statt sie zurückzuwerfen. Die Scheibe bleibt von außen nahezu neutral — kein Spiegelbild an der Fassade —, während der Wärmeeintrag deutlich sinkt. Die Wahl, wenn Tageslicht und freier Blick nach außen erhalten bleiben sollen." },
-    "uv": { "kicker": "UV-Schutz", "title": "Über 99 % der UV-Strahlung endet an der Folie", "body": "Die UV-Sperrschicht ist hochtransparent — klar wie Glas. Sichtbares Licht passiert nahezu ungehindert, der UV-Anteil wird zurückgehalten. Böden, Möbel, Textilien und ausgestellte Ware behalten ihre Farbe deutlich länger, ohne dass der Raum dunkler wird." },
-    "einbruchschutz": { "kicker": "Einbruchschutz", "title": "Die Scheibe bricht — aber sie bleibt im Rahmen", "body": "Die Glassplitter bleiben dabei an der Folie haften und werden daran gehindert, unkontrolliert in den Innenraum zu gelangen. Gleichzeitig verteilt die Sicherheitsfolie die beim Aufprall entstehende Kraft über eine größere Fläche der Verglasung. Nach einem Glasbruch bleibt die Scheibe dadurch zunächst weitgehend als zusammenhängende Fläche erhalten. Diese zusätzliche Schutzwirkung erschwert einen vollständigen Durchbruch und kann das Eindringen durch die Verglasung deutlich verzögern. Je nach eingesetztem Foliensystem und Glasaufbau stehen auch geprüfte und zertifizierte Sicherheitslösungen zur Verfügung, die einen erhöhten Schutz vor gewaltsamem Eindringen bieten." },
-    "sichtschutz": { "kicker": "Sichtschutz", "title": "Das Licht passiert, der Blick nicht", "body": "Die mattierte Oberfläche streut das durchtretende Licht in alle Richtungen. Der Raum bleibt hell, das Bild dahinter löst sich auf — Milchglas-Optik, ohne die Scheibe zu tauschen. Für Trennwände, Besprechungsräume, Ordinationen und Sanitärbereiche." },
+    "reflexion": {
+      "kicker": "Reflexion",
+      "title": "Die Hitze wird abgewiesen, bevor sie im Raum ist",
+      "body": "Sonnenlicht ist zu etwa der Hälfte Infrarotstrahlung. Die metallisierte Schicht reflektiert diesen Anteil an der Glasoberfläche zurück nach außen — bis zu 79 % der Gesamtenergie erreichen den Raum nie. Die Klimaanlage läuft kürzer, an Südfassaden messen wir typisch 3–7,6 °C weniger."
+    },
+    "absorption": {
+      "kicker": "Absorption",
+      "title": "Dieselbe Wirkung, ohne Spiegeleffekt",
+      "body": "Nano-keramische Partikel nehmen die Sonnenenergie auf, statt sie zurückzuwerfen. Die Scheibe bleibt von außen nahezu neutral — kein Spiegelbild an der Fassade —, während der Wärmeeintrag deutlich sinkt. Die Wahl, wenn Tageslicht und freier Blick nach außen erhalten bleiben sollen."
+    },
+    "uv": {
+      "kicker": "UV-Schutz",
+      "title": "Über 99 % der UV-Strahlung endet an der Folie",
+      "body": "Die UV-Sperrschicht ist hochtransparent — klar wie Glas. Sichtbares Licht passiert nahezu ungehindert, der UV-Anteil wird zurückgehalten. Böden, Möbel, Textilien und ausgestellte Ware behalten ihre Farbe deutlich länger, ohne dass der Raum dunkler wird."
+    },
+    "einbruchschutz": {
+      "kicker": "Einbruchschutz",
+      "title": "Die Scheibe bricht — aber sie bleibt im Rahmen",
+      "body": "Die Glassplitter bleiben dabei an der Folie haften und werden daran gehindert, unkontrolliert in den Innenraum zu gelangen. Gleichzeitig verteilt die Sicherheitsfolie die beim Aufprall entstehende Kraft über eine größere Fläche der Verglasung. Nach einem Glasbruch bleibt die Scheibe dadurch zunächst weitgehend als zusammenhängende Fläche erhalten. Diese zusätzliche Schutzwirkung erschwert einen vollständigen Durchbruch und kann das Eindringen durch die Verglasung deutlich verzögern. Je nach eingesetztem Foliensystem und Glasaufbau stehen auch geprüfte und zertifizierte Sicherheitslösungen zur Verfügung, die einen erhöhten Schutz vor gewaltsamem Eindringen bieten."
+    },
+    "sichtschutz": {
+      "kicker": "Sichtschutz",
+      "title": "Das Licht passiert, der Blick nicht",
+      "body": "Die mattierte Oberfläche streut das durchtretende Licht in alle Richtungen. Der Raum bleibt hell, das Bild dahinter löst sich auf — Milchglas-Optik, ohne die Scheibe zu tauschen. Für Trennwände, Besprechungsräume, Ordinationen und Sanitärbereiche."
+    },
     "pageTitle": "Was eine Folie am Glas physikalisch tut",
     "pageLead": "Scrollen Sie — die Zeichnung links bleibt stehen und wechselt mit dem Abschnitt.",
     "metaDescription": "Was eine Folie am Glas physikalisch tut: Reflexion, Absorption, UV-Sperre, Kraftverteilung und Sichtschutz.",
     "ctaTitle": "Unsicher, welche Folie passt?",
     "ctaBody": "Wir bringen Musterstreifen und Messgerät mit und halten die Werte an Ihrer eigenen Scheibe fest."
   },
-
   "kontakt": {
     "title": "Kostenlose Beratung anfragen",
     "lead": "Schildern Sie kurz Objekt und Ziel — wir melden uns mit Terminvorschlag und den nächsten Schritten. Musterstreifen und Messung vor Ort möglich.",
@@ -309,13 +499,11 @@
       "sending": "Wird gesendet…"
     }
   },
-
   "certificates": {
     "sectionTitle": "Prüfberichte",
     "safety1": "DIN EN 356 · ARM Safety Clear 12 mil",
     "safety2": "DIN EN 12600 · ARM Safety 8 mil"
   },
-
   "filmStructure": {
     "layersAriaSuffix": "Schichten",
     "reflective": {
@@ -346,7 +534,6 @@
       "layer6": "Trennfolie (Release Liner)"
     }
   },
-
   "produkte": {
     "title": "Fünf Serien, ein Ziel je Objekt",
     "lead": "Welche Folie passt, entscheidet die Glasart und das Ziel — nicht der Katalog.",
@@ -369,7 +556,6 @@
     "breadcrumbProdukte": "PRODUKTE",
     "certPrefix": "Prüfbericht öffnen:"
   },
-
   "produkteFolie": {
     "breadcrumbProdukte": "PRODUKTE",
     "family": {
@@ -392,7 +578,6 @@
     "certificationLabel": "Zertifizierung",
     "ctaLabel": "Beratung zu dieser Folie anfragen"
   },
-
   "blog": {
     "title": "Aktuelles rund um Folien",
     "lead": "Neuigkeiten, Tipps und Projektberichte — sobald neue Beiträge erscheinen, finden Sie sie hier.",
@@ -403,12 +588,10 @@
     "metaTitle": "Blog & News",
     "metaDescription": "Neuigkeiten, Tipps und Projektberichte von City-Ton Austria."
   },
-
   "partner": {
     "title": "Für Partner",
     "note": "Diese Seite ist in Vorbereitung."
   },
-
   "filmCatalog": {
     "brand": "Marke",
     "mount": "Montage",
@@ -420,13 +603,11 @@
     "filmPlural": "Folien",
     "filterAriaLabel": "Folien filtern"
   },
-
   "partnerCarousel": {
     "defaultLabel": "OFFIZIELLER PARTNER VON",
     "ariaLabel": "Partner-Logos",
     "openInNewTab": "— Website in neuem Tab öffnen"
   },
-
   "common": {
     "breadcrumbAriaLabel": "Brotkrumen",
     "breadcrumbHome": "HOME",
@@ -435,15 +616,17 @@
     "ctaFilmBody": "Wir bringen Musterstreifen und Messgerät mit — und legen die Serie vor Ort fest.",
     "ctaGalleryTitle": "Ihr Objekt könnte das nächste sein.",
     "ctaGalleryBody": "Wir bringen Musterstreifen und Messgerät mit — die Erstberatung ist kostenlos und unverbindlich.",
-    "funktionsprinzipAnsehen": "Funktionsprinzip ansehen"
+    "funktionsprinzipAnsehen": "Funktionsprinzip ansehen",
+    "close": "Schließen",
+    "prev": "Vorheriges",
+    "next": "Nächstes",
+    "enlargeImage": "Bild vergrößern"
   },
-
   "produkteSeriePage": {
     "funktionsprinzipCta": "Funktionsprinzip ansehen",
     "certsSectionTitle": "Prüfberichte",
     "pendingText": "Die ausführliche Produktseite für {name} folgt. Kennwerte, Varianten und Referenzobjekte kommen aus dem Herstellerdatenblatt — bis dahin beraten wir gerne direkt."
   },
-
   "produkteFolieDetail": {
     "kennwerteEinfach": "Kennwerte · Einfachverglasung",
     "kennwerteIso": "Kennwerte · Isolierglas",
@@ -482,13 +665,11 @@
       "sichtschutz": "Sichtschutz"
     }
   },
-
   "legal": {
     "impressumTitle": "Impressum",
     "datenschutzTitle": "Datenschutz",
     "germanOnlyNote": "Diese Seite ist gesetzlich vorgeschrieben und wird nur auf Deutsch geführt."
   },
-
   "cookieConsent": {
     "title": "Cookie-Einwilligung",
     "body": "Wir verwenden Google Analytics, um zu verstehen, wie Besucherinnen und Besucher diese Website nutzen. Das ist nur mit Ihrer Zustimmung aktiv. Details in unserer",

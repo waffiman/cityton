@@ -205,6 +205,7 @@ export default async function HomePage() {
         <div className={styles.praxisMedia}>
           <MutedLoopVideo
             src={praxisMontage.video.src}
+            poster={praxisMontage.video.poster}
             title={t("praxis.videoTitle")}
             className={styles.praxisVideo}
             alwaysAutoplay

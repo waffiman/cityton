@@ -45,7 +45,12 @@ export const reviews = { rating: "4,9", count: 18 };
 
 export const praxisMontage = {
   cta: { href: "/gallery" },
-  video: { src: "/media/film-montage.MOV" },
+  video: {
+    // .mp4, not the original .MOV: Firefox refuses `video/quicktime` outright,
+    // and the untranscoded original was 33 MB for a 20 s muted loop.
+    src: "/media/film-montage.mp4",
+    poster: "/media/film-montage-poster.jpg",
+  },
 };
 
 export const consultation = {

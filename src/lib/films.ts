@@ -118,6 +118,20 @@ export function allFilmSlugs(): string[] {
  * Public path to a katalog JPEG for this film, or null if none matches.
  * Prefers INTERIOR/EXTERIOR variants when the filename encodes mount.
  */
+/**
+ * Should `next/image` optimisation be bypassed for this src?
+ *
+ * Only for remote (admin-uploaded, S3) images: `images.remotePatterns` is
+ * derived from `S3_PUBLIC_BASE_URL`, so when S3 isn't configured the optimiser
+ * rejects any absolute URL outright. Local files under `public/media` must
+ * always go through the optimiser — the katalog swatches are 24-megapixel
+ * (~3 MB) originals rendered as ~200 px thumbnails, so serving them raw ships
+ * ~150 MB for one catalogue page.
+ */
+export function shouldBypassOptimizer(src: string): boolean {
+  return /^https?:\/\//i.test(src);
+}
+
 export function filmImageSrc(film: Film): string | null {
   const key = normalizeKey(film.code);
   // ARM ANTI GRAFFITY 4 MIL → … CLEAR.jpg

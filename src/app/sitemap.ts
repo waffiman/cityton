@@ -41,8 +41,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: p.publishedAt ?? p.updatedAt,
     priority: 0.6,
   }));
-  // Not in `nav` (dropped from the header), but it's a real, linkable page —
-  // German-only like the posts it lists, so no /en duplicate.
-  const blogIndex = { url: `${site.url}/blog`, lastModified: now, priority: 0.6 };
-  return [...pages, blogIndex, ...products, ...foils, ...posts];
+  // The blog index is German-only like the posts it lists, so no /en duplicate.
+  // Only list it once it has something on it: with no published posts the page
+  // renders an empty state, and it's linked from neither the nav nor the
+  // footer, so submitting it would just hand Google an orphaned empty page.
+  const blogIndex = posts.length
+    ? [{ url: `${site.url}/blog`, lastModified: now, priority: 0.6 }]
+    : [];
+  return [...pages, ...blogIndex, ...products, ...foils, ...posts];
 }

@@ -10,6 +10,7 @@ import SeriesGlyph from "@/components/diagrams/SeriesGlyph";
 import { Link } from "@/i18n/navigation";
 import { seriesCertificates } from "@/content/certificates";
 import { structureForSeries } from "@/content/film-structure";
+import { shouldBypassOptimizer } from "@/lib/films";
 import { getSeriesBySlug } from "@/lib/products";
 import { pageAlternates } from "@/lib/seo";
 import filmCatalogStyles from "@/components/FilmCatalog.module.css";
@@ -132,7 +133,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
                       fill
                       sizes="(max-width: 700px) 100vw, 40vw"
                       className={styles.certImg}
-                      unoptimized
+                      unoptimized={shouldBypassOptimizer(cert.preview)}
                     />
                   </span>
                   <span className={styles.certCaption}>{cert.caption}</span>

@@ -7,20 +7,23 @@ import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
  * Storage for admin image uploads, with two interchangeable backends.
  *
  * S3-compatible object storage (Cloudflare R2, Backblaze B2, MinIO) is used
- * whenever it is fully configured. Otherwise uploads go to a directory under
- * `public/`, which Next serves statically — on the VPS that path is a Docker
- * volume, so the files outlive `compose up --build` the same way the Postgres
- * data does.
+ * whenever it is fully configured. Otherwise uploads go to a directory on
+ * local disk — on the VPS a Docker volume, so the files outlive
+ * `compose up --build` the same way the Postgres data does.
  *
  * Deliberately in that order: setting the six `S3_*` vars switches a running
  * deployment over to object storage with no code change, so local disk is a
  * working default rather than a dead end.
+ *
+ * Note the local directory sits OUTSIDE `public/`. Next resolves `public/` when
+ * the app is built, so a file written there at runtime is never served — it has
+ * to come back through a route handler instead (see app/uploads/[...path]).
  */
 
 let cached: S3Client | null = null;
 
 /** Directory (relative to the app root) backing the local-disk fallback. */
-const LOCAL_DIR = "public/uploads";
+export const LOCAL_UPLOAD_DIR = "uploads";
 /** URL prefix the same files are served from. */
 const LOCAL_URL_PREFIX = "/uploads";
 
@@ -90,7 +93,7 @@ export async function uploadImage(
   const key = objectKey(contentType, folder);
 
   if (!s3Configured()) {
-    const dest = path.join(process.cwd(), LOCAL_DIR, key);
+    const dest = path.join(process.cwd(), LOCAL_UPLOAD_DIR, key);
     await mkdir(path.dirname(dest), { recursive: true });
     await writeFile(dest, data);
     return `${LOCAL_URL_PREFIX}/${key}`;

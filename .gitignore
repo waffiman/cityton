@@ -19,4 +19,4 @@ scripts/vps.env
 scripts/.vps-known-hosts
 
 # Admin image uploads (local-disk storage backend; a Docker volume in production)
-/public/uploads/
+/uploads/

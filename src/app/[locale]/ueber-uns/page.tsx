@@ -17,7 +17,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "about" });
   return {
     title: t("title"),
-    description: t("body").slice(0, 155),
+    description: t("metaDescription"),
     alternates: pageAlternates("/ueber-uns", locale),
   };
 }

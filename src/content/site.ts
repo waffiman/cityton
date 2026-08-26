@@ -27,6 +27,7 @@ export const nav: NavItem[] = [
   { href: "/produkte", key: "products" },
   { href: "/funktionsprinzip", key: "principle" },
   { href: "/gallery", key: "gallery" },
+  { href: "/blog", key: "blog" },
   // { href: "/partner", key: "partner" },
   { href: "/kontakt", key: "contact" },
 ];
@@ -39,6 +40,7 @@ export const footerColumns: { titleKey: string; links: NavItem[] }[] = [
       { href: "/ueber-uns", key: "about" },
       { href: "/produkte", key: "products" },
       { href: "/funktionsprinzip", key: "principle" },
+      { href: "/blog", key: "blog" },
       { href: "/partner", key: "partner" },
     ],
   },

@@ -13,7 +13,7 @@ const intlProxy = createMiddleware(routing);
  * Guards the admin panel. Unauthenticated /admin/** requests are redirected to
  * the login page; unauthenticated /api/admin/** requests get 401. The login page
  * and login endpoint are always reachable. Public APIs (/api/kontakt,
- * /api/beratung) are not matched here.
+ * /api/beratung) fall through untouched — see the /api/ branch in `proxy`.
  *
  * The admin panel is excluded from locale routing entirely (see `config`
  * below) — this runs instead of next-intl's proxy for those paths, never
@@ -44,6 +44,14 @@ export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (pathname.startsWith("/admin") || pathname.startsWith("/api/admin")) {
     return adminGuard(request);
+  }
+  // Route handlers live outside the [locale] segment, so they must never reach
+  // the locale proxy: it rewrites /api/kontakt to /de/api/kontakt, which does
+  // not exist, and the lead forms 404 instead of submitting. The matcher below
+  // can't express this on its own — excluding /api there would also drop the
+  // /api/admin guard above.
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.next();
   }
   return intlProxy(request);
 }

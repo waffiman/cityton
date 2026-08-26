@@ -54,6 +54,10 @@ services:
     # them from 24-megapixel sources.
     volumes:
       - nextcache:/app/.next/cache
+      # Admin image uploads when S3 isn't configured (see src/lib/storage.ts).
+      # Must be a volume: the image is rebuilt on every deploy, so anything
+      # written into the container filesystem would be discarded with it.
+      - uploads:/app/public/uploads
 
     # A Caddy reverse proxy on the host owns :80/:443 and terminates TLS, so the
     # app binds loopback only. Publishing :80 here collides with Caddy and the
@@ -64,3 +68,4 @@ services:
 volumes:
   dbdata:
   nextcache:
+  uploads:

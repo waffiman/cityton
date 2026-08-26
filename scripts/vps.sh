@@ -35,6 +35,14 @@ SSH_OPTS=(
   -o "ConnectTimeout=15"
   -p "$VPS_PORT"
 )
+# scp takes the port flag as -P (uppercase); ssh takes -p. Same options
+# otherwise, so build a second array rather than passing SSH_OPTS to scp.
+SCP_OPTS=(
+  -o "StrictHostKeyChecking=accept-new"
+  -o "UserKnownHostsFile=$KNOWN_HOSTS"
+  -o "ConnectTimeout=15"
+  -P "$VPS_PORT"
+)
 TARGET="$VPS_USER@$VPS_HOST"
 
 die() { echo "vps.sh: $*" >&2; exit 1; }
@@ -72,9 +80,9 @@ do_ssh() {
 # scp (recursive) with the best available auth. $@ = scp source/dest.
 do_scp() {
   if key_works; then
-    scp -i "$VPS_KEY" -r "${SSH_OPTS[@]}" "$@"
+    scp -i "$VPS_KEY" -r "${SCP_OPTS[@]}" "$@"
   elif set_sshpass; then
-    "${SSHPASS_CMD[@]}" scp -r "${SSH_OPTS[@]}" "$@"
+    "${SSHPASS_CMD[@]}" scp -r "${SCP_OPTS[@]}" "$@"
   else
     die "No auth available. Run 'setup-key' or put the password in $SECRET_FILE"
   fi

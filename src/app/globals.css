@@ -510,6 +510,90 @@ body:has(.journey) #inhalt {
   background: var(--s6);
 }
 
+/* ── Diagonal band decoration ────────────────────────────────────────────
+   Shared film-sheet diagonals + soft orb, used on title bands (Produkte,
+   Galerie, Kontakt) sitting on a .section--3 ground. Markup:
+     <div class="diagonal-fx" aria-hidden="true">
+       <span class="diagonal-sheet" /> x3
+       <span class="diagonal-orb" />
+     </div>
+   inside a position:relative; overflow:hidden band. */
+.diagonal-fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.diagonal-sheet {
+  position: absolute;
+  top: -10%;
+  width: 28%;
+  height: 120%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--s0) 55%, transparent),
+    color-mix(in srgb, var(--s0) 8%, transparent)
+  );
+  border-left: 1px solid color-mix(in srgb, var(--s0) 50%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--color-accent-700) 12%, transparent);
+  transform: skewX(-12deg);
+  opacity: 0.55;
+}
+
+.diagonal-sheet:nth-child(1) {
+  left: 8%;
+  animation: diagonalSheetDrift 18s ease-in-out infinite alternate;
+}
+
+.diagonal-sheet:nth-child(2) {
+  left: 38%;
+  opacity: 0.35;
+  animation: diagonalSheetDrift 22s ease-in-out infinite alternate-reverse;
+}
+
+.diagonal-sheet:nth-child(3) {
+  left: 68%;
+  opacity: 0.45;
+  animation: diagonalSheetDrift 20s ease-in-out infinite alternate;
+}
+
+.diagonal-orb {
+  position: absolute;
+  right: -6%;
+  bottom: -20%;
+  width: min(48vw, 420px);
+  height: min(48vw, 420px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-accent) 28%, transparent),
+    transparent 68%
+  );
+  filter: blur(4px);
+}
+
+@keyframes diagonalSheetDrift {
+  from {
+    transform: skewX(-12deg) translateX(0);
+  }
+  to {
+    transform: skewX(-12deg) translateX(18px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diagonal-sheet {
+    animation: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .diagonal-sheet:nth-child(2) {
+    display: none;
+  }
+}
+
 .eyebrow {
   margin: 0 0 14px;
   color: var(--color-accent-700);

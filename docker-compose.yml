@@ -30,7 +30,8 @@ services:
     environment:
       DATABASE_URL: postgresql://cityton:${POSTGRES_PASSWORD}@db:5432/cityton?schema=public
       SESSION_SECRET: ${SESSION_SECRET}
-      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH}
+      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
       NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
       S3_ENDPOINT: ${S3_ENDPOINT:-}
       S3_REGION: ${S3_REGION:-auto}

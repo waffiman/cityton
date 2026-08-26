@@ -33,11 +33,22 @@ export default async function GalleryPage() {
 
   return (
     <>
-      <section className="container" style={{ paddingTop: 56 }}>
-        <h1 className={styles.title}>{t("title")}</h1>
-        <p className="lead" style={{ maxWidth: "58ch" }}>
-          {t("lead")}
-        </p>
+      <section
+        className="section--3"
+        style={{ position: "relative", overflow: "hidden", paddingTop: 56, paddingBottom: 40 }}
+      >
+        <div className="diagonal-fx" aria-hidden="true">
+          <span className="diagonal-sheet" />
+          <span className="diagonal-sheet" />
+          <span className="diagonal-sheet" />
+          <span className="diagonal-orb" />
+        </div>
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <h1 className={styles.title}>{t("title")}</h1>
+          <p className="lead" style={{ maxWidth: "58ch" }}>
+            {t("lead")}
+          </p>
+        </div>
       </section>
 
       <section className={`container ${styles.gallerySection}`}>

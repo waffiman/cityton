@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SiteChrome from "@/components/SiteChrome";
+import CookieConsent from "@/components/CookieConsent";
 import { routing } from "@/i18n/routing";
 import { site } from "@/content/site";
 import "../globals.css";
@@ -70,6 +71,7 @@ export default async function LocaleLayout({
           <SiteChrome header={<SiteHeader />} footer={<SiteFooter />}>
             {children}
           </SiteChrome>
+          <CookieConsent />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -485,5 +485,13 @@
     "impressumTitle": "Imprint",
     "datenschutzTitle": "Privacy policy",
     "germanOnlyNote": "This page is legally required and is only maintained in German."
+  },
+
+  "cookieConsent": {
+    "title": "Cookie consent",
+    "body": "We use Google Analytics to understand how visitors use this site. It only runs with your consent. Details in our",
+    "privacyLink": "privacy policy",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }

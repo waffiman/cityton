@@ -6,8 +6,9 @@ export const metadata: Metadata = { title: "Datenschutzerklärung", robots: { in
 
 /**
  * DSGVO notice describing what this site actually does: two lead forms writing
- * to our own Postgres, Cloudflare Turnstile, an embedded Google map, and
- * nothing else — no analytics, no tracking cookies, fonts self-hosted.
+ * to our own Postgres, Cloudflare Turnstile, an embedded Google map, Google
+ * Analytics (consent-gated via the cookie banner in CookieConsent.tsx), and
+ * fonts self-hosted otherwise.
  *
  * Spans marked `styles.todo` are facts only the client can supply (registered
  * address, retention period, hosting contract). The whole text still needs a
@@ -130,23 +131,48 @@ export default function DatenschutzPage() {
           .
         </p>
 
-        <h2>6. Cookies</h2>
+        <h2>6. Webanalyse (Google Analytics)</h2>
         <p>
-          Diese Website setzt <strong>keine Tracking- oder Marketing-Cookies</strong> und bindet
-          keine Analyse- oder Werbedienste ein. Ein technisch notwendiges Cookie wird
-          ausschließlich im internen Verwaltungsbereich gesetzt, wenn sich ein Mitarbeiter dort
-          anmeldet. Für Besucherinnen und Besucher der öffentlichen Seiten wird kein Cookie
-          gesetzt.
+          Mit Ihrer Einwilligung setzen wir Google Analytics ein, einen Webanalysedienst der
+          Google Ireland Limited. Dabei werden Nutzungsdaten (u. a. aufgerufene Seiten, ungefährer
+          Standort, Geräte- und Browserinformationen) erhoben und auf Servern von Google,
+          gegebenenfalls auch in den USA, verarbeitet, um die Nutzung dieser Website statistisch
+          auszuwerten.
+        </p>
+        <p>
+          Google Analytics wird erst geladen, nachdem Sie im Cookie-Banner ausdrücklich zugestimmt
+          haben. Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie
+          jederzeit mit Wirkung für die Zukunft widerrufen können, indem Sie die
+          Website-Daten Ihres Browsers für diese Seite löschen (der Banner erscheint dann erneut)
+          oder uns formlos kontaktieren. Weitere Informationen finden Sie in der{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Datenschutzerklärung von Google
+          </a>
+          .
         </p>
 
-        <h2>7. Schriftarten</h2>
+        <h2>7. Cookies</h2>
+        <p>
+          Diese Website setzt <strong>keine Tracking- oder Marketing-Cookies</strong> ohne Ihre
+          Zustimmung. Ein technisch notwendiges Cookie wird im internen Verwaltungsbereich
+          gesetzt, wenn sich ein Mitarbeiter dort anmeldet; Ihre Entscheidung zum Cookie-Banner
+          wird im lokalen Speicher Ihres Browsers (nicht als Cookie) hinterlegt. Stimmen Sie der
+          Webanalyse zu, setzt Google Analytics zusätzlich eigene Cookies zur
+          Wiedererkennung Ihres Browsers (siehe Punkt 6).
+        </p>
+
+        <h2>8. Schriftarten</h2>
         <p>
           Die verwendeten Schriftarten werden lokal von unserem Server ausgeliefert. Beim
           Seitenaufruf wird dadurch keine Verbindung zu Servern Dritter hergestellt und es werden
           keine Daten an Schriftanbieter übermittelt.
         </p>
 
-        <h2>8. Empfänger und Auftragsverarbeiter</h2>
+        <h2>9. Empfänger und Auftragsverarbeiter</h2>
         <p>
           Eine Weitergabe Ihrer Daten an Dritte erfolgt nur, soweit dies zur Bearbeitung Ihrer
           Anfrage erforderlich ist oder wir gesetzlich dazu verpflichtet sind. Auftragsverarbeiter
@@ -154,7 +180,7 @@ export default function DatenschutzPage() {
           gebunden. Ein Verkauf Ihrer Daten findet nicht statt.
         </p>
 
-        <h2>9. Ihre Rechte</h2>
+        <h2>10. Ihre Rechte</h2>
         <p>Ihnen stehen gegenüber uns folgende Rechte hinsichtlich Ihrer personenbezogenen Daten zu:</p>
         <ul>
           <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
@@ -170,7 +196,7 @@ export default function DatenschutzPage() {
           <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>.
         </p>
 
-        <h2>10. Beschwerderecht</h2>
+        <h2>11. Beschwerderecht</h2>
         <p>
           Sind Sie der Ansicht, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht
           verstößt, können Sie sich bei der Aufsichtsbehörde beschweren:
@@ -187,13 +213,13 @@ export default function DatenschutzPage() {
           </p>
         </div>
 
-        <h2>11. Keine automatisierte Entscheidungsfindung</h2>
+        <h2>12. Keine automatisierte Entscheidungsfindung</h2>
         <p>
           Eine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne des Art. 22
           DSGVO findet nicht statt.
         </p>
 
-        <h2>12. Änderungen dieser Datenschutzerklärung</h2>
+        <h2>13. Änderungen dieser Datenschutzerklärung</h2>
         <p>
           Wir passen diese Datenschutzerklärung an, sobald sich die Verarbeitung oder die
           rechtlichen Rahmenbedingungen ändern. Es gilt jeweils die auf dieser Seite

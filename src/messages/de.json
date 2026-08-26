@@ -485,5 +485,13 @@
     "impressumTitle": "Impressum",
     "datenschutzTitle": "Datenschutz",
     "germanOnlyNote": "Diese Seite ist gesetzlich vorgeschrieben und wird nur auf Deutsch geführt."
+  },
+
+  "cookieConsent": {
+    "title": "Cookie-Einwilligung",
+    "body": "Wir verwenden Google Analytics, um zu verstehen, wie Besucherinnen und Besucher diese Website nutzen. Das ist nur mit Ihrer Zustimmung aktiv. Details in unserer",
+    "privacyLink": "Datenschutzerklärung",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
   }
 }

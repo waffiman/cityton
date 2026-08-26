@@ -38,10 +38,10 @@
       "titleLine1": "Four microns of film.",
       "titleAccent": "A different building.",
       "items": {
-        "sun": { "title": "Solar control", "body": "Without film, energy transmittance is 83 %. With a solar control film like LLumar R20 SR CDF, it drops to 11 %, while 57 % is reflected and 32 % absorbed." },
+        "sun": { "title": "Solar control", "body": "A solar control window film works by reflecting or absorbing a substantial share of the incoming solar energy at the glass surface. Without such a film, energy transmittance is 83 %, reflection 8 % and absorption 9 %. Fit a solar control film — LLumar R20 SR CDF, for example — and only 11 % of the solar energy still passes through, while 57 % is reflected and 32 % absorbed." },
         "uv": { "title": "UV protection", "body": "Over 99 % of UV radiation stays outside. Floors, furniture and merchandise keep their colour." },
         "energy": { "title": "Energy efficiency", "body": "Less cooling load in summer, less heat loss through the glass in winter." },
-        "safety": { "title": "Safety", "body": "The security film holds shattered glass together and spreads the impact force across the surface. In a reinforced version, it also makes forced entry more difficult." }
+        "safety": { "title": "Safety", "body": "A security film holds shattered glass together and, in a reinforced version, can offer additional protection against forced entry by making it harder to break through the glazing quickly." }
       }
     },
     "compare": {
@@ -91,7 +91,7 @@
       "videoTitle": "Installation on site — time-lapse film application"
     },
     "series": {
-      "title": "Four series, one goal per building",
+      "title": "Five series, one goal per building",
       "lead": "Which film fits depends on the glass and the goal — not the catalogue. We settle on the series together during the measurement visit."
     },
     "reviews": {
@@ -121,7 +121,7 @@
     "consultation": {
       "titleLine1": "Measure first.",
       "titleLine2": "Then decide.",
-      "body": "We come to you with a measuring device and sample strips, record the values on your own pane, and calculate what the film would achieve. On request, we clean the glass surfaces right before installation.",
+      "body": "We offer you a free consultation directly on site. We analyse the existing glazing, advise you on choosing the right film and calculate the cost of the solution you want. We use only high-quality original films from LLumar and Armolan, with a manufacturer's warranty. The professional installation is covered by a warranty as well, and on request it includes cleaning the glass surfaces before the film is applied.",
       "specs": {
         "termin": { "label": "APPOINTMENT", "value": "within 48 hours" },
         "dauer": { "label": "DURATION", "value": "about 30 minutes on site" },
@@ -132,7 +132,7 @@
     "hero": {
       "eyebrow": "OFFICIAL PARTNER · LLUMAR & ARMOLAN",
       "titleLine1": "Architectural films for solar control, UV protection",
-      "titleLine2": "and more security on glass surfaces.",
+      "titleLine2": "and more security",
       "subtitle": "Intense sunlight, distracting reflections or the effects of broken glass: with professionally installed architectural films we reduce fading of goods, lower the heat gain in rooms and create a more comfortable indoor climate across Austria.",
       "imageAlt": "Façade with solar control film, seen from outside"
     }
@@ -140,8 +140,8 @@
 
   "about": {
     "title": "Architectural films for solar control, UV protection and more security.",
-    "body": "City-Ton Austria plans and installs professional window films on glass surfaces, in Austria and Ukraine. Our expert team checks the glass build-up, installation conditions and any existing coatings, selects the right film system and carries out the installation on site.",
-    "metaDescription": "City-Ton Austria plans and installs professional window films on glass surfaces, in Austria and Ukraine. Consultation and installation, one team.",
+    "body": "City-Ton Austria plans and installs professional window films on glass surfaces. Our expert team checks the glass build-up, installation conditions and any existing coatings, selects the right film system and carries out the installation on site. The result: lower heat gain, over 99 % UV protection, reliable splinter retention and less glare.",
+    "metaDescription": "City-Ton Austria plans and installs professional window films on glass surfaces. Consultation, installation and support from one team.",
     "imageAlt": "Owner and main contact at City-Ton Austria",
     "quote": "“We don't sell rolls of film — we deliver a finished result: consultation, material, installation and support in one package.”",
     "quoteMeta": "Our principle · City-Ton Austria",
@@ -177,10 +177,10 @@
     },
     "why": {
       "title": "Why customers work with us.",
-      "item1": { "title": "Thorough analysis before installation", "body": "Glass build-up, coating, installation conditions and glass type are all considered before mounting." },
-      "item2": { "title": "Transparent calculation", "body": "An individual calculation, matched to solar control, privacy, UV protection, heat protection, heat-loss protection and security requirements." },
-      "item3": { "title": "Professional installation", "body": "Installation according to manufacturer recommendations by trained specialists, usually without interrupting ongoing operations." },
-      "item4": { "title": "Support after installation too", "body": "Personal support with a fixed contact person for your questions." }
+      "item1": { "title": "Thorough analysis before installation", "body": "glass build-up, coating, installation conditions and glass type all taken into account before bonding" },
+      "item2": { "title": "Transparent calculation", "body": "an individual and transparent calculation of a suitable film solution for your building – matched to solar control, privacy, UV protection, heat protection, heat-loss protection and security requirements" },
+      "item3": { "title": "Professional installation", "body": "professional installation in line with the manufacturers' recommendations, by trained specialists" },
+      "item4": { "title": "Support after installation too", "body": "personal support even after the heat-protection film is installed, with a fixed contact person for your questions" }
     },
     "rating": {
       "scale": "5",
@@ -192,7 +192,7 @@
     "finalCta": {
       "title": "Contact and free consultation",
       "subtitle": "We advise you free of charge and without obligation, on site.",
-      "body": "Whether a solar control film, a security film or a UV-protection film suits your needs best: a specialist checks the conditions on site and then prepares a quote.",
+      "body": "If you would like to know whether a solar control film, a security film or a UV-protection film better suits your requirements, we will advise you free of charge and without obligation. A specialist checks the conditions on site and then prepares a quote.",
       "cta": "Request a consultation →"
     }
   },
@@ -237,7 +237,7 @@
     "reflexion": { "kicker": "Reflection", "title": "Heat is rejected before it enters the room", "body": "About half of sunlight is infrared radiation. The metallised layer reflects this portion back outside at the glass surface — up to 79 % of total solar energy never reaches the room. The air conditioning runs less, and on south-facing façades we typically measure 3–7.6 °C less." },
     "absorption": { "kicker": "Absorption", "title": "The same effect, without the mirror look", "body": "Nano-ceramic particles absorb solar energy instead of reflecting it. The pane stays close to neutral from outside — no mirror image on the façade — while heat gain drops noticeably. The choice when daylight and a clear view outside need to be preserved." },
     "uv": { "kicker": "UV protection", "title": "Over 99 % of UV radiation stops at the film", "body": "The UV barrier layer is highly transparent — clear as glass. Visible light passes through almost unhindered while UV is held back. Floors, furniture, textiles and displayed goods keep their colour far longer, without the room getting darker." },
-    "einbruchschutz": { "kicker": "Security", "title": "The pane breaks — but it stays in the frame", "body": "The 100–300 micron security film is fully bonded with a pressure-sensitive adhesive. An impact isn't absorbed at one point but spread across the entire film surface. The glass splinters stick to the film instead of flying uncontrolled into the room, and the pane initially stays together as one piece. This makes a full break-through harder and can noticeably delay entry." },
+    "einbruchschutz": { "kicker": "Security", "title": "The pane breaks — but it stays in the frame", "body": "The glass splinters stay stuck to the film and are prevented from flying uncontrolled into the room. At the same time, the security film spreads the force of the impact across a larger area of the glazing. After a break, the pane therefore largely stays together as one surface at first. This additional protection makes a full break-through harder and can noticeably delay entry through the glazing. Depending on the film system and glass build-up, tested and certified security solutions offering increased protection against forced entry are also available." },
     "sichtschutz": { "kicker": "Privacy", "title": "Light passes through, the view doesn't", "body": "The matte surface scatters passing light in every direction. The room stays bright while the image behind it dissolves — a frosted-glass look, without replacing the pane. For partitions, meeting rooms, practices and restrooms." },
     "pageTitle": "What a film physically does on glass",
     "pageLead": "Scroll down — the diagram on the left stays in place and changes with each section.",
@@ -347,9 +347,9 @@
   },
 
   "produkte": {
-    "title": "Four series, one goal per building",
+    "title": "Five series, one goal per building",
     "lead": "Which film fits depends on the glass and the goal — not the catalogue.",
-    "metaDescription": "Four film series at a glance and the full catalogue — Armolan and LLumar, with specifications and mounting notes.",
+    "metaDescription": "Five film series at a glance and the full catalogue — Armolan and LLumar, with specifications and mounting notes.",
     "catalogTitle": "All films",
     "catalogLead": "Filter by brand and mounting side. Every card leads to a detail page with all specifications.",
     "ctaTitle": "Not sure which film fits?",

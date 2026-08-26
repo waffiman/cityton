@@ -33,15 +33,16 @@
     "blurb": "Architekturfolien für Sonnenschutz, UV-Schutz und mehr Sicherheit an Glasflächen. Österreich & Ukraine."
   },
 
+
   "home": {
     "benefits": {
       "titleLine1": "Vier Mikrometer Folie.",
       "titleAccent": "Ein anderes Gebäude.",
       "items": {
-        "sun": { "title": "Sonnenschutz", "body": "Ohne Folie liegt die Energiedurchlässigkeit bei 83 %. Mit einer Sonnenschutzfolie wie LLumar R20 SR CDF sinkt sie auf 11 %, während 57 % reflektiert und 32 % absorbiert werden." },
+        "sun": { "title": "Sonnenschutz", "body": "Das Funktionsprinzip einer Fensterfolie mit Sonnenschutz besteht darin, einen erheblichen Teil der auftreffenden Sonnenenergie an der Glasfläche zu reflektieren oder zu absorbieren. Ohne eine solche Folie beträgt die Energiedurchlässigkeit 83 %, die Reflexion 8 % und die Absorption 9 %. Wenn Sie hingegen eine Sonnenschutzfolie anbringen, beispielsweise LLumar R20 SR CDF, werden nur noch 11 % der Sonnenenergie durchgelassen, während 57 % reflektiert und 32 % absorbiert werden." },
         "uv": { "title": "UV-Schutz", "body": "Über 99 % der UV-Strahlung bleiben draußen. Böden, Möbel und Ware verlieren ihre Farbe nicht." },
         "energy": { "title": "Energieeffizienz", "body": "Im Sommer weniger Kühllast, im Winter weniger Wärmeverlust durch das Glas." },
-        "safety": { "title": "Sicherheit", "body": "Die Sicherheitsfolie hält Glassplitter bei Glasbruch zusammen und verteilt die Aufprallkraft über die Fläche. In verstärkter Ausführung erschwert sie zusätzlich das gewaltsame Eindringen." }
+        "safety": { "title": "Sicherheit", "body": "Eine Sicherheitsfolie hält Glassplitter bei Glasbruch zusammen und kann in verstärkter Ausführung zusätzlichen Schutz vor gewaltsamem Eindringen bieten, indem sie das schnelle Durchdringen der Verglasung erschwert." }
       }
     },
     "compare": {
@@ -91,7 +92,7 @@
       "videoTitle": "Montage vor Ort — Folierung im Zeitraffer"
     },
     "series": {
-      "title": "Vier Serien, ein Ziel je Objekt",
+      "title": "Fünf Serien, ein Ziel je Objekt",
       "lead": "Welche Folie passt, entscheidet die Glasart und das Ziel — nicht der Katalog. Wir wählen die Serie im Aufmaß gemeinsam aus."
     },
     "reviews": {
@@ -121,7 +122,7 @@
     "consultation": {
       "titleLine1": "Erst messen.",
       "titleLine2": "Dann entscheiden.",
-      "body": "Wir kommen mit Messgerät und Musterstreifen zu Ihnen, halten die Werte an Ihrer eigenen Scheibe fest und rechnen aus, was die Folie bringt. Auf Wunsch reinigen wir die Glasflächen direkt vor der Montage.",
+      "body": "Wir bieten Ihnen eine kostenlose Beratung direkt vor Ort. Dabei analysieren wir die vorhandene Verglasung, beraten Sie bei der Auswahl der passenden Folie und berechnen die Kosten für die gewünschte Lösung. Zum Einsatz kommen ausschließlich hochwertige Originalfolien von LLumar und Armolan mit Herstellergarantie. Die fachgerechte Montage ist ebenfalls durch eine Garantie abgesichert und umfasst auf Wunsch auch die Reinigung der Glasflächen vor der Folienmontage.",
       "specs": {
         "termin": { "label": "TERMIN", "value": "innerhalb von 48 Stunden" },
         "dauer": { "label": "DAUER", "value": "rund 30 Minuten vor Ort" },
@@ -132,7 +133,7 @@
     "hero": {
       "eyebrow": "OFFIZIELLER PARTNER · LLUMAR & ARMOLAN",
       "titleLine1": "Architekturfolien für Sonnenschutz, UV-Schutz",
-      "titleLine2": "und mehr Sicherheit an Glasflächen.",
+      "titleLine2": "und mehr Sicherheit",
       "subtitle": "Intensive Sonneneinstrahlung, störende Reflexionen oder die Folgen eines Glasbruchs: Mit professionell montierten Architekturfolien reduzieren wir das Ausbleichen von Waren, verringern die Aufheizung von Räumen und schaffen ein angenehmeres Raumklima in ganz Österreich.",
       "imageAlt": "Fassade mit Sonnenschutzfolie von außen"
     }
@@ -140,8 +141,8 @@
 
   "about": {
     "title": "Architekturfolien für Sonnenschutz, UV-Schutz und mehr Sicherheit.",
-    "body": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen, in Österreich und der Ukraine. Unser Expertenteam prüft Glasaufbau, Montagebedingungen und vorhandene Beschichtungen, wählt das passende Foliensystem aus und übernimmt die Montage vor Ort.",
-    "metaDescription": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen, in Österreich und der Ukraine. Beratung, Montage aus einer Hand.",
+    "body": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen. Unser Expertenteam prüft Glasaufbau, Montagebedingungen und vorhandene Beschichtungen, wählt das passende Foliensystem aus und übernimmt die Montage vor Ort. So profitieren Sie von geringerem Wärmeeintrag, über 99 % UV-Schutz, zuverlässiger Splitterbindung und weniger Blendungen.",
+    "metaDescription": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen. Beratung, Montage und Betreuung aus einer Hand.",
     "imageAlt": "Inhaber und Ansprechpartner von City-Ton Austria",
     "quote": "„Wir verkaufen keine Folienrollen — wir liefern ein fertiges Ergebnis: Beratung, Material, Montage und Betreuung in einem Paket.“",
     "quoteMeta": "Grundsatz · City-Ton Austria",
@@ -177,10 +178,10 @@
     },
     "why": {
       "title": "Warum Kunden mit uns arbeiten.",
-      "item1": { "title": "Fachgerechte Analyse vor der Verklebung", "body": "Berücksichtigung von Glasaufbau, Beschichtung, Montagebedingungen und Glasart vor der Montage." },
-      "item2": { "title": "Transparente Kalkulation", "body": "Individuelle Kalkulation, abgestimmt auf Sonnenschutz, Sichtschutz, UV-Schutz, Hitzeschutz, Wärmeverlustschutz und Sicherheitsanforderungen." },
-      "item3": { "title": "Fachgerechte Montage", "body": "Montage gemäß den Empfehlungen der Hersteller durch geschulte Spezialisten, meist ohne Unterbrechung des laufenden Betriebs." },
-      "item4": { "title": "Betreuung auch nach der Montage", "body": "Persönliche Betreuung mit einem festen Ansprechpartner für Ihre Fragen." }
+      "item1": { "title": "Fachgerechte Analyse vor der Verklebung", "body": "Berücksichtigung von Glasaufbau, Beschichtung, Montagebedingungen und Glasart vor der Verklebung" },
+      "item2": { "title": "Transparente Kalkulation", "body": "individuelle und transparente Kalkulation einer passenden Folienlösung für Ihr Objekt – abgestimmt auf Sonnenschutz, Sichtschutz, UV-Schutz, Hitzeschutz, Wärmeverlustschutz und Sicherheitsanforderungen" },
+      "item3": { "title": "Fachgerechte Montage", "body": "fachgerechte Montage gemäß den Empfehlungen der Hersteller durch geschulte Spezialisten" },
+      "item4": { "title": "Betreuung auch nach der Montage", "body": "persönliche Betreuung auch nach der Montage der Hitzeschutzfolie mit einem festen Ansprechpartner für Ihre Fragen" }
     },
     "rating": {
       "scale": "5",
@@ -192,7 +193,7 @@
     "finalCta": {
       "title": "Kontakt und kostenlose Beratung",
       "subtitle": "Wir beraten Sie kostenlos und unverbindlich, direkt vor Ort.",
-      "body": "Ob Sonnenschutzfolie, Sicherheitsfolie oder UV-Schutzfolie besser zu Ihren Anforderungen passt: Ein Spezialist prüft die Gegebenheiten vor Ort und erstellt anschließend ein Angebot.",
+      "body": "Wenn Sie wissen möchten, ob eine Sonnenschutzfolie, eine Sicherheitsfolie oder eine UV-Schutzfolie besser zu Ihren Anforderungen passt, beraten wir Sie kostenlos und unverbindlich. Ein Spezialist prüft die Gegebenheiten vor Ort und erstellt anschließend ein Angebot.",
       "cta": "Beratung anfragen →"
     }
   },
@@ -237,7 +238,7 @@
     "reflexion": { "kicker": "Reflexion", "title": "Die Hitze wird abgewiesen, bevor sie im Raum ist", "body": "Sonnenlicht ist zu etwa der Hälfte Infrarotstrahlung. Die metallisierte Schicht reflektiert diesen Anteil an der Glasoberfläche zurück nach außen — bis zu 79 % der Gesamtenergie erreichen den Raum nie. Die Klimaanlage läuft kürzer, an Südfassaden messen wir typisch 3–7,6 °C weniger." },
     "absorption": { "kicker": "Absorption", "title": "Dieselbe Wirkung, ohne Spiegeleffekt", "body": "Nano-keramische Partikel nehmen die Sonnenenergie auf, statt sie zurückzuwerfen. Die Scheibe bleibt von außen nahezu neutral — kein Spiegelbild an der Fassade —, während der Wärmeeintrag deutlich sinkt. Die Wahl, wenn Tageslicht und freier Blick nach außen erhalten bleiben sollen." },
     "uv": { "kicker": "UV-Schutz", "title": "Über 99 % der UV-Strahlung endet an der Folie", "body": "Die UV-Sperrschicht ist hochtransparent — klar wie Glas. Sichtbares Licht passiert nahezu ungehindert, der UV-Anteil wird zurückgehalten. Böden, Möbel, Textilien und ausgestellte Ware behalten ihre Farbe deutlich länger, ohne dass der Raum dunkler wird." },
-    "einbruchschutz": { "kicker": "Einbruchschutz", "title": "Die Scheibe bricht — aber sie bleibt im Rahmen", "body": "Die 100–300 Mikron starke Sicherheitsfolie ist mit einem druckempfindlichen Kleber vollflächig verbunden. Ein Schlag wird nicht punktuell aufgenommen, sondern über die gesamte Folienfläche verteilt. Die Glassplitter bleiben an der Folie haften, statt unkontrolliert in den Innenraum zu gelangen, und die Scheibe bleibt zunächst als zusammenhängende Fläche erhalten. Das erschwert einen vollständigen Durchbruch und kann das Eindringen deutlich verzögern." },
+    "einbruchschutz": { "kicker": "Einbruchschutz", "title": "Die Scheibe bricht — aber sie bleibt im Rahmen", "body": "Die Glassplitter bleiben dabei an der Folie haften und werden daran gehindert, unkontrolliert in den Innenraum zu gelangen. Gleichzeitig verteilt die Sicherheitsfolie die beim Aufprall entstehende Kraft über eine größere Fläche der Verglasung. Nach einem Glasbruch bleibt die Scheibe dadurch zunächst weitgehend als zusammenhängende Fläche erhalten. Diese zusätzliche Schutzwirkung erschwert einen vollständigen Durchbruch und kann das Eindringen durch die Verglasung deutlich verzögern. Je nach eingesetztem Foliensystem und Glasaufbau stehen auch geprüfte und zertifizierte Sicherheitslösungen zur Verfügung, die einen erhöhten Schutz vor gewaltsamem Eindringen bieten." },
     "sichtschutz": { "kicker": "Sichtschutz", "title": "Das Licht passiert, der Blick nicht", "body": "Die mattierte Oberfläche streut das durchtretende Licht in alle Richtungen. Der Raum bleibt hell, das Bild dahinter löst sich auf — Milchglas-Optik, ohne die Scheibe zu tauschen. Für Trennwände, Besprechungsräume, Ordinationen und Sanitärbereiche." },
     "pageTitle": "Was eine Folie am Glas physikalisch tut",
     "pageLead": "Scrollen Sie — die Zeichnung links bleibt stehen und wechselt mit dem Abschnitt.",
@@ -347,9 +348,9 @@
   },
 
   "produkte": {
-    "title": "Vier Serien, ein Ziel je Objekt",
+    "title": "Fünf Serien, ein Ziel je Objekt",
     "lead": "Welche Folie passt, entscheidet die Glasart und das Ziel — nicht der Katalog.",
-    "metaDescription": "Vier Folienserien im Überblick und der vollständige Katalog — Armolan und LLumar, mit Kennwerten und Montagehinweis.",
+    "metaDescription": "Fünf Folienserien im Überblick und der vollständige Katalog — Armolan und LLumar, mit Kennwerten und Montagehinweis.",
     "catalogTitle": "Alle Folien",
     "catalogLead": "Nach Marke und Montageseite filtern. Jede Karte führt zur Detailseite mit allen Kennwerten.",
     "ctaTitle": "Unsicher, welche Folie passt?",

@@ -57,7 +57,7 @@ export default function CookieConsent() {
           <div className={styles.actions}>
             <button
               type="button"
-              className="btn btn-secondary"
+              className={`btn ${styles.declineBtn}`}
               onClick={() => decide("denied")}
             >
               {t("decline")}

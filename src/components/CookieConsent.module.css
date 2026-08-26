@@ -34,6 +34,20 @@
   flex: 0 0 auto;
 }
 
+/* .btn-secondary assumes a light ground (dark text, faint border) — wrong
+   here since the banner itself is dark. Ghost-outline-on-dark instead,
+   matching the lightbox nav buttons in gallery.module.css. */
+.declineBtn {
+  color: var(--color-on-dark);
+  border-color: var(--color-on-dark-rule);
+}
+
+.declineBtn:hover {
+  color: var(--color-on-dark-strong);
+  border-color: var(--color-on-dark);
+  background: transparent;
+}
+
 @media (max-width: 560px) {
   .banner {
     flex-direction: column;

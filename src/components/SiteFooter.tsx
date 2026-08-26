@@ -18,7 +18,7 @@ export default async function SiteFooter() {
 
         {footerColumns.map((col) => (
           <div key={col.titleKey}>
-            <h6 className={styles.colTitle}>{t(`footer.${col.titleKey}`)}</h6>
+            <h2 className={styles.colTitle}>{t(`footer.${col.titleKey}`)}</h2>
             <div className={styles.links}>
               {col.links.map((l) => (
                 <Link key={l.href} href={l.href} className={styles.link}>
@@ -30,7 +30,7 @@ export default async function SiteFooter() {
         ))}
 
         <div>
-          <h6 className={styles.colTitle}>{t("footer.seriesTitle")}</h6>
+          <h2 className={styles.colTitle}>{t("footer.seriesTitle")}</h2>
           <div className={styles.links}>
             {series.map((s) => (
               <Link key={s.slug} href={`/produkte/${s.slug}`} className={styles.link}>
@@ -41,7 +41,7 @@ export default async function SiteFooter() {
         </div>
 
         <div>
-          <h6 className={styles.colTitle}>{t("footer.contactTitle")}</h6>
+          <h2 className={styles.colTitle}>{t("footer.contactTitle")}</h2>
           <div className={styles.links}>
             <a href={`tel:${site.contact.phoneTel}`} className={styles.link}>
               {site.contact.phone}

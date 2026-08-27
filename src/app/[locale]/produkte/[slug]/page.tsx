@@ -7,9 +7,11 @@ import FilmCard from "@/components/FilmCard";
 import FilmStructure from "@/components/FilmStructure";
 import InfoHint from "@/components/InfoHint";
 import SeriesGlyph from "@/components/diagrams/SeriesGlyph";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 import { Link } from "@/i18n/navigation";
 import { seriesCertificates } from "@/content/certificates";
 import { structureForSeries } from "@/content/film-structure";
+import { seriesVideos } from "@/content/series-videos";
 import { shouldBypassOptimizer } from "@/lib/films";
 import { getSeriesBySlug } from "@/lib/products";
 import { pageAlternates } from "@/lib/seo";
@@ -52,6 +54,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
     d?.stats ?? item.metrics.map((m) => ({ label: m.label, value: m.value, note: "" }));
   const structure = structureForSeries(item.slug, tStructure, d?.structure);
   const certificates = seriesCertificates[item.slug];
+  const videos = seriesVideos[item.slug];
 
   return (
     <div className={styles.page}>
@@ -111,9 +114,29 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
         </section>
       ) : null}
 
+      {videos?.length ? (
+        <section className="container section" aria-labelledby="videodemo">
+          <h2 id="videodemo" className={styles.sectionTitle}>
+            {t("videoSectionTitle")}
+          </h2>
+          <ul className={styles.videoList}>
+            {videos.map((video) => (
+              <li key={video.youtubeId}>
+                <YouTubeEmbed
+                  id={video.youtubeId}
+                  title={video.title}
+                  poster={video.poster}
+                  credit={video.credit}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
       {certificates?.length ? (
         <section className="container section" aria-labelledby="pruefberichte">
-          <h2 id="pruefberichte" className={styles.certsTitle}>
+          <h2 id="pruefberichte" className={styles.sectionTitle}>
             {t("certsSectionTitle")}
           </h2>
           <ul className={styles.certsGrid}>

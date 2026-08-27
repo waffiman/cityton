@@ -608,6 +608,10 @@
     "ariaLabel": "Partner-Logos",
     "openInNewTab": "— Website in neuem Tab öffnen"
   },
+  "youtubeEmbed": {
+    "playLabel": "Video abspielen",
+    "privacyNote": "Beim Start wird das Video von YouTube geladen; dabei werden Daten an Google übertragen."
+  },
   "common": {
     "breadcrumbAriaLabel": "Brotkrumen",
     "breadcrumbHome": "HOME",
@@ -625,6 +629,7 @@
   "produkteSeriePage": {
     "funktionsprinzipCta": "Funktionsprinzip ansehen",
     "certsSectionTitle": "Prüfberichte",
+    "videoSectionTitle": "Videodemonstration",
     "pendingText": "Die ausführliche Produktseite für {name} folgt. Kennwerte, Varianten und Referenzobjekte kommen aus dem Herstellerdatenblatt — bis dahin beraten wir gerne direkt."
   },
   "produkteFolieDetail": {

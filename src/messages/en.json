@@ -608,6 +608,10 @@
     "ariaLabel": "Partner logos",
     "openInNewTab": "— opens website in a new tab"
   },
+  "youtubeEmbed": {
+    "playLabel": "Play video",
+    "privacyNote": "Starting the video loads it from YouTube, which transfers data to Google."
+  },
   "common": {
     "breadcrumbAriaLabel": "Breadcrumb",
     "breadcrumbHome": "HOME",
@@ -625,6 +629,7 @@
   "produkteSeriePage": {
     "funktionsprinzipCta": "See how it works",
     "certsSectionTitle": "Test reports",
+    "videoSectionTitle": "Video demonstration",
     "pendingText": "The full product page for {name} is coming. Specifications, variants and reference objects come from the manufacturer datasheet — until then we're happy to advise you directly."
   },
   "produkteFolieDetail": {

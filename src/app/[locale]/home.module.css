@@ -192,7 +192,7 @@
 /* ── Vor Ort / Montage ───────────────────────────────────────────────────── */
 .praxis {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1.45fr;
   min-height: 520px;
 }
 .praxisMedia {
@@ -215,11 +215,12 @@
   padding: 72px max(var(--page-gutter), calc((100vw - var(--page-max)) / 2 + var(--page-gutter))) 72px 56px;
 }
 .praxisTitle {
-  font-size: clamp(32px, 3.2vw, 46px);
+  font-size: clamp(28px, 2.6vw, 38px);
   margin: 0 0 16px;
   color: var(--color-on-dark-strong);
-  line-height: 1.04;
-  max-width: 16ch;
+  line-height: 1.12;
+  max-width: 30ch;
+  text-wrap: balance;
 }
 .praxisBody {
   margin: 0 0 30px;
@@ -370,7 +371,7 @@
 }
 .reviewsGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
   align-items: stretch;
 }

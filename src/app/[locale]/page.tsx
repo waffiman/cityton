@@ -14,8 +14,7 @@ import MutedLoopVideo from "@/components/MutedLoopVideo";
 import PartnerCarousel from "@/components/PartnerCarousel";
 import ProcessRibbon from "@/components/ProcessRibbon";
 import SeriesCard from "@/components/SeriesCard";
-import Stars from "@/components/Stars";
-import { benefits, consultation, praxisMontage, processSteps, reviews } from "@/content/home";
+import { benefits, consultation, praxisMontage, processSteps } from "@/content/home";
 import { site } from "@/content/site";
 import { pageAlternates } from "@/lib/seo";
 import { getVisibleSeries } from "@/lib/products";
@@ -225,7 +224,6 @@ export default async function HomePage() {
         <div className="container">
           <div className={styles.seriesHead}>
             <h2 className="section-title">{t("series.title")}</h2>
-            <p className={styles.seriesIntro}>{t("series.lead")}</p>
           </div>
           <div className={styles.seriesList}>
             {series.map((item) => (
@@ -274,24 +272,9 @@ export default async function HomePage() {
             {t("reviews.titleLine1")} <span className="accent-word">{t("reviews.titleAccent")}</span>
           </h2>
           <div className={styles.reviewsGrid}>
-            <div className={`blueprint ${styles.ratingPlate}`}>
-              <Corners />
-              <div className={styles.ratingValue}>{reviews.rating}</div>
-              <div className={styles.ratingStars}>
-                <Stars size={18} />
-              </div>
-              <div className={styles.ratingMeta}>
-                {t("reviews.metaPrefix")} {reviews.count} {t("reviews.metaSuffix")}
-              </div>
-              {/* TODO(client): link to the real Google Business profile. */}
-              <a href="#" className={styles.ratingLink}>
-                {t("reviews.allLink")}
-              </a>
-            </div>
             {quotes.map((q) => (
               <figure key={q.meta + q.body} className={`card blueprint ${styles.quoteCard}`}>
                 <Corners />
-                <Stars />
                 <blockquote className={`card-body ${styles.quoteBody}`}>{q.body}</blockquote>
                 <figcaption className="card-meta" style={{ fontSize: 12 }}>
                   {q.meta}

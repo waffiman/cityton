@@ -139,15 +139,11 @@
       "videoTitle": "Installation on site — time-lapse film application"
     },
     "series": {
-      "title": "Five series, one goal per building",
-      "lead": "Which film fits depends on the glass and the goal — not the catalogue. We settle on the series together during the measurement visit."
+      "title": "Five series, one goal per building"
     },
     "reviews": {
       "titleLine1": "Become our next",
       "titleAccent": "satisfied customer.",
-      "allLink": "See all reviews →",
-      "metaPrefix": "from",
-      "metaSuffix": "Google reviews",
       "quotes": [
         {
           "body": "Very good advice and a quick appointment. The film was applied cleanly and the result looks really high-quality.",
@@ -214,20 +210,18 @@
       "eyebrow": "OFFICIAL PARTNER · LLUMAR & ARMOLAN",
       "titleLine1": "Architectural films for solar control, UV protection",
       "titleLine2": "and more security",
-      "subtitle": "Intense sunlight, distracting reflections or the effects of broken glass: with professionally installed architectural films we reduce fading of goods, lower the heat gain in rooms and create a more comfortable indoor climate across Austria.",
-      "imageAlt": "Façade with solar control film, seen from outside"
+      "imageAlt": "Façade with solar control film, seen from outside",
+      "subtitle": "Technically matched to your glazing. Professionally installed."
     }
   },
   "about": {
     "title": "Architectural films for solar control, UV protection and more security.",
-    "body": "City-Ton Austria plans and installs professional window films on glass surfaces. Our expert team checks the glass build-up, installation conditions and any existing coatings, selects the right film system and carries out the installation on site. The result: lower heat gain, over 99 % UV protection, reliable splinter retention and less glare.",
     "metaDescription": "City-Ton Austria plans and installs professional window films on glass surfaces. Consultation, installation and support from one team.",
     "imageAlt": "Owner and main contact at City-Ton Austria",
     "quote": "“We don't sell rolls of film — we deliver a finished result: consultation, material, installation and support in one package.”",
     "quoteMeta": "Our principle · City-Ton Austria",
     "team": {
       "title": "The people behind the film.",
-      "body": "From the first consultation and measurement to installation and ongoing support — the same people stand behind the result at City-Ton.",
       "mainAlt": "Owner at work on glass",
       "mainLabel": "Work on glass",
       "side1Alt": "Material being unpacked and prepared on site",
@@ -297,11 +291,7 @@
       }
     },
     "rating": {
-      "scale": "5",
-      "metaPrefix": "from",
-      "metaSuffix": "Google reviews",
-      "quote": "Professional and reliable, from consultation through to installation.",
-      "cta": "See all reviews →"
+      "quote": "Professional and reliable, from consultation through to installation."
     },
     "finalCta": {
       "title": "Contact and free consultation",
@@ -419,7 +409,10 @@
     "uv": {
       "kicker": "UV protection",
       "title": "Over 99 % of UV radiation stops at the film",
-      "body": "The UV barrier layer is highly transparent — clear as glass. Visible light passes through almost unhindered while UV is held back. Floors, furniture, textiles and displayed goods keep their colour far longer, without the room getting darker."
+      "body": [
+        "The UV barrier layer is highly transparent — clear as glass. Visible light passes through almost unhindered while UV is held back.",
+        "Floors, furniture, textiles and displayed goods keep their colour far longer, without the room getting darker."
+      ]
     },
     "einbruchschutz": {
       "kicker": "Security",
@@ -624,7 +617,8 @@
     "close": "Close",
     "prev": "Previous",
     "next": "Next",
-    "enlargeImage": "Enlarge image"
+    "enlargeImage": "Enlarge image",
+    "ctaGalleryCta": "Request a first consultation"
   },
   "produkteSeriePage": {
     "funktionsprinzipCta": "See how it works",

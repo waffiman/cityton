@@ -3,8 +3,6 @@
  * under `about.*`; item order/keys here must match the message keys.
  */
 
-import { reviews } from "@/content/home";
-
 export const about = {
   image: { src: "/media/owner.jpg" },
 
@@ -45,7 +43,6 @@ export const about = {
 
   why: { keys: ["item1", "item2", "item3", "item4"] as const },
 
-  rating: { value: reviews.rating, count: reviews.count, cta: { href: "/#bewertungen" } },
 
   finalCta: { cta: { href: "/kontakt" } },
 };

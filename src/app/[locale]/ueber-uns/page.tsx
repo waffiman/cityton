@@ -2,7 +2,6 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
-import Stars from "@/components/Stars";
 import { Link } from "@/i18n/navigation";
 import { about } from "@/content/about";
 import { pageAlternates } from "@/lib/seo";
@@ -43,7 +42,6 @@ export default async function AboutPage() {
         <div className={styles.intro}>
           <div>
             <h1 className={styles.title}>{t("title")}</h1>
-            <p className="lead">{t("body")}</p>
           </div>
           <figure className={`blueprint ${styles.portrait}`}>
             <div className={styles.portraitClip}>
@@ -75,7 +73,6 @@ export default async function AboutPage() {
         <div className={styles.teamLayout}>
           <div className={styles.teamCopy}>
             <h2 className={styles.sectionTitle}>{t("team.title")}</h2>
-            <p className={styles.sectionBody}>{t("team.body")}</p>
           </div>
           <div className={styles.teamMosaic}>
             {teamImages.map((img) => (
@@ -206,22 +203,7 @@ export default async function AboutPage() {
       <section className="container section">
         <div className={`blueprint ${styles.ratingBlock}`}>
           <Corners />
-          <div>
-            <div className={styles.ratingRow}>
-              <div className={styles.ratingValue}>
-                {about.rating.value}
-                <span className={styles.ratingScale}> / {t("rating.scale")}</span>
-              </div>
-              <Stars size={18} />
-            </div>
-            <div className={styles.ratingMeta}>
-              {t("rating.metaPrefix")} {about.rating.count} {t("rating.metaSuffix")}
-            </div>
-          </div>
           <blockquote className={styles.ratingQuote}>„{t("rating.quote")}“</blockquote>
-          <Link href={about.rating.cta.href} className={styles.ratingLink}>
-            {t("rating.cta")}
-          </Link>
         </div>
       </section>
 

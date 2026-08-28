@@ -26,7 +26,6 @@ export default async function HeroSplit() {
         <h1 className={styles.title}>
           {t("titleLine1")} {t("titleLine2")}
         </h1>
-        <p className={styles.body}>{t("subtitle")}</p>
         <div className={styles.actions}>
           <Link href="/kontakt" className="btn btn-primary btn-lg blueprint">
             <Corners />

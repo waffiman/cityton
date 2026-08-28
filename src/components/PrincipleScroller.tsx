@@ -67,7 +67,15 @@ export default function PrincipleScroller({ principles }: { principles: Principl
           >
             <h6 className="eyebrow">{p.kicker}</h6>
             <h2 className={styles.stepTitle}>{p.title}</h2>
-            <p className={styles.stepBody}>{p.body}</p>
+            {Array.isArray(p.body) ? (
+              <ul className={styles.stepList}>
+                {p.body.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            ) : (
+              <p className={styles.stepBody}>{p.body}</p>
+            )}
           </div>
         ))}
       </div>

@@ -960,9 +960,8 @@ export const series: Series[] = [
     glyph: "reflexion",
     glyphField: "dark",
     summary:
-      `Metallisierte Aluminiumschicht — wirkt wie ein Spiegel gegen Sonnenwärme. Die ` +
-      `wirtschaftlichste Wahl, wo Hitze das Hauptproblem ist. ${reflektierend.length} ` +
-      `Farbtöne von ${pct(rVlt.min)} bis ${pct(rVlt.max)} Lichtdurchlass.`,
+      "Reflektierende Schichten reduzieren Wärmeeintrag und Blendungen. " +
+      "Besonders geeignet für Büros, Glasfassaden, Gewerbeobjekte.",
     useCases: ["Südfassade", "Schaufenster", "Halle", "Wintergarten"],
     metrics: [
       { label: "TSER", value: `bis ${pct(rTser.max)}`, bar: rTser.max },
@@ -1058,10 +1057,9 @@ export const series: Series[] = [
     glyph: "absorption",
     glyphField: "paper",
     summary:
-      `Gesputterte Metalloxidschicht statt Aluminium-Spiegel: blockiert gezielt Infrarot- ` +
-      `und UV-Anteile, lässt sichtbares Licht weitgehend durch — heller, neutraler und ohne ` +
-      `Spiegeleffekt. ${spektralselektiv.length} Varianten von ${pct(xVlt.min)} bis ` +
-      `${pct(xVlt.max)} Lichtdurchlass.`,
+      "Reduzieren die Infrarotstrahlung über einen breiten Wellenlängenbereich und " +
+      "lassen gleichzeitig viel sichtbares Licht durch. Besonders geeignet für " +
+      "Wohn- und Einzelhandelsobjekte mit dezenter Glasoptik.",
     useCases: ["Büro", "Architektur", "Wohnraum", "Fassade ohne Spiegeleffekt"],
     metrics: [
       { label: "TSER", value: `bis ${pct(xTser.max)}`, bar: xTser.max },
@@ -1154,9 +1152,9 @@ export const series: Series[] = [
     glyph: "kraft",
     glyphField: "dark",
     summary:
-      `Mehrschichtige, transparente Sicherheitsfolie von ${safetyMicron.min} bis ` +
-      `${safetyMicron.max} Mikron: das Glas splittert, bleibt aber im Rahmen — die ` +
-      `Schlagkraft verteilt sich über die Fläche. Geprüft nach DIN EN 356 und DIN EN 12600.`,
+      "Halten Glassplitter zusammen und erschweren schnelles Eindringen. " +
+      "Besonders geeignet für Banken, Schulen, Kindergärten, öffentliche " +
+      "Einrichtungen und Terrassenverglasungen.",
     useCases: ["Geschäft", "Schule", "Erdgeschoss", "Bank"],
     metrics: [
       { label: "Stärke", value: `${safetyMicron.min}–${safetyMicron.max} µ`, bar: 85 },
@@ -1236,8 +1234,8 @@ export const series: Series[] = [
     glyph: "uv",
     glyphField: "paper",
     summary:
-      "Hochtransparente UV-Sperrschicht — klar wie Glas. Für empfindliche Oberflächen, " +
-      "die ihre Farbe behalten müssen.",
+      "Reduzieren UV-Strahlung bei weitgehend natürlicher Glasoptik. " +
+      "Besonders geeignet für Museen, Schaufenster, Galerien.",
     useCases: ["Museum", "Showroom", "Wohnraum"],
     metrics: [
       { label: "TSER", value: pct(uvClear.single.tser), bar: uvClear.single.tser },
@@ -1322,8 +1320,8 @@ export const series: Series[] = [
     glyph: "dekor",
     glyphField: "paper",
     summary:
-      "Mattierte und blickdichte Folien für Trennwände, Besprechungsräume und " +
-      "Sanitärbereiche — Milchglas-Optik ohne Glastausch, in einem Arbeitstag montiert.",
+      "Mehr Privatsphäre und weniger störende Reflexionen auf Bildschirmen " +
+      "in Büros und Arbeitsräumen.",
     useCases: ["Besprechungsraum", "Trennwand", "Praxis", "Sanitärbereich"],
     metrics: [
       { label: "VLT", value: `${sVlt.min}–${pct(sVlt.max)}`, bar: sVlt.max },

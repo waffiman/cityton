@@ -61,7 +61,11 @@ export default async function GalleryPage() {
         )}
       </section>
 
-      <CtaBand title={tCommon("ctaGalleryTitle")} body={tCommon("ctaGalleryBody")} />
+      <CtaBand
+        title={tCommon("ctaGalleryTitle")}
+        body={tCommon("ctaGalleryBody")}
+        cta={tCommon("ctaGalleryCta")}
+      />
     </>
   );
 }

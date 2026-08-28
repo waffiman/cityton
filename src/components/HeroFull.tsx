@@ -28,6 +28,7 @@ export default async function HeroFull() {
             <br />
             {t("titleLine2")}
           </h1>
+          <p className={styles.subtitle}>{t("subtitle")}</p>
         </div>
       </div>
       <div id="hero-zone-end" className={styles.end} aria-hidden="true" />

@@ -40,9 +40,6 @@ export const processSteps: ProcessStep[] = [
   { key: "abnahme", video: "/media/ablauf-abnahme.mp4", poster: "/media/install-team.jpg", clipLength: 5 },
 ];
 
-/** TODO(client): replace rating/count with real Google reviews (see HANDOVER.md). */
-export const reviews = { rating: "4,9", count: 18 };
-
 export const praxisMontage = {
   cta: { href: "/gallery" },
   video: {

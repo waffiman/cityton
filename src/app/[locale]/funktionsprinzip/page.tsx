@@ -26,7 +26,7 @@ export default async function PrinciplePage() {
     id,
     kicker: t(`${id}.kicker`),
     title: t(`${id}.title`),
-    body: t(`${id}.body`),
+    body: t.raw(`${id}.body`) as string | string[],
   }));
 
   return (

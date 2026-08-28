@@ -32,29 +32,29 @@
   },
   "home": {
     "benefits": {
-      "titleLine1": "Vier Mikrometer Folie.",
-      "titleAccent": "Ein anderes Gebäude.",
+      "titleLine1": "Der Nutzen in vier Punkten.",
+      "titleAccent": "Weniger Hitze, über 99 % UV-Schutz.",
       "items": {
         "sun": {
           "title": "Sonnenschutz",
-          "body": "Das Funktionsprinzip einer Fensterfolie mit Sonnenschutz besteht darin, einen erheblichen Teil der auftreffenden Sonnenenergie an der Glasfläche zu reflektieren oder zu absorbieren."
+          "body": "Reduzierung des Wärmeeintrags bei gleichzeitig hoher Lichtdurchlässigkeit und dezenter Glasoptik in Showrooms und Autohäusern"
         },
         "uv": {
           "title": "UV-Schutz",
-          "body": "Über 99 % der UV-Strahlung bleiben draußen. Böden, Möbel und Ware verlieren ihre Farbe nicht."
+          "body": "Verringerung des durch UV-Strahlung verursachten Ausbleichens hochwertiger Waren und Materialien"
         },
         "energy": {
           "title": "Energieeffizienz",
-          "body": "Im Sommer weniger Kühllast, im Winter weniger Wärmeverlust durch das Glas."
+          "body": "Verringern den Wärmeaustausch und reduzieren Wärmeverluste"
         },
         "safety": {
           "title": "Sicherheit",
-          "body": "Eine Sicherheitsfolie hält Glassplitter bei Glasbruch zusammen und kann in verstärkter Ausführung zusätzlichen Schutz vor gewaltsamem Eindringen bieten, indem sie das schnelle Durchdringen der Verglasung erschwert."
+          "body": "Halten Glassplitter zusammen und erschweren schnelles Eindringen"
         }
       }
     },
     "compare": {
-      "title": "Der Unterschied ist messbar",
+      "title": "Die Leistungswerte wurden durch Tests ermittelt.",
       "titleProtect": "Der Unterschied liegt im Schutz",
       "withoutLabel": "OHNE FOLIE",
       "withLabel": "MIT FOLIE",
@@ -112,42 +112,38 @@
       "img2AfterAlt": "Splitter können sich beim Aufprall verteilen → Splitter bleiben zusammen"
     },
     "process": {
-      "title": "Von der Anfrage bis zur fertigen Folierung",
+      "title": "Vier Schritte bis zur fertigen Folie.",
       "steps": {
         "beratung": {
           "title": "Beratung & Messung",
-          "body": "Vor Ort: Glasart, Ausrichtung, Temperatur und Ziel werden aufgenommen."
+          "body": "Ein Spezialist prüft die Gegebenheiten vor Ort."
         },
         "muster": {
           "title": "Muster & Auswahl",
-          "body": "Musterstreifen direkt am eigenen Fenster — Sie sehen die Wirkung vorher."
+          "body": "Unsere Spezialisten wählen die passende Folie anhand der Verglasung"
         },
         "montage": {
           "title": "Montage",
-          "body": "Staubarm, im laufenden Betrieb möglich. Meist an einem Arbeitstag fertig."
+          "body": "Montage individuell ausgewählter Fensterfolien für Sonnenschutz oder andere Zwecke"
         },
         "abnahme": {
           "title": "Abnahme & Garantie",
-          "body": "Gemeinsame Kontrolle, Pflegehinweise, Herstellergarantie schriftlich."
+          "body": "Persönliche Betreuung auch nach der Montage der Hitzeschutzfolie"
         }
       }
     },
     "praxis": {
-      "title": "So sieht das vor Ort aus",
-      "body": "Montage ohne Showroom — Folie auf Glas, Arbeit am Objekt, fertiges Ergebnis. Weitere Referenzen in der Galerie.",
+      "title": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen.",
+      "body": "Unser Expertenteam prüft Glasaufbau, Montagebedingungen und vorhandene Beschichtungen, wählt das passende Foliensystem aus und übernimmt die Montage vor Ort",
       "cta": "Zur Galerie",
       "videoTitle": "Montage vor Ort — Folierung im Zeitraffer"
     },
     "series": {
-      "title": "Fünf Serien, ein Ziel je Objekt",
-      "lead": "Welche Folie passt, entscheidet die Glasart und das Ziel — nicht der Katalog. Wir wählen die Serie im Aufmaß gemeinsam aus."
+      "title": "Jeder Folientyp eignet sich für unterschiedliche Einsatzbereiche."
     },
     "reviews": {
-      "titleLine1": "Werden Sie unser nächster",
-      "titleAccent": "zufriedener Kunde.",
-      "allLink": "Alle Rezensionen ansehen →",
-      "metaPrefix": "aus",
-      "metaSuffix": "Google-Rezensionen",
+      "titleLine1": "Zahlreiche Kunden vertrauen bereits",
+      "titleAccent": "auf unsere erprobten Folienlösungen.",
       "quotes": [
         {
           "body": "Sehr gute Beratung und schnelle Terminvereinbarung. Die Folie wurde sauber angebracht und das Ergebnis sieht wirklich hochwertig aus.",
@@ -164,8 +160,8 @@
       ]
     },
     "faq": {
-      "titleLine1": "Fragen, die vor jedem",
-      "titleAccent": "Aufmaß gestellt werden.",
+      "titleLine1": "Was Kunden vor dem Aufmaß",
+      "titleAccent": "am häufigsten fragen.",
       "askButton": "Frage stellen",
       "items": [
         {
@@ -174,26 +170,26 @@
         },
         {
           "q": "Wird der Raum dunkel?",
-          "a": "Nicht zwangsläufig. Der Lichtdurchlass (VLT) reicht je Serie von 18 % bis 90 % — moderne Sputterfolien halten die Hitze zurück und lassen das Licht durch."
+          "a": "Nein. Spektralselektive Folien reduzieren die Infrarotstrahlung und lassen gleichzeitig viel sichtbares Licht durch."
         },
         {
           "q": "Kann die Folie das Glas beschädigen?",
-          "a": "Bei richtiger Auswahl nein. Entscheidend sind Glasaufbau, Ausrichtung und Randverbund — deshalb prüfen wir jede Scheibe vor der Empfehlung."
+          "a": "Bei richtiger Auswahl nein. Glasaufbau, Glasstärke und thermische Belastung entscheiden — deshalb prüfen wir jede Scheibe vorher."
         },
         {
           "q": "Wie lange dauert die Montage?",
-          "a": "Eine Wohnung oder ein Schaufenster meist an einem Arbeitstag, im laufenden Betrieb. Große Fassaden planen wir in Abschnitten."
+          "a": "Zügige Ausführung, sodass die Folie je nach Objekt unter Umständen bereits innerhalb eines Tages vollständig montiert werden kann."
         },
         {
           "q": "Was kostet das?",
-          "a": "Der Preis hängt von Fläche, Serie und Zugänglichkeit ab. Die Beratung und das Angebot sind kostenlos."
+          "a": "Vor Ort analysieren wir die vorhandene Verglasung, beraten Sie bei der Auswahl der passenden Folie und berechnen die Kosten für die gewünschte Lösung."
         }
       ]
     },
     "consultation": {
-      "titleLine1": "Erst messen.",
-      "titleLine2": "Dann entscheiden.",
-      "body": "Wir bieten Ihnen eine kostenlose Beratung direkt vor Ort. Dabei analysieren wir die vorhandene Verglasung, beraten Sie bei der Auswahl der passenden Folie und berechnen die Kosten für die gewünschte Lösung. Zum Einsatz kommen ausschließlich hochwertige Originalfolien von LLumar und Armolan mit Herstellergarantie. Die fachgerechte Montage ist ebenfalls durch eine Garantie abgesichert und umfasst auf Wunsch auch die Reinigung der Glasflächen vor der Folienmontage.",
+      "titleLine1": "Wir bieten Ihnen eine kostenlose Beratung",
+      "titleLine2": "direkt vor Ort.",
+      "body": "Dabei analysieren wir die vorhandene Verglasung, beraten Sie bei der Auswahl der passenden Folie und berechnen die Kosten für die gewünschte Lösung.",
       "specs": {
         "termin": {
           "label": "TERMIN",
@@ -211,23 +207,21 @@
       "imageAlt": "Wohnraum mit getönter Verglasung"
     },
     "hero": {
-      "eyebrow": "OFFIZIELLER PARTNER · LLUMAR & ARMOLAN",
+      "eyebrow": "MATERIALIEN VON LLUMAR UND ARMOLAN EUROPE",
       "titleLine1": "Architekturfolien für Sonnenschutz, UV-Schutz",
       "titleLine2": "und mehr Sicherheit",
-      "subtitle": "Intensive Sonneneinstrahlung, störende Reflexionen oder die Folgen eines Glasbruchs: Mit professionell montierten Architekturfolien reduzieren wir das Ausbleichen von Waren, verringern die Aufheizung von Räumen und schaffen ein angenehmeres Raumklima in ganz Österreich.",
-      "imageAlt": "Fassade mit Sonnenschutzfolie von außen"
+      "imageAlt": "Fassade mit Sonnenschutzfolie von außen",
+      "subtitle": "Technisch auf Ihre Verglasung abgestimmt. Fachgerecht montiert."
     }
   },
   "about": {
     "title": "Architekturfolien für Sonnenschutz, UV-Schutz und mehr Sicherheit.",
-    "body": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen. Unser Expertenteam prüft Glasaufbau, Montagebedingungen und vorhandene Beschichtungen, wählt das passende Foliensystem aus und übernimmt die Montage vor Ort. So profitieren Sie von geringerem Wärmeeintrag, über 99 % UV-Schutz, zuverlässiger Splitterbindung und weniger Blendungen.",
     "metaDescription": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen. Beratung, Montage und Betreuung aus einer Hand.",
     "imageAlt": "Inhaber und Ansprechpartner von City-Ton Austria",
-    "quote": "„Wir verkaufen keine Folienrollen — wir liefern ein fertiges Ergebnis: Beratung, Material, Montage und Betreuung in einem Paket.“",
+    "quote": "Intensive Sonneneinstrahlung, störende Reflexionen oder die Folgen eines Glasbruchs – eine professionell montierte Hitzeschutzfolie von City-Ton Austria kann je nach Ausführung bei diesen Problemen wirksam Abhilfe schaffen.",
     "quoteMeta": "Grundsatz · City-Ton Austria",
     "team": {
-      "title": "Die Menschen hinter der Folie.",
-      "body": "Von der ersten Beratung und dem Aufmaß bis zur Montage und der Betreuung danach — bei City-Ton stecken dieselben Menschen hinter dem Ergebnis.",
+      "title": "Unsere Spezialisten wählen die passende Folie anhand der Verglasung, des Einsatzortes und des gewünschten Zwecks aus.",
       "mainAlt": "Inhaber bei der Arbeit am Glas",
       "mainLabel": "Arbeit am Glas",
       "side1Alt": "Material wird vor Ort ausgepackt und vorbereitet",
@@ -236,24 +230,24 @@
       "side2Label": "Montage vor Ort"
     },
     "onsite": {
-      "title": "Vor Ort.",
-      "body": "Ein kurzer Einblick in die Realität der Montage — fertige Objekte und Arbeit am Glas.",
+      "title": "Montage vor Ort",
+      "body": "Montage individuell ausgewählter Fensterfolien für Sonnenschutz, UV-Schutz, Sichtschutz und Sicherheit, ohne den laufenden Betrieb vor Ort unterbrechen zu müssen.",
       "cta": "Zur Galerie →",
       "img1Alt": "Wohnobjekt mit dual-reflektierender Folie",
       "img2Alt": "Fassade mit reflektierender Sonnenschutzfolie",
       "img3Alt": "Referenzobjekt nach der Folierung"
     },
     "peopleSteps": {
-      "title": "Vom ersten Gespräch bis zum fertigen Ergebnis.",
-      "body": "Kurz und persönlich — wir übernehmen Verantwortung in jedem Schritt.",
+      "title": "Von der ersten Beratung bis zum fertigen Ergebnis.",
+      "body": "Zu unseren wichtigsten Vorteilen gehören:",
       "step1": {
         "title": "Beratung & Aufmaß",
-        "body": "Wir kommen vor Ort, hören zu und messen selbst — damit die Empfehlung zum Objekt passt.",
+        "body": "Berücksichtigung von Glasaufbau, Beschichtung, Montagebedingungen und Glasart vor der Verklebung",
         "imageAlt": "Vorbereitung und Material vor dem Aufmaß"
       },
       "step2": {
         "title": "Professionelle Montage",
-        "body": "Zertifizierte Verklebung im laufenden Betrieb möglich — staubarm und abschnittsweise.",
+        "body": "fachgerechte Montage gemäß den Empfehlungen der Hersteller durch geschulte Spezialisten",
         "imageAlt": "Professionelle Folienmontage am Fenster"
       },
       "step3": {
@@ -297,11 +291,7 @@
       }
     },
     "rating": {
-      "scale": "5",
-      "metaPrefix": "aus",
-      "metaSuffix": "Google-Rezensionen",
-      "quote": "Von der Beratung bis zur Montage – professionell und zuverlässig.",
-      "cta": "Alle Bewertungen ansehen →"
+      "quote": "Von der Beratung bis zur Montage – professionell und zuverlässig."
     },
     "finalCta": {
       "title": "Kontakt und kostenlose Beratung",
@@ -311,8 +301,8 @@
     }
   },
   "gallery": {
-    "title": "Objekte, an denen die Folie arbeitet",
-    "lead": "Ein Ausschnitt aus montierten Projekten — Fassaden, Innenräume und Schutzfolierungen. Tippen Sie ein Bild an, um es zu vergrößern.",
+    "title": "Unsere Projekte",
+    "lead": "Einblicke in ausgewählte Projekte – von Fassaden und Innenräumen bis zu Sicherheitsfolierungen. Klicken oder tippen Sie auf ein Bild, um es zu vergrößern.",
     "empty": "Noch keine Fotos oder Videos hinterlegt.",
     "captionFallbackProject": "Projekt",
     "captionFallbackFilm": "Folie auf Anfrage",
@@ -408,22 +398,25 @@
   "principle": {
     "reflexion": {
       "kicker": "Reflexion",
-      "title": "Die Hitze wird abgewiesen, bevor sie im Raum ist",
-      "body": "Sonnenlicht ist zu etwa der Hälfte Infrarotstrahlung. Die metallisierte Schicht reflektiert diesen Anteil an der Glasoberfläche zurück nach außen — bis zu 79 % der Gesamtenergie erreichen den Raum nie. Die Klimaanlage läuft kürzer, an Südfassaden messen wir typisch 3–7,6 °C weniger."
+      "title": "Reflektierende Schichten reduzieren Wärmeeintrag und Blendungen",
+      "body": "Ohne eine solche Folie beträgt die Energiedurchlässigkeit 83 %, die Reflexion 8 % und die Absorption 9 %. Wenn Sie hingegen eine Sonnenschutzfolie anbringen, beispielsweise LLumar R20 SR CDF, werden nur noch 11 % der Sonnenenergie durchgelassen, während 57 % reflektiert und 32 % absorbiert werden."
     },
     "absorption": {
       "kicker": "Absorption",
-      "title": "Dieselbe Wirkung, ohne Spiegeleffekt",
-      "body": "Nano-keramische Partikel nehmen die Sonnenenergie auf, statt sie zurückzuwerfen. Die Scheibe bleibt von außen nahezu neutral — kein Spiegelbild an der Fassade —, während der Wärmeeintrag deutlich sinkt. Die Wahl, wenn Tageslicht und freier Blick nach außen erhalten bleiben sollen."
+      "title": "Verringern den Wärmeaustausch und reduzieren Wärmeverluste",
+      "body": "Sonnenschutzfolien sind je nach Ausführung reflektierend oder spektralselektiv und reduzieren den Wärmeeintrag sowie störende Blendungen."
     },
     "uv": {
       "kicker": "UV-Schutz",
-      "title": "Über 99 % der UV-Strahlung endet an der Folie",
-      "body": "Die UV-Sperrschicht ist hochtransparent — klar wie Glas. Sichtbares Licht passiert nahezu ungehindert, der UV-Anteil wird zurückgehalten. Böden, Möbel, Textilien und ausgestellte Ware behalten ihre Farbe deutlich länger, ohne dass der Raum dunkler wird."
+      "title": "Reduzieren UV-Strahlung bei weitgehend natürlicher Glasoptik",
+      "body": [
+        "Für Anwendungen, bei denen die Transparenz der Verglasung vollständig erhalten bleiben soll, stehen spezielle klare UV-Schutzfolien wie UV Clear zur Verfügung.",
+        "Sie eignen sich insbesondere für Museen, Galerien, Boutiquen oder Schaufenster, in denen Exponate, Waren und empfindliche Materialien vor UV-bedingtem Ausbleichen geschützt werden sollen, ohne die Optik der Glasfläche wesentlich zu verändern."
+      ]
     },
     "einbruchschutz": {
       "kicker": "Einbruchschutz",
-      "title": "Die Scheibe bricht — aber sie bleibt im Rahmen",
+      "title": "Halten Glassplitter zusammen und erschweren schnelles Eindringen",
       "body": "Die Glassplitter bleiben dabei an der Folie haften und werden daran gehindert, unkontrolliert in den Innenraum zu gelangen. Gleichzeitig verteilt die Sicherheitsfolie die beim Aufprall entstehende Kraft über eine größere Fläche der Verglasung. Nach einem Glasbruch bleibt die Scheibe dadurch zunächst weitgehend als zusammenhängende Fläche erhalten. Diese zusätzliche Schutzwirkung erschwert einen vollständigen Durchbruch und kann das Eindringen durch die Verglasung deutlich verzögern. Je nach eingesetztem Foliensystem und Glasaufbau stehen auch geprüfte und zertifizierte Sicherheitslösungen zur Verfügung, die einen erhöhten Schutz vor gewaltsamem Eindringen bieten."
     },
     "sichtschutz": {
@@ -431,15 +424,15 @@
       "title": "Das Licht passiert, der Blick nicht",
       "body": "Die mattierte Oberfläche streut das durchtretende Licht in alle Richtungen. Der Raum bleibt hell, das Bild dahinter löst sich auf — Milchglas-Optik, ohne die Scheibe zu tauschen. Für Trennwände, Besprechungsräume, Ordinationen und Sanitärbereiche."
     },
-    "pageTitle": "Was eine Folie am Glas physikalisch tut",
-    "pageLead": "Scrollen Sie — die Zeichnung links bleibt stehen und wechselt mit dem Abschnitt.",
+    "pageTitle": "Funktionsweise und unsere Expertise",
+    "pageLead": "Reflexion, Absorption, UV-Sperre, Kraftverteilung und Sichtschutz — was die Folie am Glas leistet.",
     "metaDescription": "Was eine Folie am Glas physikalisch tut: Reflexion, Absorption, UV-Sperre, Kraftverteilung und Sichtschutz.",
     "ctaTitle": "Unsicher, welche Folie passt?",
     "ctaBody": "Wir bringen Musterstreifen und Messgerät mit und halten die Werte an Ihrer eigenen Scheibe fest."
   },
   "kontakt": {
-    "title": "Kostenlose Beratung anfragen",
-    "lead": "Schildern Sie kurz Objekt und Ziel — wir melden uns mit Terminvorschlag und den nächsten Schritten. Musterstreifen und Messung vor Ort möglich.",
+    "title": "Kostenlose Erstberatung anfragen",
+    "lead": "Beschreiben Sie kurz Ihr Objekt und Ihr Anliegen. Wir melden uns mit einer ersten Einschätzung und informieren Sie über die nächsten Schritte. Bei Bedarf vereinbaren wir einen Vor-Ort-Termin mit Folienmustern und technischer Prüfung der Verglasung.",
     "hours": "Mo–Fr 9:00–17:00",
     "mapLabel": "Standort",
     "mapTitle": "Karte — Adelheid-Popp-Gasse 24, 1220 Wien",
@@ -535,8 +528,8 @@
     }
   },
   "produkte": {
-    "title": "Fünf Serien, ein Ziel je Objekt",
-    "lead": "Welche Folie passt, entscheidet die Glasart und das Ziel — nicht der Katalog.",
+    "title": "Sortiment und unsere Lösungen",
+    "lead": "Das Sortiment umfasst unterschiedliche Folientypen für verschiedene Anforderungen: Sonnenschutzfolien, Sicherheitsfolien und transparente UV-Schutzfolien.",
     "metaDescription": "Fünf Folienserien im Überblick und der vollständige Katalog — Armolan und LLumar, mit Kennwerten und Montagehinweis.",
     "catalogTitle": "Alle Folien",
     "catalogLead": "Nach Marke und Montageseite filtern. Jede Karte führt zur Detailseite mit allen Kennwerten.",
@@ -618,13 +611,14 @@
     "breadcrumbProdukte": "PRODUKTE",
     "ctaFilmTitle": "Unsicher, welche Folie passt?",
     "ctaFilmBody": "Wir bringen Musterstreifen und Messgerät mit — und legen die Serie vor Ort fest.",
-    "ctaGalleryTitle": "Ihr Objekt könnte das nächste sein.",
-    "ctaGalleryBody": "Wir bringen Musterstreifen und Messgerät mit — die Erstberatung ist kostenlos und unverbindlich.",
+    "ctaGalleryTitle": "Ihr Objekt könnte unser nächstes Projekt sein.",
+    "ctaGalleryBody": "Bei einem Vor-Ort-Termin bringen wir Folienmuster und die erforderlichen Messgeräte mit. Die Erstberatung ist kostenlos und unverbindlich.",
     "funktionsprinzipAnsehen": "Funktionsprinzip ansehen",
     "close": "Schließen",
     "prev": "Vorheriges",
     "next": "Nächstes",
-    "enlargeImage": "Bild vergrößern"
+    "enlargeImage": "Bild vergrößern",
+    "ctaGalleryCta": "Erstberatung anfragen"
   },
   "produkteSeriePage": {
     "funktionsprinzipCta": "Funktionsprinzip ansehen",

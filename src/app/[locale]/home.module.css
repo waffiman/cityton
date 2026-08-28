@@ -451,8 +451,8 @@
     grid-template-columns: 1fr;
   }
   .praxisMedia {
-    min-height: 320px;
-    aspect-ratio: 16 / 10;
+    min-height: 240px;
+    aspect-ratio: 16 / 9;
   }
   .praxisCopy {
     padding: 48px var(--page-gutter) 64px;
@@ -492,6 +492,14 @@
 }
 
 @media (max-width: 640px) {
+  /* The 240px floor above wins over the aspect ratio on a ~390px screen and
+     turns the clip almost square. Let the ratio decide, capped so the video
+     never takes more than a third of the viewport. */
+  .praxisMedia {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    max-height: 34vh;
+  }
   .benefitGrid {
     grid-template-columns: 1fr;
   }

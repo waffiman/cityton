@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
+import CtaBand from "@/components/CtaBand";
 import FilmCard from "@/components/FilmCard";
 import FilmStructure from "@/components/FilmStructure";
 import InfoHint from "@/components/InfoHint";
@@ -58,7 +59,14 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
 
   return (
     <div className={styles.page}>
-      <section className="container" style={{ paddingTop: 44 }}>
+      <section className={`section--3 ${styles.heroBand}`}>
+        <div className="diagonal-fx" aria-hidden="true">
+          <span className="diagonal-sheet" />
+          <span className="diagonal-sheet" />
+          <span className="diagonal-sheet" />
+          <span className="diagonal-orb" />
+        </div>
+        <div className={`container ${styles.heroInner}`}>
         <nav className={styles.crumbs} aria-label={tc("breadcrumbAriaLabel")}>
           <Link href="/">{tc("breadcrumbHome")}</Link>
           <span>/</span>
@@ -103,6 +111,7 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
             <Corners />
             <SeriesGlyph variant={item.glyph} field="paper" />
           </div>
+        </div>
         </div>
       </section>
 
@@ -154,12 +163,19 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
                       src={cert.preview}
                       alt={cert.caption}
                       fill
-                      sizes="(max-width: 700px) 100vw, 40vw"
+                      sizes="(max-width: 700px) 100vw, 25vw"
                       className={styles.certImg}
                       unoptimized={shouldBypassOptimizer(cert.preview)}
                     />
+                    <span className={styles.certBrand}>{cert.brand}</span>
                   </span>
-                  <span className={styles.certCaption}>{cert.caption}</span>
+                  <span className={styles.certBody}>
+                    <span className={styles.certStandard}>{cert.standard}</span>
+                    <span className={styles.certResult}>{cert.result}</span>
+                    <span className={styles.certMeta}>{cert.film}</span>
+                    <span className={styles.certReport}>{cert.report}</span>
+                    <span className={styles.certOpen}>{t("certPrefix")}</span>
+                  </span>
                 </a>
               </li>
             ))}
@@ -245,6 +261,8 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
           </div>
         </section>
       )}
+
+      <CtaBand title={tc("ctaFilmTitle")} body={tc("ctaFilmBody")} />
     </div>
   );
 }

@@ -728,6 +728,11 @@ export const films: Film[] = [
     mount: "innen",
     thicknessMil: 8,
     thicknessMicron: 224,
+    application: "Durchwurfhemmung nach EN 356",
+    // BSI Declaration of Test Results, Prüfbericht 2371/9681750 Part 1 of 2
+    // (23.11.2018): 4,00 mm Float mit LLumar SCL SR PS8, Kategorie P1A,
+    // 1500 mm Fallhöhe. Eingereicht von CP Films Vertriebs GmbH.
+    certification: "DIN EN 356 — Klasse P1A",
     single: lv(78, 8, 14, 87, 9, 10, "<1", 0.92, 0.84, 5.6, 1, 0.8, 20, undefined),
   },
   {
@@ -789,6 +794,16 @@ export const filmsOf = (
   films
     .filter((f) => f.brand === brand && f.family === family)
     .sort((a, b) => a.single.vlt - b.single.vlt);
+
+/**
+ * Wie `filmsOf`, aber markenübergreifend — analog zu `filmsWithCodePrefix`,
+ * das Serie R und die spektralselektiven Folien bereits über beide Marken
+ * zusammenstellt. Ohne das fielen LLumar-Folien aus Serien heraus, deren
+ * Liste noch über die Familie gebildet wird: sie landeten ohne Kategorie in
+ * der Datenbank und tauchten in keiner Variantentabelle auf.
+ */
+const filmsOfFamilyAnyBrand = (family: FilmFamily): Film[] =>
+  films.filter((f) => f.family === family).sort((a, b) => a.single.vlt - b.single.vlt);
 
 /**
  * True if a code's leading token equals `prefix` — "R GREY 10" matches "R",
@@ -864,9 +879,17 @@ const spektralselektiv = filmsWithCodePrefix([
   "XHE",
   "THE",
 ]);
-const sichtschutz = filmsOf("sichtschutz");
+const sichtschutz = filmsOfFamilyAnyBrand("sichtschutz");
 /** Sicherheitsfolien, nach Materialstärke aufsteigend. */
-const sicherheit = filmsOf("sicherheit").sort(
+/**
+ * Klare UV-Schutzfolien. Die AIR-/THE-Folien tragen zwar `family: "klar"`,
+ * werden aber schon über die Codepräfixe der spektralselektiven Serie erfasst —
+ * ohne diesen Ausschluss würde die UV-Serie sie dort wegnehmen, weil die
+ * Seed-Zuordnung pro Filmcode nur eine Kategorie kennt.
+ */
+const uvKlar = filmsOfFamilyAnyBrand("klar").filter((f) => !spektralselektiv.includes(f));
+
+const sicherheit = filmsOfFamilyAnyBrand("sicherheit").sort(
   (a, b) => (a.thicknessMil ?? 0) - (b.thicknessMil ?? 0),
 );
 
@@ -885,15 +908,10 @@ const safetyMicron = {
 /* --- Referenzfolien, auf die sich die Detailtexte beziehen --- */
 
 const rLead = getFilm("R SILVER 20"); // Leitprodukt der Serie R
-const rAussen = reflektierend.filter((f) => f.mount !== "innen").length;
-const rArmolan = reflektierend.filter((f) => f.brand === "Armolan").length;
-const rLLumar = reflektierend.filter((f) => f.brand === "LLumar").length;
 
 const xLead = getFilm("XHE 70 SS ER HPR"); // Leitprodukt der spektralselektiven Serie
-const xAussen = spektralselektiv.filter((f) => f.mount !== "innen").length;
 
 const en356 = getFilm("SAFETY 12 MIL CLEAR");
-// const en12600 = getFilm("ARM SAFETY 8 MIL");
 
 const uvClear = getFilm("UV PROTECTION CLEAR");
 
@@ -967,13 +985,11 @@ export const series: Series[] = [
       { label: "UV-Schutz", value: uvLabel(rLead.single), bar: 99 },
     ],
     detail: {
-      kicker: "Sonnenschutzfolie · Außen & innen",
+      kicker: "Reflektierende Folien",
       intro:
-        `Die metallisierte Reflexionsfolie für stark besonnte Flächen. Wo Hitze das ` +
-        `Hauptproblem ist — Südfassaden, Schaufenster, Dachverglasungen — arbeitet die ` +
-        `Serie R am wirtschaftlichsten. ${reflektierend.length} Varianten von Armolan ` +
-        `(${rArmolan}) und LLumar (${rLLumar}) decken alles ab, von der fast blickdichten ` +
-        `Hallenfolie bis zum hellen Bürofilter.`,
+        "Die metallisierte Reflexionsfolie für stark besonnte Flächen. " +
+        "Reflektierende Schichten reduzieren Wärmeeintrag und Blendungen — besonders " +
+        "dort, wo Hitze das Hauptproblem ist.",
       stats: [
         { label: "TSER", value: pct(rLead.single.tser), note: "Gesamtenergie abgewiesen" },
         { label: "VLT", value: pct(rLead.single.vlt), note: "Lichtdurchlass" },
@@ -981,23 +997,24 @@ export const series: Series[] = [
       ],
       statsFootnote:
         `Werte für ${rLead.name} (Armolan) an Einfachverglasung. Andere Varianten — auch ` +
-        `LLumar — siehe Tabelle. Bitte gegen das aktuelle Herstellerdatenblatt prüfen.`,
+        `LLumar — siehe Tabelle. Bitte gegen das aktuelle Herstellerdatenblatt prüfen. ` +
+        `Die tatsächliche Wirkung hängt von Glasart, Folientechnologie, Sonneneinstrahlung ` +
+        `und Fensterausrichtung ab.`,
       facts: [
         {
           kicker: "Technologie",
           title: "Metallisierte Reflexionsschicht",
           body:
-            `Eine hauchdünne Aluminium-Legierung reflektiert die Infrarot-Anteile des ` +
-            `Sonnenlichts, bevor sie ins Glas gelangen. Kratzfeste Hardcoat-Oberfläche, ` +
-            `Materialstärke ${thickness(rLead)}.`,
+            "Ohne eine solche Folie beträgt die Energiedurchlässigkeit 83 %, die " +
+            "Reflexion 8 % und die Absorption 9 %. Wenn Sie hingegen eine " +
+            "Sonnenschutzfolie anbringen, beispielsweise LLumar R20 SR CDF, werden nur " +
+            "noch 11 % der Sonnenenergie durchgelassen, während 57 % reflektiert und " +
+            "32 % absorbiert werden.",
         },
         {
           kicker: "Einsatz",
-          title: "Wo sie am besten wirkt",
-          body:
-            `Süd- und Westfassaden, Schaufenster, Wintergärten, Dachverglasungen, ` +
-            `Produktions- und Lagerhallen. ${rAussen} der ${reflektierend.length} Varianten ` +
-            `sind auch als Außenfolie erhältlich — für Objekte ohne Zugang von innen.`,
+          title: "Besonders geeignet für",
+          body: "Büros, Glasfassaden, Gewerbeobjekte",
         },
         {
           kicker: "Nebeneffekt",
@@ -1056,11 +1073,11 @@ export const series: Series[] = [
     detail: {
       kicker: "Sonnenschutzfolie · Spektralselektiv · LLumar",
       intro:
-        `Statt Sonnenwärme wie ein Spiegel zurückzuwerfen, filtert diese Beschichtung ` +
-        `gezielt die Wellenlängen heraus, die Hitze bringen, und lässt sichtbares Licht ` +
-        `vergleichsweise ungehindert durch. Das Ergebnis: eine neutrale, kaum reflektierende ` +
-        `Optik bei spürbarer Kühlwirkung. ${spektralselektiv.length} Varianten decken die ` +
-        `Spanne von dezent getönt bis nahezu unsichtbar ab.`,
+        "Reduzieren die Infrarotstrahlung über einen breiten Wellenlängenbereich und " +
+        "lassen gleichzeitig viel sichtbares Licht durch. Mehr Wohnkomfort für Eigentümer " +
+        "und Mieter von Wohnungen und Häusern durch geringeren Wärmeeintrag, weniger " +
+        "Blendungen und den Schutz von Möbeln, Bodenbelägen, Vorhängen und anderen " +
+        "Einrichtungsgegenständen vor dem Ausbleichen.",
       stats: [
         { label: "TSER", value: pct(xLead.single.tser), note: "Gesamtenergie abgewiesen" },
         { label: "VLT", value: pct(xLead.single.vlt), note: "Lichtdurchlass" },
@@ -1068,7 +1085,9 @@ export const series: Series[] = [
       ],
       statsFootnote:
         `Werte für ${xLead.name} (LLumar) an Einfachverglasung. Andere Varianten siehe ` +
-        `Tabelle. Bitte gegen das aktuelle Herstellerdatenblatt prüfen.`,
+        `Tabelle. Bitte gegen das aktuelle Herstellerdatenblatt prüfen. Die tatsächliche ` +
+        `Wirkung hängt von Glasart, Folientechnologie, Sonneneinstrahlung und ` +
+        `Fensterausrichtung ab.`,
       facts: [
         {
           kicker: "Technologie",
@@ -1082,11 +1101,7 @@ export const series: Series[] = [
         {
           kicker: "Einsatz",
           title: "Wo der Spiegeleffekt stört",
-          body:
-            `Bürofassaden, Architekturglas, Wohnräume mit Blick nach außen — überall dort, ` +
-            `wo Hitzeschutz gefragt ist, ein Spiegelbild an der Fassade aber nicht. ` +
-            `${xAussen} der ${spektralselektiv.length} Varianten (die Helios-Linie) sind ` +
-            `auch als Außenfolie erhältlich.`,
+          body: "Wohn- und Einzelhandelsobjekte mit dezenter Glasoptik",
         },
         {
           kicker: "Unterschied zur Serie R",
@@ -1096,15 +1111,6 @@ export const series: Series[] = [
             "diese Serie die Sonnenenergie spektralselektiv heraus. Das kostet bei " +
             "gleichem VLT etwas TSER — dafür bleibt die Scheibe von außen unauffälliger " +
             "und wirkt tagsüber nicht wie ein Spiegel.",
-        },
-        {
-          kicker: "Auswahl",
-          title: "Von dezent bis nahezu unsichtbar",
-          body:
-            `Zwischen ${xVlt.min} % und ${pct(xVlt.max)} Lichtdurchlass liegen alle Stufen ` +
-            `zwischen deutlich sichtbarer Tönung und einer Folie, die im eingebauten ` +
-            `Zustand kaum auffällt. Je heller die Variante, desto geringer die ` +
-            `Wärmeabweisung — auch hier gilt der Zielkonflikt aus der Serie R.`,
         },
       ],
       variants: {
@@ -1149,20 +1155,18 @@ export const series: Series[] = [
       { label: "UV-Schutz", value: uvLabel(en356.single), bar: 99 },
     ],
     detail: {
-      kicker: "Sicherheitsfolie · Geprüft nach DIN EN 356 & EN 12600",
+      kicker: "Sicherheitsfolie · Geprüft nach DIN EN 356",
       intro:
         "Klar wie Glas, aber mit Rückhaltewirkung: Bei einem Stoß verteilt die Folie die " +
         "Aufprallkraft über die gesamte Scheibe. Das Glas bricht — die Splitter bleiben an " +
-        "der Folie und im Rahmen. Zwei unabhängige Prüfungen belegen die Wirkung.",
+        "der Folie und im Rahmen. Der Kugelfallversuch nach EN 356 belegt die Wirkung.",
       stats: [
         { label: "EN 356", value: "P1A", note: `Durchwurfhemmung, ${en356.thicknessMil} mil` },
-        // { label: "EN 12600", value: "2 (B) 2", note: `Stoßsicherheit, ${en12600.thicknessMil} mil` },
         { label: "VLT", value: pct(en356.single.vlt), note: "Lichtdurchlass — nahezu unsichtbar" },
       ],
       statsFootnote:
-        `Prüfberichte 2022-08-5319-04 (EN 356, ARM Safety clear ${en356.thicknessMil} mil ` +
-        // `auf 6 mm Float) und 2022-08-5319-02 (EN 12600, ARM Safety ${en12600.thicknessMil} ` +
-        `mil auf 4 mm Float). Klassifizierung gilt für den geprüften Glasaufbau.`,
+        `Prüfbericht 2022-08-5319-04 (EN 356, ARM Safety clear ${en356.thicknessMil} mil ` +
+        `auf 6 mm Float). Klassifizierung gilt für den geprüften Glasaufbau.`,
       facts: [
         {
           kicker: "Prüfung EN 356",
@@ -1173,20 +1177,11 @@ export const series: Series[] = [
             `ja, Durchdringung in keinem Fall — Klasse P1A.`,
         },
         {
-          kicker: "Prüfung EN 12600",
-          title: "Pendelschlag mit Doppelreifenstoßkörper",
+          kicker: "Auswahl",
+          title: "Welche Stärke passt",
           body:
-            `Fünf Probekörper 876 × 1938 mm, 4 mm Floatglas mit ARM Safety ` +
-            // `${thickness(en12600)}. Fallhöhen 190, 450 und 1200 mm. Bruchverhalten Typ B: ` +
-            `die Splitter werden von der Folie zusammengehalten — Klasse 2 (B) 2.`,
-        },
-        {
-          kicker: "Zwei Aufgaben",
-          title: "Einbruchhemmung ist nicht Verletzungsschutz",
-          body:
-            `${en356.thicknessMil} mil verzögert das Eindringen — das ist die Aufgabe der ` +
-            // `EN 356. ${en12600.thicknessMil} mil schützt Menschen vor herausfallenden ` +
-            `Scherben — das prüft die EN 12600. Welche Stärke richtig ist, entscheidet die ` +
+            `${en356.thicknessMil} mil verzögert das Eindringen und hält die Scherben ` +
+            `zusammen — geprüft nach EN 356. Welche Stärke richtig ist, entscheidet die ` +
             `Nutzung, nicht der Preis.`,
         },
         {
@@ -1232,10 +1227,10 @@ export const series: Series[] = [
     detail: {
       kicker: "UV-Schutzfolie · Nahezu unsichtbar",
       intro:
-        `Mit ${pct(uvClear.single.vlt)} Lichtdurchlass ist diese Folie im eingebauten ` +
-        `Zustand praktisch nicht zu erkennen — die Auslage bleibt so hell und farbecht wie ` +
-        `ohne Folie. Ihre Aufgabe ist eine einzige: die Strahlung wegnehmen, die Farben ` +
-        `ausbleichen lässt.`,
+        `Reduzieren UV-Strahlung bei weitgehend natürlicher Glasoptik. Mit ` +
+        `${pct(uvClear.single.vlt)} Lichtdurchlass ist die Folie im eingebauten Zustand ` +
+        `praktisch nicht zu erkennen — die Auslage bleibt so hell und farbecht wie ohne ` +
+        `Folie.`,
       stats: [
         {
           label: "VLT",
@@ -1256,7 +1251,8 @@ export const series: Series[] = [
       statsFootnote:
         `Werte für ${uvClear.name} ${thickness(uvClear)} an Einfachverglasung, Quelle: ` +
         `Armolan-Musterbuch. TSER ${pct(uvClear.single.tser)}, Abschirmgrad ` +
-        `${dec(uvClear.single.sc ?? 0)}.`,
+        `${dec(uvClear.single.sc ?? 0)}. Die tatsächliche Wirkung hängt von Glasart, ` +
+        `Folientechnologie, Sonneneinstrahlung und Fensterausrichtung ab.`,
       facts: [
         {
           kicker: "Technologie",
@@ -1270,9 +1266,9 @@ export const series: Series[] = [
           kicker: "Einsatz",
           title: "Wo Farbe Geld wert ist",
           body:
-            "Museen, Galerien, Juweliere, Modegeschäfte, Apotheken, Showrooms — überall " +
-            "dort, wo ausgestellte Ware in der Auslage steht und trotzdem gut sichtbar " +
-            "bleiben muss.",
+            "Verringerung des durch UV-Strahlung verursachten Ausbleichens hochwertiger " +
+            "Waren und Materialien durch einen UV-Schutz von über 99 %, beispielsweise in " +
+            "Textil- und Bekleidungsgeschäften, Möbelhäusern und Museen.",
         },
         {
           kicker: "Grenzen",
@@ -1293,6 +1289,18 @@ export const series: Series[] = [
             `offen angesprochen werden.`,
         },
       ],
+      variants: {
+        columns: ["Variante", "VLT", "TSER", "Blendschutz", "UV-Schutz", "Typische Anwendung"],
+        rows: uvKlar.map((f) => [
+          f.name,
+          pct(f.single.vlt),
+          pct(f.single.tser),
+          f.single.glare !== undefined ? pct(f.single.glare) : "—",
+          uvLabel(f.single),
+          f.application ?? "—",
+        ]),
+        films: uvKlar,
+      },
     },
   },
   {
@@ -1318,10 +1326,8 @@ export const series: Series[] = [
     detail: {
       kicker: "Sichtschutzfolie · Innenanwendung",
       intro:
-        `${sichtschutz.length} Folien für dieselbe Aufgabe in drei Abstufungen: Licht ins ` +
-        `Innere lassen, Blicke draußen halten. Der Austausch der Verglasung entfällt — die ` +
-        `Folie wird auf das bestehende Glas verklebt und ist bei Bedarf rückstandsfrei ` +
-        `entfernbar.`,
+        "Eine blickdichte Fensterfolie als Sichtschutz für geeignete Glasflächen sowie " +
+        "UV-Schutz für hochwertige Waren in Uhren- und Juweliergeschäften.",
       stats: [
         {
           label: "WHITE MATT",
@@ -1372,6 +1378,15 @@ export const series: Series[] = [
             "Anders als eine Spiegelfolie arbeitet eine Mattfolie unabhängig vom " +
             "Lichtverhältnis — auch nachts. Dafür geht die Sicht nach draußen verloren; das " +
             "ist bei Fensterflächen gegenüber Wohnräumen vorab zu klären.",
+        },
+        {
+          kicker: "Privacy White Matte",
+          title: "Hell und blickdicht zugleich",
+          body:
+            "75 % Lichtdurchlass — der höchste Wert der Serie — bei mattierter " +
+            "Oberfläche. Die Wahl, wo der Raum hell bleiben soll und trotzdem kein " +
+            "Einblick entstehen darf. Als einzige Variante der Serie ohne den " +
+            "UV-Schutz von über 99 %.",
         },
       ],
       variants: {

@@ -1,5 +1,7 @@
+/* The page now closes on a full-bleed CtaBand, which carries its own vertical
+   padding — wrapper padding here only opens a white strip above the footer. */
 .page {
-  padding-bottom: clamp(36px, 4vw, 56px);
+  padding-bottom: 0;
 }
 
 .end {
@@ -126,24 +128,48 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
+  /* Four reports fit a wide screen; falls to 2 and then 1 on its own. */
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
 }
 
 .certCard {
   display: flex;
   flex-direction: column;
+  height: 100%;
   text-decoration: none;
   color: inherit;
+  background: var(--s0);
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+.certCard:hover,
+.certCard:focus-visible {
   background: var(--color-neutral-100);
+  border-color: var(--color-accent-500);
 }
 
 .certPreview {
   position: relative;
   display: block;
-  aspect-ratio: 1 / 1.414;
+  /* A full A4 page made four tall columns; the top third carries the
+     standard, class and product, which is all the preview needs to show. */
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #fff;
+  border-bottom: 1px solid var(--color-divider);
+}
+.certBrand {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 5px 10px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-strong);
+  background: var(--color-accent-800);
 }
 
 .certImg {
@@ -151,24 +177,57 @@
   object-position: top center;
 }
 
-.certCaption {
-  display: block;
+.certBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   padding: 16px 18px 18px;
-  font-size: 15px;
-  line-height: 1.35;
-  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+  height: 100%;
 }
-
-.certCard:hover .certCaption,
-.certCard:focus-visible .certCaption {
+.certStandard {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+}
+.certResult {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 17px;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
   color: var(--color-text);
+}
+.certMeta {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+}
+.certReport {
+  font-size: 12px;
+  color: color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+.certOpen {
+  margin-top: auto;
+  padding-top: 14px;
+  font-size: 13px;
+  color: var(--color-accent-700);
+}
+.certCard:hover .certOpen,
+.certCard:focus-visible .certOpen {
+  text-decoration: underline;
 }
 
 .videoList {
   list-style: none;
-  margin: 0;
+  /* One video stretched edge to edge dominated the page; cap the row and
+     centre it, so a second video would sit beside the first. */
+  margin: 0 auto;
   padding: 0;
+  max-width: 1040px;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 26px;
 }
 
@@ -208,4 +267,17 @@
     border-left: none;
     border-top: 1px solid var(--color-divider);
   }
+}
+
+/* ── Hero band ───────────────────────────────────────────────────────────
+   Same diagonal film-sheet treatment as the Produkte, Galerie and Kontakt
+   title bands, so a series page opens on the familiar ground. */
+.heroBand {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(40px, 5vw, 64px);
+}
+.heroInner {
+  position: relative;
+  z-index: 1;
 }

@@ -4,11 +4,11 @@
  */
 
 export const about = {
-  image: { src: "/media/owner.jpg" },
+  image: { src: "/media/owner-lecture.jpg" },
 
   team: {
-    main: { src: "/media/glass-work.JPG" },
-    side: [{ src: "/media/material-2.png" }, { src: "/media/prof-montage.JPG" }],
+    main: { src: "/media/team-shopfront.jpg" },
+    side: [{ src: "/media/team-fensterfolie.jpg" }, { src: "/media/team-verklebung.jpg" }],
   },
 
   onsite: {

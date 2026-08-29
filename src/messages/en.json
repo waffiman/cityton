@@ -217,17 +217,17 @@
   "about": {
     "title": "Architectural films for solar control, UV protection and more security.",
     "metaDescription": "City-Ton Austria plans and installs professional window films on glass surfaces. Consultation, installation and support from one team.",
-    "imageAlt": "Owner and main contact at City-Ton Austria",
+    "imageAlt": "Founder of City-Ton Austria planning a project on his laptop",
     "quote": "“We don't sell rolls of film — we deliver a finished result: consultation, material, installation and support in one package.”",
     "quoteMeta": "Our principle · City-Ton Austria",
     "team": {
       "title": "The people behind the film.",
-      "mainAlt": "Owner at work on glass",
+      "mainAlt": "Two installers at work on a shop window",
       "mainLabel": "Work on glass",
-      "side1Alt": "Material being unpacked and prepared on site",
-      "side1Label": "Material ready",
-      "side2Alt": "Film installation on a shop window",
-      "side2Label": "On-site installation"
+      "side1Alt": "Installer applying film to a house window",
+      "side1Label": "On-site installation",
+      "side2Alt": "Two installers squeegeeing film onto a shop window",
+      "side2Label": "On site as a team"
     },
     "onsite": {
       "title": "On site.",

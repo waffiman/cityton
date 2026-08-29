@@ -166,7 +166,7 @@
       "items": [
         {
           "q": "Wie lange hält eine Fensterfolie?",
-          "a": "Innen verklebte Folien halten in der Regel 10–15 Jahre, außen verklebte 7–10 Jahre. Auf Material und Ausführung gibt es Herstellergarantie."
+          "a": "Die verklebten Folien halten in der Regel 15-20 Jahre. Auf Material und Ausführung gibt es Herstellergarantie."
         },
         {
           "q": "Wird der Raum dunkel?",
@@ -217,17 +217,17 @@
   "about": {
     "title": "Verstehen, prüfen, umsetzen.",
     "metaDescription": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen. Beratung, Montage und Betreuung aus einer Hand.",
-    "imageAlt": "Inhaber und Ansprechpartner von City-Ton Austria",
+    "imageAlt": "Gründer von City-Ton Austria bei der Planung am Laptop",
     "quote": "Eine ausgesprochen dünne Folie kann die Nutzung und Wahrnehmung eines Raumes spürbar verändern",
     "quoteMeta": "Dobrovolskyi Oleksandr · Gründer von City-Ton Austria",
     "team": {
       "title": "Ein kleines Team, das jeden Schritt selbst ausführt.",
-      "mainAlt": "Inhaber bei der Arbeit am Glas",
+      "mainAlt": "Zwei Monteure bei der Arbeit an einer Schaufensterscheibe",
       "mainLabel": "Arbeit am Glas",
-      "side1Alt": "Material wird vor Ort ausgepackt und vorbereitet",
-      "side1Label": "Material bereit",
-      "side2Alt": "Folienmontage an einem Schaufenster",
-      "side2Label": "Montage vor Ort"
+      "side1Alt": "Monteur beim Anbringen der Folie an einem Hausfenster",
+      "side1Label": "Montage vor Ort",
+      "side2Alt": "Zwei Monteure verkleben die Folie an einem Schaufenster",
+      "side2Label": "Im Team am Objekt"
     },
     "onsite": {
       "title": "Montage vor Ort",

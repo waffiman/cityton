@@ -91,16 +91,16 @@
           "with": "Splitter bleiben an der Folie haften"
         },
         {
-          "without": "Splitter können sich beim Aufprall verteilen",
-          "with": "Splitter bleiben zusammen"
+          "without": "Die Aufprallkraft wirkt punktuell auf das Glas",
+          "with": "Die Kraft verteilt sich über eine größere Fläche der Verglasung"
         },
         {
-          "without": "Aufprall lässt eine offene, fragmentierte Oberfläche zurück",
-          "with": "Folie hilft, gebrochene Glasstücke anzuhalten"
+          "without": "Die Scheibe fällt aus dem Rahmen",
+          "with": "Die Scheibe bleibt zunächst eine zusammenhängende Fläche"
         },
         {
-          "without": "Gebrochene Glasstücke fallen frei",
-          "with": "Gebrochene Glasstücke bleiben enthalten"
+          "without": "Schnelles Durchdringen der Verglasung",
+          "with": "Durchbruch erschwert, Eindringen deutlich verzögert"
         }
       ],
       "beforeAfterLabel": "Vergleich Vorher / Nachher",
@@ -109,7 +109,7 @@
       "img1WithoutValue": "33,3 °C",
       "img1AfterValue": "25,7 °C",
       "img2WithoutAlt": "Glas zerbricht in scharfe Splitter → Splitter bleiben an der Folie haften",
-      "img2AfterAlt": "Splitter können sich beim Aufprall verteilen → Splitter bleiben zusammen"
+      "img2AfterAlt": "Schnelles Durchdringen der Verglasung → Durchbruch erschwert, Eindringen deutlich verzögert"
     },
     "process": {
       "title": "Vier Schritte bis zur fertigen Folie.",
@@ -215,13 +215,13 @@
     }
   },
   "about": {
-    "title": "Architekturfolien für Sonnenschutz, UV-Schutz und mehr Sicherheit.",
+    "title": "Verstehen, prüfen, umsetzen.",
     "metaDescription": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen. Beratung, Montage und Betreuung aus einer Hand.",
     "imageAlt": "Inhaber und Ansprechpartner von City-Ton Austria",
-    "quote": "Intensive Sonneneinstrahlung, störende Reflexionen oder die Folgen eines Glasbruchs – eine professionell montierte Hitzeschutzfolie von City-Ton Austria kann je nach Ausführung bei diesen Problemen wirksam Abhilfe schaffen.",
-    "quoteMeta": "Grundsatz · City-Ton Austria",
+    "quote": "Eine ausgesprochen dünne Folie kann die Nutzung und Wahrnehmung eines Raumes spürbar verändern",
+    "quoteMeta": "Dobrovolskyi Oleksandr · Gründer von City-Ton Austria",
     "team": {
-      "title": "Unsere Spezialisten wählen die passende Folie anhand der Verglasung, des Einsatzortes und des gewünschten Zwecks aus.",
+      "title": "Ein kleines Team, das jeden Schritt selbst ausführt.",
       "mainAlt": "Inhaber bei der Arbeit am Glas",
       "mainLabel": "Arbeit am Glas",
       "side1Alt": "Material wird vor Ort ausgepackt und vorbereitet",
@@ -238,21 +238,21 @@
       "img3Alt": "Referenzobjekt nach der Folierung"
     },
     "peopleSteps": {
-      "title": "Von der ersten Beratung bis zum fertigen Ergebnis.",
-      "body": "Zu unseren wichtigsten Vorteilen gehören:",
+      "title": "Unsere Arbeit umfasst den gesamten Ablauf.",
+      "body": "persönliche Beratung, technische Prüfung, Produktauswahl und fachgerechte Montage",
       "step1": {
         "title": "Beratung & Aufmaß",
-        "body": "Berücksichtigung von Glasaufbau, Beschichtung, Montagebedingungen und Glasart vor der Verklebung",
+        "body": "Zunächst klären wir, welche Anforderungen bestehen und welches Ergebnis erwartet wird. Anschließend prüfen wir die Verglasung und wählen auf dieser Grundlage eine geeignete Folienlösung aus.",
         "imageAlt": "Vorbereitung und Material vor dem Aufmaß"
       },
       "step2": {
         "title": "Professionelle Montage",
-        "body": "fachgerechte Montage gemäß den Empfehlungen der Hersteller durch geschulte Spezialisten",
+        "body": "Von der Vorbereitung und Reinigung der Glasfläche über die kontrollierte Nassverklebung bis zur präzisen Kantenbearbeitung und abschließenden Prüfung.",
         "imageAlt": "Professionelle Folienmontage am Fenster"
       },
       "step3": {
         "title": "Übergabe & Betreuung",
-        "body": "Gemeinsame Abnahme, Pflegehinweise und ein Ansprechpartner auch danach.",
+        "body": "Auch nach Abschluss bleiben wir für Fragen zur Pflege, zur Gewährleistung und zu den geltenden Produktgarantien erreichbar.",
         "imageAlt": "Montageabschluss am Objekt"
       }
     },
@@ -272,33 +272,34 @@
       }
     },
     "why": {
-      "title": "Warum Kunden mit uns arbeiten.",
+      "title": "Auch die Beratung verstehen wir nicht als reines Verkaufsgespräch, sondern als Teil der technischen Leistung.",
       "item1": {
         "title": "Fachgerechte Analyse vor der Verklebung",
-        "body": "Berücksichtigung von Glasaufbau, Beschichtung, Montagebedingungen und Glasart vor der Verklebung"
+        "body": "Glasaufbau, vorhandene Beschichtungen, Scheibendicke, thermische Belastung und Einbausituation bestimmen wesentlich mit, welches Produkt geeignet ist und ob eine Innen- oder Außenmontage infrage kommt."
       },
       "item2": {
-        "title": "Transparente Kalkulation",
-        "body": "individuelle und transparente Kalkulation einer passenden Folienlösung für Ihr Objekt – abgestimmt auf Sonnenschutz, Sichtschutz, UV-Schutz, Hitzeschutz, Wärmeverlustschutz und Sicherheitsanforderungen"
+        "title": "Beratung als technische Leistung",
+        "body": "Dabei erklären wir nachvollziehbar, welche Wirkung erzielt werden kann und welche optischen oder technischen Veränderungen zu erwarten sind."
       },
       "item3": {
-        "title": "Fachgerechte Montage",
-        "body": "fachgerechte Montage gemäß den Empfehlungen der Hersteller durch geschulte Spezialisten"
+        "title": "Wirkung am Glas",
+        "body": "Je nach Produkt und Verglasung kann eine Folie den solaren Wärmeeintrag reduzieren, störende Blendung mindern und zu angenehmeren Lichtverhältnissen beitragen."
       },
       "item4": {
-        "title": "Betreuung auch nach der Montage",
-        "body": "persönliche Betreuung auch nach der Montage der Hitzeschutzfolie mit einem festen Ansprechpartner für Ihre Fragen"
+        "title": "Persönlicher Kontakt",
+        "body": "Klare Absprachen, direkte Erreichbarkeit und verständliche Antworten sollen dafür sorgen, dass unsere Kundinnen und Kunden während des gesamten Projekts gut informiert sind und wissen, an wen sie sich wenden können."
       }
     },
     "rating": {
-      "quote": "Von der Beratung bis zur Montage – professionell und zuverlässig."
+      "quote": "Ebenso wichtig wie das technische Ergebnis ist uns der persönliche Kontakt."
     },
     "finalCta": {
       "title": "Kontakt und kostenlose Beratung",
       "subtitle": "Wir beraten Sie kostenlos und unverbindlich, direkt vor Ort.",
       "body": "Wenn Sie wissen möchten, ob eine Sonnenschutzfolie, eine Sicherheitsfolie oder eine UV-Schutzfolie besser zu Ihren Anforderungen passt, beraten wir Sie kostenlos und unverbindlich. Ein Spezialist prüft die Gegebenheiten vor Ort und erstellt anschließend ein Angebot.",
       "cta": "Beratung anfragen →"
-    }
+    },
+    "body": "City-Ton Austria ist aus dem Wunsch entstanden, ein technisch interessantes Produkt gründlich zu verstehen und verantwortungsvoll anzuwenden."
   },
   "gallery": {
     "title": "Unsere Projekte",

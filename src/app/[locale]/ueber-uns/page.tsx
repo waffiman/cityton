@@ -42,6 +42,7 @@ export default async function AboutPage() {
         <div className={styles.intro}>
           <div>
             <h1 className={styles.title}>{t("title")}</h1>
+            <p className="lead">{t("body")}</p>
           </div>
           <figure className={`blueprint ${styles.portrait}`}>
             <div className={styles.portraitClip}>
@@ -60,11 +61,13 @@ export default async function AboutPage() {
       </section>
 
       {/* ── Quote ────────────────────────────────────────────────────────── */}
-      <section className="container section">
+      <section className="section">
         <blockquote className={`blueprint ${styles.quotePlate}`}>
           <Corners />
-          <p className={styles.quote}>{t("quote")}</p>
-          <footer className={styles.quoteMeta}>{t("quoteMeta").toUpperCase()}</footer>
+          <div className={styles.quoteInner}>
+            <p className={styles.quote}>{t("quote")}</p>
+            <footer className={styles.quoteMeta}>{t("quoteMeta").toUpperCase()}</footer>
+          </div>
         </blockquote>
       </section>
 
@@ -185,7 +188,7 @@ export default async function AboutPage() {
 
       {/* ── Why us ───────────────────────────────────────────────────────── */}
       <section className="container section">
-        <div className={styles.sectionHead}>
+        <div className={`${styles.sectionHead} ${styles.whyHead}`}>
           <h2 className={styles.sectionTitle}>{t("why.title")}</h2>
         </div>
         <div className={styles.whyGrid}>

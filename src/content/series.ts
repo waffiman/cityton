@@ -885,8 +885,6 @@ const safetyMicron = {
 /* --- Referenzfolien, auf die sich die Detailtexte beziehen --- */
 
 const rLead = getFilm("R SILVER 20"); // Leitprodukt der Serie R
-const rLightest = reflektierend[reflektierend.length - 1]!;
-const rBestTser = reflektierend.reduce((a, b) => (b.single.tser > a.single.tser ? b : a));
 const rAussen = reflektierend.filter((f) => f.mount !== "innen").length;
 const rArmolan = reflektierend.filter((f) => f.brand === "Armolan").length;
 const rLLumar = reflektierend.filter((f) => f.brand === "LLumar").length;
@@ -1008,17 +1006,6 @@ export const series: Series[] = [
             "Die Spiegelwirkung schützt tagsüber vor Einblick — von innen bleibt die Sicht " +
             "nach draußen erhalten. Nachts kehrt sich der Effekt um: bei Licht im Raum ist " +
             "von außen wieder alles sichtbar.",
-        },
-        {
-          kicker: "Auswahl",
-          title: "Dunkler heißt kühler",
-          body:
-            `Zwischen ${rLightest.name} (${pct(rLightest.single.vlt)} VLT, ` +
-            `${pct(rLightest.single.tser)} TSER) und ${rBestTser.name} ` +
-            `(${pct(rBestTser.single.vlt)} VLT, ${pct(rBestTser.single.tser)} TSER) liegen ` +
-            `${rBestTser.single.tser - rLightest.single.tser} Punkte Wärmeabweisung. Je ` +
-            `heller die Folie, desto weniger Hitzeschutz — dieser Zielkonflikt lässt sich ` +
-            `in der Serie R nicht auflösen.`,
         },
       ],
       variants: {

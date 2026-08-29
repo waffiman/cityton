@@ -19,13 +19,21 @@ export type GalleryImage = GalleryItem;
 const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
 const VIDEO_EXT = new Set([".mp4", ".webm"]);
 
+/**
+ * Caption key for a file name. next-intl reserves "." for nesting, so message
+ * keys spell the extension with an underscore: "gallery_1.png" → "gallery_1_png".
+ */
+export function captionKey(name: string) {
+  return name.replaceAll(".", "_");
+}
+
 function toItem(
   name: string,
   kind: GalleryItem["kind"],
   captions: Record<string, GalleryCaption>,
   fallback: GalleryCaption,
 ): GalleryItem {
-  const { project, film } = captions[name] ?? fallback;
+  const { project, film } = captions[captionKey(name)] ?? fallback;
   const base = name.slice(0, name.length - path.extname(name).length);
   return {
     kind,
@@ -74,8 +82,8 @@ function interleave<T>(photos: T[], videos: T[]): T[] {
 /**
  * List images and videos in public/media/referenzen/.
  * `captions`/`fallback` come from messages (`gallery.captions`,
- * `gallery.captionFallback*`) — keyed by basename, passed in so this stays
- * locale-agnostic (no content import here).
+ * `gallery.captionFallback*`) — keyed by `captionKey(basename)`, passed in so
+ * this stays locale-agnostic (no content import here).
  */
 export async function listGalleryImages(
   captions: Record<string, GalleryCaption>,

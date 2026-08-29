@@ -310,87 +310,87 @@
     "enlargeImage": "Bild vergrößern",
     "enlargeVideo": "Video vergrößern",
     "captions": {
-      "gallery_1.png": {
+      "gallery_1_png": {
         "project": "Wohnobjekt · Sonnenschutz",
         "film": "Dual Reflective Serie"
       },
-      "gallery_2.png": {
+      "gallery_2_png": {
         "project": "Fassade · Tageslicht",
         "film": "LLumar Architectural"
       },
-      "gallery_4.png": {
+      "gallery_4_png": {
         "project": "Wohnobjekt · Dual Reflective",
         "film": "Armolan Dual Reflective"
       },
-      "gallery_5.JPG": {
+      "gallery_5_JPG": {
         "project": "Büro · Blendschutz",
         "film": "Sonnenschutzfolie"
       },
-      "gallery_7.JPG": {
+      "gallery_7_JPG": {
         "project": "Gewerbeobjekt",
         "film": "Sicherheitsfolie"
       },
-      "gallery_8.jpg": {
+      "gallery_8_jpg": {
         "project": "Schaufenster",
         "film": "UV-Schutzfolie"
       },
-      "gallery_9.JPG": {
+      "gallery_9_JPG": {
         "project": "Innenraum · Privatsphäre",
         "film": "Sichtschutzfolie"
       },
-      "gallery_10.JPG": {
+      "gallery_10_JPG": {
         "project": "Fassadenband",
         "film": "Energiesparfolie"
       },
-      "gallery_6.jpg": {
+      "gallery_6_jpg": {
         "project": "Eckfenster · Wohnung",
         "film": "Sonnenschutzfolie"
       },
-      "interior-2.jpg": {
+      "interior-2_jpg": {
         "project": "Interieur · Glaswand",
         "film": "Sonnenschutzfolie"
       },
-      "photo_2026-08-14_23-59-53.jpg": {
+      "photo_2026-08-14_23-59-53_jpg": {
         "project": "Montageobjekt",
         "film": "Folie auf Anfrage"
       },
-      "reflective-facade-upscaled.jpg": {
+      "reflective-facade-upscaled_jpg": {
         "project": "Reflektierende Fassade",
         "film": "Dual Reflective Serie"
       },
-      "telegram_video.mp4": {
+      "telegram_video_mp4": {
         "project": "Montage vor Ort",
         "film": "Sonnenschutzfolie"
       },
-      "telegram_video(1).mp4": {
+      "telegram_video(1)_mp4": {
         "project": "Montage vor Ort",
         "film": "Sonnenschutzfolie"
       },
-      "telegram_video(2).mp4": {
+      "telegram_video(2)_mp4": {
         "project": "Arbeit am Glas",
         "film": "Sicherheitsfolie"
       },
-      "telegram_video(3).mp4": {
+      "telegram_video(3)_mp4": {
         "project": "Arbeit am Glas",
         "film": "Sicherheitsfolie"
       },
-      "telegram_video(4).mp4": {
+      "telegram_video(4)_mp4": {
         "project": "Fassadenmontage",
         "film": "Dual Reflective Serie"
       },
-      "telegram_video(5).mp4": {
+      "telegram_video(5)_mp4": {
         "project": "Fassadenmontage",
         "film": "Dual Reflective Serie"
       },
-      "telegram_video(6).mp4": {
+      "telegram_video(6)_mp4": {
         "project": "Innenraum · Folierung",
         "film": "Sichtschutzfolie"
       },
-      "telegram_video(7).mp4": {
+      "telegram_video(7)_mp4": {
         "project": "Innenraum · Folierung",
         "film": "Sichtschutzfolie"
       },
-      "telegram_video(8).mp4": {
+      "telegram_video(8)_mp4": {
         "project": "Objekt nach der Montage",
         "film": "Folie auf Anfrage"
       }
@@ -495,8 +495,7 @@
   },
   "certificates": {
     "sectionTitle": "Prüfberichte",
-    "safety1": "DIN EN 356 · ARM Safety Clear 12 mil",
-    "safety2": "DIN EN 12600 · ARM Safety 8 mil"
+    "safety1": "DIN EN 356 · ARM Safety Clear 12 mil"
   },
   "filmStructure": {
     "layersAriaSuffix": "Schichten",
@@ -547,8 +546,7 @@
     "resultsMany": "Folien",
     "filterAriaLabel": "Folien filtern",
     "breadcrumbHome": "HOME",
-    "breadcrumbProdukte": "PRODUKTE",
-    "certPrefix": "Prüfbericht öffnen:"
+    "breadcrumbProdukte": "PRODUKTE"
   },
   "produkteFolie": {
     "breadcrumbProdukte": "PRODUKTE",
@@ -625,7 +623,8 @@
     "funktionsprinzipCta": "Funktionsprinzip ansehen",
     "certsSectionTitle": "Prüfberichte",
     "videoSectionTitle": "Videodemonstration",
-    "pendingText": "Die ausführliche Produktseite für {name} folgt. Kennwerte, Varianten und Referenzobjekte kommen aus dem Herstellerdatenblatt — bis dahin beraten wir gerne direkt."
+    "pendingText": "Die ausführliche Produktseite für {name} folgt. Kennwerte, Varianten und Referenzobjekte kommen aus dem Herstellerdatenblatt — bis dahin beraten wir gerne direkt.",
+    "certPrefix": "Prüfbericht öffnen"
   },
   "produkteFolieDetail": {
     "kennwerteEinfach": "Kennwerte · Einfachverglasung",

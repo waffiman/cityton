@@ -13,7 +13,7 @@ export const FAMILIES = [
 ] as const;
 
 export const MOUNTS = ["innen", "außen", "innen / außen"] as const;
-export const GLYPHS = ["reflexion", "absorption", "kraft", "uv"] as const;
+export const GLYPHS = ["reflexion", "absorption", "kraft", "uv", "dekor"] as const;
 export const GLYPH_FIELDS = ["dark", "paper"] as const;
 
 /** FilmValues fields, in display order. `uv` is a string ("<1", ">5"); the rest are numeric. */

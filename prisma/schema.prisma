@@ -30,7 +30,7 @@ model Category {
   tag        String
   extraTag   String?
   summary    String
-  glyph      String // reflexion | absorption | kraft | uv
+  glyph      String // reflexion | absorption | kraft | uv | dekor
   glyphField String // dark | paper
   useCases   String[]
   metrics    Json? // overview-card metrics (label/value/bar)

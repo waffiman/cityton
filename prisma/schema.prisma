@@ -95,6 +95,8 @@ model Post {
   title       String
   excerpt     String?
   coverUrl    String?
+  /// Extra photos shown as a gallery under the article. The cover stays separate.
+  galleryUrls String[]
   contentHtml String    @default("")
   status      String    @default("draft") // draft | published
   publishedAt DateTime?

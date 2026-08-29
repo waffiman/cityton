@@ -30,7 +30,8 @@ services:
     environment:
       DATABASE_URL: postgresql://cityton:${POSTGRES_PASSWORD}@db:5432/cityton?schema=public
       SESSION_SECRET: ${SESSION_SECRET}
-      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH}
+      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
       NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
       S3_ENDPOINT: ${S3_ENDPOINT:-}
       S3_REGION: ${S3_REGION:-auto}
@@ -53,6 +54,10 @@ services:
     # them from 24-megapixel sources.
     volumes:
       - nextcache:/app/.next/cache
+      # Admin image uploads when S3 isn't configured (see src/lib/storage.ts).
+      # Must be a volume: the image is rebuilt on every deploy, so anything
+      # written into the container filesystem would be discarded with it.
+      - uploads:/app/uploads
 
     # A Caddy reverse proxy on the host owns :80/:443 and terminates TLS, so the
     # app binds loopback only. Publishing :80 here collides with Caddy and the
@@ -63,3 +68,4 @@ services:
 volumes:
   dbdata:
   nextcache:
+  uploads:

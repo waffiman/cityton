@@ -59,6 +59,14 @@
   color: var(--color-on-dark-strong);
 }
 
+.subtitle {
+  margin: 0;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.5;
+  max-width: 46ch;
+  color: var(--color-on-dark);
+}
+
 .body {
   font-size: 19px;
   line-height: 1.5;

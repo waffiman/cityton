@@ -1,0 +1,109 @@
+.figure {
+  margin: 0;
+  max-width: 900px;
+}
+
+/* The plate carries the frame line and registration marks; the marks sit
+   6px outside it, so the clipping lives one level down in .frame. */
+.plate {
+  background: var(--color-accent-900);
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.trigger {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+.poster {
+  object-fit: cover;
+  /* Dimmed so the play mark reads against a bright frame. */
+  filter: brightness(0.88);
+  transition: filter 0.2s ease, transform 0.4s ease;
+}
+
+.play {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  /* Optical centring: the triangle's mass sits left of the glyph box. */
+  padding-left: 3px;
+  background: color-mix(in srgb, var(--color-accent-900) 78%, transparent);
+  border: 1px solid var(--color-on-dark-rule);
+  border-radius: var(--radius-sm);
+  color: var(--color-on-dark-strong);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.trigger:hover .poster,
+.trigger:focus-visible .poster {
+  filter: brightness(0.8);
+  transform: scale(1.01);
+}
+
+.trigger:hover .play,
+.trigger:focus-visible .play {
+  background: var(--color-accent);
+  transform: scale(1.04);
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 14px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.captionTitle {
+  color: color-mix(in srgb, var(--color-text) 82%, transparent);
+}
+
+.note {
+  font-size: 13px;
+  color: var(--color-neutral-600);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poster,
+  .play {
+    transition: none;
+  }
+  .trigger:hover .poster,
+  .trigger:focus-visible .poster,
+  .trigger:hover .play,
+  .trigger:focus-visible .play {
+    transform: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .play {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -2,7 +2,7 @@
  * Full Kontakt inquiry: validate/normalize payload shared by client form and API.
  */
 
-import { kontakt, type GoalValue, type ObjektartValue } from "@/content/kontakt";
+import { goalValues, objectTypeValues, type GoalValue, type ObjektartValue } from "@/content/kontakt";
 import {
   looksLikeEmail,
   MAX_EMAIL_LENGTH,
@@ -10,8 +10,13 @@ import {
   sanitizeContactInput,
 } from "@/lib/contact-lead";
 
-const OBJECT_VALUES = new Set(kontakt.objectTypes.map((o) => o.value));
-const GOAL_VALUES = new Set(kontakt.goals.map((g) => g.value));
+// Validation messages here stay German: this runs both client- and
+// server-side, and localizing it would mean threading a translation
+// function through a currently-pure validator — left as a known follow-up,
+// not part of this pass (server notification emails to the business stay
+// German regardless of the visitor's locale anyway).
+const OBJECT_VALUES = new Set<string>(objectTypeValues);
+const GOAL_VALUES = new Set<string>(goalValues);
 
 export const MAX_MESSAGE_LENGTH = 2000;
 

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Corners from "./Corners";
 import styles from "./BeforeAfter.module.css";
@@ -27,6 +28,7 @@ type Props = {
  * the divider is also a real slider input for keyboard and screen-reader users.
  */
 export default function BeforeAfter({ before, after, aspectRatio, className }: Props) {
+  const t = useTranslations("home.compare");
   const railRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const [pct, setPct] = useState(46);
@@ -106,7 +108,7 @@ export default function BeforeAfter({ before, after, aspectRatio, className }: P
       </div>
 
       <label className={styles.srOnly}>
-        Vergleich Vorher / Nachher
+        {t("beforeAfterLabel")}
         <input
           type="range"
           min={2}

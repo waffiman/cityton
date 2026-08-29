@@ -1,19 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useId, useState } from "react";
+import { useTranslations } from "next-intl";
+import { useCallback, useState } from "react";
 import type { GalleryItem } from "@/lib/gallery-media";
+import ImageLightbox from "@/components/ImageLightbox";
 import MutedLoopVideo from "@/components/MutedLoopVideo";
-import styles from "@/app/gallery/gallery.module.css";
+import styles from "@/app/[locale]/gallery/gallery.module.css";
 
 type Props = {
   images: GalleryItem[];
 };
 
 export default function GalleryMasonry({ images }: Props) {
+  const t = useTranslations("gallery");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const titleId = useId();
-  const open = openIndex !== null;
 
   const close = useCallback(() => setOpenIndex(null), []);
 
@@ -27,28 +28,7 @@ export default function GalleryMasonry({ images }: Props) {
     [images.length],
   );
 
-  useEffect(() => {
-    if (!open) return;
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") go(-1);
-      if (e.key === "ArrowRight") go(1);
-    };
-
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-
-    return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open, close, go]);
-
   if (images.length === 0) return null;
-
-  const current = openIndex !== null ? images[openIndex] : null;
 
   return (
     <>
@@ -59,7 +39,7 @@ export default function GalleryMasonry({ images }: Props) {
               type="button"
               className={styles.tileBtn}
               onClick={() => setOpenIndex(i)}
-              aria-label={`${item.project} — ${item.film}. ${item.kind === "video" ? "Video" : "Bild"} vergrößern`}
+              aria-label={`${item.project} — ${item.film}. ${item.kind === "video" ? t("enlargeVideo") : t("enlargeImage")}`}
             >
               {item.kind === "video" ? (
                 <MutedLoopVideo
@@ -87,90 +67,7 @@ export default function GalleryMasonry({ images }: Props) {
         ))}
       </ul>
 
-      {open && current ? (
-        <div
-          className={styles.lightbox}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={titleId}
-          onClick={close}
-        >
-          <span id={titleId} className="sr-only">
-            {current.project} — {current.film}
-          </span>
-
-          <button
-            type="button"
-            className={styles.lightboxClose}
-            onClick={close}
-            aria-label="Schließen"
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M5 5l14 14M19 5L5 19" />
-            </svg>
-          </button>
-
-          {images.length > 1 ? (
-            <>
-              <button
-                type="button"
-                className={`${styles.lightboxNav} ${styles.lightboxPrev}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  go(-1);
-                }}
-                aria-label="Vorheriges"
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M15 6l-6 6 6 6" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                className={`${styles.lightboxNav} ${styles.lightboxNext}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  go(1);
-                }}
-                aria-label="Nächstes"
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M9 6l6 6-6 6" />
-                </svg>
-              </button>
-            </>
-          ) : null}
-
-          <div
-            className={styles.lightboxFigure}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {current.kind === "video" ? (
-              <MutedLoopVideo
-                src={current.src}
-                poster={current.poster}
-                className={styles.lightboxVideo}
-                title={current.alt}
-                alwaysAutoplay
-              />
-            ) : (
-              <Image
-                src={current.src}
-                alt={current.alt}
-                width={1600}
-                height={1200}
-                sizes="100vw"
-                className={styles.lightboxImg}
-                priority
-              />
-            )}
-            <div className={styles.lightboxCaption}>
-              <p className={styles.lightboxProject}>{current.project}</p>
-              <p className={styles.lightboxFilm}>{current.film}</p>
-            </div>
-          </div>
-        </div>
-      ) : null}
+      <ImageLightbox items={images} index={openIndex} onClose={close} onNavigate={go} />
     </>
   );
 }

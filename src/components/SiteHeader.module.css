@@ -118,11 +118,16 @@
   letter-spacing: 0.1em;
 }
 .localeActive {
+  text-decoration: none;
   color: var(--color-accent-700);
   font-weight: 700;
 }
 .locale {
+  text-decoration: none;
   color: color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+.locale:hover {
+  color: var(--color-accent-700);
 }
 
 .cta {

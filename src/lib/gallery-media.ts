@@ -1,6 +1,7 @@
 import { readdir } from "node:fs/promises";
 import path from "node:path";
-import { gallery, type GalleryCaption } from "@/content/gallery";
+
+export type GalleryCaption = { project: string; film: string };
 
 export type GalleryItem = {
   kind: "image" | "video";
@@ -18,12 +19,21 @@ export type GalleryImage = GalleryItem;
 const IMAGE_EXT = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif"]);
 const VIDEO_EXT = new Set([".mp4", ".webm"]);
 
-function captionFor(name: string): GalleryCaption {
-  return (gallery.captions as Record<string, GalleryCaption>)[name] ?? gallery.captionFallback;
+/**
+ * Caption key for a file name. next-intl reserves "." for nesting, so message
+ * keys spell the extension with an underscore: "gallery_1.png" → "gallery_1_png".
+ */
+export function captionKey(name: string) {
+  return name.replaceAll(".", "_");
 }
 
-function toItem(name: string, kind: GalleryItem["kind"]): GalleryItem {
-  const { project, film } = captionFor(name);
+function toItem(
+  name: string,
+  kind: GalleryItem["kind"],
+  captions: Record<string, GalleryCaption>,
+  fallback: GalleryCaption,
+): GalleryItem {
+  const { project, film } = captions[captionKey(name)] ?? fallback;
   const base = name.slice(0, name.length - path.extname(name).length);
   return {
     kind,
@@ -71,9 +81,14 @@ function interleave<T>(photos: T[], videos: T[]): T[] {
 
 /**
  * List images and videos in public/media/referenzen/.
- * Captions come from `gallery.captions` keyed by basename.
+ * `captions`/`fallback` come from messages (`gallery.captions`,
+ * `gallery.captionFallback*`) — keyed by `captionKey(basename)`, passed in so
+ * this stays locale-agnostic (no content import here).
  */
-export async function listGalleryImages(): Promise<GalleryItem[]> {
+export async function listGalleryImages(
+  captions: Record<string, GalleryCaption>,
+  fallback: GalleryCaption,
+): Promise<GalleryItem[]> {
   const dir = path.join(process.cwd(), "public", "media", "referenzen");
 
   let names: string[];
@@ -94,8 +109,8 @@ export async function listGalleryImages(): Promise<GalleryItem[]> {
     // extension, so without this they become uncaptioned, unplayable tiles.
     if (name.startsWith(".")) continue;
     const ext = path.extname(name).toLowerCase();
-    if (IMAGE_EXT.has(ext)) photos.push(toItem(name, "image"));
-    else if (VIDEO_EXT.has(ext)) videos.push(toItem(name, "video"));
+    if (IMAGE_EXT.has(ext)) photos.push(toItem(name, "image", captions, fallback));
+    else if (VIDEO_EXT.has(ext)) videos.push(toItem(name, "video", captions, fallback));
   }
 
   return interleave(photos, videos);

@@ -11,11 +11,17 @@ export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  const pages = nav.map((n) => ({
-    url: `${site.url}${n.href === "/" ? "" : n.href}`,
-    lastModified: now,
-    priority: n.href === "/" ? 1 : 0.7,
-  }));
+  // Static nav pages exist in both locales (German unprefixed, English under
+  // /en/) — DB-driven pages below (series/films/posts) don't: their content
+  // isn't translated, so an /en/ duplicate would serve German copy under an
+  // English URL, a real SEO downside rather than a neutral one.
+  const pages = nav.flatMap((n) => {
+    const dePath = n.href === "/" ? "" : n.href;
+    return [
+      { url: `${site.url}${dePath}`, lastModified: now, priority: n.href === "/" ? 1 : 0.7 },
+      { url: `${site.url}/en${dePath}`, lastModified: now, priority: n.href === "/" ? 0.9 : 0.6 },
+    ];
+  });
   const products = series.map((s) => ({
     url: `${site.url}/produkte/${s.slug}`,
     lastModified: now,
@@ -35,5 +41,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: p.publishedAt ?? p.updatedAt,
     priority: 0.6,
   }));
-  return [...pages, ...products, ...foils, ...posts];
+  // The blog index is German-only like the posts it lists, so no /en duplicate.
+  // Only list it once it has something on it: with no published posts the page
+  // renders an empty state, and it's linked from neither the nav nor the
+  // footer, so submitting it would just hand Google an orphaned empty page.
+  const blogIndex = posts.length
+    ? [{ url: `${site.url}/blog`, lastModified: now, priority: 0.6 }]
+    : [];
+  return [...pages, ...blogIndex, ...products, ...foils, ...posts];
 }

@@ -1,3 +1,7 @@
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
+
 // Allow the S3-compatible image host (admin uploads) if configured.
 const s3Base = process.env.S3_PUBLIC_BASE_URL;
 let remotePatterns = [];
@@ -29,4 +33,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

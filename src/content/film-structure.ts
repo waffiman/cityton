@@ -23,41 +23,12 @@ const aluminium = "#5a6b70";
 const sputterMetal = "#7a8a86";
 const clearPet = "#b7c9cd";
 
-/** Technology keys — not series slugs. Map a series via `SERIES_STRUCTURE_KEY`. */
-export const filmStructures: Record<FilmStructureKey, FilmStructureContent> = {
-  reflective: {
-    title: "Folienaufbau · Reflective",
-    layers: [
-      { n: 1, caption: "Kratzfeste Hartschicht", color: hardcoat, weight: 1 },
-      { n: 2, caption: "Klare Polyesterfolie", color: clearPet, weight: 1 },
-      { n: 3, caption: "Metallisierte Aluminiumschicht", color: aluminium, weight: 1 },
-      { n: 4, caption: "Klare/getönte PET-Folie mit UV-Absorbern", color: uvPet, weight: 1 },
-      { n: 5, caption: "Kleber mit UV-Absorbern", color: adhesive, weight: 1 },
-      { n: 6, caption: "Trennfolie (Release Liner)", color: liner, weight: 1 },
-    ],
-  },
-  safety: {
-    title: "Folienaufbau · Safety",
-    layers: [
-      { n: 1, caption: "Kratzfeste Hartschicht", color: hardcoat, weight: 1 },
-      { n: 2, caption: "Klare Polyesterfolie", color: clearPet, weight: 1 },
-      { n: 3, caption: "Laminatkleber", color: adhesive, weight: 1 },
-      { n: 4, caption: "Klare Polyesterfolie", color: pet, weight: 1 },
-      { n: 5, caption: "Kleber mit UV-Absorbern", color: adhesive, weight: 1 },
-      { n: 6, caption: "Trennfolie (Release Liner)", color: liner, weight: 1 },
-    ],
-  },
-  sputtered: {
-    title: "Folienaufbau · Sputtered",
-    layers: [
-      { n: 1, caption: "Kratzfeste Hartschicht", color: hardcoat, weight: 1 },
-      { n: 2, caption: "Klare Polyesterfolie", color: clearPet, weight: 1 },
-      { n: 3, caption: "Gesputterte Metallschicht", color: sputterMetal, weight: 1 },
-      { n: 4, caption: "Klare/getönte PET-Folie mit UV-Absorbern", color: uvPet, weight: 1 },
-      { n: 5, caption: "Kleber mit UV-Absorbern", color: adhesive, weight: 1 },
-      { n: 6, caption: "Trennfolie (Release Liner)", color: liner, weight: 1 },
-    ],
-  },
+/** Layer fill colours per technology — captions come from messages
+ * (`filmStructure.<key>.layer1..6`), keyed by position, not text. */
+export const filmStructureColors: Record<FilmStructureKey, string[]> = {
+  reflective: [hardcoat, clearPet, aluminium, uvPet, adhesive, liner],
+  safety: [hardcoat, clearPet, adhesive, pet, adhesive, liner],
+  sputtered: [hardcoat, clearPet, sputterMetal, uvPet, adhesive, liner],
 };
 
 /** Series slug → schema. UV Clear and Sichtschutz have no matching stack. */
@@ -67,13 +38,33 @@ export const SERIES_STRUCTURE_KEY: Record<string, FilmStructureKey> = {
   safety: "safety",
 };
 
+export function structureKeyForSeries(slug: string): FilmStructureKey | undefined {
+  return SERIES_STRUCTURE_KEY[slug];
+}
+
+/**
+ * Build the translated structure for a series. `t` is a next-intl translator
+ * scoped to (or able to resolve) the `filmStructure` namespace — pass
+ * `getTranslations("filmStructure")`. `override` lets a specific series swap
+ * captions/colours per layer (none currently do; kept for future series).
+ */
 export function structureForSeries(
   slug: string,
+  t: (key: string) => string,
   override?: { layers: Array<Partial<FilmStructureLayer> & { n: number; caption: string }> },
 ): FilmStructureContent | undefined {
-  const key = SERIES_STRUCTURE_KEY[slug];
+  const key = structureKeyForSeries(slug);
   if (!key) return undefined;
-  const base = filmStructures[key];
+  const colors = filmStructureColors[key];
+  const base: FilmStructureContent = {
+    title: t(`${key}.title`),
+    layers: colors.map((color, i) => ({
+      n: i + 1,
+      caption: t(`${key}.layer${i + 1}`),
+      color,
+      weight: 1,
+    })),
+  };
   if (!override?.layers?.length) return base;
   return {
     ...base,
@@ -83,4 +74,3 @@ export function structureForSeries(
     }),
   };
 }
-

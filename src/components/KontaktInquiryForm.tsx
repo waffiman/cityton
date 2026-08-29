@@ -1,17 +1,18 @@
 "use client";
 
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useRef, useState, type FormEvent } from "react";
+import { Link } from "@/i18n/navigation";
 import Corners from "@/components/Corners";
 import TurnstileWidget from "@/components/TurnstileWidget";
-import { kontakt, type GoalValue, type ObjektartValue } from "@/content/kontakt";
+import { objectTypeValues, goalValues, type GoalValue, type ObjektartValue } from "@/content/kontakt";
 import {
   MAX_MESSAGE_LENGTH,
   sanitizeEmailField,
   sanitizePhoneField,
   validateInquiry,
 } from "@/lib/kontakt-inquiry";
-import styles from "@/app/kontakt/kontakt.module.css";
+import styles from "@/app/[locale]/kontakt/kontakt.module.css";
 
 type Status =
   | { type: "idle" }
@@ -44,6 +45,7 @@ const initial: FormState = {
 };
 
 export default function KontaktInquiryForm() {
+  const t = useTranslations("kontakt");
   const [form, setForm] = useState<FormState>(initial);
   const [status, setStatus] = useState<Status>({ type: "idle" });
   const [submitting, setSubmitting] = useState(false);
@@ -91,7 +93,7 @@ export default function KontaktInquiryForm() {
     if (lastAccepted.current && lastAccepted.current === dedupeToken) {
       setStatus({
         type: "duplicate",
-        message: "Mit diesen Kontaktdaten wurde bereits eine Anfrage übermittelt.",
+        message: t("duplicateError"),
       });
       return;
     }
@@ -128,7 +130,7 @@ export default function KontaktInquiryForm() {
         setStatus({
           type: "duplicate",
           message:
-            data.error ?? "Mit diesen Kontaktdaten wurde bereits eine Anfrage übermittelt.",
+            data.error ?? t("duplicateError"),
         });
         return;
       }
@@ -136,18 +138,18 @@ export default function KontaktInquiryForm() {
       if (!res.ok || !data.ok) {
         setStatus({
           type: "error",
-          message: data.error ?? "Senden fehlgeschlagen. Bitte erneut versuchen.",
+          message: data.error ?? t("sendFailedError"),
         });
         return;
       }
 
       lastAccepted.current = dedupeToken;
-      setStatus({ type: "success", message: kontakt.success });
+      setStatus({ type: "success", message: t("success") });
       setForm(initial);
     } catch {
       setStatus({
         type: "error",
-        message: "Netzwerkfehler. Bitte Verbindung prüfen und erneut senden.",
+        message: t("networkError"),
       });
     } finally {
       inFlight.current = false;
@@ -160,7 +162,7 @@ export default function KontaktInquiryForm() {
   return (
     <form className={styles.form} onSubmit={onSubmit} noValidate>
       <label className={styles.honeypot} aria-hidden="true">
-        Website
+        {t("honeypotLabel")}
         <input
           tabIndex={-1}
           autoComplete="off"
@@ -171,7 +173,7 @@ export default function KontaktInquiryForm() {
       </label>
 
       <label className={styles.field}>
-        <span className={styles.label}>Name</span>
+        <span className={styles.label}>{t("nameLabel")}</span>
         <input
           className={styles.input}
           name="name"
@@ -186,7 +188,7 @@ export default function KontaktInquiryForm() {
       </label>
 
       <label className={styles.field}>
-        <span className={styles.label}>Objektart</span>
+        <span className={styles.label}>{t("objektartLabel")}</span>
         <select
           className={styles.input}
           name="objektart"
@@ -196,11 +198,11 @@ export default function KontaktInquiryForm() {
           onChange={(e) => patch({ objektart: e.target.value as ObjektartValue | "" })}
         >
           <option value="" disabled>
-            Bitte wählen
+            {t("objektartPlaceholder")}
           </option>
-          {kontakt.objectTypes.map((o) => (
-            <option key={o.value} value={o.value}>
-              {o.label}
+          {objectTypeValues.map((value) => (
+            <option key={value} value={value}>
+              {t(`objectTypes.${value}`)}
             </option>
           ))}
         </select>
@@ -208,12 +210,12 @@ export default function KontaktInquiryForm() {
 
       <label className={styles.field}>
         <span className={styles.label}>
-          Fläche <span className={styles.optional}>(optional)</span>
+          {t("flaecheLabel")} <span className={styles.optional}>{t("optional")}</span>
         </span>
         <input
           className={styles.input}
           name="flaeche"
-          placeholder="z. B. ca. 40 m² Glas / 8 Fenster"
+          placeholder={t("flaechePlaceholder")}
           maxLength={80}
           value={form.flaeche}
           disabled={submitting}
@@ -222,20 +224,20 @@ export default function KontaktInquiryForm() {
       </label>
 
       <fieldset className={styles.fieldset}>
-        <legend className={styles.label}>Ziel</legend>
+        <legend className={styles.label}>{t("goalLabel")}</legend>
         <div className={styles.chips}>
-          {kontakt.goals.map((g) => {
-            const on = form.goals.includes(g.value);
+          {goalValues.map((value) => {
+            const on = form.goals.includes(value);
             return (
               <button
-                key={g.value}
+                key={value}
                 type="button"
                 className={`${styles.chip}${on ? ` ${styles.chipOn}` : ""}`}
                 aria-pressed={on}
                 disabled={submitting}
-                onClick={() => toggleGoal(g.value)}
+                onClick={() => toggleGoal(value)}
               >
-                {g.label}
+                {t(`goals.${value}`)}
               </button>
             );
           })}
@@ -244,45 +246,45 @@ export default function KontaktInquiryForm() {
 
       <div className={styles.contactRow}>
         <label className={styles.field}>
-          <span className={styles.label}>Telefon</span>
+          <span className={styles.label}>{t("phoneLabel")}</span>
           <input
             className={styles.input}
             name="phone"
             type="tel"
             inputMode="tel"
             autoComplete="tel"
-            placeholder="+43 …"
+            placeholder={t("phonePlaceholder")}
             value={form.phone}
             disabled={submitting}
             onChange={(e) => patch({ phone: sanitizePhoneField(e.target.value) })}
           />
         </label>
         <label className={styles.field}>
-          <span className={styles.label}>E-Mail</span>
+          <span className={styles.label}>{t("emailLabel")}</span>
           <input
             className={styles.input}
             name="email"
             type="email"
             inputMode="email"
             autoComplete="email"
-            placeholder="name@firma.at"
+            placeholder={t("emailPlaceholder")}
             value={form.email}
             disabled={submitting}
             onChange={(e) => patch({ email: sanitizeEmailField(e.target.value) })}
           />
         </label>
       </div>
-      <p className={styles.hint}>Mindestens Telefon oder E-Mail angeben.</p>
+      <p className={styles.hint}>{t("contactHint")}</p>
 
       <label className={styles.field}>
         <span className={styles.label}>
-          {kontakt.messageLabel} <span className={styles.optional}>(optional)</span>
+          {t("messageLabel")} <span className={styles.optional}>{t("optional")}</span>
         </span>
         <textarea
           className={styles.textarea}
           name="message"
           rows={5}
-          placeholder={kontakt.messagePlaceholder}
+          placeholder={t("messagePlaceholder")}
           maxLength={MAX_MESSAGE_LENGTH}
           value={form.message}
           disabled={submitting}
@@ -301,18 +303,18 @@ export default function KontaktInquiryForm() {
           onChange={(e) => patch({ privacy: e.target.checked })}
         />
         <span>
-          {kontakt.privacyPrefix}{" "}
+          {t("privacyPrefix")}{" "}
           <Link href="/datenschutz" className={styles.privacyLink}>
-            {kontakt.privacyLink}
+            {t("privacyLink")}
           </Link>{" "}
-          {kontakt.privacySuffix}
+          {t("privacySuffix")}
         </span>
       </label>
 
       <div className={styles.actions}>
         <button type="submit" className="btn btn-primary btn-lg blueprint" disabled={submitting}>
           <Corners />
-          {submitting ? kontakt.submitting : kontakt.submit}
+          {submitting ? t("submitting") : t("submit")}
         </button>
       </div>
 

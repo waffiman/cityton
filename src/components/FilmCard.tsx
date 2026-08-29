@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Film } from "@/content/series";
-import { filmImageSrc, filmSlug } from "@/lib/films";
+import { filmImageSrc, filmSlug, shouldBypassOptimizer } from "@/lib/films";
 import styles from "./FilmCatalog.module.css";
 
 /**
@@ -22,7 +22,7 @@ export default function FilmCard({ film }: { film: Film & { imageUrl?: string | 
             fill
             sizes="(max-width: 700px) 50vw, 25vw"
             className={styles.img}
-            unoptimized
+            unoptimized={shouldBypassOptimizer(src)}
           />
         ) : (
           <span className={styles.mediaEmpty} />

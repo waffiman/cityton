@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import styles from "@/app/admin/admin.module.css";
 import { type PostInput, toSlug } from "@/lib/admin-schemas";
 import ImageUpload from "./ImageUpload";
+import MultiImageUpload from "./MultiImageUpload";
 import RichTextEditor from "./RichTextEditor";
 
 export type PostFormData = {
@@ -13,6 +14,7 @@ export type PostFormData = {
   title: string;
   excerpt: string | null;
   coverUrl: string | null;
+  galleryUrls: string[];
   contentHtml: string;
   status: string;
 };
@@ -26,6 +28,7 @@ export default function PostEditor({ post }: { post?: PostFormData }) {
   const [slugTouched, setSlugTouched] = useState(isEdit);
   const [excerpt, setExcerpt] = useState(post?.excerpt ?? "");
   const [coverUrl, setCoverUrl] = useState<string | null>(post?.coverUrl ?? null);
+  const [galleryUrls, setGalleryUrls] = useState<string[]>(post?.galleryUrls ?? []);
   const [contentHtml, setContentHtml] = useState(post?.contentHtml ?? "");
   const [status] = useState(post?.status ?? "draft");
 
@@ -47,6 +50,7 @@ export default function PostEditor({ post }: { post?: PostFormData }) {
       title: title.trim(),
       excerpt: excerpt.trim() || null,
       coverUrl: coverUrl || null,
+      galleryUrls,
       contentHtml,
       status: finalStatus,
     };
@@ -124,6 +128,11 @@ export default function PostEditor({ post }: { post?: PostFormData }) {
       <div className={styles.field}>
         <label className={styles.label}>Titelbild</label>
         <ImageUpload value={coverUrl} folder="posts" onChange={setCoverUrl} />
+      </div>
+
+      <div className={styles.field}>
+        <label className={styles.label}>Weitere Bilder (Galerie)</label>
+        <MultiImageUpload value={galleryUrls} folder="posts" onChange={setGalleryUrls} />
       </div>
 
       <div className={styles.field}>

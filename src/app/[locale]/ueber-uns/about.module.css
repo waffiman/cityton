@@ -1,0 +1,501 @@
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: end;
+}
+.title {
+  font-size: clamp(34px, 3.8vw, 58px);
+  margin: 0 0 20px;
+  line-height: 1.02;
+}
+.portrait {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 85%;
+  margin-left: auto;
+  overflow: visible;
+}
+.portraitClip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.portraitImg {
+  object-fit: cover;
+  object-position: center top;
+}
+.portrait :global(.corner) {
+  z-index: 2;
+}
+
+/* ── Quote ───────────────────────────────────────────────────────────────── */
+.quotePlate {
+  padding-block: clamp(52px, 6vw, 84px);
+  padding-inline: 0;
+  background: var(--color-accent-900);
+  color: var(--color-on-dark-strong);
+  margin: 0;
+}
+
+/* Keeps the text on the page grid while the teal runs edge to edge. */
+.quoteInner {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.quote {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.15;
+  margin: 0;
+  max-width: 32ch;
+}
+.quoteMeta {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--color-accent-300);
+  margin-top: 26px;
+  max-width: 32ch;
+  width: 100%;
+}
+
+/* ── Shared section head ─────────────────────────────────────────────────── */
+.sectionHead {
+  max-width: 70ch;
+  margin-bottom: 36px;
+}
+.sectionTitle {
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+.sectionBody {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--color-text) 68%, transparent);
+}
+.sectionCta {
+  margin-top: 28px;
+}
+
+.mosaicImg {
+  object-fit: cover;
+}
+
+.mosaicLabel {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 1;
+  padding: 6px 10px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-on-dark-strong);
+  background: color-mix(in srgb, var(--color-accent-900) 78%, transparent);
+  border: 1px solid var(--color-on-dark-rule);
+}
+
+/* ── Team — copy left, smaller photos right ──────────────────────────────── */
+.teamSection {
+  padding-bottom: var(--section-gap);
+}
+
+.teamLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+}
+
+.teamCopy {
+  max-width: 54ch;
+  text-align: left;
+}
+
+.teamMosaic {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  justify-self: stretch;
+}
+
+.teamFig {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+/* ── On site (Praxis) — dark band, photos left, copy right ───────────────── */
+.onsiteBand {
+  margin: 0;
+  padding-block: clamp(48px, 6vw, 80px);
+}
+
+.onsiteLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+  text-align: left;
+}
+
+.onsiteCopy {
+  max-width: 54ch;
+  justify-self: end;
+  order: 2;
+}
+
+.onsiteEyebrow {
+  color: var(--color-accent-300);
+}
+
+.onsiteTitle {
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: var(--color-on-dark-strong);
+}
+
+.onsiteBody {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-on-dark-muted);
+}
+
+.onsiteCopy .sectionCta {
+  display: inline-flex;
+  margin-top: 24px;
+}
+
+.onsiteGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  order: 1;
+  overflow: visible;
+}
+
+.onsiteFig {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: visible;
+}
+.onsiteClip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.onsiteFig .mosaicImg {
+  object-position: left center;
+}
+.onsiteFig :global(.corner) {
+  z-index: 2;
+}
+
+/* ── People steps ────────────────────────────────────────────────────────── */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: transparent;
+}
+.stepMedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--s2);
+}
+.stepCopy {
+  padding: 20px 18px 22px;
+}
+.stepNum {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--color-accent-700);
+  margin-bottom: 8px;
+}
+.stepTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.stepBody {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-text) 64%, transparent);
+}
+
+/* ── Partners ────────────────────────────────────────────────────────────── */
+.partnerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+.partnerCard {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.partnerLogoWrap {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  margin-bottom: 18px;
+}
+.partnerLogo {
+  height: 36px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+}
+/* ── Why us ──────────────────────────────────────────────────────────────── */
+/* The why-title is a full sentence, so it gets a tighter scale than the
+   short headings elsewhere on the page — otherwise it runs to four lines. */
+.whyHead {
+  max-width: 60ch;
+}
+.whyHead .sectionTitle {
+  font-size: clamp(22px, 2.1vw, 31px);
+  line-height: 1.18;
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  counter-reset: why;
+}
+.whyCard {
+  counter-increment: why;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 22px 28px;
+  background: var(--s0);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+/* 01 · 02 · 03 · 04 — generated, so the markup stays a plain map(). */
+.whyCard::before {
+  content: counter(why, decimal-leading-zero);
+  align-self: stretch;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--color-accent-600);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--color-accent-400);
+}
+
+.whyCard:hover {
+  background: var(--s1);
+  border-color: var(--color-accent-500);
+}
+.whyTitle {
+  margin: 0;
+  /* Two lines' worth, so every body starts on the same baseline across the row. */
+  min-height: 2.4em;
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.whyBody {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-text) 64%, transparent);
+}
+
+/* ── Rating ──────────────────────────────────────────────────────────────── */
+.ratingBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 32px 28px;
+}
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+.ratingValue {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-size: clamp(36px, 4vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-accent-900);
+}
+.ratingScale {
+  font-size: 0.45em;
+  letter-spacing: 0;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.ratingMeta {
+  margin-top: 8px;
+  font-size: 13px;
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.ratingQuote {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--color-accent-900);
+  max-width: 62ch;
+}
+.ratingLink {
+  font-size: 14px;
+  color: var(--color-accent-700);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ratingLink:hover {
+  color: var(--color-accent-900);
+}
+
+/* ── Final CTA (products-style dark band) ────────────────────────────────── */
+.ctaBand {
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--section-gap);
+  padding-block: clamp(48px, 6vw, 80px);
+}
+
+.ctaFx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 60% 80% at 85% 20%,
+      color-mix(in srgb, var(--color-accent-400) 22%, transparent),
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 56px,
+      color-mix(in srgb, var(--color-on-dark) 5%, transparent) 56px 57px
+    );
+}
+
+.ctaInner {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaTitle {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.1;
+  color: var(--color-on-dark-strong);
+}
+
+.ctaSubtitle {
+  margin: 0 0 12px;
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--color-accent-300);
+}
+
+.ctaBody {
+  margin: 0 0 24px;
+  max-width: 60ch;
+  font-size: 16px;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--color-on-dark) 82%, transparent);
+}
+
+@media (max-width: 1100px) {
+  .whyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ratingBlock {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .portrait {
+    width: 100%;
+    margin-inline: auto;
+  }
+  .portraitImg {
+    object-position: center;
+  }
+  .teamMosaic {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+    justify-self: stretch;
+  }
+  .teamLayout {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .onsiteLayout {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .onsiteCopy,
+  .onsiteGrid {
+    order: unset;
+    justify-self: start;
+  }
+  .onsiteGrid {
+    grid-template-columns: 1fr;
+  }
+  .steps,
+  .partnerGrid {
+    grid-template-columns: 1fr;
+  }
+  .onsiteFig {
+    aspect-ratio: 3 / 4;
+  }
+  .quotePlate {
+    padding-block: 34px;
+  }
+}
+
+@media (max-width: 640px) {
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+  .whyTitle {
+    min-height: 0;
+  }
+}

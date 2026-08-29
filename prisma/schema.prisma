@@ -105,3 +105,26 @@ model Post {
 
   @@index([status])
 }
+
+/// A tile on the public /gallery page — one finished-project photo or clip.
+///
+/// `url` is whatever the browser should request: "/media/referenzen/…" for the
+/// assets shipped in the repo, "/uploads/…" (or an absolute S3 URL) for anything
+/// uploaded through the admin panel. Captions are stored per locale rather than
+/// in the message files, which cannot key on a file name — see the gallery tab.
+model GalleryItem {
+  id        String   @id @default(cuid())
+  url       String   @unique
+  kind      String   @default("image") // image | video
+  /// First-frame still for video tiles; null for images.
+  posterUrl String?
+  projectDe String
+  filmDe    String
+  projectEn String
+  filmEn    String
+  visible   Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([visible, sortOrder])
+}

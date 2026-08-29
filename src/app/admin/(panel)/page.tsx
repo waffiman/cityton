@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db";
 import styles from "../admin.module.css";
 
 export default async function DashboardPage() {
-  const [products, visibleProducts, categories, openInquiries, totalInquiries, posts, drafts] =
+  const [products, visibleProducts, categories, openInquiries, totalInquiries, posts, drafts, tiles] =
     await Promise.all([
       prisma.product.count(),
       prisma.product.count({ where: { visible: true } }),
@@ -12,6 +12,7 @@ export default async function DashboardPage() {
       prisma.inquiry.count(),
       prisma.post.count(),
       prisma.post.count({ where: { status: "draft" } }),
+      prisma.galleryItem.count({ where: { visible: true } }),
     ]);
 
   const stats: { href: string; label: string; value: string }[] = [
@@ -21,6 +22,7 @@ export default async function DashboardPage() {
     { href: "/admin/inquiries", label: "Anfragen gesamt", value: String(totalInquiries) },
     { href: "/admin/posts", label: "Blog-Beiträge", value: `${posts}` },
     { href: "/admin/posts", label: "Entwürfe", value: String(drafts) },
+    { href: "/admin/gallery", label: "Galerie-Bilder", value: String(tiles) },
   ];
 
   return (

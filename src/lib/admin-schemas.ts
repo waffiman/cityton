@@ -100,6 +100,23 @@ export const categoryInputSchema = z.object({
 });
 export type CategoryInput = z.infer<typeof categoryInputSchema>;
 
+/** A gallery tile is either a photo or a short clip. */
+export const GALLERY_KINDS = ["image", "video"] as const;
+
+export const galleryItemInputSchema = z.object({
+  /** "/media/referenzen/…", "/uploads/…" or an absolute S3 URL. */
+  url: z.string().min(1).max(600),
+  kind: z.enum(GALLERY_KINDS),
+  posterUrl: z.string().max(600).nullable().optional(),
+  projectDe: z.string().min(1).max(120),
+  filmDe: z.string().min(1).max(120),
+  projectEn: z.string().min(1).max(120),
+  filmEn: z.string().min(1).max(120),
+  visible: z.boolean(),
+  sortOrder: z.number().int(),
+});
+export type GalleryItemInput = z.infer<typeof galleryItemInputSchema>;
+
 export const producerInputSchema = z.object({
   name: z.string().min(1).max(80),
   slug: z.string().min(1).max(80),

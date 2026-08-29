@@ -14,7 +14,7 @@ export default function ImageUpload({
   onChange,
 }: {
   value: string | null;
-  folder: "products" | "categories" | "posts";
+  folder: "products" | "categories" | "posts" | "gallery";
   onChange: (url: string | null) => void;
 }) {
   const [busy, setBusy] = useState(false);

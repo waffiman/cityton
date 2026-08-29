@@ -8,20 +8,23 @@ type Neighbor = { id: string; sortOrder: number } | null;
 
 /**
  * Up/down row reordering. Swaps this row's `sortOrder` with the given
- * neighbor's via two PATCHes against the existing product endpoint — the
- * neighbor comes from the server-rendered (already sortOrder-ordered) list,
- * so there's no ambiguity about who's "next" even if values collide.
+ * neighbor's via two PATCHes against `endpoint` — the neighbor comes from the
+ * server-rendered (already sortOrder-ordered) list, so there's no ambiguity
+ * about who's "next" even if values collide.
  */
 export default function ReorderButtons({
   id,
   sortOrder,
   prev,
   next,
+  endpoint = "/api/admin/products",
 }: {
   id: string;
   sortOrder: number;
   prev: Neighbor;
   next: Neighbor;
+  /** Collection route the two PATCHes go to, without a trailing slash. */
+  endpoint?: string;
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
@@ -30,12 +33,12 @@ export default function ReorderButtons({
     if (!other || busy) return;
     setBusy(true);
     const [a, b] = await Promise.all([
-      fetch(`/api/admin/products/${id}`, {
+      fetch(`${endpoint}/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sortOrder: other.sortOrder }),
       }),
-      fetch(`/api/admin/products/${other.id}`, {
+      fetch(`${endpoint}/${other.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sortOrder }),

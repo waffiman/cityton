@@ -15,12 +15,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // /en/) — DB-driven pages below (series/films/posts) don't: their content
   // isn't translated, so an /en/ duplicate would serve German copy under an
   // English URL, a real SEO downside rather than a neutral one.
+  // /blog is in `nav`, but the blog is German-only (like the posts it lists) —
+  // its /en URL renders German copy and canonicalises back to /blog, so
+  // submitting it would hand Google a URL that points somewhere else.
+  const germanOnly = new Set(["/blog"]);
   const pages = nav.flatMap((n) => {
     const dePath = n.href === "/" ? "" : n.href;
-    return [
+    const entries = [
       { url: `${site.url}${dePath}`, lastModified: now, priority: n.href === "/" ? 1 : 0.7 },
-      { url: `${site.url}/en${dePath}`, lastModified: now, priority: n.href === "/" ? 0.9 : 0.6 },
     ];
+    if (!germanOnly.has(n.href)) {
+      entries.push({
+        url: `${site.url}/en${dePath}`,
+        lastModified: now,
+        priority: n.href === "/" ? 0.9 : 0.6,
+      });
+    }
+    return entries;
   });
   const products = series.map((s) => ({
     url: `${site.url}/produkte/${s.slug}`,
@@ -41,12 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: p.publishedAt ?? p.updatedAt,
     priority: 0.6,
   }));
-  // The blog index is German-only like the posts it lists, so no /en duplicate.
-  // Only list it once it has something on it: with no published posts the page
-  // renders an empty state, and it's linked from neither the nav nor the
-  // footer, so submitting it would just hand Google an orphaned empty page.
-  const blogIndex = posts.length
-    ? [{ url: `${site.url}/blog`, lastModified: now, priority: 0.6 }]
-    : [];
-  return [...pages, ...blogIndex, ...products, ...foils, ...posts];
+  // /blog itself is already emitted by the `nav` loop above (it's a nav item),
+  // so there's nothing to add here — a second entry would list it twice.
+  return [...pages, ...products, ...foils, ...posts];
 }

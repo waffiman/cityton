@@ -13,7 +13,18 @@ export const site = {
     phoneTel: "+4367761520700",
     email: "office@city-ton.com",
     address: "Adelheid-Popp-Gasse 24, 1220 Wien",
+    /** Same address split into parts, for schema.org PostalAddress. */
+    postalAddress: {
+      street: "Adelheid-Popp-Gasse 24",
+      postalCode: "1220",
+      city: "Wien",
+      country: "AT",
+    },
+    /** Matches kontakt.hours in the message files. */
+    openingHours: { days: ["Mo", "Tu", "We", "Th", "Fr"], opens: "09:00", closes: "17:00" },
   },
+  /** Brands installed — used for schema.org and the partner strip. */
+  brands: ["LLumar", "Armolan"],
   /** "vollbild" = full-bleed photo hero, "split" = two-column hero with video. */
   heroVariant: "vollbild" as "vollbild" | "split",
 };

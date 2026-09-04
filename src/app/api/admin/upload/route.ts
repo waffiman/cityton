@@ -5,7 +5,7 @@ import { isAllowedImageType, uploadImage } from "@/lib/storage";
 export const runtime = "nodejs";
 
 const MAX_BYTES = 8 * 1024 * 1024; // 8 MB
-const ALLOWED_FOLDERS = new Set(["products", "categories", "posts"]);
+const ALLOWED_FOLDERS = new Set(["products", "categories", "posts", "gallery"]);
 
 export async function POST(request: Request) {
   if (!(await isAdmin())) {

@@ -57,23 +57,25 @@ function LogoSet({
             className={styles.logo}
           />
         );
+        // Only the first pass of the first half is a real link. The rest are
+        // visual filler for the marquee, and rendering them as anchors too
+        // put 32 crawlable outbound links on the home page for 2 partners —
+        // more external links than the page had internal ones. They're spans
+        // now: same layout, no duplicate link targets.
         const interactive = !duplicate && i < logos.length;
+        const external = logo.href?.startsWith("http");
         return (
           <li key={`${logo.name}-${i}`} className={styles.item}>
-            {logo.href ? (
+            {logo.href && interactive ? (
               <a
                 href={logo.href}
                 className={styles.link}
-                target={logo.href.startsWith("http") ? "_blank" : undefined}
-                rel={logo.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                tabIndex={interactive ? undefined : -1}
-                aria-label={
-                  interactive
-                    ? logo.href.startsWith("http")
-                      ? `${logo.name} ${openInNewTabSuffix}`
-                      : logo.name
-                    : undefined
-                }
+                target={external ? "_blank" : undefined}
+                // The partner strip is a supplier credit, not an endorsement
+                // we want to pass ranking signal on — `sponsored` is the tag
+                // Google asks for on business-relationship links.
+                rel={external ? "noopener noreferrer sponsored" : undefined}
+                aria-label={external ? `${logo.name} ${openInNewTabSuffix}` : logo.name}
               >
                 {img}
               </a>

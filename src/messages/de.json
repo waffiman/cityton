@@ -166,7 +166,7 @@
       "items": [
         {
           "q": "Wie lange hält eine Fensterfolie?",
-          "a": "Innen verklebte Folien halten in der Regel 10–15 Jahre, außen verklebte 7–10 Jahre. Auf Material und Ausführung gibt es Herstellergarantie."
+          "a": "Die verklebten Folien halten in der Regel 15-20 Jahre. Auf Material und Ausführung gibt es Herstellergarantie."
         },
         {
           "q": "Wird der Raum dunkel?",
@@ -217,17 +217,17 @@
   "about": {
     "title": "Verstehen, prüfen, umsetzen.",
     "metaDescription": "City-Ton Austria plant und montiert professionelle Fensterfolien fachgerecht auf Glasflächen. Beratung, Montage und Betreuung aus einer Hand.",
-    "imageAlt": "Inhaber und Ansprechpartner von City-Ton Austria",
+    "imageAlt": "Gründer von City-Ton Austria bei der Planung am Laptop",
     "quote": "Eine ausgesprochen dünne Folie kann die Nutzung und Wahrnehmung eines Raumes spürbar verändern",
     "quoteMeta": "Dobrovolskyi Oleksandr · Gründer von City-Ton Austria",
     "team": {
       "title": "Ein kleines Team, das jeden Schritt selbst ausführt.",
-      "mainAlt": "Inhaber bei der Arbeit am Glas",
+      "mainAlt": "Zwei Monteure bei der Arbeit an einer Schaufensterscheibe",
       "mainLabel": "Arbeit am Glas",
-      "side1Alt": "Material wird vor Ort ausgepackt und vorbereitet",
-      "side1Label": "Material bereit",
-      "side2Alt": "Folienmontage an einem Schaufenster",
-      "side2Label": "Montage vor Ort"
+      "side1Alt": "Monteur beim Anbringen der Folie an einem Hausfenster",
+      "side1Label": "Montage vor Ort",
+      "side2Alt": "Zwei Monteure verkleben die Folie an einem Schaufenster",
+      "side2Label": "Im Team am Objekt"
     },
     "onsite": {
       "title": "Montage vor Ort",
@@ -305,96 +305,8 @@
     "title": "Unsere Projekte",
     "lead": "Einblicke in ausgewählte Projekte – von Fassaden und Innenräumen bis zu Sicherheitsfolierungen. Klicken oder tippen Sie auf ein Bild, um es zu vergrößern.",
     "empty": "Noch keine Fotos oder Videos hinterlegt.",
-    "captionFallbackProject": "Projekt",
-    "captionFallbackFilm": "Folie auf Anfrage",
     "enlargeImage": "Bild vergrößern",
-    "enlargeVideo": "Video vergrößern",
-    "captions": {
-      "gallery_1_png": {
-        "project": "Wohnobjekt · Sonnenschutz",
-        "film": "Dual Reflective Serie"
-      },
-      "gallery_2_png": {
-        "project": "Fassade · Tageslicht",
-        "film": "LLumar Architectural"
-      },
-      "gallery_4_png": {
-        "project": "Wohnobjekt · Dual Reflective",
-        "film": "Armolan Dual Reflective"
-      },
-      "gallery_5_JPG": {
-        "project": "Büro · Blendschutz",
-        "film": "Sonnenschutzfolie"
-      },
-      "gallery_7_JPG": {
-        "project": "Gewerbeobjekt",
-        "film": "Sicherheitsfolie"
-      },
-      "gallery_8_jpg": {
-        "project": "Schaufenster",
-        "film": "UV-Schutzfolie"
-      },
-      "gallery_9_JPG": {
-        "project": "Innenraum · Privatsphäre",
-        "film": "Sichtschutzfolie"
-      },
-      "gallery_10_JPG": {
-        "project": "Fassadenband",
-        "film": "Energiesparfolie"
-      },
-      "gallery_6_jpg": {
-        "project": "Eckfenster · Wohnung",
-        "film": "Sonnenschutzfolie"
-      },
-      "interior-2_jpg": {
-        "project": "Interieur · Glaswand",
-        "film": "Sonnenschutzfolie"
-      },
-      "photo_2026-08-14_23-59-53_jpg": {
-        "project": "Montageobjekt",
-        "film": "Folie auf Anfrage"
-      },
-      "reflective-facade-upscaled_jpg": {
-        "project": "Reflektierende Fassade",
-        "film": "Dual Reflective Serie"
-      },
-      "telegram_video_mp4": {
-        "project": "Montage vor Ort",
-        "film": "Sonnenschutzfolie"
-      },
-      "telegram_video(1)_mp4": {
-        "project": "Montage vor Ort",
-        "film": "Sonnenschutzfolie"
-      },
-      "telegram_video(2)_mp4": {
-        "project": "Arbeit am Glas",
-        "film": "Sicherheitsfolie"
-      },
-      "telegram_video(3)_mp4": {
-        "project": "Arbeit am Glas",
-        "film": "Sicherheitsfolie"
-      },
-      "telegram_video(4)_mp4": {
-        "project": "Fassadenmontage",
-        "film": "Dual Reflective Serie"
-      },
-      "telegram_video(5)_mp4": {
-        "project": "Fassadenmontage",
-        "film": "Dual Reflective Serie"
-      },
-      "telegram_video(6)_mp4": {
-        "project": "Innenraum · Folierung",
-        "film": "Sichtschutzfolie"
-      },
-      "telegram_video(7)_mp4": {
-        "project": "Innenraum · Folierung",
-        "film": "Sichtschutzfolie"
-      },
-      "telegram_video(8)_mp4": {
-        "project": "Objekt nach der Montage",
-        "film": "Folie auf Anfrage"
-      }
-    }
+    "enlargeVideo": "Video vergrößern"
   },
   "principle": {
     "reflexion": {

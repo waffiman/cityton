@@ -217,17 +217,17 @@
   "about": {
     "title": "Architectural films for solar control, UV protection and more security.",
     "metaDescription": "City-Ton Austria plans and installs professional window films on glass surfaces. Consultation, installation and support from one team.",
-    "imageAlt": "Owner and main contact at City-Ton Austria",
+    "imageAlt": "Founder of City-Ton Austria planning a project on his laptop",
     "quote": "“We don't sell rolls of film — we deliver a finished result: consultation, material, installation and support in one package.”",
     "quoteMeta": "Our principle · City-Ton Austria",
     "team": {
       "title": "The people behind the film.",
-      "mainAlt": "Owner at work on glass",
+      "mainAlt": "Two installers at work on a shop window",
       "mainLabel": "Work on glass",
-      "side1Alt": "Material being unpacked and prepared on site",
-      "side1Label": "Material ready",
-      "side2Alt": "Film installation on a shop window",
-      "side2Label": "On-site installation"
+      "side1Alt": "Installer applying film to a house window",
+      "side1Label": "On-site installation",
+      "side2Alt": "Two installers squeegeeing film onto a shop window",
+      "side2Label": "On site as a team"
     },
     "onsite": {
       "title": "On site.",
@@ -305,96 +305,8 @@
     "title": "Objects the film is working on",
     "lead": "A selection of completed projects — façades, interiors and protective films. Tap an image to enlarge it.",
     "empty": "No photos or videos have been added yet.",
-    "captionFallbackProject": "Project",
-    "captionFallbackFilm": "Film on request",
     "enlargeImage": "Enlarge image",
-    "enlargeVideo": "Enlarge video",
-    "captions": {
-      "gallery_1_png": {
-        "project": "Residential · Solar control",
-        "film": "Dual Reflective series"
-      },
-      "gallery_2_png": {
-        "project": "Façade · Daylight",
-        "film": "LLumar Architectural"
-      },
-      "gallery_4_png": {
-        "project": "Residential · Dual Reflective",
-        "film": "Armolan Dual Reflective"
-      },
-      "gallery_5_JPG": {
-        "project": "Office · Glare control",
-        "film": "Solar control film"
-      },
-      "gallery_7_JPG": {
-        "project": "Commercial object",
-        "film": "Security film"
-      },
-      "gallery_8_jpg": {
-        "project": "Shop window",
-        "film": "UV protection film"
-      },
-      "gallery_9_JPG": {
-        "project": "Interior · Privacy",
-        "film": "Privacy film"
-      },
-      "gallery_10_JPG": {
-        "project": "Façade band",
-        "film": "Energy-saving film"
-      },
-      "gallery_6_jpg": {
-        "project": "Corner window · Apartment",
-        "film": "Solar control film"
-      },
-      "interior-2_jpg": {
-        "project": "Interior · Glass wall",
-        "film": "Solar control film"
-      },
-      "photo_2026-08-14_23-59-53_jpg": {
-        "project": "Installation object",
-        "film": "Film on request"
-      },
-      "reflective-facade-upscaled_jpg": {
-        "project": "Reflective façade",
-        "film": "Dual Reflective series"
-      },
-      "telegram_video_mp4": {
-        "project": "On-site installation",
-        "film": "Solar control film"
-      },
-      "telegram_video(1)_mp4": {
-        "project": "On-site installation",
-        "film": "Solar control film"
-      },
-      "telegram_video(2)_mp4": {
-        "project": "Work on glass",
-        "film": "Security film"
-      },
-      "telegram_video(3)_mp4": {
-        "project": "Work on glass",
-        "film": "Security film"
-      },
-      "telegram_video(4)_mp4": {
-        "project": "Façade installation",
-        "film": "Dual Reflective series"
-      },
-      "telegram_video(5)_mp4": {
-        "project": "Façade installation",
-        "film": "Dual Reflective series"
-      },
-      "telegram_video(6)_mp4": {
-        "project": "Interior · Film application",
-        "film": "Privacy film"
-      },
-      "telegram_video(7)_mp4": {
-        "project": "Interior · Film application",
-        "film": "Privacy film"
-      },
-      "telegram_video(8)_mp4": {
-        "project": "Object after installation",
-        "film": "Film on request"
-      }
-    }
+    "enlargeVideo": "Enlarge video"
   },
   "principle": {
     "reflexion": {

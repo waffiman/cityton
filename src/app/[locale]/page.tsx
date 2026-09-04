@@ -9,6 +9,7 @@ import Corners from "@/components/Corners";
 import Faq from "@/components/Faq";
 import HeroFull from "@/components/HeroFull";
 import HeroSplit from "@/components/HeroSplit";
+import JsonLd from "@/components/JsonLd";
 import { Link } from "@/i18n/navigation";
 import MutedLoopVideo from "@/components/MutedLoopVideo";
 import PartnerCarousel from "@/components/PartnerCarousel";
@@ -17,6 +18,7 @@ import SeriesCard from "@/components/SeriesCard";
 import { benefits, consultation, praxisMontage, processSteps } from "@/content/home";
 import { site } from "@/content/site";
 import { pageAlternates } from "@/lib/seo";
+import { faqNode } from "@/lib/schema";
 import { getVisibleSeries } from "@/lib/products";
 import styles from "./home.module.css";
 
@@ -51,6 +53,9 @@ export default async function HomePage() {
 
   return (
     <div className="journey">
+      {/* The same Q&A the <Faq> accordion renders below — rich results
+          require the answer text to be visible on the page, which it is. */}
+      <JsonLd data={faqNode(faqItems)} />
       {site.heroVariant === "split" ? <HeroSplit /> : <HeroFull />}
 
       {site.heroVariant === "vollbild" ? (

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import CtaBand from "@/components/CtaBand";
 import GalleryMasonry from "@/components/GalleryMasonry";
-import { listGalleryImages, type GalleryCaption } from "@/lib/gallery-media";
+import { prisma } from "@/lib/db";
+import { toGalleryItem } from "@/lib/gallery-media";
 import { pageAlternates } from "@/lib/seo";
 import styles from "./gallery.module.css";
 
@@ -20,17 +21,17 @@ export async function generateMetadata({
   };
 }
 
-/** Fresh folder scan so newly dropped photos appear after refresh. */
+/** Fresh read so items added in the admin panel appear straight away. */
 export const dynamic = "force-dynamic";
 
 export default async function GalleryPage() {
   const t = await getTranslations("gallery");
-  const captions = t.raw("captions") as Record<string, GalleryCaption>;
-  const fallback: GalleryCaption = {
-    project: t("captionFallbackProject"),
-    film: t("captionFallbackFilm"),
-  };
-  const images = await listGalleryImages(captions, fallback);
+  const locale = await getLocale();
+  const rows = await prisma.galleryItem.findMany({
+    where: { visible: true },
+    orderBy: [{ sortOrder: "asc" }, { createdAt: "asc" }],
+  });
+  const images = rows.map((row) => toGalleryItem(row, locale));
   const tCommon = await getTranslations("common");
 
   return (

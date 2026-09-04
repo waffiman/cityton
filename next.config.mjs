@@ -31,6 +31,22 @@ const nextConfig = {
   async redirects() {
     return [{ source: "/referenzen", destination: "/gallery", permanent: true }];
   },
+  async headers() {
+    return [
+      {
+        // Static art in public/media was being served `public, max-age=0`, so
+        // every visit re-validated every photo and video — several MB of
+        // conditional requests per page view. Same 30 days as
+        // `images.minimumCacheTTL` above, and the same caveat applies:
+        // replacing a file under its existing name can stay stale in a warm
+        // browser until it expires, so rename on replacement.
+        source: "/media/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=2592000, stale-while-revalidate=86400" },
+        ],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

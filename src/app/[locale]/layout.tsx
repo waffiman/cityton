@@ -7,8 +7,10 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SiteChrome from "@/components/SiteChrome";
 import CookieConsent from "@/components/CookieConsent";
+import JsonLd from "@/components/JsonLd";
 import { routing } from "@/i18n/routing";
 import { site } from "@/content/site";
+import { identityGraph } from "@/lib/schema";
 import "../globals.css";
 
 const inter = Inter({
@@ -81,6 +83,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={inter.variable}>
       <body>
+        {/* Site-wide identity graph: every page carries the LocalBusiness +
+            WebSite entity, so even the DB-driven detail pages resolve to a
+            known publisher instead of standing on their own. */}
+        <JsonLd data={identityGraph(locale)} />
         <NextIntlClientProvider>
           <SiteChrome header={<SiteHeader />} footer={<SiteFooter />}>
             {children}

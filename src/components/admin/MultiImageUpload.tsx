@@ -22,7 +22,7 @@ export default function MultiImageUpload({
   max = 24,
 }: {
   value: string[];
-  folder: "products" | "categories" | "posts";
+  folder: "products" | "categories" | "posts" | "gallery";
   onChange: (urls: string[]) => void;
   max?: number;
 }) {

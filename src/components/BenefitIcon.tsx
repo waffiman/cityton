@@ -29,6 +29,17 @@ export default function BenefitIcon({ name }: { name: Benefit["icon"] }) {
       </svg>
     );
 
+  // Sichtschutz — an eye with a stroke through it reads as "no view in"
+  // more directly than a curtain or blind would at 30 px.
+  if (name === "privacy")
+    return (
+      <svg {...props}>
+        <path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z" />
+        <circle cx="12" cy="12" r="2.5" />
+        <path d="M4 20L20 4" />
+      </svg>
+    );
+
   if (name === "bolt")
     return (
       <svg {...props}>

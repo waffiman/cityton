@@ -32,24 +32,28 @@
   },
   "home": {
     "benefits": {
-      "titleLine1": "Der Nutzen in vier Punkten.",
+      "titleLine1": "Der Nutzen in fünf Punkten.",
       "titleAccent": "Weniger Hitze, über 99 % UV-Schutz.",
       "items": {
         "sun": {
           "title": "Sonnenschutz",
-          "body": "Reduzierung des Wärmeeintrags bei gleichzeitig hoher Lichtdurchlässigkeit und dezenter Glasoptik in Showrooms und Autohäusern"
+          "body": "Reduzieren den solaren Wärmeeintrag und störende Blendung für angenehmere Raumtemperaturen und Lichtverhältnisse."
         },
         "uv": {
           "title": "UV-Schutz",
-          "body": "Verringerung des durch UV-Strahlung verursachten Ausbleichens hochwertiger Waren und Materialien"
+          "body": "Reduzieren die UV-Transmission auf unter 1 % und schützen Möbel und Interieur vor UV-bedingtem Ausbleichen."
+        },
+        "privacy": {
+          "title": "Sichtschutz",
+          "body": "Schützen vor unerwünschten Einblicken und sorgen für mehr Privatsphäre in Wohn- und Arbeitsbereichen."
         },
         "energy": {
           "title": "Energieeffizienz",
-          "body": "Verringern den Wärmeaustausch und reduzieren Wärmeverluste"
+          "body": "Reduzieren den solaren Wärmeeintrag im Sommer und Wärmeverluste über die Verglasung im Winter."
         },
         "safety": {
           "title": "Sicherheit",
-          "body": "Halten Glassplitter zusammen und erschweren schnelles Eindringen"
+          "body": "Halten Glassplitter zusammen und erschweren das schnelle Herstellen einer freien Öffnung."
         }
       }
     },

@@ -37,19 +37,23 @@
       "items": {
         "sun": {
           "title": "Solar control",
-          "body": "A solar control window film works by reflecting or absorbing a substantial share of the incoming solar energy at the glass surface."
+          "body": "Reduce solar heat gain and disruptive glare for more comfortable room temperatures and light levels."
         },
         "uv": {
           "title": "UV protection",
-          "body": "Over 99 % of UV radiation stays outside. Floors, furniture and merchandise keep their colour."
+          "body": "Cut UV transmission to under 1 % and protect furniture and interiors from UV-induced fading."
+        },
+        "privacy": {
+          "title": "Privacy",
+          "body": "Shield against unwanted views in and create more privacy in living and working areas."
         },
         "energy": {
           "title": "Energy efficiency",
-          "body": "Less cooling load in summer, less heat loss through the glass in winter."
+          "body": "Reduce solar heat gain in summer and heat loss through the glazing in winter."
         },
         "safety": {
           "title": "Safety",
-          "body": "A security film holds shattered glass together and, in a reinforced version, can offer additional protection against forced entry by making it harder to break through the glazing quickly."
+          "body": "Hold glass fragments together and make it harder to quickly create a clear opening."
         }
       }
     },

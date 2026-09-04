@@ -33,11 +33,14 @@ export type ResolvedProcessStep = {
   clipLength?: number;
 };
 
+// The clips are pre-trimmed to exactly the window that used to be selected at
+// runtime via `startAt`/`clipLength` (the montage source was 45 s for a 5 s
+// loop), so playback now needs no seeking and `loop` alone carries it.
 export const processSteps: ProcessStep[] = [
-  { key: "beratung", video: "/media/ablauf-messung.mp4", poster: "/media/install-detail.jpg", startAt: 3 },
-  { key: "muster", video: "/media/ablauf-beratung.mp4", poster: "/media/film-roll-1.jpg", clipLength: 5 },
-  { key: "montage", video: "/media/ablauf-montage.mp4", poster: "/media/facade-wide.jpg", clipLength: 5 },
-  { key: "abnahme", video: "/media/ablauf-abnahme.mp4", poster: "/media/install-team.jpg", clipLength: 5 },
+  { key: "beratung", video: "/media/ablauf-messung.mp4", poster: "/media/install-detail.jpg" },
+  { key: "muster", video: "/media/ablauf-beratung.mp4", poster: "/media/film-roll-1.jpg" },
+  { key: "montage", video: "/media/ablauf-montage.mp4", poster: "/media/facade-wide.jpg" },
+  { key: "abnahme", video: "/media/ablauf-abnahme.mp4", poster: "/media/install-team.jpg" },
 ];
 
 export const praxisMontage = {

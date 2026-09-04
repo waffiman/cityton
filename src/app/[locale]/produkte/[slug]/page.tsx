@@ -9,6 +9,7 @@ import FilmStructure from "@/components/FilmStructure";
 import InfoHint from "@/components/InfoHint";
 import SeriesGlyph from "@/components/diagrams/SeriesGlyph";
 import YouTubeEmbed from "@/components/YouTubeEmbed";
+import JsonLd from "@/components/JsonLd";
 import { Link } from "@/i18n/navigation";
 import { seriesCertificates } from "@/content/certificates";
 import { structureForSeries } from "@/content/film-structure";
@@ -16,6 +17,7 @@ import { seriesVideos } from "@/content/series-videos";
 import { shouldBypassOptimizer } from "@/lib/films";
 import { getSeriesBySlug } from "@/lib/products";
 import { pageAlternates } from "@/lib/seo";
+import { breadcrumbNode } from "@/lib/schema";
 import filmCatalogStyles from "@/components/FilmCatalog.module.css";
 import styles from "./series.module.css";
 
@@ -43,11 +45,13 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
   const item = await getSeriesBySlug(slug);
   if (!item) notFound();
 
-  const [t, tc, tsite, tStructure] = await Promise.all([
+  const [t, tc, tsite, tStructure, tn] = await Promise.all([
     getTranslations("produkteSeriePage"),
     getTranslations("common"),
     getTranslations("site"),
     getTranslations("filmStructure"),
+    // Properly-cased labels for the JSON-LD trail (visible crumbs are all-caps).
+    getTranslations("nav"),
   ]);
 
   const d = item.detail;
@@ -59,6 +63,13 @@ export default async function SeriesPage({ params }: { params: Promise<{ slug: s
 
   return (
     <div className={styles.page}>
+      <JsonLd
+        data={breadcrumbNode([
+          { name: tn("home"), path: "/" },
+          { name: tn("products"), path: "/produkte" },
+          { name: item.name, path: `/produkte/${slug}` },
+        ])}
+      />
       <section className={`section--3 ${styles.heroBand}`}>
         <div className="diagonal-fx" aria-hidden="true">
           <span className="diagonal-sheet" />

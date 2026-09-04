@@ -3,11 +3,13 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
+import JsonLd from "@/components/JsonLd";
 import PostGallery from "@/components/PostGallery";
 import { Link } from "@/i18n/navigation";
 import { prisma } from "@/lib/db";
 import { sanitizeHtml } from "@/lib/sanitize-html";
 import { pageAlternates } from "@/lib/seo";
+import { articleNode, breadcrumbNode } from "@/lib/schema";
 import styles from "../blog.module.css";
 
 // Rendered per request from the DB (no build-time database dependency).
@@ -42,14 +44,25 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string; locale: string }>;
 }) {
   const { slug, locale } = await params;
-  const [post, t] = await Promise.all([
+  const [post, t, tn] = await Promise.all([
     prisma.post.findUnique({ where: { slug } }),
     getTranslations("blog"),
+    // Nav labels are the properly-cased ones; the visible crumb styling
+    // elsewhere is all-caps, which reads badly inside structured data.
+    getTranslations("nav"),
   ]);
   if (!post || post.status !== "published") notFound();
 
   return (
     <section className={`section--1 ${styles.band}`}>
+      <JsonLd data={articleNode(post)} />
+      <JsonLd
+        data={breadcrumbNode([
+          { name: tn("home"), path: "/" },
+          { name: tn("blog"), path: "/blog" },
+          { name: post.title, path: `/blog/${slug}` },
+        ])}
+      />
       <div className="container">
         <article className={styles.article}>
           <Link href="/blog" className={styles.back}>

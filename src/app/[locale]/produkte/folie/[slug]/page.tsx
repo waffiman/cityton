@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import JsonLd from "@/components/JsonLd";
 import { Link } from "@/i18n/navigation";
 import type { Film, FilmValues } from "@/content/series";
 import { getProductBySlug } from "@/lib/products";
 import { pageAlternates } from "@/lib/seo";
+import { breadcrumbNode, productNode } from "@/lib/schema";
 import styles from "./film.module.css";
 
 // Rendered per request from the DB (no build-time database dependency).
@@ -71,9 +73,11 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
   const film = await getProductBySlug(slug);
   if (!film) notFound();
 
-  const [t, tc] = await Promise.all([
+  const [t, tc, tn] = await Promise.all([
     getTranslations("produkteFolieDetail"),
     getTranslations("common"),
+    // Properly-cased labels for the JSON-LD trail (the visible crumbs are all-caps).
+    getTranslations("nav"),
   ]);
 
   const image = film.imageUrl;
@@ -89,8 +93,32 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
   if (film.application) metaRows.push({ label: t("anwendung"), value: film.application });
   if (film.certification) metaRows.push({ label: t("pruefung"), value: film.certification });
 
+  // Product + BreadcrumbList: these pages are mostly a spec table, so the
+  // structured data is what makes the numbers legible to search engines
+  // rather than leaving them as an undifferentiated <dl>. Every property
+  // below is also rendered visibly on the page.
+  const productSchema = productNode({
+    name: film.name,
+    brand: film.brand,
+    code: film.code,
+    slug,
+    description: `${film.brand} ${film.name} (${film.code}) — ${familyLabel}, ${t("montagePrefix")} ${film.mount}.`,
+    image,
+    properties: [...metaRows, ...valueRows(film.single, t)].map((r) => ({
+      name: r.label,
+      value: r.value,
+    })),
+  });
+  const crumbs = breadcrumbNode([
+    { name: tn("home"), path: "/" },
+    { name: tn("products"), path: "/produkte" },
+    { name: film.name, path: `/produkte/folie/${slug}` },
+  ]);
+
   return (
     <>
+      <JsonLd data={productSchema} />
+      <JsonLd data={crumbs} />
       <section className={`section--1 ${styles.band}`}>
         <div className="container">
           <nav className={styles.crumbs} aria-label={tc("breadcrumbAriaLabel")}>

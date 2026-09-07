@@ -138,6 +138,17 @@ export const postInputSchema = z.object({
 });
 export type PostInput = z.infer<typeof postInputSchema>;
 
+export const knowledgeBaseInputSchema = z.object({
+  question: z.string().min(1).max(500),
+  answer: z.string().min(1).max(10000),
+  category: z.string().max(100).nullable().optional(),
+  keywords: z.array(z.string().max(100)).max(20).optional(),
+  locale: z.enum(["de", "en"]),
+  visible: z.boolean(),
+  sortOrder: z.number().int(),
+});
+export type KnowledgeBaseInput = z.infer<typeof knowledgeBaseInputSchema>;
+
 /** URL-safe slug — matches filmSlug() in src/lib/films.ts. */
 export function toSlug(input: string): string {
   return input

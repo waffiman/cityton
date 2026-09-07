@@ -587,5 +587,26 @@
     "privacyLink": "privacy policy",
     "accept": "Accept",
     "decline": "Decline"
+  },
+  "chat": {
+    "openLabel": "Open chat",
+    "closeLabel": "Close chat",
+    "title": "City-Ton assistant",
+    "subtitle": "Ask about films, installation and consultation — answers drawn from our site content.",
+    "placeholder": "Your question…",
+    "send": "Send",
+    "thinking": "Thinking…",
+    "error": "Something went wrong. Please try again.",
+    "emptyStream": "No reply from the model. Check the API key and chat index (npm run chat:index).",
+    "sessionError": "Security check failed. Please reload the page.",
+    "disabled": "Chat is currently unavailable.",
+    "welcome": "Hi! I can answer questions about our solar-control, UV and safety films. We never quote prices online — every job is calculated after an on-site visit, and I can point you to a free consultation.",
+    "suggestions": {
+      "heat": "Which film rejects the most heat?",
+      "safety": "What does a safety film do?",
+      "process": "How does the consultation work?"
+    },
+    "learnMore": "Learn more",
+    "contactCta": "Book a consultation"
   }
 }

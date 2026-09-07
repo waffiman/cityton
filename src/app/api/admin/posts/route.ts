@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/admin-guard";
 import { postInputSchema } from "@/lib/admin-schemas";
 import { prisma } from "@/lib/db";
+import { scheduleReindex } from "@/lib/rag/schedule-reindex";
 
 export const runtime = "nodejs";
 
@@ -42,6 +43,7 @@ export async function POST(request: Request) {
         publishedAt: d.status === "published" ? new Date() : null,
       },
     });
+    scheduleReindex(`post:${created.slug}`);
     return NextResponse.json({ ok: true, id: created.id });
   } catch (err) {
     return NextResponse.json({ ok: false, error: conflictMessage(err) }, { status: 409 });

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/admin-guard";
 import { galleryItemInputSchema } from "@/lib/admin-schemas";
 import { prisma } from "@/lib/db";
+import { scheduleReindex } from "@/lib/rag/schedule-reindex";
 
 export const runtime = "nodejs";
 
@@ -33,6 +34,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
       where: { id },
       data: { ...d, posterUrl: "posterUrl" in d ? (d.posterUrl ?? null) : undefined },
     });
+    scheduleReindex(`gallery:${id}`);
     return NextResponse.json({ ok: true });
   } catch (err) {
     const code = (err as { code?: string })?.code;
@@ -54,6 +56,7 @@ export async function DELETE(_request: Request, { params }: { params: Promise<{ 
     // Only the row goes. The file stays in the uploads volume (or in the repo,
     // for the imported originals) so a mis-click is undoable by re-adding it.
     await prisma.galleryItem.delete({ where: { id } });
+    scheduleReindex(`gallery:${id}`);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "Nicht gefunden." }, { status: 404 });

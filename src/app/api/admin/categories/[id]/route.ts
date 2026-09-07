@@ -3,6 +3,7 @@ import { isAdmin } from "@/lib/admin-guard";
 import { categoryInputSchema } from "@/lib/admin-schemas";
 import { prisma } from "@/lib/db";
 import { conflictMessage } from "../route";
+import { scheduleReindex } from "@/lib/rag/schedule-reindex";
 
 export const runtime = "nodejs";
 
@@ -29,7 +30,8 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   }
   const d = parsed.data;
   try {
-    await prisma.category.update({
+    const before = await prisma.category.findUnique({ where: { id }, select: { slug: true } });
+    const updated = await prisma.category.update({
       where: { id },
       data: {
         slug: d.slug,
@@ -45,7 +47,12 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
         visible: d.visible,
         sortOrder: d.sortOrder,
       },
+      select: { slug: true },
     });
+    if (before && d.slug && d.slug !== before.slug) {
+      scheduleReindex(`category:${before.slug}`);
+    }
+    scheduleReindex(`category:${updated.slug}`);
     return NextResponse.json({ ok: true });
   } catch (err) {
     const code = (err as { code?: string })?.code;
@@ -63,8 +70,10 @@ export async function DELETE(_request: Request, { params }: { params: Promise<{ 
   const { id } = await params;
   // Detach products first so the FK does not block deletion.
   try {
+    const existing = await prisma.category.findUnique({ where: { id }, select: { slug: true } });
     await prisma.product.updateMany({ where: { categoryId: id }, data: { categoryId: null } });
     await prisma.category.delete({ where: { id } });
+    if (existing) scheduleReindex(`category:${existing.slug}`);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "Nicht gefunden." }, { status: 404 });

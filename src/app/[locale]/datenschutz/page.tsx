@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { site } from "@/content/site";
 import styles from "./legal.module.css";
 
+// Rendered per request: the layout's footer reads the series list from the
+// database, which isn't reachable while the Docker image is being built.
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = { title: "Datenschutzerklärung", robots: { index: false } };
 
 /**

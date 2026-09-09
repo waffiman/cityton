@@ -13,7 +13,8 @@ export const dynamic = "force-dynamic";
  * the same database query the /produkte page uses.
  */
 export async function GET() {
-  const series = await getVisibleSeries();
+  // German: this file has no locale and its labels below are German too.
+  const series = await getVisibleSeries("de");
   const pageLine = (path: string, label: string, note: string) =>
     `- [${label}](${site.url}${path === "/" ? "" : path}): ${note}`;
 

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
 import { Link } from "@/i18n/navigation";
-import { prisma } from "@/lib/db";
+import { getPublishedPosts } from "@/lib/posts";
 import { pageAlternates } from "@/lib/seo";
 import styles from "./blog.module.css";
 
@@ -18,7 +18,7 @@ export async function generateMetadata({
     title: t("metaTitle"),
     description: t("metaDescription"),
     // Listed posts are DB-sourced German only — see pageAlternates' doc comment.
-    alternates: pageAlternates("/blog", "de", { hasEnglish: false }),
+    alternates: pageAlternates("/blog", locale),
   };
 }
 
@@ -33,10 +33,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const [t, posts] = await Promise.all([
     getTranslations("blog"),
-    prisma.post.findMany({
-      where: { status: "published" },
-      orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
-    }),
+    getPublishedPosts(locale),
   ]);
 
   return (

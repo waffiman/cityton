@@ -578,6 +578,12 @@
       "klar": "Clear",
       "sicherheit": "Security",
       "sichtschutz": "Privacy"
+    },
+    "metaDescription": "{brand} {name} ({code}) — {family}, {mount} mounting. Performance figures and advice from City-Ton Austria.",
+    "mount": {
+      "innen": "interior",
+      "außen": "exterior",
+      "innen / außen": "interior / exterior"
     }
   },
   "legal": {

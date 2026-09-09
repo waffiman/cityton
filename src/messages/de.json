@@ -578,6 +578,12 @@
       "klar": "Klar",
       "sicherheit": "Sicherheit",
       "sichtschutz": "Sichtschutz"
+    },
+    "metaDescription": "{brand} {name} ({code}) — {family}, Montage {mount}. Kennwerte und Beratung bei City-Ton Austria.",
+    "mount": {
+      "innen": "innen",
+      "außen": "außen",
+      "innen / außen": "innen / außen"
     }
   },
   "legal": {

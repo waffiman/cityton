@@ -27,6 +27,13 @@ export default async function EditCategoryPage({
     glyphField: category.glyphField,
     useCases: category.useCases,
     metrics: (category.metrics ?? null) as Metric[] | null,
+    nameEn: category.nameEn,
+    familyEn: category.familyEn,
+    tagEn: category.tagEn,
+    extraTagEn: category.extraTagEn,
+    summaryEn: category.summaryEn,
+    useCasesEn: category.useCasesEn,
+    metricsEn: (category.metricsEn ?? null) as Metric[] | null,
     visible: category.visible,
     sortOrder: category.sortOrder,
   };

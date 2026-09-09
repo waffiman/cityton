@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import CtaBand from "@/components/CtaBand";
 import FilmCatalog from "@/components/FilmCatalog";
 import SeriesCard from "@/components/SeriesCard";
@@ -23,9 +23,10 @@ export async function generateMetadata({
 }
 
 export default async function ProductsPage() {
+  const locale = await getLocale();
   const [series, films, t] = await Promise.all([
-    getVisibleSeries(),
-    getCatalogProducts(),
+    getVisibleSeries(locale),
+    getCatalogProducts(locale),
     getTranslations("produkte"),
   ]);
   return (

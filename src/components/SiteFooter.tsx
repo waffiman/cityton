@@ -1,11 +1,14 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { series } from "@/content/series";
 import { footerColumns, site } from "@/content/site";
+import { getVisibleSeries } from "@/lib/products";
 import styles from "./SiteFooter.module.css";
 
 export default async function SiteFooter() {
-  const t = await getTranslations();
+  const locale = await getLocale();
+  // Series names come from the DB, not @/content/series: the hardcoded list is
+  // German-only and the admin can rename or hide a series at any time.
+  const [t, series] = await Promise.all([getTranslations(), getVisibleSeries(locale)]);
 
   return (
     <footer className={styles.footer}>

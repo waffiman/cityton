@@ -53,6 +53,9 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
         // No null-dance needed — unlike the nullable scalars above.
         galleryUrls: d.galleryUrls ?? undefined,
         contentHtml: d.contentHtml,
+        titleEn: "titleEn" in d ? (d.titleEn ?? null) : undefined,
+        excerptEn: "excerptEn" in d ? (d.excerptEn ?? null) : undefined,
+        contentHtmlEn: "contentHtmlEn" in d ? (d.contentHtmlEn ?? null) : undefined,
         status: d.status,
         publishedAt,
       },

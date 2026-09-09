@@ -11,14 +11,11 @@ export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  // Static nav pages exist in both locales (German unprefixed, English under
-  // /en/) — DB-driven pages below (series/films/posts) don't: their content
-  // isn't translated, so an /en/ duplicate would serve German copy under an
-  // English URL, a real SEO downside rather than a neutral one.
-  // /blog is in `nav`, but the blog is German-only (like the posts it lists) —
-  // its /en URL renders German copy and canonicalises back to /blog, so
-  // submitting it would hand Google a URL that points somewhere else.
-  const germanOnly = new Set(["/blog"]);
+  // Every page exists in both locales (German unprefixed, English under /en/):
+  // the catalog now carries per-locale columns, and the blog index's chrome and
+  // post titles are translated too, so /blog no longer belongs here. Individual
+  // posts are the exception and are gated on their own English body below.
+  const germanOnly = new Set<string>();
   const pages = nav.flatMap((n) => {
     const dePath = n.href === "/" ? "" : n.href;
     const entries = [
@@ -33,25 +30,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
     return entries;
   });
-  const products = series.map((s) => ({
-    url: `${site.url}/produkte/${s.slug}`,
-    lastModified: now,
-    priority: 0.8,
-  }));
-  const foils = allFilmSlugs().map((slug) => ({
-    url: `${site.url}/produkte/folie/${slug}`,
-    lastModified: now,
-    priority: 0.65,
-  }));
+  const products = series.flatMap((s) => [
+    { url: `${site.url}/produkte/${s.slug}`, lastModified: now, priority: 0.8 },
+    { url: `${site.url}/en/produkte/${s.slug}`, lastModified: now, priority: 0.7 },
+  ]);
+  const foils = allFilmSlugs().flatMap((slug) => [
+    { url: `${site.url}/produkte/folie/${slug}`, lastModified: now, priority: 0.65 },
+    { url: `${site.url}/en/produkte/folie/${slug}`, lastModified: now, priority: 0.55 },
+  ]);
   const publishedPosts = await prisma.post.findMany({
     where: { status: "published" },
-    select: { slug: true, publishedAt: true, updatedAt: true },
+    select: { slug: true, publishedAt: true, updatedAt: true, contentHtmlEn: true },
   });
-  const posts = publishedPosts.map((p) => ({
-    url: `${site.url}/blog/${p.slug}`,
-    lastModified: p.publishedAt ?? p.updatedAt,
-    priority: 0.6,
-  }));
+  const posts = publishedPosts.flatMap((p) => {
+    const lastModified = p.publishedAt ?? p.updatedAt;
+    const de = { url: `${site.url}/blog/${p.slug}`, lastModified, priority: 0.6 };
+    // An untranslated post still renders under /en, but in German — not worth
+    // submitting as an English URL.
+    return p.contentHtmlEn?.trim()
+      ? [de, { url: `${site.url}/en/blog/${p.slug}`, lastModified, priority: 0.5 }]
+      : [de];
+  });
   // /blog itself is already emitted by the `nav` loop above (it's a nav item),
   // so there's nothing to add here — a second entry would list it twice.
   return [...pages, ...products, ...foils, ...posts];

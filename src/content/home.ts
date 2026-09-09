@@ -4,11 +4,12 @@
  * message: e.g. benefit key "sun" -> `home.benefits.items.sun.title`).
  */
 
-export type Benefit = { key: string; icon: "sun" | "shield" | "bolt" | "impact" };
+export type Benefit = { key: string; icon: "sun" | "shield" | "privacy" | "bolt" | "impact" };
 
 export const benefits: Benefit[] = [
   { key: "sun", icon: "sun" },
   { key: "uv", icon: "shield" },
+  { key: "privacy", icon: "privacy" },
   { key: "energy", icon: "bolt" },
   { key: "safety", icon: "impact" },
 ];

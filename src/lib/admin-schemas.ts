@@ -70,6 +70,10 @@ export const productInputSchema = z.object({
   application: z.string().max(300).nullable().optional(),
   certification: z.string().max(300).nullable().optional(),
   note: z.string().max(1000).nullable().optional(),
+  // English translations of the two public prose fields; `name`/`code` are
+  // brand naming and `note` is internal-only, so neither is translated.
+  applicationEn: z.string().max(300).nullable().optional(),
+  certificationEn: z.string().max(300).nullable().optional(),
   single: filmValuesSchema,
   dual: filmValuesSchema.nullable().optional(),
   imageUrl: z.string().max(600).nullable().optional(),
@@ -95,6 +99,15 @@ export const categoryInputSchema = z.object({
   glyphField: z.enum(GLYPH_FIELDS),
   useCases: z.array(z.string().max(120)).max(20),
   metrics: z.array(seriesMetricSchema).max(6).nullable().optional(),
+  // English translations. Optional throughout: the fields above are the German
+  // source and are served when a translation is still missing.
+  nameEn: z.string().max(120).nullable().optional(),
+  familyEn: z.string().max(160).nullable().optional(),
+  tagEn: z.string().max(80).nullable().optional(),
+  extraTagEn: z.string().max(80).nullable().optional(),
+  summaryEn: z.string().max(2000).nullable().optional(),
+  useCasesEn: z.array(z.string().max(120)).max(20).optional(),
+  metricsEn: z.array(seriesMetricSchema).max(6).nullable().optional(),
   visible: z.boolean(),
   sortOrder: z.number().int(),
 });
@@ -134,6 +147,9 @@ export const postInputSchema = z.object({
   // returns site-relative paths like "/uploads/posts/…jpg".
   galleryUrls: z.array(z.string().max(600)).max(24).optional(),
   contentHtml: z.string().max(200000),
+  titleEn: z.string().max(200).nullable().optional(),
+  excerptEn: z.string().max(400).nullable().optional(),
+  contentHtmlEn: z.string().max(200000).nullable().optional(),
   status: z.enum(["draft", "published"]),
 });
 export type PostInput = z.infer<typeof postInputSchema>;

@@ -28,6 +28,8 @@ export type ProductFormData = {
   application: string | null;
   certification: string | null;
   note: string | null;
+  applicationEn: string | null;
+  certificationEn: string | null;
   single: Record<string, number | string>;
   dual: Record<string, number | string> | null;
   imageUrl: string | null;
@@ -92,6 +94,8 @@ export default function ProductForm({
   const [application, setApplication] = useState(product?.application ?? "");
   const [certification, setCertification] = useState(product?.certification ?? "");
   const [note, setNote] = useState(product?.note ?? "");
+  const [applicationEn, setApplicationEn] = useState(product?.applicationEn ?? "");
+  const [certificationEn, setCertificationEn] = useState(product?.certificationEn ?? "");
   const [imageUrl, setImageUrl] = useState<string | null>(product?.imageUrl ?? null);
   const [visible, setVisible] = useState(product?.visible ?? true);
   const [sortOrder, setSortOrder] = useState(String(product?.sortOrder ?? 0));
@@ -142,6 +146,8 @@ export default function ProductForm({
       application: application.trim() || null,
       certification: certification.trim() || null,
       note: note.trim() || null,
+      applicationEn: applicationEn.trim() || null,
+      certificationEn: certificationEn.trim() || null,
       single: singleValues as ProductInput["single"],
       dual: dualValues as ProductInput["dual"],
       imageUrl: imageUrl || null,
@@ -350,28 +356,56 @@ export default function ProductForm({
         </div>
       </div>
 
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor="application">
-          Typische Anwendung
-        </label>
-        <input
-          id="application"
-          className="input"
-          value={application}
-          onChange={(e) => setApplication(e.target.value)}
-        />
+      <div className={styles.row2}>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="application">
+            Typische Anwendung
+          </label>
+          <input
+            id="application"
+            className="input"
+            value={application}
+            onChange={(e) => setApplication(e.target.value)}
+          />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="applicationEn">
+            Typical application (EN)
+          </label>
+          <input
+            id="applicationEn"
+            className="input"
+            value={applicationEn}
+            placeholder={application}
+            onChange={(e) => setApplicationEn(e.target.value)}
+          />
+        </div>
       </div>
 
-      <div className={styles.field}>
-        <label className={styles.label} htmlFor="certification">
-          Zertifizierung
-        </label>
-        <input
-          id="certification"
-          className="input"
-          value={certification}
-          onChange={(e) => setCertification(e.target.value)}
-        />
+      <div className={styles.row2}>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="certification">
+            Zertifizierung
+          </label>
+          <input
+            id="certification"
+            className="input"
+            value={certification}
+            onChange={(e) => setCertification(e.target.value)}
+          />
+        </div>
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="certificationEn">
+            Certification (EN)
+          </label>
+          <input
+            id="certificationEn"
+            className="input"
+            value={certificationEn}
+            placeholder={certification}
+            onChange={(e) => setCertificationEn(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className={styles.field}>

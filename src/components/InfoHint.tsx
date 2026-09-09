@@ -13,15 +13,17 @@
  * click/tap-driven (not hover-only) so it works the same on touch and mouse.
  */
 
+import { useLocale } from "next-intl";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { TERM_TOOLTIPS } from "@/lib/term-tooltips";
+import { termTooltip } from "@/lib/term-tooltips";
 import styles from "./InfoHint.module.css";
 
 type Placement = "top" | "bottom";
 
 export default function InfoHint({ term, label }: { term: string; label?: string }) {
-  const text = TERM_TOOLTIPS[term];
+  const locale = useLocale();
+  const text = termTooltip(term, locale);
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState<{ top: number; left: number; placement: Placement } | null>(
     null,

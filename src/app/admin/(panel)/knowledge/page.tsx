@@ -21,9 +21,14 @@ export default async function KnowledgeBaseListPage() {
             Interne Q&A für den Chatbot, die nicht auf der Website veröffentlicht werden.
           </p>
         </div>
-        <Link href="/admin/knowledge/new" className="btn btn-primary">
-          Neuer Eintrag
-        </Link>
+        <div className={styles.actions}>
+          <Link href="/admin/knowledge/import" className="btn btn-secondary">
+            JSON importieren
+          </Link>
+          <Link href="/admin/knowledge/new" className="btn btn-primary">
+            Neuer Eintrag
+          </Link>
+        </div>
       </div>
 
       {entries.length === 0 ? (
@@ -31,6 +36,10 @@ export default async function KnowledgeBaseListPage() {
           Noch keine Einträge.{" "}
           <Link href="/admin/knowledge/new" className={styles.rowLink}>
             Ersten erstellen
+          </Link>{" "}
+          oder{" "}
+          <Link href="/admin/knowledge/import" className={styles.rowLink}>
+            JSON importieren
           </Link>
           .
         </div>

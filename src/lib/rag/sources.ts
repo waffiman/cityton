@@ -432,6 +432,8 @@ export async function collectSourcesByPrefix(prefix: string): Promise<SourceDoc[
   if (prefix.startsWith("kb:")) {
     const id = prefix.slice("kb:".length);
     const all = await collectKnowledgeBase();
+    // A bare "kb:" prefix means the whole knowledge base (used after bulk import).
+    if (!id) return all;
     return all.filter((d) => d.sourceId === `kb:${id}` || d.sourceId === prefix);
   }
   return [];

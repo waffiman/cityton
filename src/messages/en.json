@@ -589,7 +589,7 @@
   "legal": {
     "impressumTitle": "Imprint",
     "datenschutzTitle": "Privacy policy",
-    "germanOnlyNote": "This page is legally required and is only maintained in German."
+    "bindingVersionNote": "This is a courtesy translation. The German version is the legally binding one."
   },
   "cookieConsent": {
     "title": "Cookie consent",

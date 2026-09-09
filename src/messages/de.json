@@ -589,7 +589,7 @@
   "legal": {
     "impressumTitle": "Impressum",
     "datenschutzTitle": "Datenschutz",
-    "germanOnlyNote": "Diese Seite ist gesetzlich vorgeschrieben und wird nur auf Deutsch geführt."
+    "bindingVersionNote": "Die deutsche Fassung ist die rechtlich verbindliche. Diese Seite ist auch auf Englisch verfügbar."
   },
   "cookieConsent": {
     "title": "Cookie-Einwilligung",

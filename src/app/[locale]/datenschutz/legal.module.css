@@ -74,3 +74,18 @@
 .contactCard p {
   margin: 0 0 4px;
 }
+
+/* Notice above the English versions: the German text is the binding one. */
+.noteWrap {
+  padding-top: 40px;
+}
+
+.note {
+  margin: 0;
+  padding: 10px 14px;
+  border-left: 2px solid var(--color-accent-500);
+  background: var(--s2);
+  color: var(--color-ink-muted, inherit);
+  font-size: 14px;
+  max-width: 70ch;
+}

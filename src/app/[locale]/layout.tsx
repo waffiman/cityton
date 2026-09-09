@@ -7,10 +7,12 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SiteChrome from "@/components/SiteChrome";
 import CookieConsent from "@/components/CookieConsent";
+import ChatWidget from "@/components/ChatWidget";
 import JsonLd from "@/components/JsonLd";
 import { routing } from "@/i18n/routing";
 import { site } from "@/content/site";
 import { identityGraph } from "@/lib/schema";
+import { isChatEnabled } from "@/lib/rag/config";
 import "../globals.css";
 
 const inter = Inter({
@@ -92,6 +94,7 @@ export default async function LocaleLayout({
             {children}
           </SiteChrome>
           <CookieConsent />
+          {isChatEnabled() ? <ChatWidget /> : null}
         </NextIntlClientProvider>
       </body>
     </html>

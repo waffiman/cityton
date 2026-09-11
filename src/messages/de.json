@@ -589,7 +589,7 @@
   "legal": {
     "impressumTitle": "Impressum",
     "datenschutzTitle": "Datenschutz",
-    "germanOnlyNote": "Diese Seite ist gesetzlich vorgeschrieben und wird nur auf Deutsch geführt."
+    "bindingVersionNote": "Die deutsche Fassung ist die rechtlich verbindliche. Diese Seite ist auch auf Englisch verfügbar."
   },
   "cookieConsent": {
     "title": "Cookie-Einwilligung",
@@ -597,5 +597,26 @@
     "privacyLink": "Datenschutzerklärung",
     "accept": "Akzeptieren",
     "decline": "Ablehnen"
+  },
+  "chat": {
+    "openLabel": "Chat öffnen",
+    "closeLabel": "Chat schließen",
+    "title": "City-Ton Assistent",
+    "subtitle": "Fragen zu Folien, Montage und Beratung — Antworten aus unseren Seiteninhalten.",
+    "placeholder": "Ihre Frage…",
+    "send": "Senden",
+    "thinking": "Denke nach…",
+    "error": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+    "emptyStream": "Keine Antwort vom Modell. API-Key und Chat-Index prüfen (npm run chat:index).",
+    "sessionError": "Sicherheitsprüfung fehlgeschlagen. Bitte Seite neu laden.",
+    "disabled": "Der Chat ist derzeit nicht verfügbar.",
+    "welcome": "Hallo! Ich beantworte Fragen zu unseren Sonnenschutz-, UV- und Sicherheitsfolien. Preise nennen wir erst nach einem Vor-Ort-Termin — dafür kann ich Ihnen gerne den Kontaktweg erklären.",
+    "suggestions": {
+      "heat": "Welche Folie hält die Hitze am besten ab?",
+      "safety": "Was bringt eine Sicherheitsfolie?",
+      "process": "Wie läuft die Beratung ab?"
+    },
+    "learnMore": "Mehr dazu",
+    "contactCta": "Zur Beratung"
   }
 }

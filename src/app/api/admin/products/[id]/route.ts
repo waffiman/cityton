@@ -3,6 +3,7 @@ import { isAdmin } from "@/lib/admin-guard";
 import { productInputSchema } from "@/lib/admin-schemas";
 import { prisma } from "@/lib/db";
 import { conflictMessage } from "../route";
+import { scheduleReindex } from "@/lib/rag/schedule-reindex";
 
 export const runtime = "nodejs";
 
@@ -29,7 +30,8 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   }
   const d = parsed.data;
   try {
-    await prisma.product.update({
+    const before = await prisma.product.findUnique({ where: { id }, select: { slug: true } });
+    const updated = await prisma.product.update({
       where: { id },
       data: {
         code: d.code,
@@ -52,7 +54,12 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
         visible: d.visible,
         sortOrder: d.sortOrder,
       },
+      select: { slug: true },
     });
+    if (before && d.slug && d.slug !== before.slug) {
+      scheduleReindex(`product:${before.slug}`);
+    }
+    scheduleReindex(`product:${updated.slug}`);
     return NextResponse.json({ ok: true });
   } catch (err) {
     const code = (err as { code?: string })?.code;
@@ -69,7 +76,11 @@ export async function DELETE(_request: Request, { params }: { params: Promise<{ 
   }
   const { id } = await params;
   try {
-    await prisma.product.delete({ where: { id } });
+    const deleted = await prisma.product.delete({
+      where: { id },
+      select: { slug: true },
+    });
+    scheduleReindex(`product:${deleted.slug}`);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "Nicht gefunden." }, { status: 404 });

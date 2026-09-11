@@ -1,0 +1,50 @@
+// Add these two models to your existing Prisma schema.
+// Run: npx prisma migrate dev --name add-chat-models
+// Then: npx prisma generate
+
+/// One retrievable passage of site content. `sourceHash` lets the index
+/// builder skip documents that have not changed since the last run.
+model ChatChunk {
+  id         String   @id @default(cuid())
+  /// Stable identifier for the source document, e.g. "product:folie-r20",
+  /// "post:warum-sonnenschutz", "faq:de.3". Used for incremental updates.
+  sourceId   String
+  /// SHA-256 hash of (locale + title + url + content). Unchanged → skip.
+  sourceHash String
+  /// Content locale — "de" | "en" (or whatever locales your site uses).
+  locale     String
+  title      String
+  /// Locale-agnostic URL path the LLM can cite in answers (e.g. "/products").
+  /// Null for knowledge base entries not published on the site.
+  url        String?
+  /// The actual text chunk — what gets embedded and returned to the LLM.
+  content    String
+  /// OpenAI embedding vector. Stored as Float[] for in-process cosine similarity.
+  /// For > ~10k chunks, consider migrating to pgvector with an ivfflat index.
+  embedding  Float[]
+  createdAt  DateTime @default(now())
+
+  @@index([sourceId])
+  @@index([locale])
+}
+
+/// Custom Q&A entries managed through an admin panel.
+/// These are indexed for the chatbot but not published on the website.
+model KnowledgeBase {
+  id        String   @id @default(cuid())
+  question  String
+  /// Markdown supported. Will be stripped to plain text before embedding.
+  answer    String
+  /// Optional categorization (e.g. "Pricing", "Services", "Technical")
+  category  String?
+  /// Extra keywords to improve semantic matching
+  keywords  String[]
+  locale    String   @default("de")
+  visible   Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([locale, visible])
+  @@index([category])
+}

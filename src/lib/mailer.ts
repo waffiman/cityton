@@ -13,6 +13,7 @@ import nodemailer, { type Transporter } from "nodemailer";
 import { site } from "@/content/site";
 import deMessages from "@/messages/de.json";
 import type { StoredInquiry } from "@/lib/kontakt-inquiries-store";
+import type { StoredPartnerInquiry } from "@/lib/partner-inquiries-store";
 
 let cached: Transporter | null | undefined;
 
@@ -234,5 +235,38 @@ export async function sendLeadNotification(kind: string, contact: string): Promi
       `Im Admin öffnen: ${site.url}/admin/inquiries`,
     ].join("\n"),
     replyTo: kind === "email" ? contact : undefined,
+  });
+}
+
+/** Notify the business that a B2B partner inquiry arrived. */
+export async function sendPartnerNotification(inquiry: StoredPartnerInquiry): Promise<void> {
+  const transport = getTransport();
+  if (!transport) return;
+
+  const interestLabel =
+    (inquiry.interest &&
+      (deMessages.partner.interests as Record<string, string>)[inquiry.interest]) ||
+    inquiry.interest;
+
+  const body = [
+    line("Name", inquiry.name),
+    line("Unternehmen", inquiry.company),
+    line("Branche", inquiry.branche || null),
+    line("Interesse", interestLabel),
+    line("Website", inquiry.website || null),
+    line("Telefon", inquiry.phone),
+    line("E-Mail", inquiry.email),
+    inquiry.message ? `\nNachricht:\n${inquiry.message}` : null,
+    `\nIm Admin öffnen: ${site.url}/admin/inquiries/${inquiry.id}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  await transport.sendMail({
+    from: from(),
+    to: to(),
+    subject: `Neue B2B-Partneranfrage — ${inquiry.company}`,
+    text: body,
+    replyTo: inquiry.email,
   });
 }

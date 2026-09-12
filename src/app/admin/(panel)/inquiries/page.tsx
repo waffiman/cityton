@@ -13,6 +13,7 @@ const SOURCE_LABEL: Record<string, string> = {
   kontakt: "Kontaktformular",
   beratung: "Schnellanfrage",
   chatbot: "Chatbot",
+  partner: "B2B-Partner",
 };
 
 function formatDate(d: Date): string {
@@ -53,7 +54,7 @@ export default async function InquiriesPage({
         <div>
           <h1 className={styles.pageTitle}>Anfragen</h1>
           <p className={styles.pageLead}>
-            Alle Anfragen aus Kontaktformular, Schnellanfrage und Chatbot.
+            Alle Anfragen aus Kontaktformular, Schnellanfrage, Chatbot und B2B-Partner.
           </p>
         </div>
       </div>

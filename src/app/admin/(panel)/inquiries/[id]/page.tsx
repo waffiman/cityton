@@ -9,6 +9,7 @@ const SOURCE_LABEL: Record<string, string> = {
   kontakt: "Kontaktformular",
   beratung: "Schnellanfrage",
   chatbot: "Chatbot",
+  partner: "B2B-Partner",
 };
 
 // Admin panel stays German-only — labels sourced directly from the German
@@ -29,20 +30,44 @@ export default async function InquiryDetailPage({
   const q = await prisma.inquiry.findUnique({ where: { id } });
   if (!q) notFound();
 
+  const isPartner = q.source === "partner";
+  const interestLabel = new Map<string, string>(
+    Object.entries(deMessages.partner.interests as Record<string, string>),
+  );
+
   const rows: { label: string; value: string }[] = [
     { label: "Eingegangen", value: formatDate(q.createdAt) },
     { label: "Quelle", value: SOURCE_LABEL[q.source] ?? q.source },
     { label: "Name", value: q.name || "—" },
     { label: "E-Mail", value: q.email || "—" },
     { label: "Telefon", value: q.phone || "—" },
-    { label: "Objektart", value: q.objektart ? (OBJEKT_LABEL.get(q.objektart) ?? q.objektart) : "—" },
-    { label: "Fläche", value: q.flaeche || "—" },
-    {
-      label: "Ziele",
-      value:
-        q.goals.length > 0 ? q.goals.map((g) => GOAL_LABEL.get(g) ?? g).join(", ") : "—",
-    },
   ];
+
+  if (isPartner) {
+    rows.push(
+      { label: "Unternehmen", value: q.flaeche || "—" },
+      {
+        label: "Interesse",
+        value: q.objektart ? (interestLabel.get(q.objektart) ?? q.objektart) : "—",
+      },
+      { label: "Branche", value: q.goals[0] || "—" },
+      { label: "Website", value: q.goals[1] || "—" },
+    );
+  } else {
+    rows.push(
+      {
+        label: "Objektart",
+        value: q.objektart ? (OBJEKT_LABEL.get(q.objektart) ?? q.objektart) : "—",
+      },
+      { label: "Fläche", value: q.flaeche || "—" },
+      {
+        label: "Ziele",
+        value:
+          q.goals.length > 0 ? q.goals.map((g) => GOAL_LABEL.get(g) ?? g).join(", ") : "—",
+      },
+    );
+  }
+
   if (q.message) rows.push({ label: "Nachricht", value: q.message });
 
   return (

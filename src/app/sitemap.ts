@@ -15,10 +15,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // /en/) — DB-driven pages below (series/films/posts) don't: their content
   // isn't translated, so an /en/ duplicate would serve German copy under an
   // English URL, a real SEO downside rather than a neutral one.
-  // /blog is in `nav`, but the blog is German-only (like the posts it lists) —
-  // its /en URL renders German copy and canonicalises back to /blog, so
-  // submitting it would hand Google a URL that points somewhere else.
-  const germanOnly = new Set(["/blog"]);
+  // /blog and /partner are in `nav`, but both are German-only (like the
+  // posts the blog lists / the B2B copy on /partner) — their /en URLs
+  // render German copy and canonicalise back to the unprefixed path, so
+  // submitting them would hand Google a URL that points somewhere else.
+  const germanOnly = new Set(["/blog", "/partner"]);
   const pages = nav.flatMap((n) => {
     const dePath = n.href === "/" ? "" : n.href;
     const entries = [

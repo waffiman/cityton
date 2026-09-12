@@ -20,3 +20,6 @@ scripts/.vps-known-hosts
 
 # Admin image uploads (local-disk storage backend; a Docker volume in production)
 /uploads/
+
+# Generated customer HTML previews
+/preview/

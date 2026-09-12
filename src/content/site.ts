@@ -39,7 +39,7 @@ export const nav: NavItem[] = [
   { href: "/funktionsprinzip", key: "principle" },
   { href: "/gallery", key: "gallery" },
   { href: "/blog", key: "blog" },
-  // { href: "/partner", key: "partner" },
+  { href: "/partner", key: "partner" },
   { href: "/kontakt", key: "contact" },
 ];
 

@@ -12,6 +12,7 @@ const STATUS_LABEL: Record<string, string> = {
 const SOURCE_LABEL: Record<string, string> = {
   kontakt: "Kontaktformular",
   beratung: "Schnellanfrage",
+  partner: "B2B-Partnerschaft",
   chatbot: "Chatbot",
 };
 
@@ -53,7 +54,7 @@ export default async function InquiriesPage({
         <div>
           <h1 className={styles.pageTitle}>Anfragen</h1>
           <p className={styles.pageLead}>
-            Alle Anfragen aus Kontaktformular, Schnellanfrage und Chatbot.
+            Alle Anfragen aus Kontaktformular, Schnellanfrage, B2B-Partnerschaft und Chatbot.
           </p>
         </div>
       </div>

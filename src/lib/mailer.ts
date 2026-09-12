@@ -13,6 +13,8 @@ import nodemailer, { type Transporter } from "nodemailer";
 import { site } from "@/content/site";
 import deMessages from "@/messages/de.json";
 import type { StoredInquiry } from "@/lib/kontakt-inquiries-store";
+import type { StoredPartnerInquiry } from "@/lib/partner-inquiries-store";
+import { interestOptions } from "@/content/partner";
 
 let cached: Transporter | null | undefined;
 
@@ -50,6 +52,7 @@ function to(): string {
 // regardless of which locale the inquiry was submitted from.
 const OBJECT_LABEL = new Map(Object.entries(deMessages.kontakt.objectTypes));
 const GOAL_LABEL = new Map(Object.entries(deMessages.kontakt.goals));
+const INTEREST_LABEL = new Map(interestOptions.map((o) => [o.value, o.label]));
 
 function line(label: string, value: string | null | undefined): string | null {
   return value ? `${label}: ${value}` : null;
@@ -67,13 +70,25 @@ function escapeHtml(value: string): string {
 /** Branded HTML shell for the customer-facing auto-reply. Table layout, inline
  * styles, web-safe font stack — kept deliberately plain so Outlook/Gmail render
  * it consistently. Mirrors the site's teal/dark-teal palette (globals.css). */
-export function autoReplyHtml(name: string): string {
+export function autoReplyHtml(name: string, kind: "kontakt" | "partner" = "kontakt"): string {
   const safeName = escapeHtml(name);
   const logoUrl = `${site.url}/media/logo-city-ton.png`;
   const teal = "#358a9a";
   const dark = "#0e3a40";
   const ink = "#1d1f20";
   const bg = "#f4f6f7";
+  const preview =
+    kind === "partner"
+      ? "Vielen Dank für Ihre Partneranfrage — wir melden uns persönlich bei Ihnen."
+      : "Vielen Dank für Ihre Anfrage — wir melden uns mit einem Terminvorschlag.";
+  const body =
+    kind === "partner"
+      ? "vielen Dank für Ihre Anfrage zur B2B-Partnerschaft. Wir haben sie erhalten und melden uns persönlich, um das passende Kooperationsmodell zu besprechen."
+      : "vielen Dank für Ihre Anfrage. Wir haben sie erhalten und melden uns mit einem Terminvorschlag und den nächsten Schritten bei Ihnen.";
+  const highlight =
+    kind === "partner"
+      ? "Die Anfrage ist unverbindlich — wir klären das Modell gemeinsam."
+      : "Die Erstberatung ist kostenlos und unverbindlich.";
 
   return `<!doctype html>
 <html lang="de">
@@ -84,7 +99,7 @@ export function autoReplyHtml(name: string): string {
   </head>
   <body style="margin:0; padding:0; background:${bg}; font-family: Arial, Helvetica, sans-serif;">
     <div style="display:none; max-height:0; overflow:hidden; opacity:0;">
-      Vielen Dank für Ihre Anfrage — wir melden uns mit einem Terminvorschlag.
+      ${preview}
     </div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${bg};">
       <tr>
@@ -102,8 +117,7 @@ export function autoReplyHtml(name: string): string {
               <td style="padding: 32px 32px 8px;">
                 <p style="margin:0 0 16px; font-size:16px; line-height:1.6; color:${ink};">Guten Tag ${safeName},</p>
                 <p style="margin:0 0 16px; font-size:16px; line-height:1.6; color:${ink};">
-                  vielen Dank für Ihre Anfrage. Wir haben sie erhalten und melden uns mit einem
-                  Terminvorschlag und den nächsten Schritten bei Ihnen.
+                  ${body}
                 </p>
               </td>
             </tr>
@@ -112,7 +126,7 @@ export function autoReplyHtml(name: string): string {
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eaf4f6; border-left:3px solid ${teal}; border-radius:4px;">
                   <tr>
                     <td style="padding:14px 18px; font-size:15px; line-height:1.5; color:${dark}; font-weight:bold;">
-                      Die Erstberatung ist kostenlos und unverbindlich.
+                      ${highlight}
                     </td>
                   </tr>
                 </table>
@@ -213,6 +227,67 @@ export async function sendInquiryAutoReply(inquiry: StoredInquiry): Promise<void
     subject: "Ihre Anfrage bei City-Ton Austria",
     text,
     html: autoReplyHtml(inquiry.name),
+    replyTo: to(),
+  });
+}
+
+/** Notify the business that a B2B partner inquiry arrived. */
+export async function sendPartnerInquiryNotification(
+  inquiry: StoredPartnerInquiry,
+): Promise<void> {
+  const transport = getTransport();
+  if (!transport) return;
+
+  const body = [
+    line("Name", inquiry.name),
+    line("Unternehmen", inquiry.company),
+    line("Branche", inquiry.branche),
+    line("E-Mail", inquiry.email),
+    line("Telefon", inquiry.phone),
+    line("Website", inquiry.website),
+    line(
+      "Interesse",
+      inquiry.interest ? (INTEREST_LABEL.get(inquiry.interest) ?? inquiry.interest) : "",
+    ),
+    inquiry.message ? `\nNachricht:\n${inquiry.message}` : null,
+    `\nIm Admin öffnen: ${site.url}/admin/inquiries/${inquiry.id}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  await transport.sendMail({
+    from: from(),
+    to: to(),
+    subject: `Neue B2B-Partneranfrage — ${inquiry.company}`,
+    text: body,
+    replyTo: inquiry.email,
+  });
+}
+
+/** Confirm receipt of a partnership inquiry to the visitor. */
+export async function sendPartnerAutoReply(inquiry: StoredPartnerInquiry): Promise<void> {
+  const transport = getTransport();
+  if (!transport || !inquiry.email) return;
+
+  const text = [
+    `Guten Tag ${inquiry.name},`,
+    "",
+    "vielen Dank für Ihre Anfrage zur B2B-Partnerschaft. Wir haben sie erhalten",
+    "und melden uns persönlich, um das passende Kooperationsmodell zu besprechen.",
+    "",
+    `Telefon: ${site.contact.phone}`,
+    `E-Mail: ${site.contact.email}`,
+    "",
+    "Mit freundlichen Grüßen",
+    "City-Ton Austria",
+  ].join("\n");
+
+  await transport.sendMail({
+    from: from(),
+    to: inquiry.email,
+    subject: "Ihre Partneranfrage bei City-Ton Austria",
+    text,
+    html: autoReplyHtml(inquiry.name, "partner"),
     replyTo: to(),
   });
 }

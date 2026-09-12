@@ -70,7 +70,7 @@ model Product {
 /// CRM record — unifies kontakt inquiries, beratung leads and future chatbot leads.
 model Inquiry {
   id         String   @id @default(cuid())
-  source     String // kontakt | beratung | chatbot
+  source     String // kontakt | beratung | chatbot | partner
   status     String   @default("new") // new | in_progress | done | archived
   name       String?
   objektart  String?

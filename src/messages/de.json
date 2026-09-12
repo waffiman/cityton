@@ -43,6 +43,10 @@
           "title": "UV-Schutz",
           "body": "Verringerung des durch UV-Strahlung verursachten Ausbleichens hochwertiger Waren und Materialien"
         },
+        "privacy": {
+          "title": "Sichtschutz",
+          "body": "Schützen vor unerwünschten Einblicken und sorgen für mehr Privatsphäre in Wohn- und Arbeitsbereichen."
+        },
         "energy": {
           "title": "Energieeffizienz",
           "body": "Verringern den Wärmeaustausch und reduzieren Wärmeverluste"
@@ -493,8 +497,231 @@
     "metaDescription": "Neuigkeiten, Tipps und Projektberichte von City-Ton Austria."
   },
   "partner": {
-    "title": "Für Partner",
-    "note": "Diese Seite ist in Vorbereitung."
+    "metaTitle": "B2B Partnerschaft",
+    "metaDescription": "B2B-Partnerschaft mit City-Ton Austria: professionelle Fensterfolien für Ihre Kunden – von der Beratung bis zur Montage, mit Partnervergütung.",
+    "hero": {
+      "eyebrow": "B2B-Partnerschaft",
+      "title": "Gemeinsam mehr bieten – B2B-Partnerschaft mit City-Ton Austria",
+      "subtitle": "Sie haben Kunden oder Projekte mit großen Fenster- und Glasflächen? Wir übernehmen die professionelle Folienlösung – von der technischen Beratung und Produktauswahl bis zur fachgerechten Montage.",
+      "plate": "Für erfolgreich vermittelte Projekte bieten wir unseren B2B-Partnern eine attraktive Partnervergütung.",
+      "ctaPrimary": "B2B-Partnerschaft anfragen",
+      "ctaSecondary": "Persönliches Gespräch vereinbaren"
+    },
+    "audience": {
+      "title": "Für wen ist eine Zusammenarbeit interessant?",
+      "items": {
+        "broker": {
+          "title": "Immobilienmakler",
+          "body": "Zusätzlicher Service für Käufer, Eigentümer und Mieter von Immobilien."
+        },
+        "facility": {
+          "title": "Hausverwaltungen & Facility Management",
+          "body": "Lösungen für Wohngebäude, Büroflächen und gewerbliche Objekte."
+        },
+        "glazier": {
+          "title": "Glasereien & Fensterbauer",
+          "body": "Ergänzung des bestehenden Portfolios ohne Aufbau eines eigenen Bereichs für Fensterfolien."
+        },
+        "architect": {
+          "title": "Architekten & Planer",
+          "body": "Technische Lösungen für bestehende Verglasungen und individuelle Projektanforderungen."
+        },
+        "interior": {
+          "title": "Innenausbau & Interior Design",
+          "body": "Sonnenschutz, UV-Schutz und Privatsphäre für hochwertige Innenräume und große Glasflächen."
+        },
+        "sunshade": {
+          "title": "Sonnenschutz- und Gebäudetechnik-Unternehmen",
+          "body": "Eine zusätzliche Lösung dort, wo Fensterfolien technisch oder wirtschaftlich eine sinnvolle Alternative darstellen."
+        },
+        "developer": {
+          "title": "Bauträger / Immobilienentwickler",
+          "body": "Professionelle Folienlösungen für Bestand und neue Objekte – ohne eigenen Folienbereich."
+        }
+      }
+    },
+    "solutions": {
+      "title": "Professionelle Lösungen für bestehende Verglasungen",
+      "items": {
+        "sun": {
+          "title": "Sonnenschutz",
+          "body": "Reduzierung des solaren Wärmeeintrags und störender Blendung."
+        },
+        "uv": {
+          "title": "UV-Schutz",
+          "body": "Schutz von Möbeln, Böden, Textilien, Waren und Innenräumen vor UV-bedingten Einflüssen."
+        },
+        "privacy": {
+          "title": "Sichtschutz & Privatsphäre",
+          "body": "Folienlösungen für Büros, Ordinationen, Wohnräume und gewerbliche Flächen."
+        },
+        "safety": {
+          "title": "Sicherheits- & Splitterschutz",
+          "body": "Folienlösungen zur Reduzierung des Verletzungsrisikos bei Glasbruch und zur Erhöhung des Widerstands bestehender Verglasungen."
+        }
+      }
+    },
+    "process": {
+      "title": "Sie stellen den Kontakt her – wir kümmern uns um die Umsetzung.",
+      "steps": {
+        "referral": {
+          "title": "Anfrage / Empfehlung",
+          "body": "Der Partner stellt den Kontakt zu einem interessierten Kunden her."
+        },
+        "consult": {
+          "title": "Beratung & Analyse",
+          "body": "Wir klären Anforderungen und prüfen die vorhandene Verglasung."
+        },
+        "select": {
+          "title": "Produktauswahl & Kalkulation",
+          "body": "Wir wählen eine technisch geeignete Folienlösung und erstellen das Angebot."
+        },
+        "install": {
+          "title": "Fachgerechte Montage",
+          "body": "Unsere Montage erfolgt direkt beim Kunden vor Ort."
+        },
+        "support": {
+          "title": "Betreuung & Garantie",
+          "body": "City-Ton bleibt Ansprechpartner für die ausgeführte Folienlösung."
+        },
+        "payout": {
+          "title": "Partnervergütung",
+          "body": "Bei erfolgreich realisierten Projekten erhält der B2B-Partner die vereinbarte Partnervergütung."
+        }
+      }
+    },
+    "services": {
+      "title": "Kompletter Service aus einer Hand",
+      "highlight": "Für Sie als Partner entsteht kein zusätzlicher technischer oder organisatorischer Aufwand – City-Ton übernimmt die komplette Projektabwicklung im Bereich Fensterfolien.",
+      "items": {
+        "advice": {
+          "title": "Technische Beratung",
+          "body": "Analyse der Anforderungen und der vorhandenen Verglasung."
+        },
+        "film": {
+          "title": "Auswahl der passenden Folie",
+          "body": "Auswahl nach Glasaufbau, Einsatzbereich und gewünschter Funktion."
+        },
+        "measure": {
+          "title": "Aufmaß & Kalkulation",
+          "body": "Projektbezogene Berechnung und Angebotserstellung."
+        },
+        "material": {
+          "title": "Material",
+          "body": "Bereitstellung professioneller Architekturfolien."
+        },
+        "montage": {
+          "title": "Fachgerechte Montage",
+          "body": "Professionelle Installation direkt am Objekt."
+        },
+        "warranty": {
+          "title": "Garantie & Betreuung",
+          "body": "Klare Zuständigkeit auch nach Projektabschluss."
+        }
+      }
+    },
+    "comp": {
+      "title": "Partnerschaft, die sich für beide Seiten lohnt",
+      "lead": "Für erfolgreich vermittelte und realisierte Projekte bieten wir unseren B2B-Partnern eine attraktive Partnervergütung.",
+      "contributionTitle": "Ihr Beitrag zur Zusammenarbeit:",
+      "advantageTitle": "Ihre Vorteile als Partner:",
+      "footnote": "Die konkrete Vergütung kann je nach Projektumfang und Kooperationsmodell individuell vereinbart werden.",
+      "contribution": {
+        "spot": "Bedarf bei Kunden oder Projekten mit großen Glasflächen erkennen",
+        "forward": "Den Kontakt oder die Anfrage an City-Ton weiterleiten",
+        "noTech": "Keine technische Prüfung, kein Aufmaß und keine Montage auf Ihrer Seite",
+        "accompany": "Den Kunden bei Bedarf im eigenen Projekt begleiten"
+      },
+      "advantage": {
+        "value": "Zusätzlicher Mehrwert für Ihre Kunden",
+        "expert": "Professioneller Ansprechpartner für Fensterfolien",
+        "noOps": "Keine eigene technische Abwicklung erforderlich",
+        "montage": "Beratung und Montage durch City-Ton Austria",
+        "payout": "Partnervergütung bei erfolgreich realisierten Projekten",
+        "longterm": "Möglichkeit einer langfristigen Zusammenarbeit"
+      }
+    },
+    "models": {
+      "title": "Zwei Modelle der Zusammenarbeit",
+      "note": "Beide Modelle sind kombinierbar – je nach Projekt und Partnersegment wählen wir gemeinsam die passende Form der Zusammenarbeit.",
+      "items": {
+        "recommend": {
+          "role": "Sie empfehlen",
+          "title": "Empfehlungsmodell",
+          "body": "Sie empfehlen City-Ton Ihrem Kunden. Wir übernehmen anschließend Beratung, Angebot und Umsetzung. Bei erfolgreichem Projektabschluss erhalten Sie die vereinbarte Partnervergütung."
+        },
+        "project": {
+          "role": "Wir führen aus",
+          "title": "Projektpartnerschaft / Subunternehmer",
+          "body": "Bei Bedarf können wir unsere Leistungen auch im Rahmen Ihrer Projekte übernehmen – von der technischen Auswahl bis zur Montage vor Ort."
+        }
+      }
+    },
+    "geo": {
+      "title": "Montage österreichweit",
+      "body": "City-Ton Austria betreut private und gewerbliche Projekte in ganz Österreich."
+    },
+    "refs": {
+      "title": "Bereits realisierte Projekte",
+      "shop": "Geschäftslokal, Wien",
+      "house": "Montage vor Ort, Einfamilienhaus",
+      "interior": "Wohnung, große Fensterfront",
+      "glass": "Verglaste Fensterfront, Sonnenschutzfolie",
+      "facade": "Fassade, Mehrparteienhaus",
+      "office": "Montageprozess, Büroobjekt",
+      "shopAlt": "City-Ton Montage an einer Schaufensterfront in Wien",
+      "houseAlt": "Fachgerechte Folienmontage an einem Einfamilienhaus",
+      "interiorAlt": "Wohnung mit großer verglaster Fensterfront",
+      "glassAlt": "Sonnenschutzfolie an einer verglasten Wohnungsfront",
+      "facadeAlt": "Reflektierende Fassadenfolien an einem Mehrparteienhaus",
+      "officeAlt": "Montage einer Sichtschutzfolie an einem Bürofenster"
+    },
+    "cta": {
+      "title": "Interesse an einer Zusammenarbeit?",
+      "body1": "Sie möchten City-Ton als Partner für professionelle Fensterfolienlösungen kennenlernen?",
+      "body2": "Lassen Sie uns unverbindlich über mögliche Kooperationsmodelle sprechen.",
+      "ctaPrimary": "B2B-Partnerschaft anfragen",
+      "ctaSecondary": "Gespräch vereinbaren",
+      "companyLabel": "Unternehmen",
+      "contactLabel": "Ansprechpartner",
+      "contactName": "Dobrovolskyi Oleksandr",
+      "phoneLabel": "Telefon",
+      "emailLabel": "E-Mail"
+    },
+    "form": {
+      "title": "B2B-Partnerschaft anfragen",
+      "lead": "Kurze Angaben genügen. Wir melden uns persönlich, um das passende Kooperationsmodell zu besprechen.",
+      "nameLabel": "Name / Ansprechpartner *",
+      "companyLabel": "Unternehmen *",
+      "brancheLabel": "Branche",
+      "emailLabel": "E-Mail *",
+      "phoneLabel": "Telefon",
+      "websiteLabel": "Website",
+      "interestLabel": "Ich interessiere mich für:",
+      "interestPlaceholder": "Bitte wählen",
+      "messageLabel": "Nachricht",
+      "optional": "(optional)",
+      "privacyPrefix": "Ich habe die",
+      "privacyLink": "Datenschutzerklärung",
+      "privacySuffix": "gelesen und willige in die Verarbeitung meiner Angaben zur Bearbeitung der Anfrage ein.",
+      "submit": "Zusammenarbeit anfragen",
+      "submitting": "Wird gesendet…",
+      "successTitle": "Anfrage gesendet",
+      "successBody": "Vielen Dank für Ihre Anfrage. Wir melden uns persönlich bei Ihnen.",
+      "duplicateError": "Mit diesen Kontaktdaten wurde bereits eine Partneranfrage übermittelt.",
+      "sendFailedError": "Senden fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "networkError": "Netzwerkfehler. Bitte Verbindung prüfen und erneut versuchen.",
+      "honeypotLabel": "Faxnummer"
+    },
+    "interests": {
+      "recommendation": "Empfehlungsmodell",
+      "project": "Zusammenarbeit bei Projekten",
+      "montage": "Montagepartner / Subunternehmer",
+      "other": "Sonstige Zusammenarbeit"
+    },
+    "images": {
+      "heroAlt": "Architekt bei der Planung an einem Fensterprojekt"
+    }
   },
   "filmCatalog": {
     "brand": "Marke",

@@ -43,6 +43,10 @@
           "title": "UV protection",
           "body": "Over 99 % of UV radiation stays outside. Floors, furniture and merchandise keep their colour."
         },
+        "privacy": {
+          "title": "Privacy",
+          "body": "Shield against unwanted views in and create more privacy in living and working areas."
+        },
         "energy": {
           "title": "Energy efficiency",
           "body": "Less cooling load in summer, less heat loss through the glass in winter."
@@ -493,8 +497,231 @@
     "metaDescription": "News, tips and project reports from City-Ton Austria."
   },
   "partner": {
-    "title": "For partners",
-    "note": "This page is being prepared."
+    "metaTitle": "B2B partnership",
+    "metaDescription": "B2B partnership with City-Ton Austria: professional window films for your clients — from consulting to installation, with partner compensation.",
+    "hero": {
+      "eyebrow": "B2B partnership",
+      "title": "Offer more together – B2B partnership with City-Ton Austria",
+      "subtitle": "Do you have clients or projects with large window and glass surfaces? We handle the professional film solution — from technical consulting and product selection through to proper installation.",
+      "plate": "For successfully referred projects we offer our B2B partners attractive partner compensation.",
+      "ctaPrimary": "Request a B2B partnership",
+      "ctaSecondary": "Arrange a personal call"
+    },
+    "audience": {
+      "title": "Who is this collaboration for?",
+      "items": {
+        "broker": {
+          "title": "Real-estate brokers",
+          "body": "An extra service for buyers, owners and tenants of properties."
+        },
+        "facility": {
+          "title": "Property & facility management",
+          "body": "Solutions for residential buildings, offices and commercial properties."
+        },
+        "glazier": {
+          "title": "Glaziers & window makers",
+          "body": "Extend your portfolio without building your own window-film division."
+        },
+        "architect": {
+          "title": "Architects & planners",
+          "body": "Technical solutions for existing glazing and individual project requirements."
+        },
+        "interior": {
+          "title": "Interior fit-out & design",
+          "body": "Solar control, UV protection and privacy for premium interiors and large glass areas."
+        },
+        "sunshade": {
+          "title": "Solar-control & building-services firms",
+          "body": "An additional option where window films are a technical or commercial alternative."
+        },
+        "developer": {
+          "title": "Developers / property developers",
+          "body": "Professional film solutions for existing and new buildings — without your own film division."
+        }
+      }
+    },
+    "solutions": {
+      "title": "Professional solutions for existing glazing",
+      "items": {
+        "sun": {
+          "title": "Solar control",
+          "body": "Reduce solar heat gain and distracting glare."
+        },
+        "uv": {
+          "title": "UV protection",
+          "body": "Protect furniture, floors, textiles, goods and interiors from UV-related damage."
+        },
+        "privacy": {
+          "title": "Privacy & screening",
+          "body": "Film solutions for offices, practices, homes and commercial spaces."
+        },
+        "safety": {
+          "title": "Safety & shatter protection",
+          "body": "Films that reduce injury risk if glass breaks and increase the resistance of existing glazing."
+        }
+      }
+    },
+    "process": {
+      "title": "You make the introduction — we handle the delivery.",
+      "steps": {
+        "referral": {
+          "title": "Enquiry / referral",
+          "body": "The partner introduces an interested client."
+        },
+        "consult": {
+          "title": "Consulting & analysis",
+          "body": "We clarify requirements and inspect the existing glazing."
+        },
+        "select": {
+          "title": "Product selection & quote",
+          "body": "We select a suitable film solution and prepare the offer."
+        },
+        "install": {
+          "title": "Professional installation",
+          "body": "Our installation takes place on site at the client’s premises."
+        },
+        "support": {
+          "title": "Support & warranty",
+          "body": "City-Ton remains the contact for the completed film solution."
+        },
+        "payout": {
+          "title": "Partner compensation",
+          "body": "On successfully completed projects the B2B partner receives the agreed compensation."
+        }
+      }
+    },
+    "services": {
+      "title": "Full service from a single source",
+      "highlight": "As a partner you take on no extra technical or organisational workload — City-Ton handles the full window-film project delivery.",
+      "items": {
+        "advice": {
+          "title": "Technical consulting",
+          "body": "Analysis of requirements and the existing glazing."
+        },
+        "film": {
+          "title": "Selecting the right film",
+          "body": "Chosen by glass buildup, use case and desired function."
+        },
+        "measure": {
+          "title": "Survey & costing",
+          "body": "Project-specific calculation and proposal."
+        },
+        "material": {
+          "title": "Material",
+          "body": "Supply of professional architectural films."
+        },
+        "montage": {
+          "title": "Professional installation",
+          "body": "Expert installation directly on site."
+        },
+        "warranty": {
+          "title": "Warranty & support",
+          "body": "Clear ownership even after project completion."
+        }
+      }
+    },
+    "comp": {
+      "title": "A partnership that pays off for both sides",
+      "lead": "For successfully referred and completed projects we offer our B2B partners attractive partner compensation.",
+      "contributionTitle": "Your part in the collaboration:",
+      "advantageTitle": "Your advantages as a partner:",
+      "footnote": "The exact compensation can be agreed individually depending on project scope and cooperation model.",
+      "contribution": {
+        "spot": "Spot demand with clients or projects that have large glass areas",
+        "forward": "Forward the contact or enquiry to City-Ton",
+        "noTech": "No technical inspection, survey or installation on your side",
+        "accompany": "Support the client within your own project if needed"
+      },
+      "advantage": {
+        "value": "Extra value for your clients",
+        "expert": "A professional contact for window films",
+        "noOps": "No technical delivery required on your side",
+        "montage": "Consulting and installation by City-Ton Austria",
+        "payout": "Partner compensation on successfully completed projects",
+        "longterm": "Option for a long-term collaboration"
+      }
+    },
+    "models": {
+      "title": "Two models of collaboration",
+      "note": "Both models can be combined — together we choose the right form for each project and partner segment.",
+      "items": {
+        "recommend": {
+          "role": "You refer",
+          "title": "Referral model",
+          "body": "You recommend City-Ton to your client. We then handle consulting, proposal and delivery. On successful project completion you receive the agreed partner compensation."
+        },
+        "project": {
+          "role": "We deliver",
+          "title": "Project partnership / subcontractor",
+          "body": "Where needed we can also deliver our services within your projects — from technical selection through to on-site installation."
+        }
+      }
+    },
+    "geo": {
+      "title": "Installation across Austria",
+      "body": "City-Ton Austria serves private and commercial projects throughout Austria."
+    },
+    "refs": {
+      "title": "Completed projects",
+      "shop": "Retail unit, Vienna",
+      "house": "On-site installation, single-family home",
+      "interior": "Apartment, large window front",
+      "glass": "Glazed window front, solar-control film",
+      "facade": "Facade, multi-unit building",
+      "office": "Installation process, office project",
+      "shopAlt": "City-Ton installation on a shopfront in Vienna",
+      "houseAlt": "Professional film installation on a single-family home",
+      "interiorAlt": "Apartment with a large glazed window front",
+      "glassAlt": "Solar-control film on a glazed residential front",
+      "facadeAlt": "Reflective facade films on a multi-unit building",
+      "officeAlt": "Installing privacy film on an office window"
+    },
+    "cta": {
+      "title": "Interested in working together?",
+      "body1": "Would you like to get to know City-Ton as a partner for professional window-film solutions?",
+      "body2": "Let’s talk informally about possible cooperation models.",
+      "ctaPrimary": "Request a B2B partnership",
+      "ctaSecondary": "Arrange a call",
+      "companyLabel": "Company",
+      "contactLabel": "Contact",
+      "contactName": "Dobrovolskyi Oleksandr",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email"
+    },
+    "form": {
+      "title": "Request a B2B partnership",
+      "lead": "A few details are enough. We’ll get in touch personally to discuss the right cooperation model.",
+      "nameLabel": "Name / contact *",
+      "companyLabel": "Company *",
+      "brancheLabel": "Industry",
+      "emailLabel": "Email *",
+      "phoneLabel": "Phone",
+      "websiteLabel": "Website",
+      "interestLabel": "I’m interested in:",
+      "interestPlaceholder": "Please select",
+      "messageLabel": "Message",
+      "optional": "(optional)",
+      "privacyPrefix": "I have read the",
+      "privacyLink": "privacy policy",
+      "privacySuffix": "and consent to processing my details to handle this enquiry.",
+      "submit": "Request collaboration",
+      "submitting": "Sending…",
+      "successTitle": "Enquiry sent",
+      "successBody": "Thank you for your enquiry. We’ll get in touch with you personally.",
+      "duplicateError": "A partner enquiry with these contact details has already been submitted.",
+      "sendFailedError": "Sending failed. Please try again.",
+      "networkError": "Network error. Please check your connection and try again.",
+      "honeypotLabel": "Fax number"
+    },
+    "interests": {
+      "recommendation": "Referral model",
+      "project": "Project collaboration",
+      "montage": "Installation partner / subcontractor",
+      "other": "Other collaboration"
+    },
+    "images": {
+      "heroAlt": "Architect planning at a window project"
+    }
   },
   "filmCatalog": {
     "brand": "Brand",

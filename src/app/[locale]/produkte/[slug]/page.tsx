@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Corners from "@/components/Corners";
 import CtaBand from "@/components/CtaBand";
 import FilmCard from "@/components/FilmCard";
@@ -30,19 +30,19 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const item = await getSeriesBySlug(slug);
+  const locale = await getLocale();
+  const item = await getSeriesBySlug(slug, locale);
   if (!item) return {};
   return {
     title: item.name,
     description: item.summary,
-    // Content is DB-sourced German only — see pageAlternates' doc comment.
-    alternates: pageAlternates(`/produkte/${slug}`, "de", { hasEnglish: false }),
+    alternates: pageAlternates(`/produkte/${slug}`, locale),
   };
 }
 
 export default async function SeriesPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = await getSeriesBySlug(slug);
+  const item = await getSeriesBySlug(slug, await getLocale());
   if (!item) notFound();
 
   const [t, tc, tsite, tStructure, tn] = await Promise.all([

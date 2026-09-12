@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/admin-guard";
 import { categoryInputSchema } from "@/lib/admin-schemas";
 import { prisma } from "@/lib/db";
+import { scheduleReindex } from "@/lib/rag/schedule-reindex";
 
 export const runtime = "nodejs";
 
@@ -38,6 +39,13 @@ export async function POST(request: Request) {
         tag: d.tag,
         extraTag: d.extraTag ?? null,
         summary: d.summary,
+        nameEn: d.nameEn ?? null,
+        familyEn: d.familyEn ?? null,
+        tagEn: d.tagEn ?? null,
+        extraTagEn: d.extraTagEn ?? null,
+        summaryEn: d.summaryEn ?? null,
+        useCasesEn: d.useCasesEn ?? [],
+        metricsEn: (d.metricsEn ?? undefined) as object,
         glyph: d.glyph,
         glyphField: d.glyphField,
         useCases: d.useCases,
@@ -46,6 +54,7 @@ export async function POST(request: Request) {
         sortOrder: d.sortOrder,
       },
     });
+    scheduleReindex(`category:${created.slug}`);
     return NextResponse.json({ ok: true, id: created.id });
   } catch (err) {
     return NextResponse.json({ ok: false, error: conflictMessage(err) }, { status: 409 });

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import JsonLd from "@/components/JsonLd";
 import { Link } from "@/i18n/navigation";
 import type { Film, FilmValues } from "@/content/series";
@@ -19,13 +19,22 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const film = await getProductBySlug(slug);
+  const locale = await getLocale();
+  const film = await getProductBySlug(slug, locale);
   if (!film) return {};
+  const t = await getTranslations({ locale, namespace: "produkteFolieDetail" });
+  const family = t(`family.${film.family}`);
+  const mount = t(`mount.${film.mount}`);
   return {
     title: `${film.name} · ${film.brand}`,
-    description: `${film.brand} ${film.name} (${film.code}) — ${film.family}, Montage ${film.mount}. Kennwerte und Beratung bei City-Ton Austria.`,
-    // Content is DB-sourced German only — see pageAlternates' doc comment.
-    alternates: pageAlternates(`/produkte/folie/${slug}`, "de", { hasEnglish: false }),
+    description: t("metaDescription", {
+      brand: film.brand,
+      name: film.name,
+      code: film.code,
+      family,
+      mount,
+    }),
+    alternates: pageAlternates(`/produkte/folie/${slug}`, locale),
   };
 }
 
@@ -70,7 +79,7 @@ function valueRows(v: FilmValues, t: T): Row[] {
 
 export default async function FilmPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const film = await getProductBySlug(slug);
+  const film = await getProductBySlug(slug, await getLocale());
   if (!film) notFound();
 
   const [t, tc, tn] = await Promise.all([
@@ -87,7 +96,7 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
     { label: t("marke"), value: film.brand },
     { label: t("code"), value: film.code },
     { label: t("familie"), value: familyLabel },
-    { label: t("montage"), value: film.mount },
+    { label: t("montage"), value: t(`mount.${film.mount}`) },
   ];
   if (thick) metaRows.push({ label: t("staerke"), value: thick });
   if (film.application) metaRows.push({ label: t("anwendung"), value: film.application });
@@ -136,7 +145,7 @@ export default async function FilmPage({ params }: { params: Promise<{ slug: str
               </p>
               <h1 className={styles.title}>{film.name}</h1>
               <p className={styles.sub}>
-                {film.code} · {t("montagePrefix")} {film.mount}
+                {film.code} · {t("montagePrefix")} {t(`mount.${film.mount}`)}
               </p>
 
               <dl className={styles.meta}>

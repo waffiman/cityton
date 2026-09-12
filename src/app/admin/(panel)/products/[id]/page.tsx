@@ -33,6 +33,8 @@ export default async function EditProductPage({
     application: product.application,
     certification: product.certification,
     note: product.note,
+    applicationEn: product.applicationEn,
+    certificationEn: product.certificationEn,
     single: (product.single ?? {}) as ValueMap,
     dual: (product.dual ?? null) as ValueMap | null,
     imageUrl: product.imageUrl,

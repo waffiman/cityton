@@ -3,6 +3,7 @@ import { isAdmin } from "@/lib/admin-guard";
 import { postInputSchema } from "@/lib/admin-schemas";
 import { prisma } from "@/lib/db";
 import { conflictMessage } from "../route";
+import { scheduleReindex } from "@/lib/rag/schedule-reindex";
 
 export const runtime = "nodejs";
 
@@ -28,7 +29,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   }
   const d = parsed.data;
 
-  const existing = await prisma.post.findUnique({ where: { id }, select: { publishedAt: true } });
+  const existing = await prisma.post.findUnique({ where: { id }, select: { publishedAt: true, slug: true } });
   if (!existing) {
     return NextResponse.json({ ok: false, error: "Nicht gefunden." }, { status: 404 });
   }
@@ -42,7 +43,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   }
 
   try {
-    await prisma.post.update({
+    const updated = await prisma.post.update({
       where: { id },
       data: {
         slug: d.slug,
@@ -53,10 +54,19 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
         // No null-dance needed — unlike the nullable scalars above.
         galleryUrls: d.galleryUrls ?? undefined,
         contentHtml: d.contentHtml,
+        titleEn: "titleEn" in d ? (d.titleEn ?? null) : undefined,
+        excerptEn: "excerptEn" in d ? (d.excerptEn ?? null) : undefined,
+        contentHtmlEn: "contentHtmlEn" in d ? (d.contentHtmlEn ?? null) : undefined,
         status: d.status,
         publishedAt,
       },
+      select: { slug: true },
     });
+    // If the slug changed, drop the old source id too.
+    if (d.slug && d.slug !== existing.slug) {
+      scheduleReindex(`post:${existing.slug}`);
+    }
+    scheduleReindex(`post:${updated.slug}`);
     return NextResponse.json({ ok: true });
   } catch (err) {
     return NextResponse.json({ ok: false, error: conflictMessage(err) }, { status: 409 });
@@ -69,7 +79,8 @@ export async function DELETE(_request: Request, { params }: { params: Promise<{ 
   }
   const { id } = await params;
   try {
-    await prisma.post.delete({ where: { id } });
+    const deleted = await prisma.post.delete({ where: { id }, select: { slug: true } });
+    scheduleReindex(`post:${deleted.slug}`);
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ ok: false, error: "Nicht gefunden." }, { status: 404 });

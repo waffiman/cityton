@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Fragment } from "react";
 import BeforeAfter from "@/components/BeforeAfter";
 import BenefitIcon from "@/components/BenefitIcon";
@@ -45,7 +45,8 @@ type FaqItem = { q: string; a: string };
  * (s4 → s5), with the footer on s6 as the darkest stop.
  */
 export default async function HomePage() {
-  const [series, t] = await Promise.all([getVisibleSeries(), getTranslations("home")]);
+  const locale = await getLocale();
+  const [series, t] = await Promise.all([getVisibleSeries(locale), getTranslations("home")]);
   const compareRows = t.raw("compare.rows") as Row[];
   const protectionRows = t.raw("compare.protectionRows") as Row[];
   const quotes = t.raw("reviews.quotes") as Quote[];

@@ -13,6 +13,9 @@ export type PostFormData = {
   slug: string;
   title: string;
   excerpt: string | null;
+  titleEn: string | null;
+  excerptEn: string | null;
+  contentHtmlEn: string | null;
   coverUrl: string | null;
   galleryUrls: string[];
   contentHtml: string;
@@ -30,6 +33,9 @@ export default function PostEditor({ post }: { post?: PostFormData }) {
   const [coverUrl, setCoverUrl] = useState<string | null>(post?.coverUrl ?? null);
   const [galleryUrls, setGalleryUrls] = useState<string[]>(post?.galleryUrls ?? []);
   const [contentHtml, setContentHtml] = useState(post?.contentHtml ?? "");
+  const [titleEn, setTitleEn] = useState(post?.titleEn ?? "");
+  const [excerptEn, setExcerptEn] = useState(post?.excerptEn ?? "");
+  const [contentHtmlEn, setContentHtmlEn] = useState(post?.contentHtmlEn ?? "");
   const [status] = useState(post?.status ?? "draft");
 
   const [error, setError] = useState<string | null>(null);
@@ -52,6 +58,9 @@ export default function PostEditor({ post }: { post?: PostFormData }) {
       coverUrl: coverUrl || null,
       galleryUrls,
       contentHtml,
+      titleEn: titleEn.trim() || null,
+      excerptEn: excerptEn.trim() || null,
+      contentHtmlEn: contentHtmlEn.trim() || null,
       status: finalStatus,
     };
 
@@ -139,6 +148,47 @@ export default function PostEditor({ post }: { post?: PostFormData }) {
         <label className={styles.label}>Inhalt</label>
         <RichTextEditor value={contentHtml} onChange={setContentHtml} />
       </div>
+
+      <fieldset style={{ border: "1px solid var(--color-divider)", padding: "var(--space-6)" }}>
+        <legend className={styles.label}>English translation</legend>
+        <p className={styles.muted} style={{ marginTop: 0 }}>
+          Ohne englischen Inhalt zeigt /en/blog den deutschen Beitrag — und der Beitrag wird für
+          Suchmaschinen weiterhin als deutschsprachig ausgewiesen. Bilder gelten für beide Sprachen.
+        </p>
+        <div style={{ display: "grid", gap: "var(--space-3)" }}>
+          <div className={styles.field}>
+            <label className={styles.label} htmlFor="titleEn">
+              Titel (EN)
+            </label>
+            <input
+              id="titleEn"
+              className="input"
+              value={titleEn}
+              placeholder={title}
+              onChange={(e) => setTitleEn(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label className={styles.label} htmlFor="excerptEn">
+              Teaser (EN)
+            </label>
+            <textarea
+              id="excerptEn"
+              className="input"
+              rows={3}
+              value={excerptEn}
+              placeholder={excerpt}
+              onChange={(e) => setExcerptEn(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.field}>
+            <label className={styles.label}>Content (EN)</label>
+            <RichTextEditor value={contentHtmlEn} onChange={setContentHtmlEn} />
+          </div>
+        </div>
+      </fieldset>
 
       {error && <p className={styles.error}>{error}</p>}
 

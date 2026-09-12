@@ -35,6 +35,17 @@ model Category {
   useCases   String[]
   metrics    Json? // overview-card metrics (label/value/bar)
   detail     Json? // long-form stats/facts/variants content
+  /// English translations. The columns above hold the German source; these are
+  /// null until translated and the reader falls back to German — see
+  /// src/lib/products.ts. `detailEn` mirrors `detail` key for key.
+  nameEn     String?
+  familyEn   String?
+  tagEn      String?
+  extraTagEn String?
+  summaryEn  String?
+  useCasesEn String[]
+  metricsEn  Json?
+  detailEn   Json?
   visible    Boolean   @default(true)
   sortOrder  Int       @default(0)
   products   Product[]
@@ -53,6 +64,11 @@ model Product {
   application     String?
   certification   String?
   note            String?
+  /// English translations of the two public prose fields above. `name`/`code`
+  /// are brand naming, and `note` is an internal admin remark that never
+  /// reaches a page — neither needs a translation.
+  applicationEn   String?
+  certificationEn String?
   single          Json // FilmValues
   dual            Json? // FilmValues
   imageUrl        String?
@@ -70,7 +86,7 @@ model Product {
 /// CRM record — unifies kontakt inquiries, beratung leads and future chatbot leads.
 model Inquiry {
   id         String   @id @default(cuid())
-  source     String // kontakt | beratung | chatbot
+  source     String // kontakt | beratung | chatbot | partner
   status     String   @default("new") // new | in_progress | done | archived
   name       String?
   objektart  String?
@@ -98,6 +114,11 @@ model Post {
   /// Extra photos shown as a gallery under the article. The cover stays separate.
   galleryUrls String[]
   contentHtml String    @default("")
+  /// English translation. A post without one falls back to the German source
+  /// on /en/blog rather than disappearing — see src/lib/posts.ts.
+  titleEn     String?
+  excerptEn   String?
+  contentHtmlEn String?
   status      String    @default("draft") // draft | published
   publishedAt DateTime?
   createdAt   DateTime  @default(now())
@@ -127,4 +148,39 @@ model GalleryItem {
   createdAt DateTime @default(now())
 
   @@index([visible, sortOrder])
+}
+
+/// Custom Q&A knowledge base entries managed through admin panel.
+/// These entries are not published on the website but are indexed for the chatbot.
+model KnowledgeBase {
+  id         String   @id @default(cuid())
+  question   String
+  answer     String // supports markdown
+  category   String? // optional categorization (e.g., "Pricing", "Services", "Technical")
+  keywords   String[] // additional keywords for better matching
+  locale     String   @default("de") // de | en
+  visible    Boolean  @default(true)
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([locale, visible])
+  @@index([category])
+}
+
+/// One retrievable passage of site content. `sourceHash` lets the index
+/// builder skip documents that have not changed since the last run.
+model ChatChunk {
+  id         String   @id @default(cuid())
+  sourceId   String // "product:folie-r20", "post:warum-sonnenschutz", "faq:de.3"
+  sourceHash String
+  locale     String // de | en
+  title      String
+  url        String? // deep link the answer can cite
+  content    String
+  embedding  Float[]
+  createdAt  DateTime @default(now())
+
+  @@index([sourceId])
+  @@index([locale])
 }

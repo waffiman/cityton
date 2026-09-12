@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/admin-guard";
 import { galleryItemInputSchema } from "@/lib/admin-schemas";
 import { prisma } from "@/lib/db";
+import { scheduleReindex } from "@/lib/rag/schedule-reindex";
 
 export const runtime = "nodejs";
 
@@ -27,6 +28,7 @@ export async function POST(request: Request) {
     const created = await prisma.galleryItem.create({
       data: { ...d, posterUrl: d.posterUrl ?? null },
     });
+    scheduleReindex(`gallery:${created.id}`);
     return NextResponse.json({ ok: true, id: created.id });
   } catch (err) {
     const code = (err as { code?: string })?.code;

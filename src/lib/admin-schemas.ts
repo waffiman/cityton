@@ -70,6 +70,10 @@ export const productInputSchema = z.object({
   application: z.string().max(300).nullable().optional(),
   certification: z.string().max(300).nullable().optional(),
   note: z.string().max(1000).nullable().optional(),
+  // English translations of the two public prose fields; `name`/`code` are
+  // brand naming and `note` is internal-only, so neither is translated.
+  applicationEn: z.string().max(300).nullable().optional(),
+  certificationEn: z.string().max(300).nullable().optional(),
   single: filmValuesSchema,
   dual: filmValuesSchema.nullable().optional(),
   imageUrl: z.string().max(600).nullable().optional(),
@@ -95,6 +99,15 @@ export const categoryInputSchema = z.object({
   glyphField: z.enum(GLYPH_FIELDS),
   useCases: z.array(z.string().max(120)).max(20),
   metrics: z.array(seriesMetricSchema).max(6).nullable().optional(),
+  // English translations. Optional throughout: the fields above are the German
+  // source and are served when a translation is still missing.
+  nameEn: z.string().max(120).nullable().optional(),
+  familyEn: z.string().max(160).nullable().optional(),
+  tagEn: z.string().max(80).nullable().optional(),
+  extraTagEn: z.string().max(80).nullable().optional(),
+  summaryEn: z.string().max(2000).nullable().optional(),
+  useCasesEn: z.array(z.string().max(120)).max(20).optional(),
+  metricsEn: z.array(seriesMetricSchema).max(6).nullable().optional(),
   visible: z.boolean(),
   sortOrder: z.number().int(),
 });
@@ -134,9 +147,111 @@ export const postInputSchema = z.object({
   // returns site-relative paths like "/uploads/posts/…jpg".
   galleryUrls: z.array(z.string().max(600)).max(24).optional(),
   contentHtml: z.string().max(200000),
+  titleEn: z.string().max(200).nullable().optional(),
+  excerptEn: z.string().max(400).nullable().optional(),
+  contentHtmlEn: z.string().max(200000).nullable().optional(),
   status: z.enum(["draft", "published"]),
 });
 export type PostInput = z.infer<typeof postInputSchema>;
+
+export const knowledgeBaseInputSchema = z.object({
+  question: z.string().min(1).max(500),
+  answer: z.string().min(1).max(10000),
+  category: z.string().max(100).nullable().optional(),
+  keywords: z.array(z.string().max(100)).max(20).optional(),
+  locale: z.enum(["de", "en"]),
+  visible: z.boolean(),
+  sortOrder: z.number().int(),
+});
+export type KnowledgeBaseInput = z.infer<typeof knowledgeBaseInputSchema>;
+
+/** Upper bound for one bulk import request. */
+export const KNOWLEDGE_IMPORT_MAX_ENTRIES = 500;
+
+/**
+ * Answers are stored as the HTML the rich text editor produces. Imported files
+ * usually carry plain text, so wrap it in paragraphs to keep both the editor
+ * and the chat answer rendering happy.
+ */
+export function normalizeAnswerHtml(input: string): string {
+  const text = input.trim();
+  if (!text) return text;
+  if (/<\/?[a-z][\s\S]*>/i.test(text)) return text;
+  return text
+    .split(/\n{2,}/)
+    .map((block) => `<p>${block.trim().replace(/\n/g, "<br />")}</p>`)
+    .join("");
+}
+
+/**
+ * One Q&A entry from an uploaded JSON file. Deliberately lenient compared to
+ * `knowledgeBaseInputSchema`: `q`/`a` shorthands are accepted, keywords may be
+ * a comma-separated string, and everything but question/answer is optional.
+ */
+export const knowledgeBaseImportEntrySchema = z
+  .object({
+    question: z.string().max(500).optional(),
+    q: z.string().max(500).optional(),
+    answer: z.string().max(10000).optional(),
+    a: z.string().max(10000).optional(),
+    category: z.string().max(100).nullable().optional(),
+    keywords: z
+      .union([z.array(z.string().max(100)).max(20), z.string().max(600)])
+      .nullable()
+      .optional(),
+    locale: z.enum(["de", "en"]).optional(),
+    visible: z.boolean().optional(),
+    sortOrder: z.number().int().optional(),
+  })
+  .transform((raw, ctx): KnowledgeBaseInput => {
+    const question = (raw.question ?? raw.q ?? "").trim();
+    const answer = (raw.answer ?? raw.a ?? "").trim();
+    if (!question) {
+      ctx.addIssue({ code: "custom", message: "„question“ fehlt oder ist leer." });
+    }
+    if (!answer) {
+      ctx.addIssue({ code: "custom", message: "„answer“ fehlt oder ist leer." });
+    }
+
+    const keywords = (
+      typeof raw.keywords === "string" ? raw.keywords.split(",") : (raw.keywords ?? [])
+    )
+      .map((k) => k.trim())
+      .filter(Boolean)
+      .slice(0, 20);
+
+    return {
+      question,
+      answer: normalizeAnswerHtml(answer),
+      category: raw.category?.trim() || null,
+      keywords,
+      locale: raw.locale ?? "de",
+      visible: raw.visible ?? true,
+      sortOrder: raw.sortOrder ?? 0,
+    };
+  });
+
+export const knowledgeBaseImportSchema = z.object({
+  entries: z.array(knowledgeBaseImportEntrySchema).min(1).max(KNOWLEDGE_IMPORT_MAX_ENTRIES),
+  /** `skip` keeps existing entries untouched, `update` overwrites them. */
+  mode: z.enum(["skip", "update"]).default("skip"),
+});
+export type KnowledgeBaseImportInput = z.infer<typeof knowledgeBaseImportSchema>;
+
+/**
+ * Pulls the entry array out of an uploaded file, accepting a bare array or a
+ * wrapper object (`entries`, `items`, `faqs`, `data`).
+ */
+export function extractImportEntries(parsed: unknown): unknown[] | null {
+  if (Array.isArray(parsed)) return parsed;
+  if (parsed && typeof parsed === "object") {
+    for (const key of ["entries", "items", "faqs", "qa", "data"] as const) {
+      const value = (parsed as Record<string, unknown>)[key];
+      if (Array.isArray(value)) return value;
+    }
+  }
+  return null;
+}
 
 /** URL-safe slug — matches filmSlug() in src/lib/films.ts. */
 export function toSlug(input: string): string {

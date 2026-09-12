@@ -35,6 +35,17 @@ model Category {
   useCases   String[]
   metrics    Json? // overview-card metrics (label/value/bar)
   detail     Json? // long-form stats/facts/variants content
+  /// English translations. The columns above hold the German source; these are
+  /// null until translated and the reader falls back to German — see
+  /// src/lib/products.ts. `detailEn` mirrors `detail` key for key.
+  nameEn     String?
+  familyEn   String?
+  tagEn      String?
+  extraTagEn String?
+  summaryEn  String?
+  useCasesEn String[]
+  metricsEn  Json?
+  detailEn   Json?
   visible    Boolean   @default(true)
   sortOrder  Int       @default(0)
   products   Product[]
@@ -53,6 +64,11 @@ model Product {
   application     String?
   certification   String?
   note            String?
+  /// English translations of the two public prose fields above. `name`/`code`
+  /// are brand naming, and `note` is an internal admin remark that never
+  /// reaches a page — neither needs a translation.
+  applicationEn   String?
+  certificationEn String?
   single          Json // FilmValues
   dual            Json? // FilmValues
   imageUrl        String?
@@ -98,6 +114,11 @@ model Post {
   /// Extra photos shown as a gallery under the article. The cover stays separate.
   galleryUrls String[]
   contentHtml String    @default("")
+  /// English translation. A post without one falls back to the German source
+  /// on /en/blog rather than disappearing — see src/lib/posts.ts.
+  titleEn     String?
+  excerptEn   String?
+  contentHtmlEn String?
   status      String    @default("draft") // draft | published
   publishedAt DateTime?
   createdAt   DateTime  @default(now())

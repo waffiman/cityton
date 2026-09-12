@@ -1,11 +1,23 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { series } from "@/content/series";
+import { series as fallbackSeries } from "@/content/series";
 import { footerColumns, site } from "@/content/site";
+import { getVisibleSeries } from "@/lib/products";
 import styles from "./SiteFooter.module.css";
 
 export default async function SiteFooter() {
-  const t = await getTranslations();
+  const locale = await getLocale();
+  // Series names come from the DB, not @/content/series: the hardcoded list is
+  // German-only and the admin can rename or hide a series at any time.
+  //
+  // The footer sits in the root layout, so this query runs for every page —
+  // including any that Next prerenders. `npm run build` inside the Docker image
+  // has no route to the db container, so fall back to the built-in list rather
+  // than failing the whole build over a footer link list.
+  const [t, series] = await Promise.all([
+    getTranslations(),
+    getVisibleSeries(locale).catch(() => fallbackSeries),
+  ]);
 
   return (
     <footer className={styles.footer}>

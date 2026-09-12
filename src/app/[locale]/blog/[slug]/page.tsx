@@ -6,7 +6,7 @@ import Corners from "@/components/Corners";
 import JsonLd from "@/components/JsonLd";
 import PostGallery from "@/components/PostGallery";
 import { Link } from "@/i18n/navigation";
-import { prisma } from "@/lib/db";
+import { getPublishedPost } from "@/lib/posts";
 import { sanitizeHtml } from "@/lib/sanitize-html";
 import { pageAlternates } from "@/lib/seo";
 import { articleNode, breadcrumbNode } from "@/lib/schema";
@@ -25,16 +25,17 @@ export async function generateMetadata({
   params: Promise<{ slug: string; locale: string }>;
 }): Promise<Metadata> {
   const { slug, locale } = await params;
-  const post = await prisma.post.findUnique({ where: { slug } });
-  if (!post || post.status !== "published") {
+  const post = await getPublishedPost(slug, locale);
+  if (!post) {
     const t = await getTranslations({ locale, namespace: "blog" });
     return { title: t("notFoundTitle") };
   }
   return {
     title: post.title,
     description: post.excerpt ?? undefined,
-    // Post content is DB-sourced German only — see pageAlternates' doc comment.
-    alternates: pageAlternates(`/blog/${slug}`, "de", { hasEnglish: false }),
+    // A post only has an English URL worth advertising once it is translated;
+    // an untranslated one still renders, but in German — see pageAlternates.
+    alternates: pageAlternates(`/blog/${slug}`, locale, { hasEnglish: post.translated }),
   };
 }
 
@@ -45,13 +46,13 @@ export default async function BlogPostPage({
 }) {
   const { slug, locale } = await params;
   const [post, t, tn] = await Promise.all([
-    prisma.post.findUnique({ where: { slug } }),
+    getPublishedPost(slug, locale),
     getTranslations("blog"),
     // Nav labels are the properly-cased ones; the visible crumb styling
     // elsewhere is all-caps, which reads badly inside structured data.
     getTranslations("nav"),
   ]);
-  if (!post || post.status !== "published") notFound();
+  if (!post) notFound();
 
   return (
     <section className={`section--1 ${styles.band}`}>

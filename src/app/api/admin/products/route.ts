@@ -39,6 +39,8 @@ export async function POST(request: Request) {
         application: d.application ?? null,
         certification: d.certification ?? null,
         note: d.note ?? null,
+        applicationEn: d.applicationEn ?? null,
+        certificationEn: d.certificationEn ?? null,
         single: d.single,
         dual: d.dual ?? undefined,
         imageUrl: d.imageUrl ?? null,

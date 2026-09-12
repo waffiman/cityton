@@ -46,6 +46,8 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
         application: "application" in d ? (d.application ?? null) : undefined,
         certification: "certification" in d ? (d.certification ?? null) : undefined,
         note: "note" in d ? (d.note ?? null) : undefined,
+        applicationEn: "applicationEn" in d ? (d.applicationEn ?? null) : undefined,
+        certificationEn: "certificationEn" in d ? (d.certificationEn ?? null) : undefined,
         single: d.single ?? undefined,
         dual: "dual" in d ? (d.dual ?? undefined) : undefined,
         imageUrl: "imageUrl" in d ? (d.imageUrl ?? null) : undefined,

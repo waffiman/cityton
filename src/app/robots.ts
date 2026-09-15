@@ -14,5 +14,7 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${site.url}/sitemap.xml`,
+    // Tell search engines the canonical domain is city-ton.com (for production)
+    host: site.url,
   };
 }

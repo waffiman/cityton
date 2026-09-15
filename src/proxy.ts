@@ -41,7 +41,17 @@ async function adminGuard(request: NextRequest) {
 }
 
 export default function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { hostname, pathname } = request.nextUrl;
+
+  // Permanent redirect from city-ton.at to city-ton.com
+  // This ensures city-ton.com is the canonical domain for SEO
+  if (hostname === "city-ton.at" || hostname === "www.city-ton.at") {
+    const url = new URL(request.url);
+    url.hostname = "city-ton.com";
+    // 301 permanent redirect to transfer SEO value
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
   if (pathname.startsWith("/admin") || pathname.startsWith("/api/admin")) {
     return adminGuard(request);
   }

@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import InquiryEditor from "@/components/admin/InquiryEditor";
 import { prisma } from "@/lib/db";
 import deMessages from "@/messages/de.json";
-import { interestOptions } from "@/content/partner";
 import styles from "../../../admin.module.css";
 
 const SOURCE_LABEL: Record<string, string> = {
@@ -15,7 +14,13 @@ const SOURCE_LABEL: Record<string, string> = {
 
 const OBJEKT_LABEL = new Map<string, string>(Object.entries(deMessages.kontakt.objectTypes));
 const GOAL_LABEL = new Map<string, string>(Object.entries(deMessages.kontakt.goals));
-const INTEREST_LABEL = new Map<string, string>(interestOptions.map((o) => [o.value, o.label]));
+/** Current + legacy interest keys stored in Inquiry.goals for source=partner. */
+const INTEREST_LABEL = new Map<string, string>([
+  ...Object.entries(deMessages.partner.interests),
+  ["empfehlung", deMessages.partner.interests.recommendation],
+  ["projekte", deMessages.partner.interests.project],
+  ["sonstige", deMessages.partner.interests.other],
+]);
 
 function formatDate(d: Date): string {
   return new Intl.DateTimeFormat("de-AT", { dateStyle: "long", timeStyle: "short" }).format(d);

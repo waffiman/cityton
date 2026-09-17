@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Corners from "@/components/Corners";
 import PartnerInquiryForm from "@/components/PartnerInquiryForm";
 import {
@@ -38,8 +38,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function PartnerPage() {
-  const t = await getTranslations("partner");
+export default async function PartnerPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "partner" });
 
   const processTop = processKeys.slice(0, 3);
   const processBottom = processKeys.slice(3);

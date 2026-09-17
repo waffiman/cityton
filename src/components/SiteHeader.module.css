@@ -163,6 +163,38 @@
   color: var(--color-accent-700);
 }
 
+.drawerLocales {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0 12px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.drawerLocaleActive {
+  text-decoration: none;
+  color: var(--color-accent-700);
+  font-weight: 700;
+}
+
+.drawerLocale {
+  text-decoration: none;
+  color: color-mix(in srgb, var(--color-text) 45%, transparent);
+}
+
+.drawerLocale:hover {
+  color: var(--color-accent-700);
+}
+
+.overHero .drawerLocaleActive {
+  color: var(--color-on-dark-strong);
+}
+
+.overHero .drawerLocale {
+  color: rgba(242, 242, 243, 0.55);
+}
+
 @media (max-width: 1180px) {
   .nav,
   .locales {

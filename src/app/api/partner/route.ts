@@ -1,6 +1,6 @@
 import { validatePartnerInquiry } from "@/lib/partner-inquiry";
 import { savePartnerInquiry } from "@/lib/partner-inquiries-store";
-import { sendPartnerAutoReply, sendPartnerInquiryNotification } from "@/lib/mailer";
+import { sendPartnerNotification, sendInquiryAutoReply } from "@/lib/mailer";
 import { allowRequest, clientIp, tooManyRequests } from "@/lib/rate-limit";
 import { verifyTurnstile } from "@/lib/turnstile";
 
@@ -41,7 +41,18 @@ export async function POST(request: Request) {
   }
 
   const { inquiry } = parsed;
-  const result = await savePartnerInquiry(inquiry);
+
+  const result = await savePartnerInquiry({
+    keys: inquiry.keys,
+    name: inquiry.name,
+    company: inquiry.company,
+    branche: inquiry.branche,
+    interest: inquiry.interest,
+    website: inquiry.website,
+    message: inquiry.message,
+    phone: inquiry.phone,
+    email: inquiry.email,
+  });
 
   if (result.status === "duplicate") {
     return Response.json(
@@ -55,8 +66,19 @@ export async function POST(request: Request) {
   }
 
   const sent = await Promise.allSettled([
-    sendPartnerInquiryNotification(result.inquiry),
-    sendPartnerAutoReply(result.inquiry),
+    sendPartnerNotification(result.inquiry),
+    sendInquiryAutoReply({
+      id: result.inquiry.id,
+      keys: result.inquiry.keys,
+      name: result.inquiry.name,
+      objektart: "gewerbe",
+      flaeche: result.inquiry.company,
+      goals: [],
+      message: result.inquiry.message,
+      phone: result.inquiry.phone,
+      email: result.inquiry.email,
+      submittedAt: result.inquiry.submittedAt,
+    }),
   ]);
   for (const outcome of sent) {
     if (outcome.status === "rejected") {

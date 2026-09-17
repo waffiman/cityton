@@ -1,6 +1,5 @@
-import { prisma } from "@/lib/db";
 import type { InterestValue } from "@/content/partner";
-import { composePartnerMessage } from "@/lib/partner-inquiry";
+import { prisma } from "@/lib/db";
 
 export type StoredPartnerInquiry = {
   id: string;
@@ -8,11 +7,11 @@ export type StoredPartnerInquiry = {
   name: string;
   company: string;
   branche: string;
-  email: string;
-  phone: string | null;
-  website: string;
   interest: InterestValue | null;
+  website: string;
   message: string;
+  phone: string | null;
+  email: string;
   submittedAt: string;
 };
 
@@ -20,9 +19,7 @@ export type SavePartnerResult =
   | { status: "created"; inquiry: StoredPartnerInquiry }
   | { status: "duplicate"; inquiry: StoredPartnerInquiry };
 
-const DEDUPE_WINDOW_MS = 24 * 60 * 60 * 1000;
-
-function fromRow(row: {
+type InquiryRow = {
   id: string;
   dedupeKeys: string[];
   name: string | null;
@@ -33,53 +30,44 @@ function fromRow(row: {
   phone: string | null;
   email: string | null;
   createdAt: Date;
-}): StoredPartnerInquiry {
-  const rawMessage = row.message ?? "";
-  let branche = "";
-  let message = rawMessage;
-  if (rawMessage.startsWith("Branche: ")) {
-    const split = rawMessage.indexOf("\n\n");
-    if (split === -1) {
-      branche = rawMessage.slice("Branche: ".length);
-      message = "";
-    } else {
-      branche = rawMessage.slice("Branche: ".length, split);
-      message = rawMessage.slice(split + 2);
-    }
-  }
+};
 
+function toStored(row: InquiryRow): StoredPartnerInquiry {
+  const goals = row.goals;
   return {
     id: row.id,
     keys: row.dedupeKeys,
     name: row.name ?? "",
-    company: row.objektart ?? "",
-    branche,
-    email: row.email ?? "",
+    company: row.flaeche ?? "",
+    branche: goals[0] ?? "",
+    interest: (row.objektart as InterestValue | null) ?? null,
+    website: goals[1] ?? "",
+    message: row.message ?? "",
     phone: row.phone,
-    website: row.flaeche ?? "",
-    interest: (row.goals[0] as InterestValue | undefined) ?? null,
-    message,
+    email: row.email ?? "",
     submittedAt: row.createdAt.toISOString(),
   };
 }
 
+const DEDUPE_WINDOW_MS = 24 * 60 * 60 * 1000;
+
 /**
- * Persist a B2B partner inquiry if none of its contact keys already exist
- * for source="partner" inside the dedupe window.
- *
- * Extra fields reuse existing CRM columns: company → objektart,
- * website → flaeche, interest → goals[0], branche prefixed onto message.
+ * Persist a B2B partner inquiry. Reuses Inquiry columns:
+ * - flaeche → company
+ * - objektart → interest key
+ * - goals[0] → branche, goals[1] → website
+ * - message → free-text note (structured header is also stored for mail/admin)
  */
 export async function savePartnerInquiry(input: {
   keys: string[];
   name: string;
   company: string;
   branche: string;
-  email: string;
-  phone: string | null;
-  website: string;
   interest: InterestValue | null;
+  website: string;
   message: string;
+  phone: string | null;
+  email: string;
 }): Promise<SavePartnerResult> {
   const since = new Date(Date.now() - DEDUPE_WINDOW_MS);
   const existing = await prisma.inquiry.findFirst({
@@ -90,20 +78,20 @@ export async function savePartnerInquiry(input: {
     },
     orderBy: { createdAt: "desc" },
   });
-  if (existing) return { status: "duplicate", inquiry: fromRow(existing) };
+  if (existing) return { status: "duplicate", inquiry: toStored(existing) };
 
   const created = await prisma.inquiry.create({
     data: {
       source: "partner",
       dedupeKeys: input.keys,
       name: input.name,
-      objektart: input.company,
-      flaeche: input.website || null,
-      goals: input.interest ? [input.interest] : [],
-      message: composePartnerMessage(input.branche, input.message) || null,
+      flaeche: input.company,
+      objektart: input.interest,
+      goals: [input.branche, input.website].filter(Boolean),
+      message: input.message,
       phone: input.phone,
       email: input.email,
     },
   });
-  return { status: "created", inquiry: fromRow(created) };
+  return { status: "created", inquiry: toStored(created) };
 }

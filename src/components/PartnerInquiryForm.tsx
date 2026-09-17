@@ -1,13 +1,12 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useRef, useState, type FormEvent } from "react";
+import { Link } from "@/i18n/navigation";
 import Corners from "@/components/Corners";
 import TurnstileWidget from "@/components/TurnstileWidget";
-import { Link } from "@/i18n/navigation";
-import { interestOptions } from "@/content/partner";
+import { interestValues, type InterestValue } from "@/content/partner";
 import {
-  MAX_BRANCHE_LENGTH,
-  MAX_COMPANY_LENGTH,
   MAX_MESSAGE_LENGTH,
   sanitizeEmailField,
   sanitizePhoneField,
@@ -15,7 +14,11 @@ import {
 } from "@/lib/partner-inquiry";
 import styles from "@/app/[locale]/partner/partner.module.css";
 
-type Status = { type: "idle" } | { type: "error"; message: string };
+type Status =
+  | { type: "idle" }
+  | { type: "error"; message: string }
+  | { type: "duplicate"; message: string }
+  | { type: "success"; message: string };
 
 type FormState = {
   name: string;
@@ -24,7 +27,7 @@ type FormState = {
   email: string;
   phone: string;
   website: string;
-  interest: string;
+  interest: InterestValue | "";
   message: string;
   privacy: boolean;
   fax: string;
@@ -44,10 +47,10 @@ const initial: FormState = {
 };
 
 export default function PartnerInquiryForm() {
+  const t = useTranslations("partner");
   const [form, setForm] = useState<FormState>(initial);
   const [status, setStatus] = useState<Status>({ type: "idle" });
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const inFlight = useRef(false);
   const lastAccepted = useRef<string | null>(null);
@@ -62,8 +65,16 @@ export default function PartnerInquiryForm() {
     if (inFlight.current || submitting) return;
 
     const validated = validatePartnerInquiry({
-      ...form,
+      name: form.name,
+      company: form.company,
+      branche: form.branche,
+      email: form.email,
+      phone: form.phone,
+      website: form.website,
+      interest: form.interest,
+      message: form.message,
       privacy: form.privacy,
+      fax: form.fax,
     });
 
     if (!validated.ok) {
@@ -71,12 +82,9 @@ export default function PartnerInquiryForm() {
       return;
     }
 
-    const dedupeToken = validated.inquiry.keys.slice().sort().join("|");
-    if (lastAccepted.current && lastAccepted.current === dedupeToken) {
-      setStatus({
-        type: "error",
-        message: "Mit diesen Kontaktdaten wurde bereits eine Partneranfrage übermittelt.",
-      });
+    const dedupeToken = validated.inquiry.keys.sort().join("|");
+    if (lastAccepted.current && dedupeToken === lastAccepted.current) {
+      setStatus({ type: "duplicate", message: t("form.duplicateError") });
       return;
     }
 
@@ -88,17 +96,31 @@ export default function PartnerInquiryForm() {
       const res = await fetch("/api/partner", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, turnstileToken }),
+        body: JSON.stringify({
+          name: form.name,
+          company: form.company,
+          branche: form.branche,
+          email: form.email,
+          phone: form.phone,
+          website: form.website,
+          interest: form.interest,
+          message: form.message,
+          privacy: form.privacy,
+          fax: form.fax,
+          turnstileToken,
+        }),
       });
-      const data = (await res.json()) as { ok?: boolean; code?: string; error?: string };
+      const data = (await res.json()) as {
+        ok?: boolean;
+        code?: string;
+        error?: string;
+      };
 
       if (res.status === 409 || data.code === "duplicate") {
         lastAccepted.current = dedupeToken;
         setStatus({
-          type: "error",
-          message:
-            data.error ??
-            "Mit diesen Kontaktdaten wurde bereits eine Partneranfrage übermittelt.",
+          type: "duplicate",
+          message: data.error ?? t("form.duplicateError"),
         });
         return;
       }
@@ -106,40 +128,38 @@ export default function PartnerInquiryForm() {
       if (!res.ok || !data.ok) {
         setStatus({
           type: "error",
-          message: data.error ?? "Senden fehlgeschlagen. Bitte versuchen Sie es erneut.",
+          message: data.error ?? t("form.sendFailedError"),
         });
         return;
       }
 
       lastAccepted.current = dedupeToken;
-      setSubmitted(true);
+      setStatus({ type: "success", message: t("form.successBody") });
+      setForm(initial);
     } catch {
-      setStatus({
-        type: "error",
-        message: "Netzwerkfehler. Bitte Verbindung prüfen und erneut versuchen.",
-      });
+      setStatus({ type: "error", message: t("form.networkError") });
     } finally {
       inFlight.current = false;
       setSubmitting(false);
     }
   }
 
-  if (submitted) {
+  if (status.type === "success") {
     return (
       <div className={`blueprint ${styles.success}`} role="status">
         <Corners />
-        <h3 className={styles.successTitle}>Anfrage gesendet</h3>
-        <p className={styles.successBody}>
-          Vielen Dank für Ihre Anfrage. Wir melden uns persönlich bei Ihnen.
-        </p>
+        <h3 className={styles.successTitle}>{t("form.successTitle")}</h3>
+        <p className={styles.successBody}>{status.message}</p>
       </div>
     );
   }
 
+  const invalid = status.type === "error" || status.type === "duplicate";
+
   return (
     <form className={styles.form} onSubmit={onSubmit} noValidate>
       <label className={styles.honeypot} aria-hidden="true">
-        Fax
+        {t("form.honeypotLabel")}
         <input
           tabIndex={-1}
           autoComplete="off"
@@ -151,7 +171,7 @@ export default function PartnerInquiryForm() {
 
       <div className={styles.formGrid}>
         <label className={styles.field}>
-          <span className={styles.label}>Name / Ansprechpartner *</span>
+          <span className={styles.label}>{t("form.nameLabel")}</span>
           <input
             className={styles.input}
             name="name"
@@ -160,42 +180,45 @@ export default function PartnerInquiryForm() {
             maxLength={120}
             value={form.name}
             disabled={submitting}
+            aria-invalid={invalid}
             onChange={(e) => patch({ name: e.target.value })}
           />
         </label>
+
         <label className={styles.field}>
-          <span className={styles.label}>Unternehmen *</span>
+          <span className={styles.label}>{t("form.companyLabel")}</span>
           <input
             className={styles.input}
             name="company"
             autoComplete="organization"
             required
-            maxLength={MAX_COMPANY_LENGTH}
+            maxLength={160}
             value={form.company}
             disabled={submitting}
             onChange={(e) => patch({ company: e.target.value })}
           />
         </label>
+
         <label className={styles.field}>
           <span className={styles.label}>
-            Branche <span className={styles.optional}>(optional)</span>
+            {t("form.brancheLabel")} <span className={styles.optional}>{t("form.optional")}</span>
           </span>
           <input
             className={styles.input}
             name="branche"
-            maxLength={MAX_BRANCHE_LENGTH}
+            maxLength={120}
             value={form.branche}
             disabled={submitting}
             onChange={(e) => patch({ branche: e.target.value })}
           />
         </label>
+
         <label className={styles.field}>
-          <span className={styles.label}>E-Mail *</span>
+          <span className={styles.label}>{t("form.emailLabel")}</span>
           <input
             className={styles.input}
             name="email"
             type="email"
-            inputMode="email"
             autoComplete="email"
             required
             value={form.email}
@@ -203,56 +226,61 @@ export default function PartnerInquiryForm() {
             onChange={(e) => patch({ email: sanitizeEmailField(e.target.value) })}
           />
         </label>
+
         <label className={styles.field}>
           <span className={styles.label}>
-            Telefon <span className={styles.optional}>(optional)</span>
+            {t("form.phoneLabel")} <span className={styles.optional}>{t("form.optional")}</span>
           </span>
           <input
             className={styles.input}
             name="phone"
             type="tel"
-            inputMode="tel"
             autoComplete="tel"
             value={form.phone}
             disabled={submitting}
             onChange={(e) => patch({ phone: sanitizePhoneField(e.target.value) })}
           />
         </label>
+
         <label className={styles.field}>
           <span className={styles.label}>
-            Website <span className={styles.optional}>(optional)</span>
+            {t("form.websiteLabel")} <span className={styles.optional}>{t("form.optional")}</span>
           </span>
           <input
             className={styles.input}
             name="website"
-            type="text"
-            inputMode="url"
+            type="url"
             autoComplete="url"
+            placeholder="https://"
             value={form.website}
             disabled={submitting}
             onChange={(e) => patch({ website: e.target.value })}
           />
         </label>
+
         <label className={`${styles.field} ${styles.fieldFull}`}>
-          <span className={styles.label}>Ich interessiere mich für:</span>
+          <span className={styles.label}>{t("form.interestLabel")}</span>
           <select
             className={styles.input}
             name="interest"
             value={form.interest}
             disabled={submitting}
-            onChange={(e) => patch({ interest: e.target.value })}
+            onChange={(e) => patch({ interest: e.target.value as InterestValue | "" })}
           >
-            <option value="">Bitte wählen</option>
-            {interestOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
+            <option value="" disabled>
+              {t("form.interestPlaceholder")}
+            </option>
+            {interestValues.map((value) => (
+              <option key={value} value={value}>
+                {t(`interests.${value}`)}
               </option>
             ))}
           </select>
         </label>
+
         <label className={`${styles.field} ${styles.fieldFull}`}>
           <span className={styles.label}>
-            Nachricht <span className={styles.optional}>(optional)</span>
+            {t("form.messageLabel")} <span className={styles.optional}>{t("form.optional")}</span>
           </span>
           <textarea
             className={styles.textarea}
@@ -272,28 +300,27 @@ export default function PartnerInquiryForm() {
         <input
           type="checkbox"
           name="privacy"
-          required
           checked={form.privacy}
           disabled={submitting}
           onChange={(e) => patch({ privacy: e.target.checked })}
         />
         <span>
-          Ich habe die{" "}
+          {t("form.privacyPrefix")}{" "}
           <Link href="/datenschutz" className={styles.privacyLink}>
-            Datenschutzerklärung
+            {t("form.privacyLink")}
           </Link>{" "}
-          gelesen und willige in die Verarbeitung meiner Angaben zur Bearbeitung der Anfrage ein.
+          {t("form.privacySuffix")}
         </span>
       </label>
 
       <div className={styles.formActions}>
         <button type="submit" className="btn btn-primary btn-lg blueprint" disabled={submitting}>
           <Corners />
-          {submitting ? "Wird gesendet…" : "Zusammenarbeit anfragen"}
+          {submitting ? t("form.submitting") : t("form.submit")}
         </button>
       </div>
 
-      {status.type === "error" ? (
+      {status.type === "error" || status.type === "duplicate" ? (
         <p role="status" className={styles.statusError}>
           {status.message}
         </p>

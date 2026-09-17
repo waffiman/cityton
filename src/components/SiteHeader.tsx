@@ -22,8 +22,8 @@ export default function SiteHeader() {
   // Solid bar while the drawer is open so the close icon isn't light-on-light.
   const overHero = hasHero && !scrolled && !open;
 
-  // Close the mobile drawer on navigation.
-  useEffect(() => setOpen(false), [pathname]);
+  // Close the mobile drawer on navigation or locale change.
+  useEffect(() => setOpen(false), [pathname, activeLocale]);
 
   useEffect(() => {
     const update = () => {
@@ -115,6 +115,21 @@ export default function SiteHeader() {
               {t(`nav.${item.key}`)}
             </Link>
           ))}
+          <div className={styles.drawerLocales} aria-label={t("nav.language")}>
+            {routing.locales.map((code) => (
+              <Link
+                key={code}
+                href={pathname}
+                locale={code}
+                className={
+                  code === activeLocale ? styles.drawerLocaleActive : styles.drawerLocale
+                }
+                aria-current={code === activeLocale ? "true" : undefined}
+              >
+                {LOCALE_LABEL[code]}
+              </Link>
+            ))}
+          </div>
           <Link href="/kontakt" className="btn btn-primary btn-lg">
             {t("site.cta")}
           </Link>
